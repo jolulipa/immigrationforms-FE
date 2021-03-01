@@ -4,6 +4,4 @@ function App() {
   return <I130/>;
 }
 
-
-
 export default App;
