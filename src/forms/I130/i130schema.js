@@ -494,6 +494,445 @@ const formSchema = {
           type: "number",
           title: "39.a. Certificate Number",
         },
+        placeOfIssuance: {
+          type: "string",
+          title: `39.b. Place of Issuance`,
+        },
+        dateOfIssuance: {
+          type: "string",
+          title: `39.c. Date of Issuance`,
+        },
+        texto24: {
+          type: "object",
+          title: "",
+          description: `If you are a lawful permanent resident, complete Item Numbers 40.a. - 41.`,
+        },
+        classOfAdmission: {
+          type: "string",
+          title: `40.a. Class of Admission`,
+        },
+        dateOfAdmission: {
+          type: "string",
+          title: `40.b. Date of Admission`,
+        },
+        texto25: {
+          type: "object",
+          title: "",
+          description: `Place of Admission:`,
+        },
+        cityOfAdmission: {
+          type: "string",
+          title: `40.c. City or Town `,
+        },
+        stateOfAdmission: {
+          type: "string",
+          title: `40.d State`,
+        },
+        typeOfAdmission: {
+          type: "string",
+          title: `41.  Did you gain lawful permanent resident status through marriage to a U.S. citizen or lawful permanent resident?`,
+          enum: ["Yes", "No"],
+        },
+        texto26: {
+          type: "object",
+          title: "",
+          description: `Employment History`,
+        },
+        texto27: {
+          type: "object",
+          title: "",
+          description: `Provide your employment history for the last five years, whether inside or outside the United States.  Provide your current employment first.  If you are currently unemployed, type or print "Unemployed" in Item Number 42.`,
+        },
+        texto28: {
+          type: "object",
+          title: "",
+          description: `Employer 1:`,
+        },
+        employerName: {
+          type: "string",
+          title: `42.  Name of Employer/Company`,
+        },
+        employerStreet: {
+          type: "string",
+          title: "43.a.Street Number and Name ",
+        },
+        employerApt: {
+          type: "string",
+          title: "43.b.  Apt.     Ste.    Flr.",
+        },
+        employerCityTown: {
+          type: "string",
+          title: "43.c. City or Town",
+        },
+        employerState: {
+          type: "string",
+          title: "43.d. State ",
+        },
+        employerZip: {
+          type: "string",
+          title: "43.e. ZIP Code",
+        },
+        employerProvince: {
+          type: "string",
+          title: "43.f.Province",
+        },
+        employerPostal: {
+          type: "string",
+          title: "43.g. Postal Code ",
+        },
+        employerCountry: {
+          type: "string",
+          title: "43.h. Country",
+        },
+        yourOccupation1: {
+          type: "string",
+          title: "44.  Your Occupation",
+        },
+        emplmntDateFrom: {
+          type: "string",
+          title: `45.a. Date from`,
+        },
+        emplmntDateTo: {
+          type: "string",
+          title: `45.b. Date to`,
+        },
+        texto29: {
+          type: "object",
+          title: "",
+          description: `Employer 2:`,
+        },
+        employer2Name: {
+          type: "string",
+          title: `46.  Name of Employer/Company`,
+        },
+        employer2Street: {
+          type: "string",
+          title: "47.a.Street Number and Name ",
+        },
+        employer2Apt: {
+          type: "string",
+          title: "47.b.  Apt.     Ste.    Flr.",
+        },
+        employer2CityTown: {
+          type: "string",
+          title: "47.c. City or Town",
+        },
+        employer2State: {
+          type: "string",
+          title: "47.d. State ",
+        },
+        employer2Zip: {
+          type: "string",
+          title: "47.e. ZIP Code",
+        },
+        employer2Province: {
+          type: "string",
+          title: "47.f. Province",
+        },
+        employer2Postal: {
+          type: "string",
+          title: "47.g. Postal Code ",
+        },
+        employer2Country: {
+          type: "string",
+          title: "47.h. Country",
+        },
+        yourOccupation2: {
+          type: "string",
+          title: "48.  Your Occupation",
+        },
+        emplmnt2DateFrom: {
+          type: "string",
+          title: `49.a. Date from`,
+        },
+        emplmnt2DateTo: {
+          type: "string",
+          title: `49.b. Date to`,
+        },
+      },
+    },
+    p3: {
+      type: "object",
+      title: "Part 3. Biographic Information",
+      description:
+        "NOTE:  Provide the biographic information about you, the petitioner.",
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        ethnicity: {
+          type: "string",
+          title: "1.   Ethnicity (Select only one box)",
+          enum: ["Hispanic or Latino", "Not Hispanic or Latino"],
+        },
+        race: {
+          type: "string",
+          title: "2.   Race (Select all applicable boxes)",
+          enum: [
+            "White",
+            "Asian",
+            "Black or African American",
+            "American Indian or Alaska Native",
+            "Native Hawaiian or Other Pacific Islander",
+          ],
+        },
+        heightFeet: {
+          type: "string",
+          title: `3.a   Height Feet`,
+        },
+        heightInches: {
+          type: "string",
+          title: `3.b   Height Inches`,
+        },
+        weight: {
+          type: "string",
+          title: `4.   Weight in Pounds`,
+        },
+        eyeColor: {
+          type: "string",
+          title: "5.   Eye Color (Select only one box)",
+          enum: [
+            "Black",
+            "Blue",
+            "Brown",
+            "Gray",
+            "Green",
+            "Hazel",
+            "Maroon",
+            "Pink",
+            "Unknown/Other",
+          ],
+        },
+        hairColor: {
+          type: "string",
+          title: "6.   Hair Color (Select only one box)",
+          enum: [
+            "Bald (no hair)",
+            "Black",
+            "Blond",
+            "Brown",
+            "Gray",
+            "Red",
+            "Sandy",
+            "White",
+            "Unknown/Other",
+          ],
+        },
+      },
+    },
+    p4: {
+      type: "object",
+      title: "Part 4.  Information About Beneficiary",
+      description: "",
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        PetANumber: {
+          type: "number",
+          title: `1. Alien Registration Number (A-Number) (if any)`,
+        },
+        petonLineAccNum: {
+          type: "number",
+          title: `2. USCIS Online Account Number (if any)`,
+        },
+        petsocialSecNum: {
+          type: "number",
+          title: `3. U.S. Social Security Number (if any)`,
+        },
+        texto29: {
+          type: "object",
+          title: "",
+          description: `Beneficiary's Full Name`,
+        },
+        benFullName: {
+          type: "string",
+          title: "4.	 Your Full Name",
+        },
+        benLastName: {
+          type: "string",
+          title: "4.a. Family Name (Last Name)",
+        },
+        benFirstName: {
+          type: "string",
+          title: "4.b. Given Name (First Name)",
+        },
+        benMidName: {
+          type: "string",
+          title: "4.c. Middle Name",
+        },
+        texto30: {
+          type: "object",
+          title: "",
+          description: `Other Names Used (if any):`,
+        },
+        texto31: {
+          type: "object",
+          title: "",
+          description: `Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames.`,
+        },
+        otherLastName: {
+          type: "string",
+          title: "4.a. Family Name (Last Name)",
+        },
+        otherFirstName: {
+          type: "string",
+          title: "4.b. Given Name (First Name)",
+        },
+        otherMidName: {
+          type: "string",
+          title: "4.c. Middle Name",
+        },
+        texto32: {
+          type: "object",
+          title: "",
+          description: `Other Information About Beneficiary `,
+        },
+        benCity: {
+          type: "string",
+          title: `6.  City/Town/Village of Birth`,
+        },
+        benCountryResidence: {
+          type: "string",
+          title: `7.  Country of Birth`,
+        },
+        benDateBirth: {
+          type: "string",
+          title: `8.   Date of Birth`,
+        },
+        benSex: {
+          type: "string",
+          title: `9.  Sex`,
+          enum: ["Male", "female"],
+        },
+        benHas: {
+          type: "string",
+          title: `10.   Has anyone else ever filed a petition for the beneficiary?`,
+          enum: ["Yes", "Not", "Unknown"],
+        },
+        texto33: {
+          type: "object",
+          title: "",
+          description: `NOTE:  Select "Unknown" only if you do not know, and  the beneficiary also does not know, if anyone else has ever filed a petition for the beneficiary.`,
+        },
+        texto34: {
+          type: "object",
+          title: "",
+          description: `Beneficiary's Physical Address:`,
+        },
+        texto35: {
+          type: "object",
+          title: "",
+          description: `If the beneficiary lives outside the United States in a home without a street number or name, leave Item Numbers 11.a. and 11.b. blank.`,
+        },
+        benInCareName: {
+          type: "string",
+          title: "10.a. In Care Of Name",
+        },
+        benStreet: {
+          type: "string",
+          title: "10.b. Street Number and Name ",
+        },
+        benApt: {
+          type: "string",
+          title: "10.c.   Apt.     Ste.    Flr.",
+        },
+        benCityTown: {
+          type: "string",
+          title: "10.d. City or Town",
+        },
+        benState: {
+          type: "string",
+          title: "10.e. State ",
+        },
+        benZip: {
+          type: "string",
+          title: "10.f. ZIP Code",
+        },
+        benProvince: {
+          type: "string",
+          title: "10.g. Province",
+        },
+        benPostal: {
+          type: "string",
+          title: "10.h. Postal Code ",
+        },
+        benCountry: {
+          type: "string",
+          title: "10.i. Country",
+        },
+        texto36: {
+          type: "object",
+          title: "",
+          description: "Other Address and Contact Information:",
+        },
+        texto37: {
+          type: "object",
+          title: "",
+          description: `Provide the address in the United States where the beneficiary intends to live, if different from Item Numbers 11.a. - 11.h.  If the address is the same, type or print "SAME" in Item Number 12.a.`,
+        },
+        benLiveStreet: {
+          type: "string",
+          title: "12.a. Street Number and Name ",
+        },
+        benLiveApt: {
+          type: "string",
+          title: "12.b.   Apt.     Ste.    Flr.",
+        },
+        benLiveCityTown: {
+          type: "string",
+          title: "12.c. City or Town",
+        },
+        benLiveState: {
+          type: "string",
+          title: "12.d. State ",
+        },
+        benLiveZip: {
+          type: "string",
+          title: "12.e. ZIP Code",
+        },
+        texto38: {
+          type: "object",
+          title: "",
+          description: `Provide the beneficiary's address outside the United States, if different from Item Numbers 11.a. - 11.h.  If the address is the same, type or print "SAME" in Item Number 13.a.`,
+        },
+        benOutStreet: {
+          type: "string",
+          title: "13.a. Street Number and Name ",
+        },
+        benOutApt: {
+          type: "string",
+          title: "13.b.   Apt.     Ste.    Flr.",
+        },
+        benOutCityTown: {
+          type: "string",
+          title: "13.c. City or Town",
+        },
+        benOutState: {
+          type: "string",
+          title: "13.d. State ",
+        },
+        benOutZip: {
+          type: "string",
+          title: "13.e. ZIP Code",
+        },
+        benOutCountry: {
+          type: "string",
+          title: "13.f. Country",
+        },
+        dayTel: {
+          type: "number",
+          title: `14.  Daytime Telephone Number (if any)`,
+        },
+        mobileTel: {
+          type: "number",
+          title: `15.  Mobile Telephone Number (if any)`,
+        },
+        emailTel: {
+          type: "string",
+          title: `16.  Email Address (if any)`,
+        },
+        texto39: {
+          type: "object",
+          title: "",
+          description: `Beneficiary's Marital Information:`,
+        },
       },
     },
   },
