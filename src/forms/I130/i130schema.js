@@ -43,7 +43,20 @@ const formSchema = {
       type: "object",
       title: "Part 2. Information about you (petitioner)",
       description: "(Continued)",
-      required: ["dateOfMarriage"],
+      required: [
+        "aNumber",
+        "petFullName",
+        "petLastName",
+        "petFirstName",
+        "mailStreet",
+        "cityTown",
+        "mailCountry",
+        "dateOfBirth",
+        "curMaritalStatus",
+        "iAmStatus",
+        "typeOfAdmission",
+        "employerName",
+      ],
       properties: {
         aNumber: {
           type: "number",
@@ -656,7 +669,15 @@ const formSchema = {
       title: "Part 3. Biographic Information",
       description:
         "NOTE:  Provide the biographic information about you, the petitioner.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: [
+        "ethnicity",
+        "race",
+        "heightFeet",
+        "heightInches",
+        "weight",
+        "eyeColor",
+        "hairColor",
+      ],
       properties: {
         ethnicity: {
           type: "string",
@@ -722,17 +743,24 @@ const formSchema = {
       type: "object",
       title: "Part 4.  Information About Beneficiary",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: [
+        "PetANumber",
+        "benFullName",
+        "benLastName",
+        "benFirstName",
+        "benDateBirth",
+        "benCountryResidence",
+      ],
       properties: {
         PetANumber: {
           type: "number",
           title: `1. Alien Registration Number (A-Number) (if any)`,
         },
-        petonLineAccNum: {
+        petOnLineAccNum: {
           type: "number",
           title: `2. USCIS Online Account Number (if any)`,
         },
-        petsocialSecNum: {
+        petSocialSecNum: {
           type: "number",
           title: `3. U.S. Social Security Number (if any)`,
         },
@@ -823,39 +851,39 @@ const formSchema = {
         },
         benInCareName: {
           type: "string",
-          title: "10.a. In Care Of Name",
+          title: "11.a. In Care Of Name",
         },
         benStreet: {
           type: "string",
-          title: "10.b. Street Number and Name ",
+          title: "11.b. Street Number and Name ",
         },
         benApt: {
           type: "string",
-          title: "10.c.   Apt.     Ste.    Flr.",
+          title: "11.c.   Apt.     Ste.    Flr.",
         },
         benCityTown: {
           type: "string",
-          title: "10.d. City or Town",
+          title: "11.d. City or Town",
         },
         benState: {
           type: "string",
-          title: "10.e. State ",
+          title: "11.e. State ",
         },
         benZip: {
           type: "string",
-          title: "10.f. ZIP Code",
+          title: "11.f. ZIP Code",
         },
         benProvince: {
           type: "string",
-          title: "10.g. Province",
+          title: "11.g. Province",
         },
         benPostal: {
           type: "string",
-          title: "10.h. Postal Code ",
+          title: "11.h. Postal Code ",
         },
         benCountry: {
           type: "string",
-          title: "10.i. Country",
+          title: "11.i. Country",
         },
         texto36: {
           type: "object",
@@ -937,7 +965,6 @@ const formSchema = {
           type: "number",
           title: `17.  How many times has the beneficiary been married?`,
         },
-
         benMaritalStatus: {
           type: "string",
           title: "18. Current Marital Status",
@@ -1445,7 +1472,7 @@ const formSchema = {
       type: "object",
       title: "Part 5.  Other Information",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: ["benEverPrev"],
       properties: {
         benEverPrev: {
           type: "string",
@@ -1547,7 +1574,7 @@ const formSchema = {
         "Part 6.  Petitioner's Statement, Contact Information, Declaration, and Signature",
       description:
         "NOTE:  Read the Penalties section of the Form I-130 Instructions before completing this part. ",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: [],
       properties: {
         texto72: {
           type: "object",
@@ -1645,7 +1672,7 @@ const formSchema = {
         "Part 7.  Interpreter's Contact Information, Certification, and Signature ",
       description:
         "Provide the following information about the interpreter if you used one.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: [],
       properties: {
         texto86: {
           type: "object",
@@ -1748,7 +1775,7 @@ const formSchema = {
       title:
         "Part 8.  Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner",
       description: "Provide the following information about the preparer.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: [],
       properties: {
         texto91: {
           type: "object",
@@ -1867,7 +1894,7 @@ const formSchema = {
       title: "Part 9.  Additional Information",
       description:
         "If you need extra space to provide any additional information within this petition, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this petition or attach a separate sheet of paper.  Type or print your name and A-Number (if any) at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: [],
       properties: {
         yourLastName: {
           type: "string",
