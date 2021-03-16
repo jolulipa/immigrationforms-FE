@@ -1,3 +1,3 @@
-import I131 from './I131';
+import I130A from "./I130A";
 
-export default I131;
+export default I130A;
