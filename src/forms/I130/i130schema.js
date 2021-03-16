@@ -1677,7 +1677,7 @@ const formSchema = {
         texto86: {
           type: "object",
           title: "",
-          description: `Interpreter's Mailing Address`,
+          description: `Interpreter's Full Name`,
         },
         intLastName: {
           type: "string",
@@ -1762,7 +1762,7 @@ const formSchema = {
         },
         intSignature: {
           type: "string",
-          title: "7.a. Petitioner's Signature (sign in ink)",
+          title: "7.a. Interpreter's Signature (sign in ink)",
         },
         intSignatureDate: {
           type: "string",

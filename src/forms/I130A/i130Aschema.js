@@ -568,6 +568,360 @@ const formSchema = {
           title: "",
           description: `Spouse Beneficiary's Signature:`,
         },
+        SpoSignature: {
+          type: "string",
+          title: `6.a. Spouse Beneficiary's Signature (sign in ink) `,
+        },
+        SpoSignDate: {
+          type: "string",
+          title: `6.b. Date of Signature`,
+        },
+        texto27: {
+          type: "object",
+          title: "",
+          description: `NOTE TO ALL SPOUSE BENEFICIARIES: If you do not completely fill out this form or fail to submit required documents listed in the instructions, USCIS may deny the Form I-130 filed on your behalf.`,
+        },
+      },
+    },
+    p5: {
+      type: "object",
+      title:
+        "Part 5. Interpreter's Contact Information, Certification, and Signature",
+      description: `Provide the following information about the interpreter you used to complete Form I-130A if he or she is different from the interpreter used to complete the Form I-130 filed on your behalf.`,
+      required: [
+        "aNumber",
+        "petFullName",
+        "petLastName",
+        "petFirstName",
+        "mailStreet",
+        "cityTown",
+        "mailCountry",
+        "dateOfBirth",
+        "curMaritalStatus",
+        "iAmStatus",
+        "typeOfAdmission",
+        "employerName",
+      ],
+      properties: {
+        texto86: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Full Name`,
+        },
+        intLastName: {
+          type: "string",
+          title: "1.a. Interpreter's Family Name (Last Name)",
+        },
+        intFirstName: {
+          type: "string",
+          title: "1.b. Interpreter's Given Name (First Name)",
+        },
+        intMidName: {
+          type: "string",
+          title: "2.   Interpreter's Business or Organization Name (if any)",
+        },
+        texto87: {
+          type: "object",
+          title: "",
+          description: "Interpreter's Mailing Address",
+        },
+        intStreet: {
+          type: "string",
+          title: "3.a. Street Number and Name ",
+        },
+        intApt: {
+          type: "string",
+          title: "3.b.   Apt.     Ste.    Flr.",
+        },
+        intCityTown: {
+          type: "string",
+          title: "3.c. City or Town",
+        },
+        intState: {
+          type: "string",
+          title: "3.d. State ",
+        },
+        intZip: {
+          type: "string",
+          title: "3.e. ZIP Code",
+        },
+        intProvince: {
+          type: "string",
+          title: "3.f. Province",
+        },
+        intPostal: {
+          type: "string",
+          title: "3.g. Postal Code ",
+        },
+        intCountry: {
+          type: "string",
+          title: "3.h. Country",
+        },
+        texto77: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Contact Information`,
+        },
+        PetContactTel1: {
+          type: "string",
+          title: "4.   Interpreter's Daytime Telephone Number",
+        },
+        PetContactTel2: {
+          type: "string",
+          title: "5.   Interpreter's Mobile Telephone Number (if any)",
+        },
+        PetContactEmail: {
+          type: "string",
+          title: "6.   Interpreter's Email Address (if any)",
+        },
+        texto88: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Certification`,
+        },
+        texto89: {
+          type: "object",
+          title: "",
+          description: `I certify, under penalty of perjury,   you  I am fluent in English and ____________________  which is the same language provided in Part 6., Item Number 1.b., and I have read to this petitioner in the identified language every question and instruction on this petition and his or her answer to every question.  The petitioner informed me that he or she understands every instruction, question, and answer on the petition, including the Petitioner's Declaration and Certification, and has verified the accuracy of every answer.`,
+        },
+        texto90: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Signature`,
+        },
+        intSignature: {
+          type: "string",
+          title: "7.a. Interpreter's Signature (sign in ink)",
+        },
+        intSignatureDate: {
+          type: "string",
+          title: "7.b. Date of Signature ",
+        },
+      },
+    },
+    p8: {
+      type: "object",
+      title: `Part 6.  Contact Information, Declaration, and 
+        Signature of the Person Preparing this Form, if 
+        Other Than the Spouse Beneficiary`,
+      description: `Provide the following information about the preparer you used to complete Form I-130A if he or she is different from the preparer used to complete the Form I-130 filed on your behalf.`,
+      required: [],
+      properties: {
+        texto91: {
+          type: "object",
+          title: "",
+          description: `Preparer's Full Name`,
+        },
+        prepLastName: {
+          type: "string",
+          title: "1.a. Preparer's Family Name (Last Name)",
+        },
+        prepFirstName: {
+          type: "string",
+          title: "1.b. Preparer's Given Name (First Name)",
+        },
+        prepMidName: {
+          type: "string",
+          title: "2.   Preparer's Business or Organization Name (if any)",
+        },
+        texto92: {
+          type: "object",
+          title: "",
+          description: "Preparer's Mailing Address",
+        },
+        prepStreet: {
+          type: "string",
+          title: "3.a. Street Number and Name ",
+        },
+        prepApt: {
+          type: "string",
+          title: "3.b.   Apt.     Ste.    Flr.",
+        },
+        prepCityTown: {
+          type: "string",
+          title: "3.c. City or Town",
+        },
+        prepState: {
+          type: "string",
+          title: "3.d. State ",
+        },
+        prepZip: {
+          type: "string",
+          title: "3.e. ZIP Code",
+        },
+        prepProvince: {
+          type: "string",
+          title: "3.f. Province",
+        },
+        prepPostal: {
+          type: "string",
+          title: "3.g. Postal Code ",
+        },
+        prepCountry: {
+          type: "string",
+          title: "3.h. Country",
+        },
+        texto77: {
+          type: "object",
+          title: "",
+          description: `Preparer's Contact Information`,
+        },
+        PetContactTel1: {
+          type: "string",
+          title: "4.   Preparer's Daytime Telephone Number",
+        },
+        PetContactTel2: {
+          type: "string",
+          title: "5.   Preparer's Mobile Telephone Number (if any)",
+        },
+        PetContactEmail: {
+          type: "string",
+          title: "6.   Preparer's Email Address (if any)",
+        },
+        texto93: {
+          type: "object",
+          title: "",
+          description: `Preparer's Statement`,
+        },
+        texto94: {
+          type: "object",
+          title: "",
+          description: `7.a.     I am not an attorney or accredited representative but have prepared this petition on behalf of the petitioner  and with the petitioner's consent.
+          7.b.     I am an attorney or accredited representative and my representation of the petitioner in this case extends does not extend beyond the preparation of this petition.`,
+        },
+        texto95: {
+          type: "object",
+          title: "",
+          description: ` NOTE:  If you are an attorney or accredited representative whose representation extends beyond preparation of this petition, you may be obliged to  submit a completed Form G-28, Notice of Entry of Appearance as Attorney or Accredited Representative, with this petition.`,
+        },
+        texto96: {
+          type: "object",
+          title: "",
+          description: `Preparer's Certification`,
+        },
+        texto97: {
+          type: "object",
+          title: "",
+          description: `By my signature, I certify, under penalty of perjury, that I prepared this petition at the request of the petitioner.  The petitioner then reviewed this completed petition and informed me that he or she understands all of the information contained in, and submitted with, his or her petition, including the Petitioner's Declaration and Certification, and that all of this information is complete, true, and correct.  I completed this petition based only on information that the petitioner provided to me or authorized me to obtain or use.`,
+        },
+        texto98: {
+          type: "object",
+          title: "",
+          description: `Preparer's Signature`,
+        },
+        intSignature: {
+          type: "string",
+          title: "8.a. Preparer's Signature (sign in ink)",
+        },
+        intSignatureDate: {
+          type: "string",
+          title: "8.b. Date of Signature ",
+        },
+      },
+    },
+    p9: {
+      type: "object",
+      title: "Part 7.  Additional Information",
+      description: `If you need extra space to provide any additional information within this form, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this form or attach a separate sheet of paper.  Type or print your name and A-Number (if any) at the 
+        top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet.`,
+      required: [],
+      properties: {
+        yourLastName: {
+          type: "string",
+          title: "1.a. Family Name (Last Name)",
+        },
+        yourFirstName: {
+          type: "string",
+          title: "1.b. Given Name (First Name)",
+        },
+        yourMidName: {
+          type: "string",
+          title: "1.c. Middle Name",
+        },
+        yourAnumber: {
+          type: "string",
+          title: "2.   A-Number (if any)",
+        },
+        page1Number: {
+          type: "string",
+          title: "3.a. Page Number",
+        },
+        part1Number: {
+          type: "string",
+          title: "3.b. Part Number",
+        },
+        item1Number: {
+          type: "string",
+          title: "3.c. Item Number ",
+        },
+        Text1Number: {
+          type: "string",
+          title: "3.d.",
+        },
+        page2Number: {
+          type: "string",
+          title: "4.a. Page Number",
+        },
+        part2Number: {
+          type: "string",
+          title: "4.b. Part Number",
+        },
+        item2Number: {
+          type: "string",
+          title: "4.c. Item Number ",
+        },
+        Text2Number: {
+          type: "string",
+          title: "4.d.",
+        },
+        page3Number: {
+          type: "string",
+          title: "5.a. Page Number",
+        },
+        part3Number: {
+          type: "string",
+          title: "5.b. Part Number",
+        },
+        item3Number: {
+          type: "string",
+          title: "5.c. Item Number ",
+        },
+        Text3Number: {
+          type: "string",
+          title: "5.d.",
+        },
+        page4Number: {
+          type: "string",
+          title: "6.a. Page Number",
+        },
+        part4Number: {
+          type: "string",
+          title: "6.b. Part Number",
+        },
+        item4Number: {
+          type: "string",
+          title: "6.c. Item Number ",
+        },
+        Text4Number: {
+          type: "string",
+          title: "6.d.",
+        },
+        page5Number: {
+          type: "string",
+          title: "7.a. Page Number",
+        },
+        part5Number: {
+          type: "string",
+          title: "7b. Part Number",
+        },
+        item5Number: {
+          type: "string",
+          title: "7.c. Item Number ",
+        },
+        Text5Number: {
+          type: "string",
+          title: "7.d.",
+        },
       },
     },
   },
