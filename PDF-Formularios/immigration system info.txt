@@ -1,0 +1,28 @@
+The Immigration Time <abmultitaxes@yahoo.com>
+Servicos ofrecidos
+elegido el servicio, enseñar informacion del servicio e incluir registro o login 
+Si fue exitoso el registro o login, enseñar la pantalla de entrada de datos del servicio elegido.
+sumisión del formulario y despliegue de informacion de costo y pago del servicio
+Si hubo pago exitoso, despliegue de informacion de contacto, del caso
+
+
+Del lado administrativo
+login
+despliegue de todos los casos sometidos, pagados y no pagados
+Selección del caso e impresion del formulario
+cambio del status de recibido a sometido o terminado con fechas
+
+Crear tabla de los formularios y servicios
+https://www.uscis.gov/forms/all-forms
+https://www.immigrationdirect.com/
+
+
+Peticion de familiar extranjero
+Utilice este servicio si usted es ciudadano estadounidense 
+o residente permanente legal (LPR) y necesita establecer su 
+relación con un familiar elegible que desea venir o permanecer 
+en los Estados Unidos permanentemente y obtener una Tarjeta 
+residente permanente (también llamada Tarjeta Verde).
+
+Form N-400 Application for Naturalization
+Utilice este servicio si usted es residente permanente legal (LPR) y necesita naturalizarse (hacerse ciudadano) EstadoUnidense. 
