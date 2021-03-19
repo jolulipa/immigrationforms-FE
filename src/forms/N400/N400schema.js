@@ -503,10 +503,282 @@ const formSchema = {
           title: "",
           description: "Information About Your Mother",
         },
+        motherCitizen: {
+          type: "boolean",
+          title: `2. Is your mother a U.S. citizen?`,
+          enum: ["Yes", "No"],
+        },
         text14: {
           type: "object",
           title: "",
+          description: `If you answered "Yes," complete the following information.  If you answered "No," go to Item Number 3.`,
+        },
+        text16: {
+          type: "object",
+          title: "",
+          description: "A. Current Legal Name of U.S. Citizen Mother",
+        },
+        motherLastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        motherFirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        motherMidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        motherCountryBirth: {
+          type: "string",
+          title: "B. Mother's Country of Birth",
+        },
+        motherDateOfBirth: {
+          type: "string",
+          title: "C. Mother's Date of Birth",
+        },
+        MotherDateLawfulResident: {
+          type: "string",
+          title: "D. Date Mother Became a U.S. Citizen (if known)",
+        },
+        mother_aNumber: {
+          type: "number",
+          title: `E. Mother's A-Number (if any)`,
+        },
+        text15: {
+          type: "object",
+          title: "",
           description: "Information About Your Father",
+        },
+        fatherCitizen: {
+          type: "boolean",
+          title: `2. Is your father a U.S. citizen?`,
+          enum: ["Yes", "No"],
+        },
+        text17: {
+          type: "object",
+          title: "",
+          description: `If you answered "Yes," complete the following information.  If you answered "No," go to Part 7.`,
+        },
+        text18: {
+          type: "object",
+          title: "",
+          description: "A. Current Legal Name of U.S. Citizen Father",
+        },
+        fatherLastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        fatherFirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        fatherMidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        fatherCountryBirth: {
+          type: "string",
+          title: "B. Father's Country of Birth",
+        },
+        fatherDateOfBirth: {
+          type: "string",
+          title: "C. Father's Date of Birth",
+        },
+        fatherDateLawfulResident: {
+          type: "string",
+          title: "D. Date Father Became a U.S. Citizen (if known)",
+        },
+        father_aNumber: {
+          type: "number",
+          title: `E. Father's A-Number (if any)`,
+        },
+      },
+    },
+    p7: {
+      type: "object",
+      title: "Part 7.  Biographic Information",
+      description: "",
+      required: [
+        "ethnicity",
+        "race",
+        "heightFeet",
+        "heightInches",
+        "weight",
+        "eyeColor",
+        "hairColor",
+      ],
+      properties: {
+        text19: {
+          type: "object",
+          title: "",
+          description:
+            "NOTE:  USCIS requires you to complete the categories below to conduct background checks.  (See the Form N-400 Instructions for more information.)",
+        },
+        ethnicity: {
+          type: "string",
+          title: "",
+          description: "1. Ethnicity (Select only one box)",
+          enum: ["Hispanic or Latino", "Not Hispanic or Latino"],
+        },
+        race: {
+          type: "string",
+          title: "2.   Race (Select all applicable boxes)",
+          enum: [
+            "White",
+            "Asian",
+            "Black or African American",
+            "American Indian or Alaska Native",
+            "Native Hawaiian or Other Pacific Islander",
+          ],
+        },
+        heightFeet: {
+          type: "number",
+          title: `3.a   Height Feet`,
+        },
+        heightInches: {
+          type: "number",
+          title: `3.b   Height Inches`,
+        },
+        weight: {
+          type: "number",
+          title: `4.   Weight in Pounds`,
+        },
+        eyeColor: {
+          type: "string",
+          title: "5.   Eye Color (Select only one box)",
+          enum: [
+            "Black",
+            "Blue",
+            "Brown",
+            "Gray",
+            "Green",
+            "Hazel",
+            "Maroon",
+            "Pink",
+            "Unknown/Other",
+          ],
+        },
+        hairColor: {
+          type: "string",
+          title: "6.   Hair Color (Select only one box)",
+          enum: [
+            "Bald (no hair)",
+            "Black",
+            "Blond",
+            "Brown",
+            "Gray",
+            "Red",
+            "Sandy",
+            "White",
+            "Unknown/Other",
+          ],
+        },
+      },
+    },
+    p8: {
+      type: "object",
+      title:
+        "Part 8.  Information About Your Employment and Schools You Attended",
+      description: `List where you have worked or attended school full time or part time during the last five years.  Provide information for the complete time period.  Include all military, police, and/or intelligence service.  Begin by providing information about your most recent or current employment, studies, or unemployment (if applicable).  Provide the locations and dates where you worked, were self-employed, were unemployed, or have studied for the last five years.  If you worked for yourself, type or print "self-employed."  If you were unemployed, type or print "unemployed."  If you need extra space, use additional sheets of paper.`,
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        employer1Name: {
+          type: "string",
+          title: `1. Employer or School Name `,
+        },
+        employer1Street: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        employer1Apt: {
+          type: "string",
+          title: "Apt.     Ste.    Flr.",
+        },
+        employer1CityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        employer1State: {
+          type: "string",
+          title: "State ",
+        },
+        employer1Zip: {
+          type: "string",
+          title: "ZIP Code",
+        },
+        employer1Province: {
+          type: "string",
+          title: "Province (foreign address only)",
+        },
+        employer1Postal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        employer1Country: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        emplmnt1DateFrom: {
+          type: "string",
+          title: `Date from`,
+        },
+        emplmnt1DateTo: {
+          type: "string",
+          title: `Date to`,
+        },
+        yourOccupation1: {
+          type: "string",
+          title: "Your Occupation",
+        },
+        employer2Name: {
+          type: "string",
+          title: `Name of Employer/Company`,
+        },
+        employer2Street: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        employer2Apt: {
+          type: "string",
+          title: " Apt.     Ste.    Flr.",
+        },
+        employer2CityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        employer2State: {
+          type: "string",
+          title: "State ",
+        },
+        employer2Zip: {
+          type: "string",
+          title: "ZIP Code",
+        },
+        employer2Province: {
+          type: "string",
+          title: "Province (foreign address only)",
+        },
+        employer2Postal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        employer2Country: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        yourOccupation2: {
+          type: "string",
+          title: "Your Occupation",
+        },
+        emplmnt2DateFrom: {
+          type: "string",
+          title: `Date from`,
+        },
+        emplmnt2DateTo: {
+          type: "string",
+          title: `Date to`,
         },
       },
     },

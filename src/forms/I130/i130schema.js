@@ -696,15 +696,15 @@ const formSchema = {
           ],
         },
         heightFeet: {
-          type: "string",
+          type: "number",
           title: `3.a   Height Feet`,
         },
         heightInches: {
-          type: "string",
+          type: "number",
           title: `3.b   Height Inches`,
         },
         weight: {
-          type: "string",
+          type: "number",
           title: `4.   Weight in Pounds`,
         },
         eyeColor: {
