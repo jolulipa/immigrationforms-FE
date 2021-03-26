@@ -782,6 +782,191 @@ const formSchema = {
         },
       },
     },
+    p9: {
+      type: "object",
+      title: "Part 9.  Time Outside the United States",
+      description: "",
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        dayOutUs: {
+          type: "number",
+          title: `1.  How many total days (24 hours or longer) did you spend outside the United States during the last 5 years? `,
+        },
+        workTel: {
+          type: "number",
+          title: `2.  How many trips of 24 hours or longer have you taken outside the United States during the last 5 years? `,
+        },
+        eveningTel: {
+          type: "number",
+          title: `3.  List below all the trips of 24 hours or longer that you have taken outside the United States during the last 5 years.  Start with your most recent trip and work backwards.  If you need extra space, use additional sheets of paper.`,
+        },
+        mobileTel: {
+          type: "number",
+          title: `4.  Mobile Telephone Number (if any)`,
+        },
+        emailTel: {
+          type: "string",
+          title: `5.  Email Address (if any)`,
+        },
+      },
+    },
+    p10: {
+      type: "object",
+      title: "Part 10.  Information About Your Marital History ",
+      description: "",
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        MaritalStatus: {
+          type: "string",
+          title: "1. What is your current marital status?",
+          enum: [
+            "Single",
+            "Never Married",
+            "Married",
+            "Divorced",
+            "Widowed",
+            "Separated",
+            "Annulled",
+          ],
+        },
+        text20: {
+          type: "object",
+          title: "",
+          description:
+            "If you are single and have never married, go to Part 11.",
+        },
+        lawful: {
+          type: "boolean",
+          title: `2.  If you are married, is your spouse a current member of the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        text21: {
+          type: "object",
+          title: "",
+          description:
+            "4.  If you are married now, provide the following information about your current spouse.",
+        },
+        text22: {
+          type: "object",
+          title: "",
+          description: "A. Current Spouse's Legal Name",
+        },
+        wife1LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        wife1FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        wife1MidName: {
+          type: "string",
+          title: "Middle Name",
+        },
+        text23: {
+          type: "object",
+          title: "",
+          description: `B. Current Spouse's Previous Legal Name`,
+        },
+        wife2LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        wife2FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        wife2MidName: {
+          type: "string",
+          title: "Middle Name",
+        },
+        text24: {
+          type: "object",
+          title: "",
+          description: `C. Other Names Used by Current Spouse (include nicknames, aliases, and maiden name, if applicable)`,
+        },
+        wife3LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        wife3FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        wife3MidName: {
+          type: "string",
+          title: "Middle Name",
+        },
+        wifeBirthDate: {
+          type: "string",
+          title: `D. Current Spouse's Date of Birth`,
+        },
+        wifeMarriageDate: {
+          type: "string",
+          title: `E. Date You Entered into Marriage with Current Spouse `,
+        },
+        text25: {
+          type: "object",
+          title: "",
+          description: `F. Current Spouse's Present Home Address`,
+        },
+        mailStreet: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        mailApt: {
+          type: "string",
+          title: " Apt.     Ste.    Flr.",
+        },
+        mailCityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        mailCounty: {
+          type: "string",
+          title: "County",
+        },
+        mailState: {
+          type: "string",
+          title: "State",
+        },
+        mailZip: {
+          type: "string",
+          title: "ZIP Code + 4",
+        },
+        mailProvince: {
+          type: "string",
+          title: "Province or Region (foreign address only)",
+        },
+        mailPostal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        mailCountry: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        spouseEmployer: {
+          type: "string",
+          title: "G. Current Spouse's Current Employer or Company",
+        },
+        spouseUsCitizen: {
+          type: "string",
+          title: `5. Is your current spouse a U.S. citizen?`,
+          enum: ["Yes", "No"],
+        },
+        text26: {
+          type: "object",
+          title: "",
+          description: `If you answered ''Yes," answer Item Number 6.  If you answered ''No," go to Item Number 7. `,
+        },
+        text27: {
+          type: "object",
+          title: "",
+          description: `6. If your current spouse is a U.S. citizen, complete the following information.`,
+        },
+      },
+    },
   },
 };
 
