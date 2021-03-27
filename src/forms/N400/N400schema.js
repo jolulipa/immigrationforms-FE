@@ -965,6 +965,568 @@ const formSchema = {
           title: "",
           description: `6. If your current spouse is a U.S. citizen, complete the following information.`,
         },
+        text28: {
+          type: "object",
+          title: "",
+          description: `A. When did your current spouse become a U.S. citizen?`,
+        },
+        whenCitizen1: {
+          type: "boolean",
+          title: "At Birth - Go to Item Number 8.",
+        },
+        whenCitizen2: {
+          type: "boolean",
+          title: "Other - Complete the following information.",
+        },
+        dateCitizen2: {
+          type: "string",
+          title: "B. Date Your Current Spouse Became a U.S. Citizen.",
+        },
+        text29: {
+          type: "object",
+          title: "",
+          description: `7. If your current spouse is not a U.S. citizen, complete the following information.`,
+        },
+        countryCitizen2: {
+          type: "string",
+          title: "A. Current Spouse's Country of Citizenship or Nationality ",
+        },
+        spouseANumber: {
+          type: "number",
+          title: `B. Current Spouse's A-Number (if any)`,
+        },
+        text30: {
+          type: "object",
+          title: "",
+          description: `C. Current Spouse's Immigration Status`,
+        },
+        currSpouseStatus: {
+          type: "boolean",
+          title: "Lawful Permanent Resident",
+        },
+        currSpouseStatus2: {
+          type: "boolean",
+          title: "Other",
+        },
+        currSpouseOther: {
+          type: "string",
+          title: "if other - Explain:",
+        },
+        numOfMarriages: {
+          type: "number",
+          title:
+            "How many times has your current spouse been married (including annulled marriages, marriages to other people, and marriages to the same person)?  If your current spouse has been married before,  provide the following information about your current spouse's prior spouse.",
+        },
+        text31: {
+          type: "object",
+          title: "",
+          description:
+            "If your current spouse has had more than one previous marriage, provide that information on additional sheets of paper.",
+        },
+        text32: {
+          type: "object",
+          title: "",
+          description: "A. Legal Name of My Current Spouse's Prior Spouse",
+        },
+        priorLastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        priorFirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        priorMidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        text33: {
+          type: "object",
+          title: "",
+          description: `B. Immigration Status of My Current Spouse's Prior Spouse (if known)`,
+        },
+        priorSpouseStatus0: {
+          type: "boolean",
+          title: "U.S. Citizen",
+        },
+        priorSpouseStatus1: {
+          type: "boolean",
+          title: "Lawful Permanent Resident",
+        },
+        priorSpouseStatus2: {
+          type: "boolean",
+          title: "Other",
+        },
+        priorSpouseOther2: {
+          type: "string",
+          title: "if other - Explain:",
+        },
+        priorDateOfBirth2: {
+          type: "string",
+          title: "C. Date of Birth of My Current Spouse's Prior Spouse ",
+        },
+        PriorCountryBirth2: {
+          type: "string",
+          title: "D. Country of Birth of My Current Spouse's Prior Spouse",
+        },
+        PriorCountryCitizen2: {
+          type: "string",
+          title:
+            "E. Country of Citizenship or Nationality of My Current Spouse's Prior Spouse",
+        },
+        PriorDateMarriage2: {
+          type: "string",
+          title: "F. My Current Spouse's Date of Marriage with Prior Spouse ",
+        },
+        PriorEndedMarriage2: {
+          type: "string",
+          title:
+            "G. Date My Current Spouse's Marriage Ended with Prior Spouse ",
+        },
+        howMarriageEnd2: {
+          type: "string",
+          title: "H. How My Current Spouse's Marriage Ended with Prior Spouse?",
+          enum: ["Annulled", "Divorced", "Spouse Deceased", "Other"],
+        },
+        howMarriageEndOther2: {
+          type: "string",
+          title: "if other - Explain:",
+        },
+        text34: {
+          type: "object",
+          title: "",
+          description: `9. If you were married before, provide the following information about your prior spouse.  If you have more than one previous marriage, provide that information on additional sheets of paper.  `,
+        },
+        text35: {
+          type: "object",
+          title: "",
+          description: "A. My Prior Spouse's Legal Name",
+        },
+        priorSpLastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        priorSpFirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        priorSpMidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        text36: {
+          type: "object",
+          title: "",
+          description: `B. My Prior Spouse's Immigration Status When My Marriage Ended (if known)`,
+        },
+        priorSpouseStatus: {
+          type: "boolean",
+          title: "U.S. Citizen",
+        },
+        priorSpouseStatusA: {
+          type: "boolean",
+          title: "Lawful Permanent Resident",
+        },
+        priorSpouseStatusB: {
+          type: "boolean",
+          title: "Other",
+        },
+        priorSpouseOtherC: {
+          type: "string",
+          title: "if other - Explain:",
+        },
+        priorDateOfBirth: {
+          type: "string",
+          title: "C.  My Prior Spouse's Date of Birth",
+        },
+        PriorCountryBirth: {
+          type: "string",
+          title: "D. My Prior Spouse's Country of Birth ",
+        },
+        PriorCountryCitizen: {
+          type: "string",
+          title: "E. My Prior Spouse's Country of Citizenship or Nationality",
+        },
+        PriorDateMarriage: {
+          type: "string",
+          title: "F. Date of Marriage with My Prior Spouse ",
+        },
+        PriorEndedMarriage: {
+          type: "string",
+          title: "G. Date of Marriage Ended with My Prior Spouse ",
+        },
+        howMarriageEnd: {
+          type: "string",
+          title: "H. How Marriage Ended with My Prior Spouse?",
+          enum: ["Annulled", "Divorced", "Spouse Deceased", "Other"],
+        },
+        howMarriageEndOther: {
+          type: "string",
+          title: "if other - Explain:",
+        },
+      },
+    },
+    p11: {
+      type: "object",
+      title: "Part 11.  Information About Your Children",
+      description: "",
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        dayOutUs: {
+          type: "number",
+          title: `1.  Indicate your total number of children.  (You must indicate ALL children, including:  children who are alive, missing, or deceased; children born in the United States or in other countries; children under 18 years of age or older; children who are currently married or unmarried; children living with you or elsewhere; current stepchildren; legally adopted children; and children born when you were not married.)`,
+        },
+        text35: {
+          type: "object",
+          title: "",
+          description:
+            "2. Provide the following information about all your children (sons and daughters) listed in Item Number 1., regardless of age. To list any additional children, use additional sheets of paper.",
+        },
+        text36: {
+          type: "object",
+          title: "",
+          description: "A. Child 1  Current Legal Name",
+        },
+        Child1LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        Child1FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        Child1MidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        child1ANumber: {
+          type: "number",
+          title: `A-Number (if any)`,
+        },
+        Child1DateBirth: {
+          type: "string",
+          title: "Date of Birth",
+        },
+        Child1CountryBirth: {
+          type: "string",
+          title: "Country of Birth",
+        },
+        text37: {
+          type: "object",
+          title: "",
+          description: "Current Address",
+        },
+        phy1Street: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        phy1Apt: {
+          type: "string",
+          title: " Apt.     Ste.    Flr.",
+        },
+        phy1CityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        phy1County: {
+          type: "string",
+          title: "County",
+        },
+        phy1State: {
+          type: "string",
+          title: "State ",
+        },
+        phy1Zip: {
+          type: "string",
+          title: "ZIP Code",
+        },
+        phy1Province: {
+          type: "string",
+          title: "Province (foreign address only)",
+        },
+        phy1Postal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        phy1Country: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        phy1Relationship: {
+          type: "string",
+          title: `What is your child's relationship to you? (for example, biological child, stepchild, legally adopted child)`,
+        },
+        text38: {
+          type: "object",
+          title: "",
+          description: "A. Child 2  Current Legal Name",
+        },
+        Child2LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        Child2FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        Child2MidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        child2ANumber: {
+          type: "number",
+          title: `A-Number (if any)`,
+        },
+        Child2DateBirth: {
+          type: "string",
+          title: "Date of Birth",
+        },
+        Child2CountryBirth: {
+          type: "string",
+          title: "Country of Birth",
+        },
+        text39: {
+          type: "object",
+          title: "",
+          description: "Current Address",
+        },
+        phy2Street: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        phy2Apt: {
+          type: "string",
+          title: " Apt.     Ste.    Flr.",
+        },
+        phy2CityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        phy2County: {
+          type: "string",
+          title: "County",
+        },
+        phy2State: {
+          type: "string",
+          title: "State ",
+        },
+        phy2Zip: {
+          type: "string",
+          title: "ZIP Code",
+        },
+        phy2Province: {
+          type: "string",
+          title: "Province (foreign address only)",
+        },
+        phy2Postal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        phy2Country: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        phy2Relationship: {
+          type: "string",
+          title: `What is your child's relationship to you? (for example, biological child, stepchild, legally adopted child)`,
+        },
+        text40: {
+          type: "object",
+          title: "",
+          description: "A. Child 3  Current Legal Name",
+        },
+        Child3LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        Child3FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        Child3MidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        child3ANumber: {
+          type: "number",
+          title: `A-Number (if any)`,
+        },
+        Child3DateBirth: {
+          type: "string",
+          title: "Date of Birth",
+        },
+        Child3CountryBirth: {
+          type: "string",
+          title: "Country of Birth",
+        },
+        text41: {
+          type: "object",
+          title: "",
+          description: "Current Address",
+        },
+        phy3Street: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        phy3Apt: {
+          type: "string",
+          title: " Apt.     Ste.    Flr.",
+        },
+        phy3CityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        phy3County: {
+          type: "string",
+          title: "County",
+        },
+        phy3State: {
+          type: "string",
+          title: "State ",
+        },
+        phy3Zip: {
+          type: "string",
+          title: "ZIP Code",
+        },
+        phy3Province: {
+          type: "string",
+          title: "Province (foreign address only)",
+        },
+        phy3Postal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        phy3Country: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        phy3Relationship: {
+          type: "string",
+          title: `What is your child's relationship to you? (for example, biological child, stepchild, legally adopted child)`,
+        },
+        text42: {
+          type: "object",
+          title: "",
+          description: "A. Child 4  Current Legal Name",
+        },
+        Child4LastName: {
+          type: "string",
+          title: "Family Name (Last Name)",
+        },
+        Child4FirstName: {
+          type: "string",
+          title: "Given Name (First Name)",
+        },
+        Child4MidName: {
+          type: "string",
+          title: "Middle Name (if applicable)",
+        },
+        child4ANumber: {
+          type: "number",
+          title: `A-Number (if any)`,
+        },
+        Child4DateBirth: {
+          type: "string",
+          title: "Date of Birth",
+        },
+        Child4CountryBirth: {
+          type: "string",
+          title: "Country of Birth",
+        },
+        text43: {
+          type: "object",
+          title: "",
+          description: "Current Address",
+        },
+        phy4Street: {
+          type: "string",
+          title: "Street Number and Name ",
+        },
+        phy4Apt: {
+          type: "string",
+          title: " Apt.     Ste.    Flr.",
+        },
+        phy4CityTown: {
+          type: "string",
+          title: "City or Town",
+        },
+        phy4County: {
+          type: "string",
+          title: "County",
+        },
+        phy4State: {
+          type: "string",
+          title: "State ",
+        },
+        phy4Zip: {
+          type: "string",
+          title: "ZIP Code",
+        },
+        phy4Province: {
+          type: "string",
+          title: "Province (foreign address only)",
+        },
+        phy4Postal: {
+          type: "string",
+          title: "Postal Code (foreign address only)",
+        },
+        phy4Country: {
+          type: "string",
+          title: "Country (foreign address only)",
+        },
+        phy4Relationship: {
+          type: "string",
+          title: `What is your child's relationship to you? (for example, biological child, stepchild, legally adopted child)`,
+        },
+      },
+    },
+    p12: {
+      type: "object",
+      title:
+        "Part 12.  Additional Information About You (Person Applying for Naturalization)",
+      description: "",
+      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      properties: {
+        text44: {
+          type: "object",
+          title: "",
+          description: `Answer Item Numbers 1. - 21.  If you answer "Yes" to any of these questions, include a typed or printed explanation on additional sheets of paper.`,
+        },
+        ever1: {
+          type: "string",
+          title: `1. Have you EVER claimed to be a U.S. citizen (in writing or any other way)?`,
+          enum: ["Yes", "No"],
+        },
+        ever2: {
+          type: "string",
+          title: `2. Have you EVER registered to vote in any Federal, state, or local election in the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever3: {
+          type: "string",
+          title: `3. Have you EVER voted in any Federal, state, or local election in the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever4a: {
+          type: "string",
+          title: `A. Do you now have, or did you EVER have, a hereditary title or an order of nobility in any foreign country?`,
+          enum: ["Yes", "No"],
+        },
+        ever4b: {
+          type: "string",
+          title: `B. If you answered "Yes," are you willing to give up any inherited titles or orders of nobility that you have in a foreign country at your naturalization ceremony?`,
+          enum: ["Yes", "No"],
+        },
+        ever5: {
+          type: "string",
+          title: `5. Have you EVER been declared legally incompetent or been confined to a mental institution?`,
+          enum: ["Yes", "No"],
+        },
+        ever6: {
+          type: "string",
+          title: `6. Do you owe any overdue Federal, state, or local taxes?`,
+          enum: ["Yes", "No"],
+        },
       },
     },
   },
