@@ -1527,6 +1527,799 @@ const formSchema = {
           title: `6. Do you owe any overdue Federal, state, or local taxes?`,
           enum: ["Yes", "No"],
         },
+        ever7: {
+          type: "string",
+          title: `7A. Have you EVER not filed a Federal, state, or local tax return since you became a lawful permanent 
+          resident?`,
+          enum: ["Yes", "No"],
+        },
+        ever8: {
+          type: "string",
+          title: `7B. If you answered "Yes," did you consider yourself to be a "non-U.S. resident"?`,
+          enum: ["Yes", "No"],
+        },
+        ever9: {
+          type: "string",
+          title: `8. Have you called yourself a "non-U.S. resident" on a Federal, state, or local tax return since you became a lawful permanent resident?`,
+          enum: ["Yes", "No"],
+        },
+        ever10: {
+          type: "string",
+          title: `9A. Have you EVER been a member of, involved in, or in any way associated with, any organization, association, fund, foundation, party, club, society, or similar group in the United States or in any other location in the world?`,
+          enum: ["Yes", "No"],
+        },
+        text45: {
+          type: "object",
+          title: "",
+          description: `9B. If you answered "Yes," provide the information below.  If you need extra space, attach the names of the other groups on additional sheets of paper and provide any evidence to support your answers.`,
+        },
+        text46: {
+          type: "object",
+          title: "",
+          description: `10. Have you EVER been a member of, or in any way associated (either directly or indirectly) with:`,
+        },
+        ever11: {
+          type: "string",
+          title: `10A. The Communist Party?`,
+          enum: ["Yes", "No"],
+        },
+        ever12: {
+          type: "string",
+          title: `10B. Any other totalitarian party?`,
+          enum: ["Yes", "No"],
+        },
+        ever13: {
+          type: "string",
+          title: `10C. A terrorist organization?`,
+          enum: ["Yes", "No"],
+        },
+        ever14: {
+          type: "string",
+          title: `11. Have you EVER advocated (either directly or indirectly) the overthrow of any government by force or violence?`,
+          enum: ["Yes", "No"],
+        },
+        ever15: {
+          type: "string",
+          title: `12. Have you EVER persecuted (either directly or indirectly) any person because of race, religion, national origin, membership in a particular social group, or political opinion?`,
+          enum: ["Yes", "No"],
+        },
+        text47: {
+          type: "object",
+          title: "",
+          description: `13. Between March 23, 1933 and May 8, 1945, did you work for or associate in any way (either directly or indirectly) with:`,
+        },
+        ever16: {
+          type: "string",
+          title: `13A. The Nazi government of Germany?`,
+          enum: ["Yes", "No"],
+        },
+        ever17: {
+          type: "string",
+          title: `13B. Any government in any area occupied by, allied with, or established with the help of the Nazi government of Germany?`,
+          enum: ["Yes", "No"],
+        },
+        ever18: {
+          type: "string",
+          title: `13C. Any German, Nazi, or S.S. military unit, paramilitary unit, self-defense unit, vigilante unit, citizen unit, police unit, government agency or office, extermination camp, concentration camp, prisoner of war camp, prison, labor camp, or transit camp?`,
+          enum: ["Yes", "No"],
+        },
+        text48: {
+          type: "object",
+          title: "",
+          description: `14. Were you EVER involved in any way with any of the following:`,
+        },
+        ever19: {
+          type: "string",
+          title: `14A. Genocide? `,
+          enum: ["Yes", "No"],
+        },
+        ever20: {
+          type: "string",
+          title: `14B. Torture?`,
+          enum: ["Yes", "No"],
+        },
+        ever21: {
+          type: "string",
+          title: `14C. Killing, or trying to kill, someone?`,
+          enum: ["Yes", "No"],
+        },
+        ever22: {
+          type: "string",
+          title: `14D. Badly hurting, or trying to hurt, a person on purpose?`,
+          enum: ["Yes", "No"],
+        },
+        ever23: {
+          type: "string",
+          title: `14E. Forcing, or trying to force, someone to have any kind of sexual contact or relations? `,
+          enum: ["Yes", "No"],
+        },
+        ever24: {
+          type: "string",
+          title: `14F. Not letting someone practice his or her religion?`,
+          enum: ["Yes", "No"],
+        },
+        text49: {
+          type: "object",
+          title: "",
+          description: `15. Were you EVER a member of, or did you EVER serve in, help, or otherwise participate in, any of the following groups:`,
+        },
+        ever25: {
+          type: "string",
+          title: `15A. Military unit?`,
+          enum: ["Yes", "No"],
+        },
+        ever26: {
+          type: "string",
+          title: `15B. Paramilitary unit (a group of people who act like a military group but are not part of the official military)?`,
+          enum: ["Yes", "No"],
+        },
+        ever27: {
+          type: "string",
+          title: `15C. Police unit?`,
+          enum: ["Yes", "No"],
+        },
+        ever28: {
+          type: "string",
+          title: `15D. Self-defense unit?`,
+          enum: ["Yes", "No"],
+        },
+        ever29: {
+          type: "string",
+          title: `15E. Vigilante unit (a group of people who act like the police, but are not part of the official police)?`,
+          enum: ["Yes", "No"],
+        },
+        ever30: {
+          type: "string",
+          title: `15F. Rebel group?`,
+          enum: ["Yes", "No"],
+        },
+        ever31: {
+          type: "string",
+          title: `15G. Guerrilla group (a group of people who use weapons against or otherwise physically attack the military, police, government, or other people)?`,
+          enum: ["Yes", "No"],
+        },
+        ever32: {
+          type: "string",
+          title: `15H. Militia (an army of people, not part of the official military)?`,
+          enum: ["Yes", "No"],
+        },
+        ever33: {
+          type: "string",
+          title: `15I. Insurgent organization (a group that uses weapons and fights against a government)?`,
+          enum: ["Yes", "No"],
+        },
+        text50: {
+          type: "object",
+          title: "",
+          description: `16. Were you EVER a worker, volunteer, or soldier, or did you otherwise EVER serve in any of the following:`,
+        },
+        ever34: {
+          type: "string",
+          title: `16A. Prison or jail?`,
+          enum: ["Yes", "No"],
+        },
+        ever35: {
+          type: "string",
+          title: `16A. Prison or jail?`,
+          enum: ["Yes", "No"],
+        },
+        ever36: {
+          type: "string",
+          title: `16B. Prison camp?`,
+          enum: ["Yes", "No"],
+        },
+        ever37: {
+          type: "string",
+          title: `16C. Detention facility (a place where people are forced to stay)?`,
+          enum: ["Yes", "No"],
+        },
+        ever38: {
+          type: "string",
+          title: `16D. Labor camp (a place where people are forced to work)?`,
+          enum: ["Yes", "No"],
+        },
+        ever39: {
+          type: "string",
+          title: `16E. Any other place where people were forced to stay?`,
+          enum: ["Yes", "No"],
+        },
+        ever40: {
+          type: "string",
+          title: `17. Were you EVER a part of any group, or did you EVER help any group, unit, or organization that used a weapon against any person, or threatened to do so?`,
+          enum: ["Yes", "No"],
+        },
+        ever41: {
+          type: "string",
+          title: `17A. If you answered "Yes," when you were part of this group, or when you helped this group, did you ever use a weapon against another person? `,
+          enum: ["Yes", "No"],
+        },
+        ever42: {
+          type: "string",
+          title: `17B. If you answered "Yes," when you were part of this group, or when you helped this group, did you ever tell another person that you would use a weapon against that person?`,
+          enum: ["Yes", "No"],
+        },
+        ever43: {
+          type: "string",
+          title: `18. Did you EVER sell, give, or provide weapons to any person, or help another person sell, give, or provide weapons to any person?`,
+          enum: ["Yes", "No"],
+        },
+        ever44: {
+          type: "string",
+          title: `18A. Did you EVER sell, give, or provide weapons to any person, or help another person sell, give, or provide weapons to any person?`,
+          enum: ["Yes", "No"],
+        },
+        ever45: {
+          type: "string",
+          title: `19. Did you EVER receive any type of military, paramilitary (a group of people who act like a military group but are not part of the official military), or weapons training?`,
+          enum: ["Yes", "No"],
+        },
+        ever46: {
+          type: "string",
+          title: `20. Did you EVER recruit (ask), enlist (sign up), conscript (require), or use any person under 15 years of age to serve in or help an armed force or group?`,
+          enum: ["Yes", "No"],
+        },
+        ever47: {
+          type: "string",
+          title: `21. Did you EVER use any person under 15 years of age to do anything that helped or supported people in combat?`,
+          enum: ["Yes", "No"],
+        },
+        text51: {
+          type: "object",
+          title: "",
+          description: `If any of Item Numbers 22. - 28. apply to you, you must answer "Yes" even if your records have been sealed, expunged, or otherwise cleared.  You must disclose this information even if someone, including a judge, law enforcement officer, or attorney, told you that it no longer constitutes a record or told you that you do not have to disclose the information.`,
+        },
+        ever48: {
+          type: "string",
+          title: `22. Have you EVER committed, assisted in committing, or attempted to commit, a crime or offense for which you were NOT arrested?`,
+          enum: ["Yes", "No"],
+        },
+        ever49: {
+          type: "string",
+          title: `23. Have you EVER been arrested, cited, or detained by any law enforcement officer (including any immigration official or any official of the U.S. armed forces) for any reason?`,
+          enum: ["Yes", "No"],
+        },
+        ever50: {
+          type: "string",
+          title: `24. Have you EVER been charged with committing, attempting to commit, or assisting in committing a crime or offense?`,
+          enum: ["Yes", "No"],
+        },
+        ever51: {
+          type: "string",
+          title: `25. Have you EVER been convicted of a crime or offense?`,
+          enum: ["Yes", "No"],
+        },
+        ever52: {
+          type: "string",
+          title: `26. Have you EVER been placed in an alternative sentencing or a rehabilitative program (for example, diversion, deferred prosecution, withheld adjudication, deferred adjudication)?`,
+          enum: ["Yes", "No"],
+        },
+        ever53: {
+          type: "string",
+          title: `27A. Have you EVER received a suspended sentence, been placed on probation, or been paroled?`,
+          enum: ["Yes", "No"],
+        },
+        ever54: {
+          type: "string",
+          title: `27B. If you answered "Yes," have you completed the probation or parole?`,
+          enum: ["Yes", "No"],
+        },
+        ever55: {
+          type: "string",
+          title: `28A. Have you EVER been in jail or prison?`,
+          enum: ["Yes", "No"],
+        },
+        text52: {
+          type: "object",
+          title: "",
+          description: `Answer Item Numbers 30. - 46.  If you answer "Yes" to any of these questions, except Item Numbers 37. and 38., include a typed or printed explanation on additional sheets of paper and provide any evidence to support your answers. `,
+        },
+        text53: {
+          type: "object",
+          title: "",
+          description: `30. Have you EVER:`,
+        },
+        ever56: {
+          type: "string",
+          title: `30A. Been a habitual drunkard?`,
+          enum: ["Yes", "No"],
+        },
+        ever57: {
+          type: "string",
+          title: `30B. Been a prostitute, or procured anyone for prostitution?`,
+          enum: ["Yes", "No"],
+        },
+        ever58: {
+          type: "string",
+          title: `30C. Sold or smuggled controlled substances, illegal drugs, or narcotics?`,
+          enum: ["Yes", "No"],
+        },
+        ever59: {
+          type: "string",
+          title: `30D. Been married to more than one person at the same time?`,
+          enum: ["Yes", "No"],
+        },
+        ever60: {
+          type: "string",
+          title: `30E. Married someone in order to obtain an immigration benefit?`,
+          enum: ["Yes", "No"],
+        },
+        ever61: {
+          type: "string",
+          title: `30F. Helped anyone to enter, or try to enter, the United States illegally?`,
+          enum: ["Yes", "No"],
+        },
+        ever62: {
+          type: "string",
+          title: `30G. Gambled illegally or received income from illegal gambling?`,
+          enum: ["Yes", "No"],
+        },
+        ever63: {
+          type: "string",
+          title: `30H. Failed to support your dependents or to pay alimony?`,
+          enum: ["Yes", "No"],
+        },
+        ever64: {
+          type: "string",
+          title: `30I. Made any misrepresentation to obtain any public benefit in the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever65: {
+          type: "string",
+          title: `31. Have you EVER given any U.S. Government officials any information or documentation that was false, fraudulent, or misleading?`,
+          enum: ["Yes", "No"],
+        },
+        ever66: {
+          type: "string",
+          title: `32. Have you EVER lied to any U.S. Government officials to gain entry or admission into the United States or to gain immigration benefits while in the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever67: {
+          type: "string",
+          title: `33. Have you EVER been removed, excluded, or deported from the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever68: {
+          type: "string",
+          title: `34. Have you EVER been ordered removed, excluded, or deported from the United States? `,
+          enum: ["Yes", "No"],
+        },
+        ever69: {
+          type: "string",
+          title: `35. Have you EVER been placed in removal, exclusion, rescission, or deportation proceedings?`,
+          enum: ["Yes", "No"],
+        },
+        ever70: {
+          type: "string",
+          title: `36. Are removal, exclusion, rescission, or deportation proceedings (including administratively closed proceedings) currently pending against you?`,
+          enum: ["Yes", "No"],
+        },
+        ever71: {
+          type: "string",
+          title: `37. Have you EVER served in the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        ever72: {
+          type: "string",
+          title: `38A. Are you currently a member of the U.S. armed forces? `,
+          enum: ["Yes", "No"],
+        },
+        ever73: {
+          type: "string",
+          title: `38B. If you answered "Yes," are you scheduled to deploy overseas, including to a vessel, within the next three months?  (Refer to the Address Change section in the Instructions on how to notify USCIS if you learn of your deployment plans after you file your Form N-400.)`,
+          enum: ["Yes", "No"],
+        },
+        ever74: {
+          type: "string",
+          title: `38C. If you answered "Yes," are you currently stationed overseas? `,
+          enum: ["Yes", "No"],
+        },
+        ever75: {
+          type: "string",
+          title: `39. Have you EVER been court-martialed, administratively separated, or disciplined, or have you received an other than honorable discharge, while in the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        ever76: {
+          type: "string",
+          title: `40. Have you EVER been discharged from training or service in the U.S. armed forces because you were an alien?`,
+          enum: ["Yes", "No"],
+        },
+        ever77: {
+          type: "string",
+          title: `41. Have you EVER left the United States to avoid being drafted in the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        ever78: {
+          type: "string",
+          title: `42. Have you EVER applied for any kind of exemption from military service in the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        ever79: {
+          type: "string",
+          title: `43. Have you EVER deserted from the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        ever80: {
+          type: "string",
+          title: `44A. Are you a male who lived in the United States at any time between your 18th and 26th birthdays? (This does not include living in the United States as a lawful nonimmigrant.)`,
+          enum: ["Yes", "No"],
+        },
+        text54: {
+          type: "object",
+          title: "",
+          description: `44B. If you answered "Yes," when did you register for the Selective Service?  Provide the information below.`,
+        },
+        text54a: {
+          type: "object",
+          title: "",
+          description: `44C. If you answered "Yes," but you did not register with the Selective Service System and you are:`,
+        },
+        text54b: {
+          type: "object",
+          title: "",
+          description: `1. Still under 26 years of age, you must register before you apply for naturalization, and complete the Selective Service 
+          information above; OR`,
+        },
+        text54c: {
+          type: "object",
+          title: "",
+          description: `Now 26 to 31 years of age (29 years of age if you are filing under INA section 319(a)), but you did not register with the Selective Service, you must attach a statement explaining why you did not register, and provide a status information letter from the Selective Service.
+          2.`,
+        },
+        text55: {
+          type: "object",
+          title: "",
+          description: `Answer Item Numbers 45. - 50.  If you answer ''No'' to any of these questions, include a typed or printed explanation on additional sheets of paper and provide any evidence to support your answers.`,
+        },
+        ever81: {
+          type: "string",
+          title: `45. Do you support the Constitution and form of Government of the United States? `,
+          enum: ["Yes", "No"],
+        },
+        ever82: {
+          type: "string",
+          title: `46. Do you understand the full Oath of Allegiance to the United States? `,
+          enum: ["Yes", "No"],
+        },
+        ever83: {
+          type: "string",
+          title: `47. Are you willing to take the full Oath of Allegiance to the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever84: {
+          type: "string",
+          title: `48. If the law requires it, are you willing to bear arms on behalf of the United States?`,
+          enum: ["Yes", "No"],
+        },
+        ever85: {
+          type: "string",
+          title: `49. If the law requires it, are you willing to perform noncombatant services in the U.S. armed forces?`,
+          enum: ["Yes", "No"],
+        },
+        ever86: {
+          type: "string",
+          title: `50. If the law requires it, are you willing to perform work of national importance under civilian direction?`,
+          enum: ["Yes", "No"],
+        },
+      },
+    },
+    p13: {
+      type: "object",
+      title: "Part 13.  Applicant's Statement, Certification, and Signature ",
+      description:
+        "NOTE:  Read the Penalties section of the Form N-400 Instructions before completing this part.",
+      required: [],
+      properties: {
+        texto72: {
+          type: "object",
+          title: "",
+          description: `Petitioner's Statement`,
+        },
+        texto73: {
+          type: "object",
+          title: "",
+          description: `NOTE:  Select the box for either Item Number 1.a. or 1.b.  If applicable, select the box for Item Number 2.`,
+        },
+        texto74: {
+          type: "object",
+          title: "",
+          description: `1.a.     I can read and understand English, and I have read and understand every question and instruction on this petition and my answer to every question.`,
+        },
+        texto75: {
+          type: "object",
+          title: "",
+          description: `1.b.     The interpreter named in Part 7. read to me every question and instruction on this petition and my answer to every question in _______________________  a language in which I am fluent.  I understood all of this information as interpreted.`,
+        },
+        texto76: {
+          type: "object",
+          title: "",
+          description: `2.       At my request, the preparer named in Part 8.,_____________ prepared this petition for me based only upon information I provided or authorized.  `,
+        },
+        texto77: {
+          type: "object",
+          title: "",
+          description: `Petitioner's Contact Information`,
+        },
+        PetContactTel1: {
+          type: "string",
+          title: "3.   Petitioner's Daytime Telephone",
+        },
+        PetContactTel2: {
+          type: "string",
+          title: "4.   Petitioner's Mobile Telephone",
+        },
+        PetContactEmail: {
+          type: "string",
+          title: "5.   Petitioner's Email Address (if any)",
+        },
+        texto78: {
+          type: "object",
+          title: "",
+          description: `Petitioner's Declaration and Certification`,
+        },
+        texto79: {
+          type: "object",
+          title: "",
+          description: `Copies of any documents I have submitted are exact photocopies of unaltered, original documents, and I understand that USCIS may require that I submit original documents to USCIS at a later date. Furthermore, I authorize the release of any information from any of my records that USCIS may need to determine my eligibility for the immigration benefit I seek.
+          `,
+        },
+        texto80: {
+          type: "object",
+          title: "",
+          description: `I further authorize release of information contained in this petition, in supporting documents, and in my USCIS records to other entities and persons where necessary for the administration and enforcement of U.S. immigration laws.`,
+        },
+        texto81: {
+          type: "object",
+          title: "",
+          description: `I understand that USCIS may require me to appear for an appointment to take my biometrics (fingerprints, photograph, and/or signature) and, at that time, if I am required to provide biometrics, I will be required to sign an oath reaffirming that:`,
+        },
+        texto82: {
+          type: "object",
+          title: "",
+          description: `1) I provided or authorized all of the information contained in, and submitted with, my petition;
+          2) I reviewed and understood all of the information in, and submitted with, my petition; and
+          3) All of this information was complete, true, and correct at the time of filing.`,
+        },
+        texto83: {
+          type: "object",
+          title: "",
+          description: `I certify, under penalty of perjury, that all of the information in my petition and any document submitted with it were provided or authorized by me, that I reviewed and understand all of the information contained in, and submitted with, my petition, and that all of this information is complete, true, and correct.`,
+        },
+        PetSignature: {
+          type: "string",
+          title: "6.a. Petitioner's Signature (sign in ink)",
+        },
+        PetSignatureDate: {
+          type: "string",
+          title: "6.b. Date of Signature ",
+        },
+        texto84: {
+          type: "object",
+          title: "",
+          description: `NOTE TO ALL PETITIONERS:  If you do not completely fill out this petition or fail to submit required documents listed in the Instructions, USCIS may deny your petition.`,
+        },
+      },
+    },
+    p14: {
+      type: "object",
+      title:
+        "Part 14.  Interpreter's Contact Information, Certification, and Signature",
+      description:
+        "Provide the following information about the interpreter if you used one.",
+      required: [],
+      properties: {
+        texto86: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Full Name`,
+        },
+        intLastName: {
+          type: "string",
+          title: "1.a. Interpreter's Family Name (Last Name)",
+        },
+        intFirstName: {
+          type: "string",
+          title: "1.b. Interpreter's Given Name (First Name)",
+        },
+        intMidName: {
+          type: "string",
+          title: "2.   Interpreter's Business or Organization Name (if any)",
+        },
+        texto87: {
+          type: "object",
+          title: "",
+          description: "Interpreter's Mailing Address",
+        },
+        intStreet: {
+          type: "string",
+          title: "3.a. Street Number and Name ",
+        },
+        intApt: {
+          type: "string",
+          title: "3.b.   Apt.     Ste.    Flr.",
+        },
+        intCityTown: {
+          type: "string",
+          title: "3.c. City or Town",
+        },
+        intState: {
+          type: "string",
+          title: "3.d. State ",
+        },
+        intZip: {
+          type: "string",
+          title: "3.e. ZIP Code",
+        },
+        intProvince: {
+          type: "string",
+          title: "3.f. Province",
+        },
+        intPostal: {
+          type: "string",
+          title: "3.g. Postal Code ",
+        },
+        intCountry: {
+          type: "string",
+          title: "3.h. Country",
+        },
+        texto77: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Contact Information`,
+        },
+        PetContactTel1: {
+          type: "string",
+          title: "4.   Interpreter's Daytime Telephone Number",
+        },
+        PetContactTel2: {
+          type: "string",
+          title: "5.   Interpreter's Mobile Telephone Number (if any)",
+        },
+        PetContactEmail: {
+          type: "string",
+          title: "6.   Interpreter's Email Address (if any)",
+        },
+        texto88: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Certification`,
+        },
+        texto89: {
+          type: "object",
+          title: "",
+          description: `I certify, under penalty of perjury,   you  I am fluent in English and ____________________  which is the same language provided in Part 6., Item Number 1.b., and I have read to this petitioner in the identified language every question and instruction on this petition and his or her answer to every question.  The petitioner informed me that he or she understands every instruction, question, and answer on the petition, including the Petitioner's Declaration and Certification, and has verified the accuracy of every answer.`,
+        },
+        texto90: {
+          type: "object",
+          title: "",
+          description: `Interpreter's Signature`,
+        },
+        intSignature: {
+          type: "string",
+          title: "7.a. Interpreter's Signature (sign in ink)",
+        },
+        intSignatureDate: {
+          type: "string",
+          title: "7.b. Date of Signature ",
+        },
+      },
+    },
+    p15: {
+      type: "object",
+      title:
+        "Part 15.  Contact Information, Declaration, and Signature of the Person Preparing This Application, if Other Than the Applicant",
+      description: "Provide the following information about the preparer.",
+      required: [],
+      properties: {
+        texto91: {
+          type: "object",
+          title: "",
+          description: `Preparer's Full Name`,
+        },
+        prepLastName: {
+          type: "string",
+          title: "1.a. Preparer's Family Name (Last Name)",
+        },
+        prepFirstName: {
+          type: "string",
+          title: "1.b. Preparer's Given Name (First Name)",
+        },
+        prepMidName: {
+          type: "string",
+          title: "2.   Preparer's Business or Organization Name (if any)",
+        },
+        texto92: {
+          type: "object",
+          title: "",
+          description: "Preparer's Mailing Address",
+        },
+        prepStreet: {
+          type: "string",
+          title: "3.a. Street Number and Name ",
+        },
+        prepApt: {
+          type: "string",
+          title: "3.b.   Apt.     Ste.    Flr.",
+        },
+        prepCityTown: {
+          type: "string",
+          title: "3.c. City or Town",
+        },
+        prepState: {
+          type: "string",
+          title: "3.d. State ",
+        },
+        prepZip: {
+          type: "string",
+          title: "3.e. ZIP Code",
+        },
+        prepProvince: {
+          type: "string",
+          title: "3.f. Province",
+        },
+        prepPostal: {
+          type: "string",
+          title: "3.g. Postal Code ",
+        },
+        prepCountry: {
+          type: "string",
+          title: "3.h. Country",
+        },
+        texto77: {
+          type: "object",
+          title: "",
+          description: `Preparer's Contact Information`,
+        },
+        PetContactTel1: {
+          type: "string",
+          title: "4.   Preparer's Daytime Telephone Number",
+        },
+        PetContactTel2: {
+          type: "string",
+          title: "5.   Preparer's Mobile Telephone Number (if any)",
+        },
+        PetContactEmail: {
+          type: "string",
+          title: "6.   Preparer's Email Address (if any)",
+        },
+        texto93: {
+          type: "object",
+          title: "",
+          description: `Preparer's Statement`,
+        },
+        texto94: {
+          type: "object",
+          title: "",
+          description: `7.a.     I am not an attorney or accredited representative but have prepared this petition on behalf of the petitioner  and with the petitioner's consent.
+          7.b.     I am an attorney or accredited representative and my representation of the petitioner in this case extends does not extend beyond the preparation of this petition.`,
+        },
+        texto95: {
+          type: "object",
+          title: "",
+          description: ` NOTE:  If you are an attorney or accredited representative whose representation extends beyond preparation of this petition, you may be obliged to  submit a completed Form G-28, Notice of Entry of Appearance as Attorney or Accredited Representative, with this petition.`,
+        },
+        texto96: {
+          type: "object",
+          title: "",
+          description: `Preparer's Certification`,
+        },
+        texto97: {
+          type: "object",
+          title: "",
+          description: `By my signature, I certify, under penalty of perjury, that I prepared this petition at the request of the petitioner.  The petitioner then reviewed this completed petition and informed me that he or she understands all of the information contained in, and submitted with, his or her petition, including the Petitioner's Declaration and Certification, and that all of this information is complete, true, and correct.  I completed this petition based only on information that the petitioner provided to me or authorized me to obtain or use.`,
+        },
+        texto98: {
+          type: "object",
+          title: "",
+          description: `Preparer's Signature`,
+        },
+        intSignature: {
+          type: "string",
+          title: "8.a. Preparer's Signature (sign in ink)",
+        },
+        intSignatureDate: {
+          type: "string",
+          title: "8.b. Date of Signature ",
+        },
       },
     },
   },
