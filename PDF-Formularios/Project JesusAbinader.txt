@@ -1,0 +1,72 @@
+
+PROJECT PROPOSAL
+Development of US immigration forms system
+Tuesday, June 17, 2021
+Description
+Jesús Abinader is a provider of consultancy services in the area of Income Tax, IRS and immigration for the greater US market. He is planning to increase his client base by including a service to facilitate the submission of immigration services requests forms.
+ 
+For that matter, Mr Abinader has contacted Jose Luis Liranzo's IT engineering services to design and develop the solution he seeks at an affordable cost.
+ 
+The system will allow users to to choose the services they want help with and fill in the forms attached to that service. The user also, will be able to pay on line for the requested services. Jesús Abinader's role will be to collect both request and payment and process the forms with the relevant authorities in the government of the United States. The system will be able to keep records for a minimum of 5 years of such transactions.
+
+Objectives
+To design and create a online service request and form filling system with its associated app 
+To be able to service clients both assisted or unassisted form filling and submission of such requests
+To keep records of transaction for at least 5 years 
+
+Scope
+As described earlier, the development will consist of a service select ans form filling system for unlimited solicitations,capacity to provide this services online and record keeping of such for at least 5 years. 
+
+The system will include an online subscription and or registration and a payment service.
+features
+automatic registration
+form filling
+form printing
+procurement & payment
+test & delivery
+
+
+
+timeframe
+Phase 1 • March 2021-July 2021
+Design and development of responsive website with appearance of an web app
+
+Phase 2 • July 2021-Sep 2021
+inclusion of payment processing and form printing app + record keeping
+
+Phase 3 • Sept 2021
+Launch and final delivery of system
+
+
+PROJECT BUDGET $2,200 (USD)
+
+NON-RECURING 
+30% advance payment $660
+Mid Inspection Payment $840
+Final test payment $700
+Engineering Services $0
+Project Planning $0
+
+RECURING (MONTHLY)
+Online Services $50
+e-mail Services $20
+Cloud hosting $100
+Cloud storage $50
+
+KEY STAKEHOLDERS
+Client 
+Jesús Abinader, CEO • Abinader Services
+Development Contractor 
+Jose Luis Liranzo, CEO • Liranzo's Systems Engineering
+Project Manager 
+Eliaquin Encarnacion, Consultant • Eliaquin Developers
+
+MONITORING AND EVALUATION
+A third-party development firm, Eliaquin Developers is responsible for monitoring technical issues and progress.
+A third-party engineering firm, UNK Engineers, will monitor developing components.
+An internal team has been brought together to oversee all aspects of planning and progress, to 
+analyze the nature of delays and to optimize the execution of every project in each phase.
+
+APPROVAL SIGNATURES
+PROJECT MANAGER PROJECT SPONSOR PROJECT CLIENT
+Eliaquin Encarnación Jose Luis Liranzo Jesús Abinader
