@@ -1,0 +1,15 @@
+.title {
+    font-weight: bold;
+    cursor: pointer;
+}
+.title:hover {
+    color: red;
+}
+
+.container-box {
+    margin-bottom: 20px;
+}
+
+.description-text {
+    text-align: justify;
+}

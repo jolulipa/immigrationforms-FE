@@ -1,11 +1,32 @@
 import React from "react";
 import "./styles.css";
-const fs = require("fs");
-const formsDb = fs.readFileSync("./forms/formsDb.json", "utf8");
-const forms = JSON.parse(formsDb);
+import ServiceBox from "../../components/ServiceBox";
+import { useHistory } from "react-router-dom";
+import data from '../../forms/FormsDB.json';
 
 const LandingPage = () => {
-  return <div>Este es el lugar en donde reside el landing page</div>;
+  const history = useHistory();
+
+  const navigate = (formId) => {
+    history.push(`/forms/${formId}`)
+  }
+
+  const renderData = () => data.map(el => {
+    return <div className='col-sm-4'>
+      <ServiceBox
+          key={el.formId}
+          formName={el.formName}
+          description={el.description}
+          onClick={() => navigate(el.formId)}
+      />
+    </div>
+  });
+
+  return <div className='container'>
+    <div className='row'>
+      {renderData()}
+    </div>
+  </div>
 };
 
 export default LandingPage;
