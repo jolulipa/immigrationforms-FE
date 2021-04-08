@@ -7,7 +7,7 @@
   {
     "formId": "i130A",
     "formName": "I-130A Peticion de cónyuge extranjero",
-    "description": "El propósito de este servicio es recopilar información adicional para un cónyuge beneficiario del Formulario I-130, Petición para Pariente Extranjero. Si su cónyuge es ciudadano estadounidense, residente permanente legal o ciudadano no ciudadano que está presentando el Formulario I-130 en su nombre, debe completar y firmar el Formulario I-130A, Información Suplementaria para El Beneficiario del Cónyuge, y presentarla al Formulario I-130 presentado por su cónyuge. Si reside en el extranjero, todavía debe completar el Formulario I-130A, pero no necesita firmar el formulario."
+    "description": "El propósito de este servicio es recopilar información adicional para un cónyuge beneficiario del Formulario I-130, Petición para Pariente Extranjero. Solo para peticiones de cónyuge no ciudadano estadounidense."
   },
   {
     "formId": "N400",
