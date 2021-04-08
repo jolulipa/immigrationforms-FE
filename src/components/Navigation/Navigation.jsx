@@ -5,27 +5,37 @@ import "./styles.css";
 const Navigation = () => (
   <div className="super-root">
     <div className="line-container">
-      <div className="line-1">The Immigration Time</div>
-      <div className="line-2">
+      <div className="col-6">The Immigration Time</div>
+      <div className="col">
         Nuestro Tel. 24/7
         <div>+1-212-787-8777</div>
       </div>
-      <div className="line-2">
+      <div className="col">
         E-mail
         <div>john@gmail.com</div>
       </div>
-      <div className="line-2">
+      <div className="col">
         Location
         <div>New York, USA</div>
       </div>
     </div>
-    <div className="root">
-      <div>Registrarse/Log in</div>
-      <Link to="/">HOME</Link>
-      <Link to="/about">ABOUT</Link>
-      <Link to="/team">TEAM</Link>
-      <Link to="/contact">CONTACT</Link>
-      <Link to="/login">LOGIN</Link>
+    <div className="row">
+      <div className="col-1">Bienvenido</div>
+      <Link to="/" className="col-1">
+        HOME
+      </Link>
+      <Link to="/about" className="col-1">
+        ABOUT
+      </Link>
+      <Link to="/team" className="col-1">
+        TEAM
+      </Link>
+      <Link to="/contact" className="col-1">
+        CONTACT
+      </Link>
+      <Link to="/login" className="col-1">
+        LOGIN
+      </Link>
     </div>
   </div>
 );
