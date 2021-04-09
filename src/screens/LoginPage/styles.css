@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+.loginForm {
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  background: #1c8ef9;
+  min-height: 60vh;
+  display: flex;
+  font-weight: 400;
+}
+
+.form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+h3 {
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password,
+a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: red;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #031c3b;
+}

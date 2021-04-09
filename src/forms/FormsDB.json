@@ -1,0 +1,22 @@
+[
+  {
+    "formId": "i130",
+    "formName": "I-130 Petición de familiar extranjero",
+    "description": "Utilice este servicio si usted es ciudadano estadounidense o residente permanente legal (LPR) y necesita establecer su relación con un familiar elegible que desea venir o permanecer en los Estados Unidos permanentemente y obtener una tarjeta de residente permanente (también llamada Green Card)."
+  },
+  {
+    "formId": "i130A",
+    "formName": "I-130A Peticion de cónyuge extranjero",
+    "description": "El propósito de este servicio es recopilar información adicional para un cónyuge beneficiario del Formulario I-130, Petición para Pariente Extranjero. Solo para peticiones de cónyuge no ciudadano estadounidense."
+  },
+  {
+    "formId": "N400",
+    "formName": "N-400 formulario de la USCIS para solicitar la ciudadanía norteamericana.",
+    "description": "Utilice este servicio si usted es residente permanente legal (LPR) y desea naturalizarse como ciudadano de los Estados Unidos."
+  },
+  {
+    "formId": "otro",
+    "formName": "este es otro formulario",
+    "description": "Utilice este servicio si usted desea realizar este otro servicio."
+  }
+]
