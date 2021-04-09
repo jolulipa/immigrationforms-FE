@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import I130 from "./forms/I130";
 import I130A from "./forms/I130A";
 import LandingPage from "./screens/LandingPage";
+import LoginPage from "./screens/LoginPage";
 import N400 from "./forms/N400";
 
 function App() {
@@ -11,6 +12,9 @@ function App() {
     <Router>
       <Navigation />
       <Switch>
+        <Route path="/screens/LoginPage">
+          <LoginPage />
+        </Route>
         <Route path="/forms/i130">
           <I130 />
         </Route>

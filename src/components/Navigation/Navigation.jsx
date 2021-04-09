@@ -33,7 +33,7 @@ const Navigation = () => (
       <Link to="/contact" className="col-1">
         CONTACT
       </Link>
-      <Link to="/login" className="col-1">
+      <Link to="/screens/LoginPage" className="col-1">
         LOGIN
       </Link>
     </div>
