@@ -1,9 +1,9 @@
 import React from "react";
 import Form from "@rjsf/bootstrap-4";
-import schema from "./i130schema";
-import uiSchema from "./i130UiSchema";
+import schema from "./Intakeschema";
+import uiSchema from "./IntakeUiSchema";
 
-const I130 = () => {
+const Intake = () => {
   return (
     <div className="container">
       <Form
@@ -15,4 +15,4 @@ const I130 = () => {
   );
 };
 
-export default I130;
+export default Intake;
