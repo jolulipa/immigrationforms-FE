@@ -6,10 +6,14 @@ const formSchema = {
   properties: {
     p1: {
       type: "object",
-      title: "Part 1. Information About You",
-      description: "(Spouse Beneficiary)",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      title: "Part 1. Información sobre el cliente",
+      description: "Information of the petitioner:",
+      required: ["email", "aNumber", "relationship", "siblingQ", "Lawful"],
       properties: {
+        Email: {
+          type: "string",
+          title: `Su correo electrónico es obligatorio, éntrelo aqui:`,
+        },
         aNumber: {
           type: "number",
           title: `1. Alien Registration Number (A-Number) (if any)`,

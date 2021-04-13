@@ -8,14 +8,21 @@ import N400 from "./forms/N400";
 import WelcomePage from "./screens/WelcomePage";
 import LandingPage from "./screens/LandingPage";
 import LoginPage from "./screens/LoginPage";
+import AboutPage from "./screens/AboutPage";
 
 function App() {
   return (
     <Router>
       <Navigation />
       <Switch>
+        <Route path="/forms/Intake">
+          <Intake />
+        </Route>
         <Route path="/screens/LoginPage">
           <LoginPage />
+        </Route>
+        <Route path="/screens/LandingPage">
+          <LandingPage />
         </Route>
         <Route path="/forms/i130">
           <I130 />
@@ -27,13 +34,7 @@ function App() {
           <N400 />
         </Route>
         <Route path="/about">
-          <div>Aqui va el componente about</div>
-        </Route>
-        <Route path="/screens/LandingPage">
-          <LandingPage />
-        </Route>
-        <Route path="/forms/Intake">
-          <Intake />
+          <AboutPage />
         </Route>
         <Route path="/">
           <WelcomePage />

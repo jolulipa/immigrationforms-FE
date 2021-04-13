@@ -25,7 +25,7 @@ const LandingPage = () => {
 
   return (
     <div className="container">
-      SERVICIOS OFRECIDOS POR THE IMMIGRATION TIME:
+      <h5>SERVICIOS OFRECIDOS POR THE IMMIGRATION TIME:</h5>
       <div className="row">{renderData()}</div>
     </div>
   );
