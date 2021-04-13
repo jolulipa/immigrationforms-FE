@@ -1,5 +1,10 @@
 [
   {
+    "formId": "Intake",
+    "formName": "Intake Form - Immigration Services",
+    "description": "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+  },
+  {
     "formId": "i130",
     "formName": "I-130 Petición de familiar extranjero",
     "description": "Utilice este servicio si usted es ciudadano estadounidense o residente permanente legal (LPR) y necesita establecer su relación con un familiar elegible que desea venir o permanecer en los Estados Unidos permanentemente y obtener una tarjeta de residente permanente (también llamada Green Card)."
@@ -15,8 +20,8 @@
     "description": "Utilice este servicio si usted es residente permanente legal (LPR) y desea naturalizarse como ciudadano de los Estados Unidos."
   },
   {
-    "formId": "otro",
-    "formName": "este es otro formulario",
-    "description": "Utilice este servicio si usted desea realizar este otro servicio."
+    "formId": "Otro",
+    "formName": "Otro Form - Immigration Services",
+    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
   }
 ]

@@ -7,19 +7,19 @@ const Navigation = () => (
     <div className="line-container">
       <div className="col-6">The Immigration Time</div>
       <div className="col">
-        Nuestro Tel. 24/7
-        <div>+1-212-787-8777</div>
+        Servicios 24/7
+        <div>Envíe email</div>
       </div>
       <div className="col">
         E-mail
         <div>john@gmail.com</div>
       </div>
       <div className="col">
-        Location
-        <div>New York, USA</div>
+        Estámos
+        <div>En todo el mundo</div>
       </div>
     </div>
-    <div className="row">
+    <div className="row navbar">
       <div className="col-1">Bienvenido</div>
       <Link to="/" className="col-1">
         HOME
@@ -27,8 +27,8 @@ const Navigation = () => (
       <Link to="/about" className="col-1">
         ABOUT
       </Link>
-      <Link to="/team" className="col-1">
-        TEAM
+      <Link to="/screens/LandingPage" className="col-1">
+        SERVICES
       </Link>
       <Link to="/contact" className="col-1">
         CONTACT
