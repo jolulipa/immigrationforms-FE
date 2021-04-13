@@ -3,7 +3,7 @@ import "./styles.css";
 
 const LoginPage = () => {
   return (
-    <div container>
+    <div className="container">
       <div className="row">
         <form className="loginForm">
           <div className="col-10">
@@ -45,7 +45,7 @@ const LoginPage = () => {
             Submit
           </button>
           <p className="forgot-password text-right">
-            Forgot <a href="#">password?</a>
+            Forgot <a href="http://localhost:3000/#/">password?</a>
           </p>
         </form>
       </div>

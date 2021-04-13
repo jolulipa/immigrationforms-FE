@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-const WellcomePage = () => {
+const WelcomePage = () => {
   return (
     <div className="container">
       <h2>BIENVENIDO A THE IMMIGRATION TIME</h2>
@@ -20,4 +20,4 @@ const WellcomePage = () => {
   );
 };
 
-export default WellcomePage;
+export default WelcomePage;

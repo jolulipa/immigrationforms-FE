@@ -19,7 +19,7 @@ const Navigation = () => (
         <div>En todo el mundo</div>
       </div>
     </div>
-    <div className="row">
+    <div className="row navbar">
       <div className="col-1">Bienvenido</div>
       <Link to="/" className="col-1">
         HOME
