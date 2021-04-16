@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
+import Nav from "./components/Nav";
 import Intake from "./forms/Intake";
 import I130 from "./forms/I130";
 import I130A from "./forms/I130A";
@@ -13,7 +14,7 @@ import AboutPage from "./screens/AboutPage";
 function App() {
   return (
     <Router>
-      <Navigation />
+      <Nav />
       <Switch>
         <Route path="/forms/Intake">
           <Intake />

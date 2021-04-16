@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import ServiceBox from "../../components/ServiceBox";
 import { useHistory } from "react-router-dom";
 import data from "../../forms/FormsDB.json";
