@@ -1,0 +1,34 @@
+.super-root {
+  /* background-color: #211616; */
+  background-color: #070135;
+}
+
+.line-container {
+  display: flex;
+}
+.col-6 {
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  width: 40%;
+  font-size: 25px;
+  color: white;
+  padding: 10px;
+}
+.col-sm-4 {
+  color: black;
+}
+.col-1 {
+  padding: 10px;
+  font-size: 12px;
+  color: white;
+}
+.col {
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  width: 20%;
+  font-size: 12px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  justify-content: space-between;
+}
