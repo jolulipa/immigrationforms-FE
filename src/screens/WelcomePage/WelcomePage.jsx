@@ -23,6 +23,7 @@ const WelcomePage = () => {
 };
 const styles = {
   title: {
+    paddingTop: 20,
     fontWeight: "500",
     textAlign: "center",
     color: colors.brown,

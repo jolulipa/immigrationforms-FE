@@ -28,6 +28,7 @@ const styles = {
     fontWeight: "500",
     textAlign: "center",
     color: colors.brown,
+    padding: 15,
   },
 
   paragraph: {
