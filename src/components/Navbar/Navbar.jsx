@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import Burger from "./Burger";
 
-const Navigation = () => (
+const Navbar = () => (
   <div className="super-root">
     <div className="line-container">
       <div className="col-6">The Immigration Time</div>
@@ -10,11 +11,11 @@ const Navigation = () => (
         Servicios 24/7
         <div>Envíe email</div>
       </div>
-      <div className="col">
+      <div className="col d-none d-md-block d-xl-none">
         E-mail
         <div>john@gmail.com</div>
       </div>
-      <div className="col">
+      <div className="col d-none d-md-block d-xl-none">
         Estámos
         <div>En todo el mundo</div>
       </div>
@@ -36,8 +37,9 @@ const Navigation = () => (
       <Link to="/screens/LoginPage" className="col-1">
         LOGIN
       </Link>
+      <Burger className="d-md-none d-lg-none d-xl-block" />
     </div>
   </div>
 );
 
-export default Navigation;
+export default Navbar;
