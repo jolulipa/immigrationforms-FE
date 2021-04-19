@@ -1,23 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-const AboutPage = () => {
+const AdminPage = () => {
   return (
     <div className="container">
       <h2 style={styles.title}>
-        THE IMMIGRATION TIME es un servicio de trámites de migración en los
-        Estados Unidos
+        ADMINISTRACIÓN DE LA APP DE THE IMMIGRATION TIME
       </h2>
       <div className="row">
         <p style={styles.paragraph}>
-          The Immigration Time es un servicio en linea que facilita a los
-          hispanos los trámites migratorios en los Estados Unidos de
-          Norteamerica. Nuestros servicios son siempre entregados con
-          responsabilidad, a tiempo y a precios asequibles para nuestra
-          comunidad.
+          Esta es la herramenta de administración de la app. Aqui el
+          administrador podrá borrar y/o modificar usuarios y formularios.
         </p>
-        <Link to="/forms/Intake" className="col-10">
-          REGISTRARSE
+        <Link
+          to="/forms/Intake"
+          className="col-md-4 offset-md-4 badge badge-pill badge-info"
+        >
+          ENTRAR
         </Link>
       </div>
     </div>
@@ -39,4 +38,4 @@ const styles = {
     color: colors.brown,
   },
 };
-export default AboutPage;
+export default AdminPage;

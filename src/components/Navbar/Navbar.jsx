@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./styles.css";
 import Burger from "./Burger";
 
@@ -21,33 +21,37 @@ const Navbar = () => (
       </div>
     </div>
     <div className="row navbar">
-      <Link to="/" className="col-1  d-none d-md-block d-lg-block d-xl-block">
-        HOME
-      </Link>
-      <Link
-        to="/about"
-        className="col-1 d-none d-md-block d-lg-block d-xl-block"
+      <NavLink
+        to="/"
+        className="col-1  d-none d-md-block d-lg-block d-xl-block"
       >
-        ABOUT
-      </Link>
-      <Link
+        HOME
+      </NavLink>
+
+      <NavLink
         to="/screens/LandingPage"
         className="col-1 d-none d-md-block d-lg-block d-xl-block"
       >
         SERVICES
-      </Link>
-      <Link
-        to="/contact"
+      </NavLink>
+      <NavLink
+        to="/screens/Contact"
         className="col-1 d-none d-md-block d-lg-block d-xl-block"
       >
         CONTACT
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         to="/screens/LoginPage"
         className="col-1 d-none d-md-block d-lg-block d-xl-block"
       >
         LOGIN
-      </Link>
+      </NavLink>
+      <NavLink
+        to="/screens/AdminPage"
+        className="col-1 d-none d-md-block d-lg-block d-xl-block"
+      >
+        ADMIN
+      </NavLink>
       <Burger className="d-md-none d-lg-none d-xl-block" />
     </div>
   </div>

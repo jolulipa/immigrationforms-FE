@@ -7,6 +7,13 @@ const WelcomePage = () => {
       <h2 style={styles.title}>BIENVENIDO A THE IMMIGRATION TIME</h2>
       <div className="row">
         <p style={styles.paragraph}>
+          THE IMMIGRATION TIME es un servicio de trámites de migración en los
+          Estados Unidos. Es un servicio en linea que facilita a los hispanos
+          los trámites migratorios en los Estados Unidos de Norteamerica.
+          Nuestros servicios son siempre entregados con responsabilidad, a
+          tiempo y a precios asequibles para nuestra comunidad.
+        </p>
+        <p style={styles.paragraph}>
           The Immigration Time ofrece cualquier servicio de immigración para
           migrantes a los Estados Unidos de America. Para iniciar el proceso con
           The Immigration Time, es necesario registrarse, llenando un
@@ -14,7 +21,10 @@ const WelcomePage = () => {
           procedimientos necesarios para ayudarle a conseguir sus objetivos
           migratorios.
         </p>
-        <Link to="/forms/Intake" className="col-10">
+        <Link
+          to="/forms/Intake"
+          className="col-md-4 offset-md-4 badge badge-pill badge-info"
+        >
           REGISTRARSE
         </Link>
       </div>

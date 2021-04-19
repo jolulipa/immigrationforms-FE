@@ -84,9 +84,6 @@ const uiSchema = {
     benPassExpiration: {
       "ui:widget": "date",
     },
-    emplmntDateFrom: {
-      "ui:widget": "date",
-    },
     immProcDate: {
       "ui:widget": "date",
     },
@@ -100,9 +97,6 @@ const uiSchema = {
       "ui:widget": "date",
     },
     PetSignatureDate: {
-      "ui:widget": "date",
-    },
-    intSignatureDate: {
       "ui:widget": "date",
     },
     intSignatureDate: {

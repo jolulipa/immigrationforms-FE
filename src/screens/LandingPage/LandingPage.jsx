@@ -26,7 +26,8 @@ const LandingPage = () => {
     <div className="container">
       <h5
         style={{
-          padding: "20px",
+          paddingTop: "20px",
+          paddingBottom: "20px",
         }}
       >
         SERVICIOS OFRECIDOS POR THE IMMIGRATION TIME:

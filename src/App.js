@@ -9,7 +9,8 @@ import N400 from "./forms/N400";
 import WelcomePage from "./screens/WelcomePage";
 import LandingPage from "./screens/LandingPage";
 import LoginPage from "./screens/LoginPage";
-import AboutPage from "./screens/AboutPage";
+import AdminPage from "./screens/AdminPage";
+import Contact from "./screens/Contact";
 
 function App() {
   return (
@@ -25,6 +26,12 @@ function App() {
         <Route path="/screens/LandingPage">
           <LandingPage />
         </Route>
+        <Route path="/screens/AdminPage">
+          <AdminPage />
+        </Route>
+        <Route path="/screens/Contact">
+          <Contact />
+        </Route>
         <Route path="/forms/i130">
           <I130 />
         </Route>
@@ -33,9 +40,6 @@ function App() {
         </Route>
         <Route path="/forms/n400">
           <N400 />
-        </Route>
-        <Route path="/about">
-          <AboutPage />
         </Route>
         <Route path="/">
           <WelcomePage />

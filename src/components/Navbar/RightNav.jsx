@@ -35,16 +35,7 @@ const RightNav = ({ open, onClose }) => {
       >
         HOME
       </Link>
-      <Link
-        to="/about"
-        className="h5"
-        onClick={onClose}
-        style={{
-          paddingBottom: "20px",
-        }}
-      >
-        ABOUT
-      </Link>
+
       <Link
         to="/screens/LandingPage"
         className="h5"
@@ -56,7 +47,7 @@ const RightNav = ({ open, onClose }) => {
         SERVICES
       </Link>
       <Link
-        to="/contact"
+        to="/screens/contact"
         className="h5"
         onClick={onClose}
         style={{
@@ -74,6 +65,16 @@ const RightNav = ({ open, onClose }) => {
         }}
       >
         LOGIN
+      </Link>
+      <Link
+        to="/screens/AdminPage"
+        className="h5"
+        onClick={onClose}
+        style={{
+          paddingBottom: "20px",
+        }}
+      >
+        ADMIN
       </Link>
     </Menu>
   );
