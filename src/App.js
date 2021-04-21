@@ -2,6 +2,7 @@ import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Navigation from "./components/Navigation";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Intake from "./forms/Intake";
 import I130 from "./forms/I130";
 import I130A from "./forms/I130A";
@@ -45,6 +46,7 @@ function App() {
           <WelcomePage />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }
