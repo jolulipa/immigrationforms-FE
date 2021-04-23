@@ -1,5 +1,3 @@
-import React from "react";
-
 const Contact = () => {
   return (
     <div>
@@ -10,7 +8,9 @@ const Contact = () => {
       >
         Para contactarnos favor enviar correo electrónico a la siguiente
         dirección de{" "}
-        <span class="badge badge-secondary">e-mail: {"john@gmail.com"}</span>
+        <span className="badge badge-secondary">
+          e-mail: {"john@gmail.com"}
+        </span>
       </h5>
     </div>
   );

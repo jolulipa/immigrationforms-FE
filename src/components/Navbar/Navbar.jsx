@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles.css";
 import Burger from "./Burger";
@@ -27,7 +26,6 @@ const Navbar = () => (
       >
         HOME
       </NavLink>
-
       <NavLink
         to="/screens/LandingPage"
         className="col-1 d-none d-md-block d-lg-block d-xl-block"
