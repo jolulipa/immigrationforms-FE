@@ -9,7 +9,10 @@ const Footer = () => {
         Síguenos en las Redes Sociales ___-___ Copyright &copy; The Immigration
         Times, 2021
       </p>
-      <Link to="/screens/contact" className="col-md-4 offset-md-4">
+      <Link
+        to="/screens/contact"
+        className="col-md-4 offset-md-4 badge badge-pill badge-warning"
+      >
         contactenos
       </Link>
     </footer>
