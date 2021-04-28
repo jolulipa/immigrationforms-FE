@@ -3,7 +3,7 @@ const Contact = () => {
     <div>
       <h5
         style={{
-          padding: "20px",
+          padding: "1rem",
         }}
       >
         Para contactarnos favor enviar correo electrónico a la siguiente

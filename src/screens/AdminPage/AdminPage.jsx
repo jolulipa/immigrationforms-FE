@@ -8,8 +8,9 @@ const AdminPage = () => {
       </h2>
       <div className="row">
         <p style={styles.paragraph}>
-          Esta es la herramenta de administración de la app. Aqui el
-          administrador podrá borrar y/o modificar usuarios y formularios.
+          Esta es la herramenta de <strong>administración</strong> de la app.
+          Aqui el administrador podrá borrar y/o modificar usuarios y
+          formularios.
         </p>
         <Link
           to="/forms/Intake"
