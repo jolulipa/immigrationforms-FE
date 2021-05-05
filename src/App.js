@@ -12,6 +12,7 @@ import LandingPage from "./screens/LandingPage";
 import LoginPage from "./screens/LoginPage";
 import AdminPage from "./screens/AdminPage";
 import Contact from "./screens/Contact";
+import Registration from "./screens/Registration";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/screens/LoginPage">
           <LoginPage />
+        </Route>
+        <Route path="/screens/registration">
+          <Registration />
         </Route>
         <Route path="/screens/LandingPage">
           <LandingPage />
