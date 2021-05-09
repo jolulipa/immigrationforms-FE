@@ -21,7 +21,7 @@ const WelcomePage = () => {
           migratorios.
         </p>
         <Link
-          to="/forms/Intake"
+          to="/screens/Registration"
           className="col-md-4 offset-md-4 badge badge-pill badge-info"
         >
           REGISTRARSE

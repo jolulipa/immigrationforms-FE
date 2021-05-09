@@ -1,9 +1,9 @@
-.loginForm {
+.registrationForm {
   margin: auto;
   margin-top: 15px;
   max-width: 330px;
   padding: 15px;
-  background: #c2daf1;
+  background-color: #eaf1c2;
   min-height: 50vh;
   font-weight: 400;
 }
@@ -11,20 +11,4 @@
 .form-control:focus {
   border-color: #3f3434;
   box-shadow: none;
-}
-.col-10 {
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-.custom-control-label {
-  font-weight: 400;
-}
-
-.forgot-password {
-  text-align: right;
-  font-size: 13px;
-  padding-top: 10px;
-  color: red;
-  margin: 0;
 }

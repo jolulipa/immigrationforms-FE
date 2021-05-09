@@ -1,9 +1,18 @@
-import {baseUrl} from "./configuration";
+import { baseUrl } from "./configuration";
 
-export const registerUser = (values) => fetch(`${baseUrl}/api/auth/register`, {
-    method: 'POST',
+export const registerUser = (values) =>
+  fetch(`${baseUrl}/api/auth/register`, {
+    method: "POST",
     body: JSON.stringify(values),
     headers: {
-        'Content-Type': 'application/json'
-    }
-});
+      "Content-Type": "application/json",
+    },
+  });
+export const loginUser = (values) =>
+  fetch(`${baseUrl}/api/auth/login`, {
+    method: "POST",
+    body: JSON.stringify(values),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
