@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-const AdminPage = () => {
+const AdminPage = (props) => {
   return (
     <div className="container">
       <h2 style={styles.title}>
@@ -18,6 +18,7 @@ const AdminPage = () => {
         >
           ENTRAR
         </Link>
+        <button onClick={props.handleLogout}>Log Out</button>
       </div>
     </div>
   );
