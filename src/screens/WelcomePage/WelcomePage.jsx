@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
+
 const WelcomePage = () => {
+  const handleLogout = () => {
+    localStorage.removeItem(AUTH_TOKEN);
+    alert(`You're out`);
+  };
   return (
     <div className="container">
       <h2 style={styles.title}>BIENVENIDO A THE IMMIGRATION TIME</h2>
+      <button type="button" onClick={handleLogout}>
+        Log out
+      </button>
       <div className="row">
         <p style={styles.paragraph}>
           THE IMMIGRATION TIME es un servicio de trámites de migración en los

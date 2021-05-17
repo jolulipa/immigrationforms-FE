@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 const AdminPage = (props) => {
   return (
@@ -12,13 +11,15 @@ const AdminPage = (props) => {
           Aqui el administrador podrá borrar y/o modificar usuarios y
           formularios.
         </p>
-        <Link
+        {/* <Link
           to="/forms/Intake"
           className="col-md-4 offset-md-4 badge badge-pill badge-info"
         >
           ENTRAR
-        </Link>
-        <button onClick={props.handleLogout}>Log Out</button>
+        </Link> */}
+        <button className="col-md-4 offset-md-4" onClick={props.handleLogout}>
+          Log Out
+        </button>
       </div>
     </div>
   );

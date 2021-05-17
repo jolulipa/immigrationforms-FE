@@ -2,22 +2,8 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { loginUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import "./styles.css";
-
-const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  setSubmitting(true);
-  const result = await loginUser(values);
-  if (result.status === 200) {
-    // Code in case of sucess
-    const data = await result.json();
-    localStorage.setItem("token", data.token); //localStorage.getItem
-    resetForm();
-  } else {
-    // Code in case of error
-    const errorData = await result.json();
-    console.log("An error occurred", errorData);
-  }
-  setSubmitting(false);
-};
+import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { useLocation, useHistory } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -28,6 +14,27 @@ const validationSchema = yup.object().shape({
 });
 
 const Login = () => {
+  const location = useLocation();
+  const history = useHistory();
+
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    setSubmitting(true);
+    const result = await loginUser(values);
+    if (result.status === 200) {
+      // Code in case of sucess
+      const data = await result.json();
+      localStorage.setItem(AUTH_TOKEN, data.token); //localStorage.getItem
+      const { from } = location.state || { from: { pathname: "/" } };
+      history.replace(from);
+      resetForm();
+    } else {
+      // Code in case of error
+      const errorData = await result.json();
+      console.log("An error occurred", errorData);
+    }
+    setSubmitting(false);
+  };
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
