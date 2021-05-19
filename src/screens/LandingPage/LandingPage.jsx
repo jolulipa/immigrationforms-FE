@@ -1,4 +1,3 @@
-import React from "react";
 import ServiceBox from "../../components/ServiceBox";
 import { useHistory } from "react-router-dom";
 import data from "../../forms/FormsDB.json";
@@ -24,7 +23,14 @@ const LandingPage = () => {
 
   return (
     <div className="container">
-      <h5>SERVICIOS OFRECIDOS POR THE IMMIGRATION TIME:</h5>
+      <h5
+        style={{
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
+        }}
+      >
+        SERVICIOS OFRECIDOS POR THE IMMIGRATION TIME:
+      </h5>
       <div className="row">{renderData()}</div>
     </div>
   );

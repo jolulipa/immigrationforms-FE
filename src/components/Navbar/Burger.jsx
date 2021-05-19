@@ -3,10 +3,10 @@ import styled from "styled-components";
 import RightNav from "./RightNav";
 
 const StyledBurger = styled.div`
-  width: 2rem;
+  width: 1.5rem;
   height: 2rem;
   position: fixed;
-  top: 15px;
+  top: 25px;
   right: 20px;
   z-index: 20;
   display: none;
@@ -20,7 +20,7 @@ const StyledBurger = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => (open ? "#696969" : "#34C2F7")};
+    background-color: ${({ open }) => (open ? "#696969" : "#737c80")};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -42,6 +42,9 @@ const StyledBurger = styled.div`
 
 const Burger = () => {
   const [open, setOpen] = useState(false);
+  const closeMenu = () => {
+    setOpen(false);
+  };
   return (
     <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -49,7 +52,7 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open} />
+      <RightNav open={open} onClose={closeMenu} />
     </>
   );
 };

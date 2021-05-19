@@ -87,181 +87,340 @@ const formSchema = {
         text17: {
           type: "object",
           title: "",
-          description: `Information About your  BENEFICIARY (YOUR RELATIVE/INTENDING IMMIGRANT):`,
+          description: `Information About your BENEFICIARY (YOUR RELATIVE/INTENDING IMMIGRANT):`,
+        },
+        phone2: {
+          type: "string",
+          title: `Phone:`,
         },
         text18: {
           type: "object",
           title: "",
           description: `Full Name of BENEFICIARY`,
         },
-        par1LastName: {
+        BenLastName: {
           type: "string",
           title: "a. Family Name (Last Name)",
         },
-        par1FirstName: {
+        BenFirstName: {
           type: "string",
           title: "b. Given Name (First Name)",
         },
-        par1MidName: {
+        BenMidName: {
           type: "string",
           title: "c. Middle Name",
         },
-        par1BirthDate: {
+        text10: {
+          type: "object",
+          title: "",
+          description: `ADDRESS`,
+        },
+        text20: {
+          type: "object",
+          title: "",
+          description: `Provide your physical current address inside the United States.`,
+        },
+        phy2Street: {
+          type: "string",
+          title: "a. Street Number and Name ",
+        },
+        phy2Apt: {
+          type: "string",
+          title: "b.   Apt.     Ste.    Flr.",
+        },
+        phy2CityTown: {
+          type: "string",
+          title: "c. City or Town",
+        },
+        phy2State: {
+          type: "string",
+          title: "d. State ",
+        },
+        phy2Zip: {
+          type: "string",
+          title: "e. ZIP Code",
+        },
+        phy2Province: {
+          type: "string",
+          title: "f. Province",
+        },
+        phy2Postal: {
+          type: "string",
+          title: "g. Postal Code ",
+        },
+        phy2Country: {
+          type: "string",
+          title: "h. Country",
+        },
+        benEmail: {
+          type: "string",
+          title: `Correo electrónico/email:`,
+        },
+        BenBirthDate: {
           type: "string",
           title: `Date of Birth`,
         },
-        par1Sex: {
+        BenSex: {
           type: "string",
           title: "Sex",
           enum: ["male", "female"],
         },
-        par1CityBirth: {
+        BenMaritalSts: {
           type: "string",
-          title: `City/Town/Village of Birth`,
+          title: `Marital Status:`,
         },
-        par1CountryBirth: {
+        BenCurrImmSts: {
           type: "string",
-          title: `Country of Birth`,
+          title: `Current Immigration Status?`,
         },
-        par1City: {
+        BenCityEntry: {
           type: "string",
-          title: `City/Town/Village of Residence`,
+          title: `City and State you entered the US:`,
         },
-        par1CountryResidence: {
+        BenDateEntry: {
           type: "string",
-          title: `Country of Residence`,
+          title: `Date you entered the US:`,
+        },
+        benHowEntry: {
+          type: "string",
+          title: "How did you enter the US?",
+        },
+        benWhenRes: {
+          type: "string",
+          title: `If Applicable, when did you get your lawful permanent residency? `,
+        },
+        BenPendCourt: {
+          type: "string",
+          title: `Do you have any pending applications with USCIS or Immigration Court? `,
+        },
+        BenCourtWhat: {
+          type: "string",
+          title: `If so, what applications? `,
+        },
+        text21: {
+          type: "object",
+          title: "",
+          description: `PENDING CHARGES`,
+        },
+        BenCourtCharges: {
+          type: "string",
+          title: `What are the charges? `,
+        },
+        BenCourtCounts: {
+          type: "number",
+          title: `How many counts? `,
+        },
+        BenSameDay: {
+          type: "string",
+          title: `Are all offenses on the same day? `,
+        },
+        text22: {
+          type: "object",
+          title: "",
+          description: `CRIMINAL RECORD`,
+        },
+        BenPriors: {
+          type: "string",
+          title: `Do you have prior arrests in the United States or any other countries? `,
+        },
+        BenPriorsBasis: {
+          type: "string",
+          title: `If yes, what was the basis of the arrest? `,
+        },
+        BenPriorsWhere: {
+          type: "string",
+          title: `If yes, where did it happen?`,
+        },
+        BenPriorsWhen: {
+          type: "string",
+          title: `When did it happen?`,
+        },
+
+        text23: {
+          type: "object",
+          title: "",
+          description: `REMOVAL PROCEEDINGS`,
+        },
+        BenPrecedings: {
+          type: "string",
+          title: `Have you ever been placed in deportation or removal proceedings?`,
+        },
+        BenPrecWhere: {
+          type: "string",
+          title: `If yes, when and where?`,
         },
       },
     },
     p2: {
       type: "object",
-      title: "Part 2. Information About Your Employment",
-      description: `Provide your employment history for the last five years, whether inside or outside the United States. Provide your current employment first. If you are currently unemployed, type or print "Unemployed" in Item Number 1. below. If you need extra space to complete this section, use the space provided in Part 7. Additional Information.`,
-      required: [
-        "aNumber",
-        "petFullName",
-        "petLastName",
-        "petFirstName",
-        "mailStreet",
-        "cityTown",
-        "mailCountry",
-        "dateOfBirth",
-        "curMaritalStatus",
-        "iAmStatus",
-        "typeOfAdmission",
-        "employerName",
-      ],
+      title: "INTENDING IMMIGRANT - ASSESSMENT QUESTIONS:",
+      description: "",
+      required: ["detained"],
       properties: {
         text19: {
           type: "object",
           title: "",
-          description: `Employment History:`,
+          description: `1.	Have you ever been detained at a Port of Entry or U.S. Border Office?`,
         },
-        text20: {
+        detainedWhere: {
+          type: "string",
+          title: `If Yes: Where`,
+        },
+        detainedWhen: {
+          type: "string",
+          title: "If Yes: When",
+        },
+        text18: {
           type: "object",
           title: "",
-          description: `Employer 1`,
+          description: `2.	Have you ever been refused entry into the U.S.? `,
         },
-        employerName: {
+        deniedWhere: {
           type: "string",
-          title: `1.  Name of Employer/Company`,
+          title: `If Yes: Where`,
         },
-        employerStreet: {
+        deniedWhen: {
           type: "string",
-          title: "2.a.Street Number and Name ",
+          title: "If Yes: When",
         },
-        employerApt: {
-          type: "string",
-          title: "2.b.  Apt.     Ste.    Flr.",
+        text17: {
+          type: "object",
+          title: "",
+          description: `3.	Have you ever been fingerprinted by an Immigration or Border Patrol Officer? `,
         },
-        employerCityTown: {
+        fingerWhere: {
           type: "string",
-          title: "2.c. City or Town",
+          title: `If Yes: Where`,
         },
-        employerState: {
+        fingerWhen: {
           type: "string",
-          title: "2.d. State ",
+          title: "If Yes: When",
         },
-        employerZip: {
-          type: "string",
-          title: "2.e. ZIP Code",
+        text16: {
+          type: "object",
+          title: "",
+          description: `4.	Have you ever appeared in front of an Immigration Judge? `,
         },
-        employerProvince: {
+        judgeWhere: {
           type: "string",
-          title: "2.f.Province",
+          title: `If Yes: Where`,
         },
-        employerPostal: {
+        judgeWhen: {
           type: "string",
-          title: "2.g. Postal Code ",
+          title: "If Yes: When",
         },
-        employerCountry: {
-          type: "string",
-          title: "2.h. Country",
+        text24: {
+          type: "object",
+          title: "",
+          description: `5.	Have you ever been temporarily allowed to enter the United States for medical or other reasons without obtaining a visitor visa? `,
         },
-        yourOccupation1: {
+        medicalWhere: {
           type: "string",
-          title: "3.  Your Occupation",
+          title: `If Yes: Where`,
         },
-        emplmntDateFrom: {
+        medicalWhen: {
           type: "string",
-          title: `4.a. Date from`,
+          title: "If Yes: When",
         },
-        emplmntDateTo: {
+        text25: {
+          type: "object",
+          title: "",
+          description: `6.	Have you ever been denied any kind of visa?`,
+        },
+        visaWhere: {
           type: "string",
-          title: `4.b. Date to`,
+          title: `If Yes: Where`,
+        },
+        visaWhen: {
+          type: "string",
+          title: "If Yes: When",
+        },
+        text26: {
+          type: "object",
+          title: "",
+          description: `7.	Do you have any reason to fear returning to your home country? `,
+        },
+        fearWhy: {
+          type: "string",
+          title: `If Yes: Why`,
+        },
+        text27: {
+          type: "object",
+          title: "",
+          description: `8.	Have you been involved in gangs, drug cartels or political conflict in the U.S. or your Country? `,
+        },
+        gangWhere: {
+          type: "string",
+          title: `If Yes: Where`,
+        },
+        gangWhen: {
+          type: "string",
+          title: "If Yes: When",
         },
         text29: {
           type: "object",
           title: "",
-          description: `Employer 2:`,
+          description: `9.	Have you been the victim of a crime while in the U.S.? `,
         },
-        employer2Name: {
+        victimWhere: {
           type: "string",
-          title: `5.  Name of Employer/Company`,
+          title: `If Yes: Where`,
         },
-        employer2Street: {
+        victimWhen: {
           type: "string",
-          title: "6.a.Street Number and Name ",
+          title: "If Yes: When",
         },
-        employer2Apt: {
-          type: "string",
-          title: "6.b.  Apt.     Ste.    Flr.",
+        text30: {
+          type: "object",
+          title: "",
+          description: `10.	Have you ever plead guilty or no contest to any crime in the U.S. or another country? `,
         },
-        employer2CityTown: {
+        pleaWhere: {
           type: "string",
-          title: "6.c. City or Town",
+          title: `If Yes: Where`,
         },
-        employer2State: {
+        pleaWhen: {
           type: "string",
-          title: "6.d. State ",
+          title: "If Yes: When",
         },
-        employer2Zip: {
-          type: "string",
-          title: "6.e. ZIP Code",
+        text31: {
+          type: "object",
+          title: "",
+          description: `11.	Have you ever been convicted of a crime involving drugs, weapons or fraud?`,
         },
-        employer2Province: {
+        convictWhere: {
           type: "string",
-          title: "6.f. Province",
+          title: `If Yes: Where`,
         },
-        employer2Postal: {
+        convictWhen: {
           type: "string",
-          title: "6.g. Postal Code ",
+          title: "If Yes: When",
         },
-        employer2Country: {
-          type: "string",
-          title: "6.h. Country",
+        text32: {
+          type: "object",
+          title: "",
+          description: `12.	Have you ever been arrested for a crime and no charges were filed or they were dismissed?`,
         },
-        yourOccupation2: {
+        arrestedWhere: {
           type: "string",
-          title: "7.  Your Occupation",
+          title: `If Yes: Where`,
         },
-        emplmnt2DateFrom: {
+        arrestedWhen: {
           type: "string",
-          title: `8.a. Date from`,
+          title: "If Yes: When",
         },
-        emplmnt2DateTo: {
+        text33: {
+          type: "object",
+          title: "",
+          description: `13.	Have you ever accepted public assistance such as “food stamp/EBT” Cash aide or Free Medical Services while in the U.S.? `,
+        },
+        assistWhere: {
           type: "string",
-          title: `8.b. Date to`,
+          title: `If Yes: Where`,
+        },
+        assistWhen: {
+          type: "string",
+          title: "If Yes: When",
         },
       },
     },

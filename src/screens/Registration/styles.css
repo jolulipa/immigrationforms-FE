@@ -1,0 +1,14 @@
+.registrationForm {
+  margin: auto;
+  margin-top: 15px;
+  max-width: 330px;
+  padding: 15px;
+  background-color: #eaf1c2;
+  min-height: 50vh;
+  font-weight: 400;
+}
+
+.form-control:focus {
+  border-color: #3f3434;
+  box-shadow: none;
+}
