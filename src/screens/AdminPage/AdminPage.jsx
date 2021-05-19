@@ -7,20 +7,20 @@ const AdminPage = (props) => {
         ADMINISTRACIÓN DE LA APP DE THE IMMIGRATION TIME
       </h2>
       <div className="row">
+        <button className="col-md-4 offset-md-4" onClick={props.handleLogout}>
+          Log Out
+        </button>
         <p style={styles.paragraph}>
           Esta es la herramenta de <strong>administración</strong> de la app.
           Aqui el administrador podrá borrar y/o modificar usuarios y
           formularios.
         </p>
-        {/* <Link
-          to="/forms/Intake"
-          className="col-md-4 offset-md-4 badge badge-pill badge-info"
-        >
-          ENTRAR
-        </Link> */}
-        <button className="col-md-4 offset-md-4" onClick={props.handleLogout}>
-          Log Out
-        </button>
+        <ul>
+          <li>Usuarios</li>
+          <li>Solicitudes</li>
+          <li>Communicaciones</li>
+          <li>Servicios</li>
+        </ul>
       </div>
     </div>
   );

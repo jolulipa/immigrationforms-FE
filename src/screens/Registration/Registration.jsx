@@ -2,21 +2,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { registerUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import "./styles.css";
-
-const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  setSubmitting(true);
-  const result = await registerUser(values);
-  if (result.status === 200) {
-    // Code in case of sucess
-    const data = await result.json();
-    resetForm();
-  } else {
-    // Code in case of error
-    const errorData = await result.json();
-    console.log("An error occurred", errorData);
-  }
-  setSubmitting(false);
-};
+import { useHistory } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -37,6 +23,22 @@ const validationSchema = yup.object().shape({
 });
 
 const Registration = () => {
+  const history = useHistory();
+  const redirectLocation = { pathname: "/screens/AdminPage" };
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    setSubmitting(true);
+    const result = await registerUser(values);
+    if (result.status === 200) {
+      // redirect to Client tray
+      resetForm();
+      history.replace(redirectLocation);
+    } else {
+      // Code in case of error
+      const errorData = await result.json();
+      console.log("An error occurred", errorData);
+    }
+    setSubmitting(false);
+  };
   return (
     <Formik
       initialValues={{ email: "", password: "" }}

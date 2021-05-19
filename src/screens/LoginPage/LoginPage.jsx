@@ -24,7 +24,9 @@ const Login = () => {
       // Code in case of sucess
       const data = await result.json();
       localStorage.setItem(AUTH_TOKEN, data.token); //localStorage.getItem
-      const { from } = location.state || { from: { pathname: "/" } };
+      const { from } = location.state || {
+        from: { pathname: "/screens/AdminPage" },
+      };
       history.replace(from);
       resetForm();
     } else {

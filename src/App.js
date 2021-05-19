@@ -13,7 +13,6 @@ import AdminPage from "./screens/AdminPage";
 import Contact from "./screens/Contact";
 import Registration from "./screens/Registration";
 import Unauthorized from "./components/Unauthorized";
-// import ProtectedRoute from "./components/ProtectedRoute";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {

@@ -10,6 +10,8 @@ function PrivateRoute({ component, ...rest }) {
     const decodedExp = JWT(token);
     const currentTimestamp = Date.now() / 1000;
     hasAccess = decodedExp.exp > currentTimestamp;
+  } else {
+    hasAccess = false;
   }
   const MyComponent = component;
   return (
@@ -21,7 +23,7 @@ function PrivateRoute({ component, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/unauthorized",
+              pathname: "/screens/LoginPage",
               state: { from: location },
             }}
           />
