@@ -10,9 +10,11 @@ const WelcomePage = () => {
   return (
     <div className="container">
       <h2 style={styles.title}>BIENVENIDO A THE IMMIGRATION TIME</h2>
-      <button type="button" onClick={handleLogout}>
-        Log out
-      </button>
+      <div className="d-flex align-items-center justify-content-center">
+        <button className="btn btn-danger" type="button" onClick={handleLogout}>
+          Log out
+        </button>
+      </div>
       <div className="row">
         <p style={styles.paragraph}>
           THE IMMIGRATION TIME es un servicio de trámites de migración en los
@@ -29,12 +31,24 @@ const WelcomePage = () => {
           procedimientos necesarios para ayudarle a conseguir sus objetivos
           migratorios.
         </p>
-        <Link
-          to="/screens/Registration"
-          className="col-md-4 offset-md-4 badge badge-pill badge-info"
-        >
-          REGISTRARSE
-        </Link>
+        <div className="d-flex">
+          <div className="p-2 col-10">
+            <Link
+              to="/screens/Registration"
+              className="badge badge-pill badge-info"
+            >
+              REGISTRARSE
+            </Link>
+          </div>
+          <div className="p-2 col-10">
+            <Link
+              to="/screens/UsersPage"
+              className="badge badge-pill badge-info"
+            >
+              Bandeja de Usuario
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

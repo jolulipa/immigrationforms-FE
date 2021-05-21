@@ -24,7 +24,7 @@ const validationSchema = yup.object().shape({
 
 const Registration = () => {
   const history = useHistory();
-  const redirectLocation = { pathname: "/screens/AdminPage" };
+  const redirectLocation = { pathname: "/screens/UsersPage" };
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
     const result = await registerUser(values);

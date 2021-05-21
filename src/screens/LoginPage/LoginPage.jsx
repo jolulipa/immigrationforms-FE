@@ -25,7 +25,7 @@ const Login = () => {
       const data = await result.json();
       localStorage.setItem(AUTH_TOKEN, data.token); //localStorage.getItem
       const { from } = location.state || {
-        from: { pathname: "/screens/AdminPage" },
+        from: { pathname: "/screens/UsersPage" },
       };
       history.replace(from);
       resetForm();

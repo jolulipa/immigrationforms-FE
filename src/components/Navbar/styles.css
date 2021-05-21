@@ -32,3 +32,6 @@
   text-align: center;
   justify-content: space-between;
 }
+.status {
+  color: rgb(5, 252, 66);
+}
