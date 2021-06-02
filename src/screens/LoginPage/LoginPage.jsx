@@ -21,7 +21,7 @@ const Login = () => {
     setSubmitting(true);
     const result = await loginUser(values);
     if (result.status === 200) {
-      // Code in case of sucess
+      // Code in case of success
       const data = await result.json();
       localStorage.setItem(AUTH_TOKEN, data.token); //localStorage.getItem
       const { from } = location.state || {
