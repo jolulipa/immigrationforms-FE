@@ -33,20 +33,15 @@ export const readAllForms = (values) => {
   }
 };
 
-export const createForm = (values) => {
-  if (hasAccess) {
-    fetch(`${baseUrl}/api/forms/createForm`, {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json",
-        jwt: token,
-      },
-    });
-  } else {
-    handleError();
-  }
-};
+export const createForm = (values) =>
+  fetch(`${baseUrl}/api/forms/createForm`, {
+    method: "POST",
+    body: JSON.stringify(values),
+    headers: {
+      "Content-Type": "application/json",
+      jwt: token,
+    },
+  });
 
 export const readForm = (values) => {
   if (hasAccess) {
