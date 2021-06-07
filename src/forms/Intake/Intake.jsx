@@ -18,7 +18,8 @@ const Intake = () => {
 
     const obj = { data: JSON.stringify(formData), formId };
     const response = await createForm(obj);
-    console.log("RESPONSE", response);
+    console.log("RESPONSE:", response);
+    console.log("DATA ENVIADA:", obj);
   };
 
   return (
