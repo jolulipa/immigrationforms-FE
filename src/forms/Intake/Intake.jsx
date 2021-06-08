@@ -5,10 +5,7 @@ import uiSchema from "./IntakeUiSchema";
 import { createForm } from "../../api/formsAccess";
 
 const Intake = () => {
-  const formId = "Intake";
-
-  const extractData = async ({ formData }) => {
-    formData.formId = formId;
+  const extractData = ({ formData }) => {
     let i;
     for (i = 1; i < 100; i++) {
       const aVolar = `text${i}`;
@@ -16,10 +13,8 @@ const Intake = () => {
       delete formData.p2[aVolar];
     }
 
-    const obj = { data: JSON.stringify(formData), formId };
-    const response = await createForm(obj);
-    console.log("RESPONSE:", response);
-    console.log("DATA ENVIADA:", obj);
+    const obj = { data: formData, formId: "Intake" };
+    createForm(obj);
   };
 
   return (

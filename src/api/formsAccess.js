@@ -31,16 +31,23 @@ export const readAllForms = (values) => {
   }
 };
 
-export const createForm = (values) => {
+export const createForm = async (values) => {
+  console.log("DATA ENVIADA:", values);
   if (hasAccess) {
-    fetch(`${baseUrl}/api/forms/createForm`, {
+    await fetch(`${baseUrl}/api/forms/createForm`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
         jwt: token,
       },
-    });
+    })
+      .then((response) => response.json()) // convert to json
+      .then((json) => console.log(json)) //print data to console
+      .catch((err) => {
+        console.log("Request Failed-->", err);
+        console.log("TOKEN:", token);
+      }); // Catch errors;
   } else {
     handleError();
   }
