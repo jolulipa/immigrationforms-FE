@@ -46,7 +46,8 @@ export const createForm = async (values) => {
       .then((json) => console.log(json)) //print data to console
       .catch((err) => {
         console.log("Request Failed-->", err);
-        console.log("TOKEN:", token);
+        console.log("TOKEN jwt:", token);
+        console.log("body:", JSON.stringify(values));
       }); // Catch errors;
   } else {
     handleError();
