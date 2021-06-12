@@ -23,9 +23,7 @@ export const readAllForms = async () => {
       jwt: token,
     },
   });
-  const json = await response.json();
-  const responseArray = Object.entries(json);
-  return responseArray;
+  return  await response.json();
 };
 
 export const readForm = (values) => {
