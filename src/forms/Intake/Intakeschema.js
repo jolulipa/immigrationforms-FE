@@ -8,9 +8,10 @@ const formSchema = {
       type: "object",
       title: "Part 1. Información sobre el cliente",
       description: "Information of the PETITIONER:",
-      required: ["email", "aNumber", "relationship", "siblingQ", "Lawful"],
+      // required: ["email", "aNumber", "relationship", "siblingQ", "Lawful"],
+      required: ["email", "aNumber"],
       properties: {
-        Email: {
+        email: {
           type: "string",
           title: `Su correo electrónico es obligatorio, éntrelo aqui:`,
         },
@@ -255,7 +256,7 @@ const formSchema = {
       type: "object",
       title: "INTENDING IMMIGRANT - ASSESSMENT QUESTIONS:",
       description: "",
-      required: ["detained"],
+      required: [],
       properties: {
         text19: {
           type: "object",
@@ -426,5 +427,4 @@ const formSchema = {
     },
   },
 };
-
 export default formSchema;

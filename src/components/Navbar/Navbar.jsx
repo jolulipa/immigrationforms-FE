@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./styles.css";
 import Burger from "./Burger";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
 
+const isLoggedIn = !!localStorage.getItem(AUTH_TOKEN);
+let userStatus = "No Loggeado";
+if (isLoggedIn) {
+  userStatus = "Logeado";
+}
 const Navbar = () => (
   <div className="super-root">
     <div className="line-container">
@@ -14,9 +20,10 @@ const Navbar = () => (
         E-mail
         <div>john@gmail.com</div>
       </div>
-      <div className="col d-none d-md-block d-xl-block">
-        Estámos
-        <div>En todo el mundo</div>
+      <div className="col d-none d-md-block d-xl-block status">
+        {userStatus}
+        {/* Estámos
+        <div>En todo el mundo</div> */}
       </div>
     </div>
     <div className="row navbar">

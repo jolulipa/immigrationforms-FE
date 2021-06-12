@@ -1,6 +1,5 @@
 import { colors } from "../../ui-config/colors";
 const AdminPage = (props) => {
-  console.log(props);
   return (
     <div className="container">
       <h2 style={styles.title}>
