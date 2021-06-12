@@ -1,7 +1,39 @@
+import { useState } from "react";
 import { colors } from "../../ui-config/colors";
 import { Link } from "react-router-dom";
+import { readAllForms } from "../../api/formsAccess";
+import { useHistory } from "react-router-dom";
+import ServiceBox from "../../components/ServiceBox";
 
 const UsersPage = (props) => {
+  const [results, setResults] = useState([]);
+  const history = useHistory();
+  const navigate = (formId) => {
+    history.push(`/forms/${formId}`);
+  };
+
+  const renderResults = (results) =>
+    results.map((el) => (
+      <div className="col-sm-4">
+        <ServiceBox
+          key={el.formId}
+          formName={el.formId}
+          description={el.id + el.userId + el.createdAt}
+          onClick={() => navigate(el.formId)}
+        />
+      </div>
+    ));
+
+  const renderData = () => {
+    (async () => {
+      const responseData = await readAllForms();
+      // const forms = responseData[0][1];
+      setResults(() => responseData[0][1]);
+      console.log(results);
+      renderResults(results);
+    })();
+  };
+
   return (
     <div className="container">
       <h2 style={styles.title}>
@@ -23,6 +55,7 @@ const UsersPage = (props) => {
           </li>
           <li>Otros formularios</li>
         </ul>
+        <div className="row">{renderData()}</div>
       </div>
     </div>
   );

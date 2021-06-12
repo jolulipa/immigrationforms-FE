@@ -31,7 +31,7 @@ function App() {
         <PrivateRoute path="/forms/n400" component={N400} />
         <Route path="/unauthorized" component={Unauthorized} />
         <PrivateRoute path="/screens/AdminPage" component={AdminPage} />
-        <Route path="/screens/UsersPage" component={UsersPage} />
+        <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
         <Route path="/" component={WelcomePage} />
       </Switch>
       <Footer />
