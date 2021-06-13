@@ -23,7 +23,7 @@ const UsersPage = (props) => {
           key={el.id}
           formID={el.formId}
           userId={el.userId}
-          createdAt={el.createdAt}
+          createdAt={el.createdAt}git pull
           updatedAt={el.updatedAt}
           onClick={() => navigate(el.formId)}
         /> */}
@@ -34,7 +34,7 @@ const UsersPage = (props) => {
   useEffect(() => {
     (async () => {
       const { results, userId } = await readAllForms();
-      results.map((el) => (el.userId = userId));
+      results.map((el) => (el.userId = userId)); //QUIERO AGREGAR ALGO DENTRO DEL MAP
       console.log(results);
       setResults(results);
     })();
