@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { AUTH_TOKEN, APP_STORE_NAME } from "../../constants/storageKeys";
+import {useUpdateAppContext} from "../../AppContextProvider";
 
 const WelcomePage = () => {
+  const updater = useUpdateAppContext();
+
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(APP_STORE_NAME);
+    updater({email: ''});
     alert(`You're out`);
   };
   return (
