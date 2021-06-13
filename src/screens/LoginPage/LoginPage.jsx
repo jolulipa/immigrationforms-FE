@@ -1,82 +1,110 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { loginUser } from "../../api/auth";
+import {Formik} from "formik";
+import {toast} from 'react-toastify';
+import {loginUser} from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
+import {Spinner, Button} from "react-bootstrap";
+import {AUTH_TOKEN} from "../../constants/storageKeys";
+import {useLocation, useHistory} from "react-router-dom";
 import "./styles.css";
-import { AUTH_TOKEN } from "../../constants/storageKeys";
-import { useLocation, useHistory } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Must be a valid email")
-    .required("Email is required"),
-  password: yup.string().required("The password is required"),
+    email: yup
+        .string()
+        .email("Must be a valid email")
+        .required("The email is required"),
+    password: yup
+        .string()
+        .required("The password is required"),
 });
 
 const Login = () => {
-  const location = useLocation();
-  const history = useHistory();
+    const location = useLocation();
+    const history = useHistory();
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    setSubmitting(true);
-    const result = await loginUser(values);
-    if (result.status === 200) {
-      // Code in case of success
-      const data = await result.json();
-      localStorage.setItem(AUTH_TOKEN, data.token);
-      const { from } = location.state || {
-        from: { pathname: "/screens/UsersPage" },
-      };
-      history.replace(from);
-      resetForm();
-    } else {
-      // Code in case of error
-      const errorData = await result.json();
-      console.log("An error occurred", errorData);
+    const navigateToRegistration = () => {
+        history.push("/screens/Registration");
     }
-    setSubmitting(false);
-  };
 
-  return (
-    <Formik
-      initialValues={{ email: "", password: "" }}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ isSubmitting }) => (
-        <Form className="form-container loginForm">
-          <h2 className="col-10">Log In</h2>
-          <div>
-            <label htmlFor="email">Email Address</label>
-            <Field
-              className="form-control"
-              placeholder="Enter email"
-              name="email"
-              type="email"
-            />
-            <ErrorMessage className="text-danger" name="email" />
-          </div>
-          <div className="mt-3">
-            <label htmlFor="password">Password</label>
-            <Field
-              className="form-control"
-              placeholder="Enter password"
-              name="password"
-              type="text"
-            />
-            <ErrorMessage className="text-danger" name="password" />
-          </div>
-          <button
-            disabled={isSubmitting}
-            className="btn btn-secondary mt-5 btn-block"
-            type="submit"
-          >
-            Submit
-          </button>
-        </Form>
-      )}
-    </Formik>
-  );
+    const toastConfig = {position: 'bottom-center'};
+
+    const handleSubmit = async (values, {setSubmitting, resetForm}) => {
+        setSubmitting(true);
+        const result = await loginUser(values);
+        if (result.status === 200) {
+            // Code in case of success
+            const data = await result.json();
+            localStorage.setItem(AUTH_TOKEN, data.token);
+            const {from} = location.state || {
+                from: {pathname: "/screens/UsersPage"},
+            };
+            history.replace(from);
+            resetForm();
+        } else if (result.status === 401) {
+            toast.error('Invalid username or password', toastConfig);
+        } else {
+            toast.error('An error occurred. Please try again later.', toastConfig);
+        }
+        setSubmitting(false);
+    };
+
+    return (
+        <>
+            <Formik
+                initialValues={{email: "", password: ""}}
+                onSubmit={handleSubmit}
+                validationSchema={validationSchema}
+            >
+                {(formik) => (
+                    <div className='auth-box'>
+                        <div className='title-container'>
+                            <h2>Login</h2>
+                        </div>
+                        <form onSubmit={formik.handleSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="email">Email address</label>
+                                <input type="email"
+                                       className="form-control"
+                                       id="email"
+                                       aria-describedby="emailHelp"
+                                       placeholder="Enter email"
+                                       {...formik.getFieldProps('email')}
+                                />
+                                {formik.touched.email && formik.errors.email ? (
+                                    <div className='text-danger small font-weight-bold'>{formik.errors.email}</div>
+                                ) : null}
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    id="password"
+                                    aria-describedby="passwordHelp"
+                                    placeholder="Enter password"
+                                    {...formik.getFieldProps('password')}
+                                />
+                                {formik.touched.password && formik.errors.password ? (
+                                    <div className='text-danger small font-weight-bold'>{formik.errors.password}</div>
+                                ) : null}
+                            </div>
+                            <div className="button-container">
+                                <button
+                                    className='btn btn-primary'
+                                    type="submit"
+                                    disabled={formik.isSubmitting}>Submit
+                                </button>
+                                {formik.isSubmitting ? <Spinner animation="border" variant="primary"/> : null}
+                            </div>
+                        </form>
+                    </div>
+                )}
+            </Formik>
+            <div className='no-account'>
+                <h6 className='no-account-text'>Don't have an account?</h6>
+                <Button variant="link" onClick={navigateToRegistration}>Create one</Button>
+            </div>
+        </>
+    );
 };
 
 export default Login;
