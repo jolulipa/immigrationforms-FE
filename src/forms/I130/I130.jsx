@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import Form from "@rjsf/bootstrap-4";
 import schema from "./i130schema";
 import uiSchema from "./i130UiSchema";
 
 const I130 = () => {
-  return (
+    // const [formData, setFormData] = useState()
+    return (
     <div className="container">
       <Form
         schema={schema}
