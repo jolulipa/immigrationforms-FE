@@ -1,4 +1,5 @@
 import React from "react";
+import AppContextProvider from "./AppContextProvider";
 import {ToastContainer} from 'react-toastify';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -41,9 +42,9 @@ function App() {
     );
 }
 
-const MyApp = () => <>
+const MyApp = () => <AppContextProvider>
   <ToastContainer/>
   <App/>
-</>
+</AppContextProvider>
 
 export default MyApp;
