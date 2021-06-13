@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {ToastContainer} from 'react-toastify';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Intake from "./forms/Intake";
@@ -15,28 +16,34 @@ import Registration from "./screens/Registration";
 import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
 import UsersPage from "./screens/UsersPage";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/forms/Intake" component={Intake} />
-        <Route path="/screens/LoginPage" component={LoginPage} />
-        <Route path="/screens/Registration" component={Registration} />
-        <Route path="/screens/LandingPage" component={LandingPage} />
-        <Route path="/screens/Contact" component={Contact} />
-        <PrivateRoute path="/forms/i130" component={I130} />
-        <PrivateRoute path="/forms/i130A" component={I130A} />
-        <PrivateRoute path="/forms/n400" component={N400} />
-        <Route path="/unauthorized" component={Unauthorized} />
-        <PrivateRoute path="/screens/AdminPage" component={AdminPage} />
-        <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
-        <Route path="/" component={WelcomePage} />
-      </Switch>
-      <Footer />
-    </Router>
-  );
+    return (
+        <Router>
+            <Navbar/>
+            <Switch>
+                <Route path="/forms/Intake" component={Intake}/>
+                <Route path="/screens/LoginPage" component={LoginPage}/>
+                <Route path="/screens/Registration" component={Registration}/>
+                <Route path="/screens/LandingPage" component={LandingPage}/>
+                <Route path="/screens/Contact" component={Contact}/>
+                <PrivateRoute path="/forms/i130" component={I130}/>
+                <PrivateRoute path="/forms/i130A" component={I130A}/>
+                <PrivateRoute path="/forms/n400" component={N400}/>
+                <Route path="/unauthorized" component={Unauthorized}/>
+                <PrivateRoute path="/screens/AdminPage" component={AdminPage}/>
+                <PrivateRoute path="/screens/UsersPage" component={UsersPage}/>
+                <Route path="/" component={WelcomePage}/>
+            </Switch>
+            {/*<Footer />*/}
+        </Router>
+    );
 }
 
-export default App;
+const MyApp = () => <>
+  <ToastContainer/>
+  <App/>
+</>
+
+export default MyApp;
