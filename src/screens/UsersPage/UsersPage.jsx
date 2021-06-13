@@ -48,14 +48,15 @@ const UsersPage = (props) => {
     useEffect(() => {
         (async () => {
             const {results, userId} = await readAllForms();
+            const data = results || [];
             // results.map((el) => (el.userId = userId)); //QUIERO AGREGAR ALGO DENTRO DEL MAP
-            const intakeForm = results.find(el => el.formId === 'Intake');
-            const intakeData = JSON.parse(intakeForm?.data);
-            const userEmail = intakeData?.p1?.email;
-            const fullName = intakeData?.p1?.petFullName;
-            const phone = intakeData?.p1?.phone;
+            const intakeForm = data?.find(el => el.formId === 'Intake');
+            const intakeData = intakeForm ? JSON.parse(intakeForm?.data) : {};
+            const userEmail = intakeData?.p1?.email || '';
+            const fullName = intakeData?.p1?.petFullName || '';
+            const phone = intakeData?.p1?.phone || '';
             setUserData({userEmail, fullName, phone});
-            setResults(results);
+            setResults(data);
         })();
     }, []);
 
