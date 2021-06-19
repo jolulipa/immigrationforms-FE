@@ -11,7 +11,7 @@ const UsersPage = (props) => {
   const history = useHistory();
 
   const navigateToForm = (id, formId) => {
-    history.push(`/forms/${formId}`);
+    history.push(`/forms/${formId}/${id}`);
   };
 
   const renderResults = () =>
@@ -49,30 +49,15 @@ const UsersPage = (props) => {
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
     (async () => {
-      const { results, userId } = await readAllForms();
+      const { results } = await readAllForms();
       const intakeForm = results.find((el) => el.formId === "Intake");
       const intakeData = JSON.parse(intakeForm?.data);
       const userEmail = intakeData?.p1?.email;
       const fullName = intakeData?.p1?.petFullName;
       const phone = intakeData?.p1?.phone;
       setUserData({ userEmail, fullName, phone });
-      localStorage.setItem(USER_DATA, userEmail, fullName, phone); //VER ESTO
+      localStorage.setItem(USER_DATA, userEmail, fullName, phone);
       setResults(results);
-    })();
-  }, []);
-  // La responsabilidad de esto es cargar la data
-  useEffect(() => {
-    (async () => {
-      const { results, userId } = await readAllForms();
-      const data = results || [];
-      // results.map((el) => (el.userId = userId)); //QUIERO AGREGAR ALGO DENTRO DEL MAP
-      const intakeForm = data?.find((el) => el.formId === "Intake");
-      const intakeData = intakeForm ? JSON.parse(intakeForm?.data) : {};
-      const userEmail = intakeData?.p1?.email || "";
-      const fullName = intakeData?.p1?.petFullName || "";
-      const phone = intakeData?.p1?.phone || "";
-      setUserData({ userEmail, fullName, phone });
-      setResults(data);
     })();
   }, []);
 
