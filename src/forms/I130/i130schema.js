@@ -8,7 +8,7 @@ const formSchema = {
       type: "object",
       title: "Part 1. Relationship",
       description: "(You are the petitioner. Your relative is the Beneficiary)",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         petitionFor: {
           type: "string",
@@ -16,16 +16,16 @@ const formSchema = {
           enum: ["Spouse", "Parent", "Brother/Sister", "Child"],
         },
         relationship: {
-          type: "number",
+          type: "string",
           title:
             "2. If you are filling this petition for your child or parent, select the box that describes your relationship",
-          enum: [1, 2, 3, 4],
-          enumNames: [
-            "a. Child was born to parents who were married to each other at the time of the child's birth",
-            "b. Stepchild/Stepparent",
-            "c. Child was born to parents who were not married to each other at the time of the child's birth",
-            "d. Child was adopted (nor an Orphan or Hague Convention adoptee)",
-          ],
+          // enum: [1, 2, 3, 4],
+          // enum: [
+          //   "a. Child was born to parents who were married to each other at the time of the child's birth",
+          //   "b. Stepchild/Stepparent",
+          //   "c. Child was born to parents who were not married to each other at the time of the child's birth",
+          //   "d. Child was adopted (nor an Orphan or Hague Convention adoptee)",
+          // ],
         },
         siblingQ: {
           type: "string",
@@ -33,7 +33,7 @@ const formSchema = {
           enum: ["Yes", "No"],
         },
         lawful: {
-          type: "boolean",
+          type: "string",
           title: `4. Did you gain lawful permanent resident status or citizenship through adoption?`,
           enum: ["Yes", "No"],
         },
@@ -43,20 +43,20 @@ const formSchema = {
       type: "object",
       title: "Part 2. Information about you (petitioner)",
       description: "(Continued)",
-      required: [
-        "aNumber",
-        "petFullName",
-        "petLastName",
-        "petFirstName",
-        "mailStreet",
-        "cityTown",
-        "mailCountry",
-        "dateOfBirth",
-        "curMaritalStatus",
-        "iAmStatus",
-        "typeOfAdmission",
-        "employerName",
-      ],
+      // required: [
+      //   "aNumber",
+      //   "petFullName",
+      //   "petLastName",
+      //   "petFirstName",
+      //   "mailStreet",
+      //   "cityTown",
+      //   "mailCountry",
+      //   "dateOfBirth",
+      //   "curMaritalStatus",
+      //   "iAmStatus",
+      //   "typeOfAdmission",
+      //   "employerName",
+      // ],
       properties: {
         aNumber: {
           type: "number",
@@ -669,15 +669,15 @@ const formSchema = {
       title: "Part 3. Biographic Information",
       description:
         "NOTE:  Provide the biographic information about you, the petitioner.",
-      required: [
-        "ethnicity",
-        "race",
-        "heightFeet",
-        "heightInches",
-        "weight",
-        "eyeColor",
-        "hairColor",
-      ],
+      // required: [
+      //   "ethnicity",
+      //   "race",
+      //   "heightFeet",
+      //   "heightInches",
+      //   "weight",
+      //   "eyeColor",
+      //   "hairColor",
+      // ],
       properties: {
         ethnicity: {
           type: "string",
@@ -743,14 +743,14 @@ const formSchema = {
       type: "object",
       title: "Part 4.  Information About Beneficiary",
       description: "",
-      required: [
-        "PetANumber",
-        "benFullName",
-        "benLastName",
-        "benFirstName",
-        "benDateBirth",
-        "benCountryResidence",
-      ],
+      // required: [
+      //   "PetANumber",
+      //   "benFullName",
+      //   "benLastName",
+      //   "benFirstName",
+      //   "benDateBirth",
+      //   "benCountryResidence",
+      // ],
       properties: {
         PetANumber: {
           type: "number",
@@ -1472,7 +1472,7 @@ const formSchema = {
       type: "object",
       title: "Part 5.  Other Information",
       description: "",
-      required: ["benEverPrev"],
+      // required: ["benEverPrev"],
       properties: {
         benEverPrev: {
           type: "string",
