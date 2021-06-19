@@ -23,8 +23,10 @@ const I130 = (props) => {
 
     if (vieneDeLaBandeja) {
       console.log("Handle Submit update:", obj); //actualizar DB
+      updateForm(obj);
     } else {
       console.log("Handle Submit create:", obj); //Crear en DB
+      createForm(obj);
     }
   };
 
