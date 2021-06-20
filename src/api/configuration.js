@@ -1,1 +1,1 @@
-export const baseUrl = process?.env?.REACT_APP_ENDPOINT || "http://localhost:8000";
+export const baseUrl = process?.env?.REACT_APP_ENDPOINT || "https://immigration-forms.herokuapp.com";
