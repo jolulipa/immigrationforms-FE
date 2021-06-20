@@ -8,8 +8,7 @@ const formSchema = {
       type: "object",
       title: "Part 1. Información sobre el cliente",
       description: "Information of the PETITIONER:",
-      // required: ["email", "aNumber", "relationship", "siblingQ", "Lawful"],
-      required: ["email", "aNumber"],
+      required: ["email", "aNumber", "socialSecNum", "petFullName"],
       properties: {
         email: {
           type: "string",

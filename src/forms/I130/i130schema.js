@@ -8,7 +8,7 @@ const formSchema = {
       type: "object",
       title: "Part 1. Relationship",
       description: "(You are the petitioner. Your relative is the Beneficiary)",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      required: ["petitionFor", "relationship", "siblingQ", "lawful"],
       properties: {
         petitionFor: {
           type: "string",
@@ -16,11 +16,11 @@ const formSchema = {
           enum: ["Spouse", "Parent", "Brother/Sister", "Child"],
         },
         relationship: {
-          type: "number",
+          type: "string",
           title:
             "2. If you are filling this petition for your child or parent, select the box that describes your relationship",
-          enum: [1, 2, 3, 4],
-          enumNames: [
+          // enum: [1, 2, 3, 4],
+          enum: [
             "a. Child was born to parents who were married to each other at the time of the child's birth",
             "b. Stepchild/Stepparent",
             "c. Child was born to parents who were not married to each other at the time of the child's birth",
@@ -33,7 +33,7 @@ const formSchema = {
           enum: ["Yes", "No"],
         },
         lawful: {
-          type: "boolean",
+          type: "string",
           title: `4. Did you gain lawful permanent resident status or citizenship through adoption?`,
           enum: ["Yes", "No"],
         },
@@ -46,16 +46,17 @@ const formSchema = {
       required: [
         "aNumber",
         "petFullName",
-        "petLastName",
-        "petFirstName",
-        "mailStreet",
-        "cityTown",
-        "mailCountry",
-        "dateOfBirth",
-        "curMaritalStatus",
-        "iAmStatus",
-        "typeOfAdmission",
-        "employerName",
+        "socialSecNum",
+        // "petLastName",
+        // "petFirstName",
+        // "mailStreet",
+        // "cityTown",
+        // "mailCountry",
+        // "dateOfBirth",
+        // "curMaritalStatus",
+        // "iAmStatus",
+        // "typeOfAdmission",
+        // "employerName",
       ],
       properties: {
         aNumber: {
@@ -86,12 +87,12 @@ const formSchema = {
           type: "string",
           title: "4.c. Middle Name",
         },
-        texto1: {
+        text1: {
           type: "object",
           title: "",
           description: `Other Names Used (if any):`,
         },
-        texto2: {
+        text2: {
           type: "object",
           title: "",
           description: `Provide all other names you have ever used, including aliases, 
@@ -109,7 +110,7 @@ const formSchema = {
           type: "string",
           title: "5.c. Middle Name",
         },
-        texto3: {
+        text3: {
           type: "object",
           title: "",
           description: `Other Information:`,
@@ -131,7 +132,7 @@ const formSchema = {
           title: "9.   Sex (Male or Female)",
           enum: ["Male", "Female"],
         },
-        texto4: {
+        text4: {
           type: "object",
           title: "",
           description: `Mailing Address:`,
@@ -177,22 +178,22 @@ const formSchema = {
           title: `11.  Is your current mailing address the same as your physical address?`,
           enum: ["Yes", "No"],
         },
-        texto5: {
+        text5: {
           type: "object",
           title: "",
           description: `If you answered "No" to Item Number 11., provide information on your physical address in Item Numbers 12.a. - 13.b.`,
         },
-        texto6: {
+        text6: {
           type: "object",
           title: "",
           description: "Address History:",
         },
-        texto7: {
+        text7: {
           type: "object",
           title: "",
           description: `Provide your physical addresses for the last five years, whether inside or outside the United States.  Provide your current address first if it is different from your mailing address in Item Numbers 10.a. - 10.i.`,
         },
-        texto8: {
+        text8: {
           type: "object",
           title: "",
           description: "Physical Address 1:",
@@ -237,7 +238,7 @@ const formSchema = {
           type: "string",
           title: `13.b. Date To - PRESENT`,
         },
-        texto9: {
+        text9: {
           type: "object",
           title: "",
           description: "Physical Address 2:",
@@ -282,7 +283,7 @@ const formSchema = {
           type: "string",
           title: `15.b. Date To - PRESENT`,
         },
-        texto10: {
+        text10: {
           type: "object",
           title: "",
           description: "Your Marital Information:",
@@ -308,7 +309,7 @@ const formSchema = {
           type: "string",
           title: `18.  Date of  Current Marriage (if currently married)`,
         },
-        texto11: {
+        text11: {
           type: "object",
           title: "",
           description: "Place of Your Current Marriage (if married):",
@@ -329,18 +330,18 @@ const formSchema = {
           type: "string",
           title: "19.d. Country",
         },
-        texto12: {
+        text12: {
           type: "object",
           title: "",
           description: `Names of All Your Spouses (if any)
           :`,
         },
-        texto13: {
+        text13: {
           type: "object",
           title: "",
           description: `Provide information on your current spouse (if currently married) first and then list all your prior spouses (if any).`,
         },
-        texto14: {
+        text14: {
           type: "object",
           title: "",
           description: `Spouse 1:.`,
@@ -361,7 +362,7 @@ const formSchema = {
           type: "string",
           title: `21.  Date Marriage Ended`,
         },
-        texto15: {
+        text15: {
           type: "object",
           title: "",
           description: `Spouse 2:.`,
@@ -382,17 +383,17 @@ const formSchema = {
           type: "string",
           title: `23.  Date Marriage Ended`,
         },
-        texto16: {
+        text16: {
           type: "object",
           title: "",
           description: `Information About Your Parents`,
         },
-        texto17: {
+        text17: {
           type: "object",
           title: "",
           description: `Parent 1's Information:`,
         },
-        texto18: {
+        text18: {
           type: "object",
           title: "",
           description: `Full Name of Parent 1`,
@@ -430,12 +431,12 @@ const formSchema = {
           type: "string",
           title: `29.  Country of Residence`,
         },
-        texto19: {
+        text19: {
           type: "object",
           title: "",
           description: `Parent 2's Information:`,
         },
-        texto20: {
+        text20: {
           type: "object",
           title: "",
           description: `Full Name of Parent 2`,
@@ -473,7 +474,7 @@ const formSchema = {
           type: "string",
           title: `35.  Country of Residence`,
         },
-        texto21: {
+        text21: {
           type: "object",
           title: "",
           description: `Additional Information About You (Petitioner)`,
@@ -483,7 +484,7 @@ const formSchema = {
           title: `36.  I am a (Select only one box):`,
           enum: ["U.S. Citizen", "Lawful Permanent Resident"],
         },
-        texto22: {
+        text22: {
           type: "object",
           title: "",
           description: `If you are a U.S. citizen, complete Item Number 37.`,
@@ -498,7 +499,7 @@ const formSchema = {
           title: `38.  Have you obtained a Certificate of Naturalization or a Certificate of Citizenship?`,
           enum: ["Yes", "No"],
         },
-        texto23: {
+        text23: {
           type: "object",
           title: "",
           description: `If you answered "Yes" to Item Number 38., complete the following:`,
@@ -515,7 +516,7 @@ const formSchema = {
           type: "string",
           title: `39.c. Date of Issuance`,
         },
-        texto24: {
+        text24: {
           type: "object",
           title: "",
           description: `If you are a lawful permanent resident, complete Item Numbers 40.a. - 41.`,
@@ -528,7 +529,7 @@ const formSchema = {
           type: "string",
           title: `40.b. Date of Admission`,
         },
-        texto25: {
+        text25: {
           type: "object",
           title: "",
           description: `Place of Admission:`,
@@ -546,17 +547,17 @@ const formSchema = {
           title: `41.  Did you gain lawful permanent resident status through marriage to a U.S. citizen or lawful permanent resident?`,
           enum: ["Yes", "No"],
         },
-        texto26: {
+        text26: {
           type: "object",
           title: "",
           description: `Employment History`,
         },
-        texto27: {
+        text27: {
           type: "object",
           title: "",
           description: `Provide your employment history for the last five years, whether inside or outside the United States.  Provide your current employment first.  If you are currently unemployed, type or print "Unemployed" in Item Number 42.`,
         },
-        texto28: {
+        text28: {
           type: "object",
           title: "",
           description: `Employer 1:`,
@@ -609,7 +610,7 @@ const formSchema = {
           type: "string",
           title: `45.b. Date to`,
         },
-        texto29: {
+        text29: {
           type: "object",
           title: "",
           description: `Employer 2:`,
@@ -669,15 +670,15 @@ const formSchema = {
       title: "Part 3. Biographic Information",
       description:
         "NOTE:  Provide the biographic information about you, the petitioner.",
-      required: [
-        "ethnicity",
-        "race",
-        "heightFeet",
-        "heightInches",
-        "weight",
-        "eyeColor",
-        "hairColor",
-      ],
+      // required: [
+      //   "ethnicity",
+      //   "race",
+      //   "heightFeet",
+      //   "heightInches",
+      //   "weight",
+      //   "eyeColor",
+      //   "hairColor",
+      // ],
       properties: {
         ethnicity: {
           type: "string",
@@ -743,14 +744,14 @@ const formSchema = {
       type: "object",
       title: "Part 4.  Information About Beneficiary",
       description: "",
-      required: [
-        "PetANumber",
-        "benFullName",
-        "benLastName",
-        "benFirstName",
-        "benDateBirth",
-        "benCountryResidence",
-      ],
+      // required: [
+      //   "PetANumber",
+      //   "benFullName",
+      //   "benLastName",
+      //   "benFirstName",
+      //   "benDateBirth",
+      //   "benCountryResidence",
+      // ],
       properties: {
         PetANumber: {
           type: "number",
@@ -764,7 +765,7 @@ const formSchema = {
           type: "number",
           title: `3. U.S. Social Security Number (if any)`,
         },
-        texto29: {
+        text29: {
           type: "object",
           title: "",
           description: `Beneficiary's Full Name`,
@@ -785,12 +786,12 @@ const formSchema = {
           type: "string",
           title: "4.c. Middle Name",
         },
-        texto30: {
+        text30: {
           type: "object",
           title: "",
           description: `Other Names Used (if any):`,
         },
-        texto31: {
+        text31: {
           type: "object",
           title: "",
           description: `Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames.`,
@@ -807,7 +808,7 @@ const formSchema = {
           type: "string",
           title: "4.c. Middle Name",
         },
-        texto32: {
+        text32: {
           type: "object",
           title: "",
           description: `Other Information About Beneficiary `,
@@ -834,17 +835,17 @@ const formSchema = {
           title: `10.   Has anyone else ever filed a petition for the beneficiary?`,
           enum: ["Yes", "Not", "Unknown"],
         },
-        texto33: {
+        text33: {
           type: "object",
           title: "",
           description: `NOTE:  Select "Unknown" only if you do not know, and  the beneficiary also does not know, if anyone else has ever filed a petition for the beneficiary.`,
         },
-        texto34: {
+        text34: {
           type: "object",
           title: "",
           description: `Beneficiary's Physical Address:`,
         },
-        texto35: {
+        text35: {
           type: "object",
           title: "",
           description: `If the beneficiary lives outside the United States in a home without a street number or name, leave Item Numbers 11.a. and 11.b. blank.`,
@@ -885,12 +886,12 @@ const formSchema = {
           type: "string",
           title: "11.i. Country",
         },
-        texto36: {
+        text36: {
           type: "object",
           title: "",
           description: "Other Address and Contact Information:",
         },
-        texto37: {
+        text37: {
           type: "object",
           title: "",
           description: `Provide the address in the United States where the beneficiary intends to live, if different from Item Numbers 11.a. - 11.h.  If the address is the same, type or print "SAME" in Item Number 12.a.`,
@@ -915,7 +916,7 @@ const formSchema = {
           type: "string",
           title: "12.e. ZIP Code",
         },
-        texto38: {
+        text38: {
           type: "object",
           title: "",
           description: `Provide the beneficiary's address outside the United States, if different from Item Numbers 11.a. - 11.h.  If the address is the same, type or print "SAME" in Item Number 13.a.`,
@@ -956,7 +957,7 @@ const formSchema = {
           type: "string",
           title: `16.  Email Address (if any)`,
         },
-        texto39: {
+        text39: {
           type: "object",
           title: "",
           description: `Beneficiary's Marital Information:`,
@@ -982,7 +983,7 @@ const formSchema = {
           type: "string",
           title: `19.  Date of  Current Marriage (if currently married)`,
         },
-        texto40: {
+        text40: {
           type: "object",
           title: "",
           description: "Place of Beneficiary's Current Marriage (if married):",
@@ -1003,17 +1004,17 @@ const formSchema = {
           type: "string",
           title: "20.d. Country",
         },
-        texto41: {
+        text41: {
           type: "object",
           title: "",
           description: `Names of Beneficiary's Spouses (if any):`,
         },
-        texto42: {
+        text42: {
           type: "object",
           title: "",
           description: `Provide information on the beneficiary's current spouse (if currently married) first and then list all the beneficiary's prior spouses (if any)`,
         },
-        texto43: {
+        text43: {
           type: "object",
           title: "",
           description: `Spouse 1:.`,
@@ -1034,7 +1035,7 @@ const formSchema = {
           type: "string",
           title: `22.  Date Marriage Ended`,
         },
-        texto44: {
+        text44: {
           type: "object",
           title: "",
           description: `Spouse 2:.`,
@@ -1055,17 +1056,17 @@ const formSchema = {
           type: "string",
           title: `24.  Date Marriage Ended`,
         },
-        texto45: {
+        text45: {
           type: "object",
           title: "",
           description: `Information About Beneficiary's Family `,
         },
-        texto46: {
+        text46: {
           type: "object",
           title: "",
           description: `Provide information about the beneficiary's spouse and children. `,
         },
-        texto47: {
+        text47: {
           type: "object",
           title: "",
           description: `Person 1`,
@@ -1094,7 +1095,7 @@ const formSchema = {
           type: "string",
           title: `28.  Country of Birth`,
         },
-        texto48: {
+        text48: {
           type: "object",
           title: "",
           description: `Person 2`,
@@ -1123,7 +1124,7 @@ const formSchema = {
           type: "string",
           title: `32.  Country of Birth`,
         },
-        texto49: {
+        text49: {
           type: "object",
           title: "",
           description: `Person 3`,
@@ -1152,7 +1153,7 @@ const formSchema = {
           type: "string",
           title: `36.  Country of Birth`,
         },
-        texto50: {
+        text50: {
           type: "object",
           title: "",
           description: `Person 4`,
@@ -1181,7 +1182,7 @@ const formSchema = {
           type: "string",
           title: `40.  Country of Birth`,
         },
-        texto51: {
+        text51: {
           type: "object",
           title: "",
           description: `Person 5`,
@@ -1210,7 +1211,7 @@ const formSchema = {
           type: "string",
           title: `44.  Country of Birth`,
         },
-        texto52: {
+        text52: {
           type: "object",
           title: "",
           description: `Beneficiary's Entry Information `,
@@ -1220,7 +1221,7 @@ const formSchema = {
           title: `45.  Was the beneficiary EVER in the United States?`,
           enum: ["Yes", "No"],
         },
-        texto53: {
+        text53: {
           type: "object",
           title: "",
           description: `If the beneficiary is currently in the United States, complete Items Numbers 46.a. - 46.d. `,
@@ -1257,12 +1258,12 @@ const formSchema = {
           type: "string",
           title: `50.  Expiration Date for Passport or Travel Document`,
         },
-        texto54: {
+        text54: {
           type: "object",
           title: "",
           description: `Beneficiary's Employment Information`,
         },
-        texto55: {
+        text55: {
           type: "object",
           title: "",
           description: `Provide the beneficiary's current employment information (if applicable), even if they are employed outside of the United States.  If the beneficiary is currently unemployed, type or print "Unemployed" in Item Number 51.a. `,
@@ -1307,12 +1308,12 @@ const formSchema = {
           type: "string",
           title: `52.  Date Employment Began`,
         },
-        texto56: {
+        text56: {
           type: "object",
           title: "",
           description: `Additional Information About Beneficiary`,
         },
-        texto57: {
+        text57: {
           type: "object",
           title: "",
           description: `If the beneficiary is currently in the United States, complete Items Numbers 46.a. - 46.d.`,
@@ -1344,7 +1345,7 @@ const formSchema = {
           type: "string",
           title: `56.  Date`,
         },
-        texto58: {
+        text58: {
           type: "object",
           title: "",
           description: `If the beneficiary's native written language does not use Roman letters, type or print his or her name and foreign address in their native written language.`,
@@ -1385,7 +1386,7 @@ const formSchema = {
           type: "string",
           title: "58.f. Country",
         },
-        texto59: {
+        text59: {
           type: "object",
           title: "",
           description: `If filing for your spouse, provide the last address at which you physically lived together.  If you never lived together, type or print, "Never lived together" in Item Number 59.a`,
@@ -1430,7 +1431,7 @@ const formSchema = {
           type: "string",
           title: `60.b. Date To`,
         },
-        texto60: {
+        text60: {
           type: "object",
           title: "",
           description: `The beneficiary is in the United States and will apply for adjustment of status to that of a lawful permanent resident 
@@ -1444,7 +1445,7 @@ const formSchema = {
           type: "string",
           title: "61.b. State ",
         },
-        texto61: {
+        text61: {
           type: "object",
           title: "",
           description: `The beneficiary will not apply for adjustment of status in the United States, but he or she will apply for an immigrant visa abroad at the U.S. Embassy or U.S. Consulate in:`,
@@ -1461,7 +1462,7 @@ const formSchema = {
           type: "string",
           title: "62.c. Country ",
         },
-        texto62: {
+        text62: {
           type: "object",
           title: "",
           description: `NOTE:  Choosing a U.S. Embassy or U.S. Consulate outside the country of the beneficiary's last residence does not guarantee that it will accept the beneficiary's case for processing.  In these situations, the designated U.S. Embassy or U.S. Consulate has discretion over whether or not to accept the beneficiary's case.`,
@@ -1472,14 +1473,14 @@ const formSchema = {
       type: "object",
       title: "Part 5.  Other Information",
       description: "",
-      required: ["benEverPrev"],
+      // required: ["benEverPrev"],
       properties: {
         benEverPrev: {
           type: "string",
           title: `1.   Have you EVER previously filed a petition for this beneficiary or any other alien?`,
           enum: ["Yes", "No"],
         },
-        texto64: {
+        text64: {
           type: "object",
           title: "",
           description: `If you answered "Yes," provide the name, place, date of filing, and the result.`,
@@ -1508,13 +1509,13 @@ const formSchema = {
           type: "string",
           title: "5.   Result (for example, approved, denied, withdrawn)",
         },
-        texto65: {
+        text65: {
           type: "object",
           title: "",
           description: `If you are also submitting separate petitions for other relatives, 
           provide the names of and your relationship to each relative. `,
         },
-        texto66: {
+        text66: {
           type: "object",
           title: "",
           description: "Relative 1",
@@ -1535,7 +1536,7 @@ const formSchema = {
           type: "string",
           title: "7. Relationship",
         },
-        texto67: {
+        text67: {
           type: "object",
           title: "",
           description: "Relative 2",
@@ -1556,12 +1557,12 @@ const formSchema = {
           type: "string",
           title: "9. Relationship",
         },
-        texto68: {
+        text68: {
           type: "object",
           title: "",
           description: `WARNING:  USCIS investigates the claimed relationships and Petitioner's Declaration and Certification verifies the validity of documents you submit.  If you falsify a family relationship to obtain a visa, USCIS may seek to have you criminally prosecuted.`,
         },
-        texto69: {
+        text69: {
           type: "object",
           title: "",
           description: `PENALTIES:  By law, you may be imprisoned for up to 5 years or fined $250,000, or both, for entering into a marriage contract in order to evade any U.S. immigration law.  In addition, you may be fined up to $10,000 and imprisoned for up to 5 years, or both, for knowingly and willfully falsifying or concealing a material fact or using any false document in submitting this petition. `,
@@ -1576,32 +1577,32 @@ const formSchema = {
         "NOTE:  Read the Penalties section of the Form I-130 Instructions before completing this part. ",
       required: [],
       properties: {
-        texto72: {
+        text72: {
           type: "object",
           title: "",
           description: `Petitioner's Statement`,
         },
-        texto73: {
+        text73: {
           type: "object",
           title: "",
           description: `NOTE:  Select the box for either Item Number 1.a. or 1.b.  If applicable, select the box for Item Number 2.`,
         },
-        texto74: {
+        text74: {
           type: "object",
           title: "",
           description: `1.a.     I can read and understand English, and I have read and understand every question and instruction on this petition and my answer to every question.`,
         },
-        texto75: {
+        text75: {
           type: "object",
           title: "",
           description: `1.b.     The interpreter named in Part 7. read to me every question and instruction on this petition and my answer to every question in _______________________  a language in which I am fluent.  I understood all of this information as interpreted.`,
         },
-        texto76: {
+        text76: {
           type: "object",
           title: "",
           description: `2.       At my request, the preparer named in Part 8.,_____________ prepared this petition for me based only upon information I provided or authorized.  `,
         },
-        texto77: {
+        text77: {
           type: "object",
           title: "",
           description: `Petitioner's Contact Information`,
@@ -1618,35 +1619,35 @@ const formSchema = {
           type: "string",
           title: "5.   Petitioner's Email Address (if any)",
         },
-        texto78: {
+        text78: {
           type: "object",
           title: "",
           description: `Petitioner's Declaration and Certification`,
         },
-        texto79: {
+        text79: {
           type: "object",
           title: "",
           description: `Copies of any documents I have submitted are exact photocopies of unaltered, original documents, and I understand that USCIS may require that I submit original documents to USCIS at a later date. Furthermore, I authorize the release of any information from any of my records that USCIS may need to determine my eligibility for the immigration benefit I seek.
           `,
         },
-        texto80: {
+        text80: {
           type: "object",
           title: "",
           description: `I further authorize release of information contained in this petition, in supporting documents, and in my USCIS records to other entities and persons where necessary for the administration and enforcement of U.S. immigration laws.`,
         },
-        texto81: {
+        text81: {
           type: "object",
           title: "",
           description: `I understand that USCIS may require me to appear for an appointment to take my biometrics (fingerprints, photograph, and/or signature) and, at that time, if I am required to provide biometrics, I will be required to sign an oath reaffirming that:`,
         },
-        texto82: {
+        text82: {
           type: "object",
           title: "",
           description: `1) I provided or authorized all of the information contained in, and submitted with, my petition;
           2) I reviewed and understood all of the information in, and submitted with, my petition; and
           3) All of this information was complete, true, and correct at the time of filing.`,
         },
-        texto83: {
+        text83: {
           type: "object",
           title: "",
           description: `I certify, under penalty of perjury, that all of the information in my petition and any document submitted with it were provided or authorized by me, that I reviewed and understand all of the information contained in, and submitted with, my petition, and that all of this information is complete, true, and correct.`,
@@ -1659,7 +1660,7 @@ const formSchema = {
           type: "string",
           title: "6.b. Date of Signature ",
         },
-        texto84: {
+        text84: {
           type: "object",
           title: "",
           description: `NOTE TO ALL PETITIONERS:  If you do not completely fill out this petition or fail to submit required documents listed in the Instructions, USCIS may deny your petition.`,
@@ -1674,7 +1675,7 @@ const formSchema = {
         "Provide the following information about the interpreter if you used one.",
       required: [],
       properties: {
-        texto86: {
+        text86: {
           type: "object",
           title: "",
           description: `Interpreter's Full Name`,
@@ -1691,7 +1692,7 @@ const formSchema = {
           type: "string",
           title: "2.   Interpreter's Business or Organization Name (if any)",
         },
-        texto87: {
+        text87: {
           type: "object",
           title: "",
           description: "Interpreter's Mailing Address",
@@ -1728,7 +1729,7 @@ const formSchema = {
           type: "string",
           title: "3.h. Country",
         },
-        texto77: {
+        text77: {
           type: "object",
           title: "",
           description: `Interpreter's Contact Information`,
@@ -1745,17 +1746,17 @@ const formSchema = {
           type: "string",
           title: "6.   Interpreter's Email Address (if any)",
         },
-        texto88: {
+        text88: {
           type: "object",
           title: "",
           description: `Interpreter's Certification`,
         },
-        texto89: {
+        text89: {
           type: "object",
           title: "",
           description: `I certify, under penalty of perjury,   you  I am fluent in English and ____________________  which is the same language provided in Part 6., Item Number 1.b., and I have read to this petitioner in the identified language every question and instruction on this petition and his or her answer to every question.  The petitioner informed me that he or she understands every instruction, question, and answer on the petition, including the Petitioner's Declaration and Certification, and has verified the accuracy of every answer.`,
         },
-        texto90: {
+        text90: {
           type: "object",
           title: "",
           description: `Interpreter's Signature`,
@@ -1777,7 +1778,7 @@ const formSchema = {
       description: "Provide the following information about the preparer.",
       required: [],
       properties: {
-        texto91: {
+        text91: {
           type: "object",
           title: "",
           description: `Preparer's Full Name`,
@@ -1794,7 +1795,7 @@ const formSchema = {
           type: "string",
           title: "2.   Preparer's Business or Organization Name (if any)",
         },
-        texto92: {
+        text92: {
           type: "object",
           title: "",
           description: "Preparer's Mailing Address",
@@ -1831,7 +1832,7 @@ const formSchema = {
           type: "string",
           title: "3.h. Country",
         },
-        texto77: {
+        text77: {
           type: "object",
           title: "",
           description: `Preparer's Contact Information`,
@@ -1848,33 +1849,33 @@ const formSchema = {
           type: "string",
           title: "6.   Preparer's Email Address (if any)",
         },
-        texto93: {
+        text93: {
           type: "object",
           title: "",
           description: `Preparer's Statement`,
         },
-        texto94: {
+        text94: {
           type: "object",
           title: "",
           description: `7.a.     I am not an attorney or accredited representative but have prepared this petition on behalf of the petitioner  and with the petitioner's consent.
           7.b.     I am an attorney or accredited representative and my representation of the petitioner in this case extends does not extend beyond the preparation of this petition.`,
         },
-        texto95: {
+        text95: {
           type: "object",
           title: "",
           description: ` NOTE:  If you are an attorney or accredited representative whose representation extends beyond preparation of this petition, you may be obliged to  submit a completed Form G-28, Notice of Entry of Appearance as Attorney or Accredited Representative, with this petition.`,
         },
-        texto96: {
+        text96: {
           type: "object",
           title: "",
           description: `Preparer's Certification`,
         },
-        texto97: {
+        text97: {
           type: "object",
           title: "",
           description: `By my signature, I certify, under penalty of perjury, that I prepared this petition at the request of the petitioner.  The petitioner then reviewed this completed petition and informed me that he or she understands all of the information contained in, and submitted with, his or her petition, including the Petitioner's Declaration and Certification, and that all of this information is complete, true, and correct.  I completed this petition based only on information that the petitioner provided to me or authorized me to obtain or use.`,
         },
-        texto98: {
+        text98: {
           type: "object",
           title: "",
           description: `Preparer's Signature`,
