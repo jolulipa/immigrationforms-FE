@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import { USER_DATA } from "../../constants/storageKeys";
-import { readAllForms } from "../../api/formsAccess";
+import { readAllForms, print } from "../../api/formsAccess";
 
 const UsersPage = (props) => {
   const [results, setResults] = useState([]);
@@ -14,9 +14,13 @@ const UsersPage = (props) => {
     history.push(`/forms/${formId}/${id}`);
   };
 
+  const printForm = async (id) => {
+    await print(id);
+  }
+
   const renderResults = () =>
     results.map((el) => (
-      <tr>
+      <tr key={el.id}>
         <td>{el?.formId}</td>
         <td>{el?.createdAt.split("T")[0]}</td>
         <td>{el?.updatedAt.split("T")[0]}</td>
@@ -29,6 +33,15 @@ const UsersPage = (props) => {
             Select form
           </Button>
         </td>
+        <td>
+          <Button
+              onClick={() => {
+                printForm(el.id);
+              }}
+          >
+            Print
+          </Button>
+        </td>
       </tr>
     ));
 
@@ -39,6 +52,7 @@ const UsersPage = (props) => {
           <th>Form name</th>
           <th>Created on</th>
           <th>Modified on</th>
+          <th>#</th>
           <th>#</th>
         </tr>
       </thead>
