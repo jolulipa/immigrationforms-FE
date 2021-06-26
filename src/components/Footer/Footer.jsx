@@ -6,13 +6,10 @@ const Footer = () => {
     <footer className="container bg-light">
       <p style={styles.paragraph}>
         {" "}
-        Síguenos en las Redes Sociales ___-___ Copyright &copy; The Immigration
-        Times, 2021
+        Copyright &copy; The Immigration Times, 2021. Síguenos en las Redes
+        Sociales
       </p>
-      <Link
-        to="/screens/contact"
-        className="col-md-4 offset-md-4 badge badge-pill badge-warning"
-      >
+      <Link to="/screens/contact" className="row d-flex justify-content-center">
         contactenos
       </Link>
     </footer>

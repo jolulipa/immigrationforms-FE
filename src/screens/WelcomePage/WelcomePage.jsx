@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
+import Footer from "../../components/Footer";
 
 const WelcomePage = () => {
   return (
@@ -22,7 +23,7 @@ const WelcomePage = () => {
           migratorios.
         </p>
       </div>
-      <div className="row d-flex justify-content-center ">
+      <div className="row d-flex justify-content-center">
         <Link
           to="/screens/Registration"
           className="badge badge-pill badge-danger align-items-between"
@@ -38,6 +39,9 @@ const WelcomePage = () => {
         >
           Bandeja de Usuario
         </Link>
+      </div>
+      <div class="card">
+        <Footer />
       </div>
     </div>
   );

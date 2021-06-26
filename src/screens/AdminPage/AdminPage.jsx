@@ -1,4 +1,5 @@
 import { colors } from "../../ui-config/colors";
+
 const AdminPage = (props) => {
   return (
     <div className="container">
