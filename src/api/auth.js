@@ -16,3 +16,10 @@ export const loginUser = (values) =>
       "Content-Type": "application/json",
     },
   });
+export const readUsers = () =>
+  fetch(`${baseUrl}/api/auth/readUsers`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });

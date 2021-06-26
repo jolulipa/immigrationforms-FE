@@ -69,7 +69,6 @@ const UsersPage = (props) => {
         <span style={styles.title}>A THE IMMIGRATION TIME</span>
       </h3>
       <div className="row d-flex justify-content-center">
-        <button onClick={props.handleLogout}>Log Out</button>
         <div>
           <p style={styles.paragraph}>
             Esta es su bandeja de usuario. Aqui podrá crear y llenar formularios

@@ -1,4 +1,5 @@
 import { colors } from "../../ui-config/colors";
+
 const AdminPage = (props) => {
   return (
     <div className="container">
@@ -6,9 +7,6 @@ const AdminPage = (props) => {
         ADMINISTRACIÓN DE LA APP DE THE IMMIGRATION TIME
       </h2>
       <div className="row">
-        <button className="col-md-4 offset-md-4" onClick={props.handleLogout}>
-          Log Out
-        </button>
         <p style={styles.paragraph}>
           Esta es la herramenta de <strong>administración</strong> de la app.
           Aqui el administrador podrá borrar y/o modificar usuarios y
