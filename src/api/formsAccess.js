@@ -65,3 +65,10 @@ export const deleteForm = (id) => {
     handleError();
   }
 };
+
+export const print = async (id) => fetch(`${baseUrl}/api/forms/print/${id}`, {
+  method: "GET",
+      headers: {
+    jwt: token,
+  },
+});
