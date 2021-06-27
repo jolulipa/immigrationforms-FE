@@ -11,6 +11,7 @@
     "bootstrap": "^4.6.0",
     "formik": "^2.2.6",
     "jose": "^3.12.1",
+    "js-file-download": "^0.4.12",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.1",

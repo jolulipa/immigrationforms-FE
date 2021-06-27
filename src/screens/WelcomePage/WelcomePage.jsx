@@ -40,7 +40,7 @@ const WelcomePage = () => {
           Bandeja de Usuario
         </Link>
       </div>
-      <div class="card">
+      <div className="card">
         <Footer />
       </div>
     </div>

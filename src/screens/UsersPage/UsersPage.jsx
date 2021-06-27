@@ -15,7 +15,9 @@ const UsersPage = (props) => {
   };
 
   const printForm = async (id) => {
-    await print(id);
+    const response = await print(id);
+    const data = await response.json();
+    console.log(data);
   }
 
   const renderResults = () =>
