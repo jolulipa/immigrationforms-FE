@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
-import { USER_DATA } from "../../constants/storageKeys";
 import { readUsers } from "../../api/auth";
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);
-  const [userData, setUserData] = useState({});
 
   const deleteUser = (id) => {
     console.log(id);
@@ -20,6 +18,7 @@ const AdminPage = () => {
         <td>{el?.updatedAt.split("T")[0]}</td>
         <td>
           <Button
+            className="btn btn-danger"
             onClick={() => {
               deleteUser(el.id);
             }}
@@ -27,20 +26,30 @@ const AdminPage = () => {
             Delete User
           </Button>
         </td>
+        <td>
+          <Button
+            onClick={() => {
+              console.log("ir a la pagina de este usuario");
+            }}
+          >
+            User Forms
+          </Button>
+        </td>
       </tr>
     ));
 
-  const renderTable = () => (
+  const renderTable = (results) => (
     <table className="table table-striped">
       <thead>
         <tr>
           <th>User email</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th>#</th>
+          <th></th>
+          <th className="d-flex justify-content-center">Go To:</th>
         </tr>
       </thead>
-      <tbody>{renderResults()}</tbody>
+      <tbody>{renderResults(results)}</tbody>
     </table>
   );
 
@@ -48,13 +57,9 @@ const AdminPage = () => {
   useEffect(() => {
     (async () => {
       const { results } = await readUsers();
-      const userEmail = results?.email;
-      setUserData({ userEmail });
-      localStorage.setItem(USER_DATA, userEmail);
       setResults(results);
-      console.log(results, userData);
     })();
-  }, [userData]);
+  }, []);
 
   return (
     <div className="container ">
@@ -69,7 +74,7 @@ const AdminPage = () => {
             formularios.
           </p>
         </div>
-        <div>{renderTable()}</div>
+        <div>{renderTable(results)}</div>
       </div>
     </div>
   );
