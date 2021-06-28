@@ -1,8 +1,7 @@
 import { baseUrl } from "./configuration";
 import { AUTH_TOKEN } from "../constants/storageKeys";
 
-const token = localStorage.readItem(AUTH_TOKEN);
-console.log(token);
+const token = localStorage.getItem(AUTH_TOKEN);
 
 export const registerUser = (values) =>
   fetch(`${baseUrl}/api/auth/register`, {
@@ -24,6 +23,6 @@ export const readUsers = () =>
   fetch(`${baseUrl}/api/auth/readUsers`, {
     method: "GET",
     headers: {
-      jwt: { token },
+      jwt: token,
     },
   });
