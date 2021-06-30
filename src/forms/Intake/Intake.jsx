@@ -36,7 +36,6 @@ const Intake = () => {
     extractData({ formData });
     const obj = { data: JSON.stringify(formData), formId: "Intake" };
     createUpdateForm(obj, id);
-    console.log(`Form ${id} was created/updated`);
     navigateToForm(id);
   };
 

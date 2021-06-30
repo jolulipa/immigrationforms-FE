@@ -40,9 +40,9 @@ export const readForm = (id) =>
     });
 
 export const createUpdateForm = (values, id) => {
-  fetch(`${baseUrl}/api/forms/createUpdateForm/${id}`, {
+  fetch(`${baseUrl}/api/forms/createUpdateForm`, {
     method: "POST",
-    body: JSON.stringify(values),
+    body: JSON.stringify(values, id),
     headers: {
       "Content-Type": "application/json",
       jwt: token,

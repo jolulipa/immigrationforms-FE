@@ -8,7 +8,7 @@ const formSchema = {
       type: "object",
       title: "Part 1. Relationship",
       description: "(You are the petitioner. Your relative is the Beneficiary)",
-      required: ["petitionFor", "relationship", "siblingQ", "lawful"],
+      required: ["petitionFor", "lawful"],
       properties: {
         petitionFor: {
           type: "string",
