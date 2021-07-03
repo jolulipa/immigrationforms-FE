@@ -174,7 +174,7 @@ const formSchema = {
           title: "10.i. Country",
         },
         currMail: {
-          type: "boolean",
+          type: "string",
           title: `11.  Is your current mailing address the same as your physical address?`,
           enum: ["Yes", "No"],
         },

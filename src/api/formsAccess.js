@@ -27,8 +27,8 @@ export const readAllForms = async () => {
   return await response.json();
 };
 
-export const readForm = (id) =>
-  fetch(`${baseUrl}/api/forms/readForm/${id}`, {
+export const readForm = async (id) =>
+  await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
     method: "GET",
     headers: {
       jwt: token,
@@ -39,24 +39,22 @@ export const readForm = (id) =>
       console.log(error);
     });
 
-export const createUpdateForm = (values, id) => {
-  fetch(`${baseUrl}/api/forms/createUpdateForm`, {
+export const createUpdateForm = async (values) => {
+  await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
     method: "POST",
-    body: JSON.stringify(values, id),
+    body: JSON.stringify(values),
     headers: {
       "Content-Type": "application/json",
       jwt: token,
     },
   })
     .then((result) => result.json())
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((error) => console.log(error));
 };
 
-export const deleteForm = (id) => {
+export const deleteForm = async (id) => {
   if (hasAccess) {
-    fetch(`${baseUrl}/api/forms/updateForm/${id}`, {
+    await fetch(`${baseUrl}/api/forms/updateForm/${id}`, {
       method: "DELETE",
       headers: {
         jwt: token,
@@ -68,7 +66,7 @@ export const deleteForm = (id) => {
 };
 
 export const print = async (id) =>
-  fetch(`${baseUrl}/api/forms/print/${id}`, {
+  await fetch(`${baseUrl}/api/forms/print/${id}`, {
     method: "GET",
     headers: {
       jwt: token,

@@ -11,7 +11,7 @@ const I130 = () => {
   const isEditMode = !!id;
   const history = useHistory();
 
-  const navigateToForm = (id) => {
+  const navigateToPage = () => {
     history.push("/screens/UsersPage");
   };
 
@@ -41,8 +41,8 @@ const I130 = () => {
   const handleSubmit = async ({ formData }) => {
     extractData({ formData });
     const obj = { data: JSON.stringify(formData), formId: "I130" };
-    createUpdateForm(obj, id);
-    navigateToForm(id);
+    createUpdateForm(obj);
+    navigateToPage();
   };
 
   return (
