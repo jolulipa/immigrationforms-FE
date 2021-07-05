@@ -62,8 +62,8 @@ const UsersPage = () => {
           <th>Form name</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th>#</th>
-          <th>#</th>
+          <th>Select EDIT: or</th>
+          <th>PRINT form:</th>
         </tr>
       </thead>
       <tbody>{renderResults()}</tbody>
@@ -92,14 +92,14 @@ const UsersPage = () => {
         <span style={styles.variable}>{userData?.fullName?.toUpperCase()}</span>
         <span style={styles.title}>A THE IMMIGRATION TIME</span>
       </h3>
-      <div className="row d-flex justify-content-center">
+      <div>
         <div>
           <p style={styles.paragraph}>
             Esta es su bandeja de usuario. Aqui podrá crear y llenar formularios
             de servicios, borrar y/o modificar formuilarios y servicios.
           </p>
         </div>
-        <div>
+        <div className="row d-flex justify-content-center">
           <Link
             to="/screens/LandingPage"
             className="badge badge-pill badge-info"

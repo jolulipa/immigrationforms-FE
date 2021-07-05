@@ -1,7 +1,6 @@
 import { baseUrl } from "./configuration";
 import { AUTH_TOKEN } from "../constants/storageKeys";
 import JWT from "jwt-decode";
-// import fileDownload from 'js-file-download';
 
 let hasAccess = false;
 const token = localStorage.getItem(AUTH_TOKEN);
