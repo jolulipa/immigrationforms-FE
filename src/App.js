@@ -3,7 +3,7 @@ import AppContextProvider from "./AppContextProvider";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Intake from "./forms/Intake";
 import I130 from "./forms/I130";
 import I130A from "./forms/I130A";

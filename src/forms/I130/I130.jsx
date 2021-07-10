@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Form from "@rjsf/bootstrap-4";
 import schema from "./i130schema";
 import uiSchema from "./i130UiSchema";
@@ -9,6 +9,11 @@ const I130 = () => {
   const [formData, setFormData] = useState();
   const { id } = useParams();
   const isEditMode = !!id;
+  const history = useHistory();
+
+  const navigateToPage = () => {
+    history.push("/screens/UsersPage");
+  };
 
   useEffect(() => {
     if (!isEditMode) return;
@@ -24,13 +29,20 @@ const I130 = () => {
       const aVolar = `text${i}`;
       delete formData.p1[aVolar];
       delete formData.p2[aVolar];
+      delete formData.p3[aVolar];
+      delete formData.p4[aVolar];
+      delete formData.p5[aVolar];
+      delete formData.p6[aVolar];
+      delete formData.p7[aVolar];
+      delete formData.p8[aVolar];
     }
   };
 
   const handleSubmit = async ({ formData }) => {
     extractData({ formData });
     const obj = { data: JSON.stringify(formData), formId: "I130" };
-    createUpdateForm(obj, id);
+    createUpdateForm(obj);
+    navigateToPage();
   };
 
   return (

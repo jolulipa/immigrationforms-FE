@@ -11,7 +11,7 @@ const Intake = () => {
   const isEditMode = !!id;
   const history = useHistory();
 
-  const navigateToForm = (id) => {
+  const navigateToForm = () => {
     history.push("/screens/UsersPage");
   };
 
@@ -35,9 +35,8 @@ const Intake = () => {
   const handleSubmit = async ({ formData }) => {
     extractData({ formData });
     const obj = { data: JSON.stringify(formData), formId: "Intake" };
-    createUpdateForm(obj, id);
-    console.log(`Form ${id} was created/updated`);
-    navigateToForm(id);
+    createUpdateForm(obj);
+    navigateToForm();
   };
 
   return (

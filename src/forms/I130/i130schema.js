@@ -8,7 +8,7 @@ const formSchema = {
       type: "object",
       title: "Part 1. Relationship",
       description: "(You are the petitioner. Your relative is the Beneficiary)",
-      required: ["petitionFor", "relationship", "siblingQ", "lawful"],
+      required: ["petitionFor", "lawful"],
       properties: {
         petitionFor: {
           type: "string",
@@ -174,7 +174,7 @@ const formSchema = {
           title: "10.i. Country",
         },
         currMail: {
-          type: "boolean",
+          type: "string",
           title: `11.  Is your current mailing address the same as your physical address?`,
           enum: ["Yes", "No"],
         },
