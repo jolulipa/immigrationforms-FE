@@ -1,5 +1,5 @@
 import React from "react";
-import AppContextProvider from "./AppContextProvider";
+import AppContextProvider from "./context/Provider";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
