@@ -1,16 +1,13 @@
 import { NavLink, useHistory } from "react-router-dom";
-import "./styles.css";
 import Burger from "./Burger";
-import { AUTH_TOKEN, APP_STORE_NAME } from "../../constants/storageKeys";
-import { useAppContext, useUpdateAppContext } from "../../AppContextProvider";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { useAppContext } from "../../context/Provider";
+import "./styles.css";
 
 const Navbar = () => {
-  const { email } = useAppContext();
-  let eMailx = email;
-  console.log("eMailx Inicio=", eMailx);
-  const updater = useUpdateAppContext();
+  const { state, updateEmail } = useAppContext();
+  const {email} = state;
   const history = useHistory();
-  const globalUpdate = useUpdateAppContext();
 
   const navigateToWelcome = () => {
     history.push("/screens/Welcome");
@@ -18,13 +15,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(APP_STORE_NAME);
-    updater({ email: "" });
-    globalUpdate();
-    eMailx = "";
-    console.log("eMailx logout=", eMailx);
-    console.log("Updater=", updater);
-    console.log("email=", email);
+    updateEmail('');
     alert(`You're out`);
     navigateToWelcome();
   };
@@ -41,13 +32,13 @@ const Navbar = () => {
           <div>negocio@gmail.com</div>
         </div>
         <div className="col d-none d-md-block d-xl-block status">
-          {eMailx ? `Bienvenido ${eMailx}` : ""}
+          {!!email && `Bienvenido ${email}`}
           <button
             className="badge badge-pill badge-danger font-weight-light"
             type="button"
             onClick={handleLogout}
           >
-            {eMailx ? `Logout` : "No User"}
+            {email ? `Logout` : "No User"}
           </button>
         </div>
       </div>

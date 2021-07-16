@@ -5,7 +5,7 @@ import * as yup from "yup"; //modulo de validacion de campos
 import { Spinner, Button } from "react-bootstrap";
 import { AUTH_TOKEN } from "../../constants/storageKeys";
 import { useLocation, useHistory } from "react-router-dom";
-import { useUpdateAppContext } from "../../AppContextProvider";
+import { useAppContext } from "../../context/Provider";
 import "./styles.css";
 
 const validationSchema = yup.object().shape({
@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
 const Login = () => {
   const location = useLocation();
   const history = useHistory();
-  const globalUpdate = useUpdateAppContext();
+  const { updateEmail } = useAppContext();
 
   const navigateToRegistration = () => {
     history.push("/screens/Registration");
@@ -33,7 +33,7 @@ const Login = () => {
     if (result.status === 200) {
       // Code in case of success
       const { email } = values;
-      globalUpdate({ email });
+      updateEmail(email);
       const data = await result.json();
       localStorage.setItem(AUTH_TOKEN, data.token);
       const { from } = location.state || {
