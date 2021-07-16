@@ -6,6 +6,8 @@ import { useAppContext, useUpdateAppContext } from "../../AppContextProvider";
 
 const Navbar = () => {
   const { email } = useAppContext();
+  let eMailx = email;
+  console.log("eMailx Inicio=", eMailx);
   const updater = useUpdateAppContext();
   const history = useHistory();
   const globalUpdate = useUpdateAppContext();
@@ -18,8 +20,12 @@ const Navbar = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(APP_STORE_NAME);
     updater({ email: "" });
-    alert(`You're out`);
     globalUpdate();
+    eMailx = "";
+    console.log("eMailx logout=", eMailx);
+    console.log("Updater=", updater);
+    console.log("email=", email);
+    alert(`You're out`);
     navigateToWelcome();
   };
   return (
@@ -32,16 +38,16 @@ const Navbar = () => {
         </div>
         <div className="col d-none d-md-block d-xl-block">
           E-mail
-          <div>john@gmail.com</div>
+          <div>negocio@gmail.com</div>
         </div>
         <div className="col d-none d-md-block d-xl-block status">
-          {email ? `Bienvenido ${email}` : ""}
+          {eMailx ? `Bienvenido ${eMailx}` : ""}
           <button
             className="badge badge-pill badge-danger font-weight-light"
             type="button"
             onClick={handleLogout}
           >
-            Log out
+            {eMailx ? `Logout` : "No User"}
           </button>
         </div>
       </div>
