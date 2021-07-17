@@ -20,7 +20,7 @@ const Navbar = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(APP_STORE_NAME);
     updater({ email: "" });
-    globalUpdate();
+    // globalUpdate();
     eMailx = "";
     console.log("eMailx logout=", eMailx);
     console.log("Updater=", updater);
