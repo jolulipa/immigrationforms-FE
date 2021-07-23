@@ -31,6 +31,7 @@ const UsersPage = () => {
   const renderResults = () =>
     results.map((el) => (
       <tr key={el.id}>
+        <td>{el?.formStatus}</td>
         <td>{el?.formId}</td>
         <td>{el?.createdAt.split("T")[0]}</td>
         <td>{el?.updatedAt.split("T")[0]}</td>
@@ -40,7 +41,7 @@ const UsersPage = () => {
               navigateToForm(el.id, el.formId);
             }}
           >
-            Select form
+            Select
           </Button>
         </td>
         <td>
@@ -59,10 +60,11 @@ const UsersPage = () => {
     <table className="table table-striped">
       <thead>
         <tr>
+          <th>Form Status</th>
           <th>Form name</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th>Select EDIT: or</th>
+          <th>EDIT: or</th>
           <th>PRINT form:</th>
         </tr>
       </thead>
@@ -72,16 +74,23 @@ const UsersPage = () => {
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
+    const navigate = () => {
+      history.push(`/forms/Intake`);
+    };
     (async () => {
       const { results } = await readAllForms();
-      const intakeForm = results.find((el) => el.formId === "Intake");
-      const intakeData = JSON.parse(intakeForm?.data);
-      const userEmail = intakeData?.p1?.email;
-      const fullName = intakeData?.p1?.petFullName;
-      const phone = intakeData?.p1?.phone;
-      setUserData({ userEmail, fullName, phone });
-      localStorage.setItem(USER_DATA, userEmail, fullName, phone);
-      setResults(results);
+      if (!results) {
+        navigate();
+      } else {
+        const intakeForm = results.find((el) => el.formId === "Intake");
+        const intakeData = JSON.parse(intakeForm?.data);
+        const userEmail = intakeData?.p1?.email;
+        const fullName = intakeData?.p1?.petFullName;
+        const phone = intakeData?.p1?.phone;
+        setUserData({ userEmail, fullName, phone });
+        localStorage.setItem(USER_DATA, userEmail, fullName, phone);
+        setResults(results);
+      }
     })();
   }, []);
 

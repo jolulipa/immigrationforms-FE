@@ -34,7 +34,12 @@ const Intake = () => {
 
   const handleSubmit = async ({ formData }) => {
     extractData({ formData });
-    const obj = { data: JSON.stringify(formData), formId: "Intake" };
+    const obj = {
+      data: JSON.stringify(formData),
+      formId: "Intake",
+      formStatus: "unpaid",
+    };
+    console.log(obj);
     createUpdateForm(obj);
     navigateToForm();
   };

@@ -40,7 +40,11 @@ const N400 = () => {
 
   const handleSubmit = async ({ formData }) => {
     extractData({ formData });
-    const obj = { data: JSON.stringify(formData), formId: "N400" };
+    const obj = {
+      data: JSON.stringify(formData),
+      formId: "N400",
+      formStatus: "Unpaid",
+    };
     createUpdateForm(obj);
     navigateToPage();
   };
