@@ -78,18 +78,18 @@ const UsersPage = () => {
       history.push(`/forms/Intake`);
     };
     (async () => {
-      const { results } = await readAllForms();
-      if (!results) {
+      const { results: registers } = await readAllForms();
+      if (!registers || registers.length === 0) {
         navigate();
       } else {
-        const intakeForm = results.find((el) => el.formId === "Intake");
+        const intakeForm = registers.find((el) => el.formId === "Intake");
         const intakeData = JSON.parse(intakeForm?.data);
         const userEmail = intakeData?.p1?.email;
         const fullName = intakeData?.p1?.petFullName;
         const phone = intakeData?.p1?.phone;
         setUserData({ userEmail, fullName, phone });
         localStorage.setItem(USER_DATA, userEmail, fullName, phone);
-        setResults(results);
+        setResults(registers);
       }
     })();
   }, []);

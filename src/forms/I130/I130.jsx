@@ -46,7 +46,7 @@ const I130 = () => {
       formStatus: "Unpaid",
     };
     console.log(obj);
-    createUpdateForm(obj);
+    await createUpdateForm(obj);
     navigateToPage();
   };
 

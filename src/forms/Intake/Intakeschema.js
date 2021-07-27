@@ -134,10 +134,9 @@ const formSchema = {
           type: "string",
           title: `Phone:`,
         },
-        text18: {
-          type: "object",
-          title: "",
-          description: `Full Name of BENEFICIARY`,
+        benFullName: {
+          type: "string",
+          title: "Full Name of BENEFICIARY",
         },
         benLastName: {
           type: "string",
@@ -159,7 +158,7 @@ const formSchema = {
         text20: {
           type: "object",
           title: "",
-          description: `Provide your physical current address inside the United States.`,
+          description: `Provide BENEFICIARY current address.`,
         },
         phy2Street: {
           type: "string",

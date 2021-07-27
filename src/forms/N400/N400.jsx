@@ -45,7 +45,7 @@ const N400 = () => {
       formId: "N400",
       formStatus: "Unpaid",
     };
-    createUpdateForm(obj);
+    await createUpdateForm(obj);
     navigateToPage();
   };
 

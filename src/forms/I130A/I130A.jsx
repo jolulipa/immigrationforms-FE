@@ -45,7 +45,7 @@ const I130A = () => {
       formId: "I130A",
       formStatus: "Unpaid",
     };
-    createUpdateForm(obj);
+    await createUpdateForm(obj);
     navigateToPage();
   };
 
