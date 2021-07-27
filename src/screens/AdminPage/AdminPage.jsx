@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);
+  const history = useHistory();
+
+  const navigateToUser = (id, formId) => {
+    history.push(`/forms/${formId}/${id}`);
+  };
 
   const deleteUser = (id) => {
     console.log(id);
@@ -29,7 +35,7 @@ const AdminPage = () => {
         <td>
           <Button
             onClick={() => {
-              console.log("ir a la pagina de este usuario");
+              navigateToUser(el.id, el.email);
             }}
           >
             User Forms
@@ -45,7 +51,7 @@ const AdminPage = () => {
           <th>User email</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th></th>
+          <th> Action:</th>
           <th className="d-flex justify-content-center">Go To:</th>
         </tr>
       </thead>
