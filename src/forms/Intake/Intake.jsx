@@ -29,6 +29,12 @@ const Intake = () => {
       const aVolar = `text${i}`;
       delete formData.p1[aVolar];
       delete formData.p2[aVolar];
+      delete formData.p3[aVolar];
+      delete formData.p4[aVolar];
+      delete formData.p5[aVolar];
+      delete formData.p6[aVolar];
+      delete formData.p7[aVolar];
+      delete formData.p8[aVolar];
     }
   };
 
