@@ -1,14 +1,13 @@
 import { NavLink, useHistory } from "react-router-dom";
-import "./styles.css";
 import Burger from "./Burger";
-import { AUTH_TOKEN, APP_STORE_NAME } from "../../constants/storageKeys";
-import { useAppContext, useUpdateAppContext } from "../../AppContextProvider";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { useAppContext } from "../../context/Provider";
+import "./styles.css";
 
 const Navbar = () => {
-  const { email } = useAppContext();
-  const updater = useUpdateAppContext();
+  const { state, updateEmail } = useAppContext();
+  const {email} = state;
   const history = useHistory();
-  const globalUpdate = useUpdateAppContext();
 
   const navigateToWelcome = () => {
     history.push("/screens/Welcome");
@@ -16,10 +15,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(APP_STORE_NAME);
-    updater({ email: "" });
+    updateEmail('');
     alert(`You're out`);
-    globalUpdate();
     navigateToWelcome();
   };
   return (
@@ -32,16 +29,16 @@ const Navbar = () => {
         </div>
         <div className="col d-none d-md-block d-xl-block">
           E-mail
-          <div>john@gmail.com</div>
+          <div>negocio@gmail.com</div>
         </div>
         <div className="col d-none d-md-block d-xl-block status">
-          {email ? `Bienvenido ${email}` : ""}
+          {!!email && `Bienvenido ${email}`}
           <button
             className="badge badge-pill badge-danger font-weight-light"
             type="button"
             onClick={handleLogout}
           >
-            Log out
+            {email ? `Logout` : "No User"}
           </button>
         </div>
       </div>
