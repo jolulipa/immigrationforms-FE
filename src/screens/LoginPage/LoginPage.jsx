@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { loginUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import { Spinner, Button } from "react-bootstrap";
-import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { AUTH_TOKEN, ADMIN_DATA } from "../../constants/storageKeys";
 import { useLocation, useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
@@ -35,11 +35,24 @@ const Login = () => {
       const { email } = values;
       updateEmail(email);
       const data = await result.json();
+      const localId = data.id;
+      const localRole = data.role;
+
+      localStorage.setItem(ADMIN_DATA, `${localId},${localRole}`);
       localStorage.setItem(AUTH_TOKEN, data.token);
-      const { from } = location.state || {
-        from: { pathname: "/screens/UsersPage" },
-      };
-      history.replace(from);
+
+      if (data.role === "adm") {
+        const { from } = location.state || {
+          from: { pathname: "/screens/AdminPage" },
+        };
+        history.replace(from);
+      } else {
+        const { from } = location.state || {
+          from: { pathname: "/screens/UsersPage" },
+        };
+        history.replace(from);
+      }
+
       resetForm();
     } else if (result.status === 401) {
       toast.error("Invalid username or password", toastConfig);

@@ -26,6 +26,19 @@ export const readAllForms = async () => {
   return await response.json();
 };
 
+export const readAllFormsAdm = async (userCli) => {
+  const response = await fetch(
+    `${baseUrl}/api/forms/readAllFormsAdm/${userCli}`,
+    {
+      method: "GET",
+      headers: {
+        jwt: token,
+      },
+    }
+  );
+  return await response.json();
+};
+
 export const readForm = async (id) =>
   await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
     method: "GET",

@@ -3,13 +3,14 @@ import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
+import { ADMIN_DATA } from "../../constants/storageKeys";
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
 
-  const navigateToUser = (id, formId) => {
-    history.push(`/forms/${formId}/${id}`);
+  const navigateToUser = (id, role) => {
+    history.push(`/screens/UsersPage`);
   };
 
   const deleteUser = (id) => {
@@ -35,7 +36,7 @@ const AdminPage = () => {
         <td>
           <Button
             onClick={() => {
-              navigateToUser(el.id, el.email);
+              navigateToUser(el.id, el.email, el.role);
             }}
           >
             User Forms
@@ -61,6 +62,13 @@ const AdminPage = () => {
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
+    const localData = localStorage.getItem(ADMIN_DATA);
+    const user = localData.split(",");
+    console.log(user);
+    if (user[1] !== "adm") {
+      alert(`You're not an administrator`);
+      navigateToUser(user[0], user[1]);
+    }
     (async () => {
       const { results } = await readUsers();
       setResults(results);
