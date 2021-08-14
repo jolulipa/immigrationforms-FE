@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
-import { ADMIN_DATA } from "../../constants/storageKeys";
+import { USER_DATA } from "../../constants/storageKeys";
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);
@@ -62,9 +62,8 @@ const AdminPage = () => {
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
-    const localData = localStorage.getItem(ADMIN_DATA);
+    const localData = localStorage.getItem(USER_DATA);
     const user = localData.split(",");
-    console.log(user);
     if (user[1] !== "adm") {
       alert(`You're not an administrator`);
       navigateToUser(user[0], user[1]);

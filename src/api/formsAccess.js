@@ -23,7 +23,8 @@ export const readAllForms = async () => {
       jwt: token,
     },
   });
-  return await response.json();
+  const datos = await response.json();
+  return await datos.results;
 };
 
 export const readAllFormsAdm = async (userCli) => {
@@ -36,7 +37,8 @@ export const readAllFormsAdm = async (userCli) => {
       },
     }
   );
-  return await response.json();
+  const datos = await response.json();
+  return await datos.results;
 };
 
 export const readForm = async (id) =>

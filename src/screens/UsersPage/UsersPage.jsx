@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-import { USER_DATA, ADMIN_DATA } from "../../constants/storageKeys";
+import { USER_DATA } from "../../constants/storageKeys";
 import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
 
 const UsersPage = () => {
   const [results, setResults] = useState([]);
   const [userData, setUserData] = useState({});
+  const [registers, setRegisters] = useState([]);
   const history = useHistory();
 
   const navigateToForm = (id, formId) => {
@@ -72,78 +73,40 @@ const UsersPage = () => {
     </table>
   );
 
-  // const checkAdmin = () => {
-  //   const user = localStorage.getItem(ADMIN_DATA);
-  //   if (user.role === "adm") {
-  //   }
-  // };
-
-  // La responsabilidad de esto es cargar la data
-  // useEffect(() => {
-  //   const navigate = () => {
-  //     history.push(`/forms/Intake`);
-  //   };
-  //   (async () => {
-  //     const { results: registers } = await readAllForms();
-  //     if (!registers || registers.length === 0) {
-  //       navigate();
-  //     } else {
-  //       const intakeForm = registers.find((el) => el.formId === "Intake");
-  //       const intakeData = JSON.parse(intakeForm?.data);
-  //       const userEmail = intakeData?.p1?.email;
-  //       const fullName = intakeData?.p1?.petFullName;
-  //       const phone = intakeData?.p1?.phone;
-  //       setUserData({ userEmail, fullName, phone });
-  //       localStorage.setItem(USER_DATA, userEmail, fullName, phone);
-  //       setResults(registers);
-  //     }
-  //   })();
-  // }, []);
-
   useEffect(() => {
-    const navigateToIntake = () => {
-      history.push(`/forms/Intake`);
-    };
-
-    const navigateToAdmin = () => {
-      history.push("/screens/AdminPage");
-    };
-
-    let registers = [];
-
     const seek1 = async () => {
-      registers = await readAllForms();
+      const registers = await readAllForms();
       if (!registers || registers.length === 0) {
         alert(`You must fill the Intake form to continue`);
-        navigateToIntake();
+        history.push(`/forms/Intake`);
       }
+      process(registers);
     };
 
     const seek2 = async (idClient) => {
-      registers = await readAllFormsAdm(idClient);
+      const registers = await readAllFormsAdm(idClient);
       if (!registers || registers.length === 0) {
         alert(`Selected client has no forms`);
-        navigateToAdmin();
+        history.push("/screens/AdminPage");
       }
+      await process(registers);
     };
 
-    const localData = localStorage.getItem(ADMIN_DATA);
+    const process = async (registers) => {
+      const intakeForm = await registers.find((el) => el.formId === "Intake");
+      const intakeData = JSON.parse(intakeForm?.data);
+      const userEmail = intakeData?.p1?.email;
+      const fullName = intakeData?.p1?.petFullName;
+      const phone = intakeData?.p1?.phone;
+      setUserData({ userEmail, fullName, phone });
+      localStorage.setItem(USER_DATA, `${localData},${userEmail}, ${fullName}`);
+      setResults(registers);
+    };
+
+    const localData = localStorage.getItem(USER_DATA);
     const user = localData.split(",");
 
-    if (user[1] === "adm") {
-      seek2(user[0]);
-    } else {
-      seek1();
-    }
-
-    const intakeForm = registers.find((el) => el.formId === "Intake");
-    const intakeData = JSON.parse(intakeForm?.data);
-    const userEmail = intakeData?.p1?.email;
-    const fullName = intakeData?.p1?.petFullName;
-    const phone = intakeData?.p1?.phone;
-    setUserData({ userEmail, fullName, phone });
-    localStorage.setItem(USER_DATA, `${userEmail}, ${fullName}, ${phone}`);
-    setResults(registers);
+    user[1] === "adm" ? seek2() : seek1();
   }, []);
 
   return (

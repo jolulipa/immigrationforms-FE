@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { loginUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import { Spinner, Button } from "react-bootstrap";
-import { AUTH_TOKEN, ADMIN_DATA } from "../../constants/storageKeys";
+import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
 import { useLocation, useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
@@ -38,7 +38,7 @@ const Login = () => {
       const localId = data.id;
       const localRole = data.role;
 
-      localStorage.setItem(ADMIN_DATA, `${localId},${localRole}`);
+      localStorage.setItem(USER_DATA, `${localId},${localRole},${email}`);
       localStorage.setItem(AUTH_TOKEN, data.token);
 
       if (data.role === "adm") {
