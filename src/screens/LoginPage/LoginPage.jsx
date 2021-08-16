@@ -38,22 +38,25 @@ const Login = () => {
       const localId = data.id;
       const localRole = data.role;
 
-      localStorage.setItem(USER_DATA, `${localId},${localRole},${email}`);
+      localStorage.setItem(USER_DATA, JSON.stringify({localId, localRole, email}));
       localStorage.setItem(AUTH_TOKEN, data.token);
 
-      if (data.role === "adm") {
-        const { from } = location.state || {
-          from: { pathname: "/screens/AdminPage" },
-        };
-        history.replace(from);
-      } else {
-        const { from } = location.state || {
-          from: { pathname: "/screens/UsersPage" },
-        };
-        history.replace(from);
-      }
-
       resetForm();
+
+      setTimeout(() => {
+        console.log('LOGIN DATA', data);
+        if (data.role === "adm") {
+          const { from } = location.state || {
+            from: { pathname: "/screens/AdminPage" },
+          };
+          history.replace(from);
+        } else {
+          const { from } = location.state || {
+            from: { pathname: "/screens/UsersPage" },
+          };
+          history.replace(from);
+        }
+      }, 500);
     } else if (result.status === 401) {
       toast.error("Invalid username or password", toastConfig);
     } else {

@@ -2,7 +2,7 @@ import {createContext, useContext, useReducer} from 'react';
 import {EMAIL_TYPE} from "./types";
 
 const initialState = {
-    email: localStorage.getItem(EMAIL_TYPE) || ''
+    email: localStorage.getItem(EMAIL_TYPE) || '',
 }
 
 const reducer = (state, action) => {

@@ -4,6 +4,8 @@ import JWT from "jwt-decode";
 
 let hasAccess = false;
 const token = localStorage.getItem(AUTH_TOKEN);
+console.log('Token for request', token);
+
 if (!!token) {
   const decodedExp = JWT(token);
   const currentTimestamp = Date.now() / 1000;
@@ -17,6 +19,7 @@ const handleError = () => {
 };
 
 export const readAllForms = async () => {
+  console.log('Reading all forms', token);
   const response = await fetch(`${baseUrl}/api/forms/readAllForms`, {
     method: "GET",
     headers: {
