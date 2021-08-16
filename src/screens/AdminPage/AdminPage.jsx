@@ -81,6 +81,7 @@ const AdminPage = () => {
             const {results} = await readUsers();
             setResults(results);
         })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

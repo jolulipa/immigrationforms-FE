@@ -110,6 +110,7 @@ const UsersPage = () => {
             setResults(forms);
             await updateStoredValues(forms);
         })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
