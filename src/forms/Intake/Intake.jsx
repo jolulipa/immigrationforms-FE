@@ -11,7 +11,7 @@ const Intake = () => {
   const isEditMode = !!id;
   const history = useHistory();
 
-  const navigateToForm = () => {
+  const navigateToTray = () => {
     history.push("/screens/UsersPage");
   };
 
@@ -24,21 +24,18 @@ const Intake = () => {
   }, [isEditMode, id]);
 
   const extractData = async ({ formData }) => {
-    let i;
+    let i = 0;
     for (i = 1; i < 100; i++) {
-      const aVolar = `text${i}`;
-      delete formData.p1[aVolar];
-      delete formData.p2[aVolar];
-      delete formData.p3[aVolar];
-      delete formData.p4[aVolar];
-      delete formData.p5[aVolar];
-      delete formData.p6[aVolar];
-      delete formData.p7[aVolar];
-      delete formData.p8[aVolar];
+      delete formData?.p1[`text${i}`];
+      delete formData?.p2[`text${i}`];
+      delete formData?.p3[`text${i}`];
+      delete formData?.p4[`text${i}`];
+      delete formData?.p5[`text${i}`];
     }
   };
 
   const handleSubmit = async ({ formData }) => {
+    console.log(formData);
     await extractData({ formData });
     const obj = {
       data: JSON.stringify(formData),
@@ -46,7 +43,7 @@ const Intake = () => {
       formStatus: "unpaid",
     };
     await createUpdateForm(obj);
-    navigateToForm();
+    navigateToTray();
   };
 
   return (

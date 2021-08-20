@@ -25,6 +25,7 @@ const validationSchema = yup.object().shape({
 const Registration = () => {
   const history = useHistory();
   const redirectLocation = { pathname: "/screens/UsersPage" };
+
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
     const result = await registerUser(values);
@@ -41,7 +42,7 @@ const Registration = () => {
   };
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{ email: "", password: "", role: "reg" }}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
