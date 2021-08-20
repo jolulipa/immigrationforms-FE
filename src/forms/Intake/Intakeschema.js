@@ -7,7 +7,7 @@ const formSchema = {
     p1: {
       type: "object",
       title: "Part 1. Información sobre el cliente",
-      description: "Information of the PETITIONER:",
+      description: "Information of the PETITIONER You):",
       required: ["email", "aNumber", "socialSecNum", "petFullName"],
       properties: {
         email: {
@@ -72,41 +72,69 @@ const formSchema = {
           type: "string",
           title: "e. ZIP Code",
         },
-        phy1Province: {
+        petBirthDate: {
           type: "string",
-          title: "f. Province",
+          title: `Date of Birth`,
         },
-        phy1Postal: {
+        petSex: {
           type: "string",
-          title: "g. Postal Code ",
+          title: "Sex",
+          enum: ["male", "female"],
         },
-        phy1Country: {
+        petMaritalSts: {
           type: "string",
-          title: "h. Country",
+          title: `Marital Status:`,
+        },
+        petCurrImmSts: {
+          type: "string",
+          title: `Current Immigration Status?`,
+        },
+        petCityEntry: {
+          type: "string",
+          title: `City and State you entered the US:`,
+        },
+        petDateEntry: {
+          type: "string",
+          title: `Date you entered the US:`,
+        },
+        petHowEntry: {
+          type: "string",
+          title: "How did you enter the US?",
+        },
+        petWhenRes: {
+          type: "string",
+          title: `If Applicable, when did you get your lawful permanent residency? `,
+        },
+        petPendCourt: {
+          type: "string",
+          title: `Do you have any pending applications with USCIS or Immigration Court? `,
+        },
+        petCourtWhat: {
+          type: "string",
+          title: `If so, what applications? `,
         },
         text17: {
           type: "object",
           title: "",
           description: `Information About your BENEFICIARY (YOUR RELATIVE/INTENDING IMMIGRANT):`,
         },
-        phone2: {
+        benPhone: {
           type: "string",
           title: `Phone:`,
         },
-        text18: {
-          type: "object",
-          title: "",
-          description: `Full Name of BENEFICIARY`,
+        benFullName: {
+          type: "string",
+          title: "Full Name of BENEFICIARY",
         },
-        BenLastName: {
+        benLastName: {
           type: "string",
           title: "a. Family Name (Last Name)",
         },
-        BenFirstName: {
+        benFirstName: {
           type: "string",
           title: "b. Given Name (First Name)",
         },
-        BenMidName: {
+        benMidName: {
           type: "string",
           title: "c. Middle Name",
         },
@@ -118,7 +146,7 @@ const formSchema = {
         text20: {
           type: "object",
           title: "",
-          description: `Provide your physical current address inside the United States.`,
+          description: `Provide BENEFICIARY current address.`,
         },
         phy2Street: {
           type: "string",
@@ -156,28 +184,28 @@ const formSchema = {
           type: "string",
           title: `Correo electrónico/email:`,
         },
-        BenBirthDate: {
+        benBirthDate: {
           type: "string",
           title: `Date of Birth`,
         },
-        BenSex: {
+        benSex: {
           type: "string",
           title: "Sex",
           enum: ["male", "female"],
         },
-        BenMaritalSts: {
+        benMaritalSts: {
           type: "string",
           title: `Marital Status:`,
         },
-        BenCurrImmSts: {
+        benCurrImmSts: {
           type: "string",
           title: `Current Immigration Status?`,
         },
-        BenCityEntry: {
+        benCityEntry: {
           type: "string",
           title: `City and State you entered the US:`,
         },
-        BenDateEntry: {
+        benDateEntry: {
           type: "string",
           title: `Date you entered the US:`,
         },
@@ -189,11 +217,11 @@ const formSchema = {
           type: "string",
           title: `If Applicable, when did you get your lawful permanent residency? `,
         },
-        BenPendCourt: {
+        benPendCourt: {
           type: "string",
           title: `Do you have any pending applications with USCIS or Immigration Court? `,
         },
-        BenCourtWhat: {
+        benCourtWhat: {
           type: "string",
           title: `If so, what applications? `,
         },
@@ -202,15 +230,15 @@ const formSchema = {
           title: "",
           description: `PENDING CHARGES`,
         },
-        BenCourtCharges: {
+        benCourtCharges: {
           type: "string",
           title: `What are the charges? `,
         },
-        BenCourtCounts: {
+        benCourtCounts: {
           type: "number",
           title: `How many counts? `,
         },
-        BenSameDay: {
+        benSameDay: {
           type: "string",
           title: `Are all offenses on the same day? `,
         },
@@ -219,19 +247,19 @@ const formSchema = {
           title: "",
           description: `CRIMINAL RECORD`,
         },
-        BenPriors: {
+        benPriors: {
           type: "string",
           title: `Do you have prior arrests in the United States or any other countries? `,
         },
-        BenPriorsBasis: {
+        benPriorsBasis: {
           type: "string",
           title: `If yes, what was the basis of the arrest? `,
         },
-        BenPriorsWhere: {
+        benPriorsWhere: {
           type: "string",
           title: `If yes, where did it happen?`,
         },
-        BenPriorsWhen: {
+        benPriorsWhen: {
           type: "string",
           title: `When did it happen?`,
         },
@@ -241,11 +269,11 @@ const formSchema = {
           title: "",
           description: `REMOVAL PROCEEDINGS`,
         },
-        BenPrecedings: {
+        benPrecedings: {
           type: "string",
           title: `Have you ever been placed in deportation or removal proceedings?`,
         },
-        BenPrecWhere: {
+        benPrecWhere: {
           type: "string",
           title: `If yes, when and where?`,
         },
@@ -421,6 +449,443 @@ const formSchema = {
         assistWhen: {
           type: "string",
           title: "If Yes: When",
+        },
+      },
+    },
+    p3: {
+      type: "object",
+      title: "PETITIONER - Biographic Information",
+      description:
+        "NOTE:  Provide the biographic information about you, the petitioner.",
+      // required: [
+      //   "ethnicity",
+      //   "race",
+      //   "heightFeet",
+      //   "heightInches",
+      //   "weight",
+      //   "eyeColor",
+      //   "hairColor",
+      // ],
+      properties: {
+        placeBirth: {
+          type: "string",
+          title: "Place of Birth",
+        },
+        petCitizenship: {
+          type: "string",
+          title: "Citizenship",
+        },
+        ethnicity: {
+          type: "string",
+          title: "1.   Ethnicity (Select only one box)",
+          enum: ["Hispanic or Latino", "Not Hispanic or Latino"],
+        },
+        race: {
+          type: "string",
+          title: "2.   Race (Select all applicable boxes)",
+          enum: [
+            "White",
+            "Asian",
+            "Black or African American",
+            "American Indian or Alaska Native",
+            "Native Hawaiian or Other Pacific Islander",
+          ],
+        },
+        heightFeet: {
+          type: "number",
+          title: `3.a   Height Feet`,
+        },
+        heightInches: {
+          type: "number",
+          title: `3.b   Height Inches`,
+        },
+        weight: {
+          type: "number",
+          title: `4.   Weight in Pounds`,
+        },
+        eyeColor: {
+          type: "string",
+          title: "5.   Eye Color (Select only one box)",
+          enum: [
+            "Black",
+            "Blue",
+            "Brown",
+            "Gray",
+            "Green",
+            "Hazel",
+            "Maroon",
+            "Pink",
+            "Unknown/Other",
+          ],
+        },
+        hairColor: {
+          type: "string",
+          title: "6.   Hair Color (Select only one box)",
+          enum: [
+            "Bald (no hair)",
+            "Black",
+            "Blond",
+            "Brown",
+            "Gray",
+            "Red",
+            "Sandy",
+            "White",
+            "Unknown/Other",
+          ],
+        },
+        text16: {
+          type: "object",
+          title: "",
+          description: `Information About Your Parents`,
+        },
+        text17: {
+          type: "object",
+          title: "",
+          description: `Parent 1's Information:`,
+        },
+        text18: {
+          type: "object",
+          title: "",
+          description: `Full Name of Parent 1`,
+        },
+        par1LastName: {
+          type: "string",
+          title: "24.a. Family Name (Last Name)",
+        },
+        par1FirstName: {
+          type: "string",
+          title: "24.b. Given Name (First Name)",
+        },
+        par1MidName: {
+          type: "string",
+          title: "24.c. Middle Name",
+        },
+        par1BirthDate: {
+          type: "string",
+          title: `25.  Date of Birth`,
+        },
+        par1Sex: {
+          type: "string",
+          title: "26.  Sex",
+          enum: ["male", "female"],
+        },
+        par1CountryBirth: {
+          type: "string",
+          title: `27.  Country of Birth`,
+        },
+        par1City: {
+          type: "string",
+          title: `28.  City/Town/Village of Residence`,
+        },
+        par1CountryResidence: {
+          type: "string",
+          title: `29.  Country of Residence`,
+        },
+        text19: {
+          type: "object",
+          title: "",
+          description: `Parent 2's Information:`,
+        },
+        text20: {
+          type: "object",
+          title: "",
+          description: `Full Name of Parent 2`,
+        },
+        par2LastName: {
+          type: "string",
+          title: "30.a. Family Name (Last Name)",
+        },
+        par2FirstName: {
+          type: "string",
+          title: "30.b. Given Name (First Name)",
+        },
+        par2MidName: {
+          type: "string",
+          title: "30.c. Middle Name",
+        },
+        par2BirthDate: {
+          type: "string",
+          title: `31.  Date of Birth`,
+        },
+        par2Sex: {
+          type: "string",
+          title: "32.  Sex",
+          enum: ["male", "female"],
+        },
+        par2CountryBirth: {
+          type: "string",
+          title: `33.  Country of Birth`,
+        },
+        par2City: {
+          type: "string",
+          title: `34.  City/Town/Village of Residence`,
+        },
+        par2CountryResidence: {
+          type: "string",
+          title: `35.  Country of Residence`,
+        },
+        text13: {
+          type: "object",
+          title: "",
+          description: `Provide information on your current spouse (if currently married) first and then list all your prior spouses (if any).`,
+        },
+        text14: {
+          type: "object",
+          title: "",
+          description: `Spouse 1:.`,
+        },
+        wife1LastName: {
+          type: "string",
+          title: "20.a. Family Name (Last Name)",
+        },
+        wife1FirstName: {
+          type: "string",
+          title: "20.b. Given Name (First Name)",
+        },
+        wife1MidName: {
+          type: "string",
+          title: "20.c. Middle Name",
+        },
+        wife1MarriageDate: {
+          type: "string",
+          title: `21.  Date Marriage Ended`,
+        },
+        text15: {
+          type: "object",
+          title: "",
+          description: `Spouse 2:.`,
+        },
+        wife2LastName: {
+          type: "string",
+          title: "22.a. Family Name (Last Name)",
+        },
+        wife2FirstName: {
+          type: "string",
+          title: "22.b. Given Name (First Name)",
+        },
+        wife2MidName: {
+          type: "string",
+          title: "22.c. Middle Name",
+        },
+        wife2MarriageDate: {
+          type: "string",
+          title: `23.  Date Marriage Ended`,
+        },
+      },
+    },
+    p4: {
+      type: "object",
+      title: "RESIDENCE – LAST 5 YEARS:",
+      description: "",
+      properties: {
+        address1: {
+          type: "string",
+          title: `Address1`,
+        },
+        address1From: {
+          type: "string",
+          title: "From",
+        },
+        address1To: {
+          type: "string",
+          title: "To",
+        },
+        address2: {
+          type: "string",
+          title: `Address2`,
+        },
+        address2From: {
+          type: "string",
+          title: "From",
+        },
+        address2To: {
+          type: "string",
+          title: "To",
+        },
+        address3: {
+          type: "string",
+          title: `Address3`,
+        },
+        address3From: {
+          type: "string",
+          title: "From",
+        },
+        address3To: {
+          type: "string",
+          title: "To",
+        },
+        address4: {
+          type: "string",
+          title: `Address4`,
+        },
+        address4From: {
+          type: "string",
+          title: "From",
+        },
+        address4To: {
+          type: "string",
+          title: "To",
+        },
+        address5: {
+          type: "string",
+          title: `Address5`,
+        },
+        address5From: {
+          type: "string",
+          title: "From",
+        },
+        address5To: {
+          type: "string",
+          title: "To",
+        },
+        text13: {
+          type: "object",
+          title: "",
+          description: `Last Address outside the United States of more than 1 year`,
+        },
+        address6: {
+          type: "string",
+          title: `Address6`,
+        },
+        address6From: {
+          type: "string",
+          title: "From",
+        },
+        address6To: {
+          type: "string",
+          title: "To",
+        },
+      },
+    },
+    p5: {
+      type: "object",
+      title: "OCCUPATIONS – LAST 5 YEARS:",
+      description: "",
+      properties: {
+        employer1: {
+          type: "string",
+          title: `Employer Name`,
+        },
+        employer1Address: {
+          type: "string",
+          title: `Address`,
+        },
+        employer1Title: {
+          type: "string",
+          title: "Title",
+        },
+        employer1From: {
+          type: "string",
+          title: "From",
+        },
+        employer1To: {
+          type: "string",
+          title: "To",
+        },
+        employer2: {
+          type: "string",
+          title: `Employer Name`,
+        },
+        employer2Address: {
+          type: "string",
+          title: `Address`,
+        },
+        employer2Title: {
+          type: "string",
+          title: "Title",
+        },
+        employer2From: {
+          type: "string",
+          title: "From",
+        },
+        employer2To: {
+          type: "string",
+          title: "To",
+        },
+        employer3: {
+          type: "string",
+          title: `Employer Name`,
+        },
+        employer3Address: {
+          type: "string",
+          title: `Address`,
+        },
+        employer3Title: {
+          type: "string",
+          title: "Title",
+        },
+        employer3From: {
+          type: "string",
+          title: "From",
+        },
+        employer3To: {
+          type: "string",
+          title: "To",
+        },
+        employer4: {
+          type: "string",
+          title: `Employer Name`,
+        },
+        employer4Address: {
+          type: "string",
+          title: `Address`,
+        },
+        employer4Title: {
+          type: "string",
+          title: "Title",
+        },
+        employer4From: {
+          type: "string",
+          title: "From",
+        },
+        employer4To: {
+          type: "string",
+          title: "To",
+        },
+        employer5: {
+          type: "string",
+          title: `Employer Name`,
+        },
+        employer5Address: {
+          type: "string",
+          title: `Address`,
+        },
+        employer5Title: {
+          type: "string",
+          title: "Title",
+        },
+        employer5From: {
+          type: "string",
+          title: "From",
+        },
+        employer5To: {
+          type: "string",
+          title: "To",
+        },
+        text14: {
+          type: "object",
+          title: "",
+          description: `Last Employer outside the United States of more than 1 year`,
+        },
+        employer6: {
+          type: "string",
+          title: `Employer Name`,
+        },
+        employer6Address: {
+          type: "string",
+          title: `Address`,
+        },
+        employer6Title: {
+          type: "string",
+          title: "Title",
+        },
+        employer6From: {
+          type: "string",
+          title: "From",
+        },
+        employer6To: {
+          type: "string",
+          title: "To",
         },
       },
     },

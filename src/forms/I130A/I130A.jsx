@@ -26,15 +26,14 @@ const I130A = () => {
   const extractData = async ({ formData }) => {
     let i;
     for (i = 1; i < 100; i++) {
-      const aVolar = `text${i}`;
-      delete formData.p1[aVolar];
-      delete formData.p2[aVolar];
-      delete formData.p3[aVolar];
-      delete formData.p4[aVolar];
-      delete formData.p5[aVolar];
-      delete formData.p6[aVolar];
-      delete formData.p7[aVolar];
-      delete formData.p8[aVolar];
+      delete formData?.p1[`text${i}`];
+      delete formData?.p2[`text${i}`];
+      delete formData?.p3[`text${i}`];
+      delete formData?.p4[`text${i}`];
+      delete formData?.p5[`text${i}`];
+      delete formData?.p6[`text${i}`];
+      delete formData?.p7[`text${i}`];
+      delete formData?.p8[`text${i}`];
     }
   };
 
@@ -45,7 +44,7 @@ const I130A = () => {
       formId: "I130A",
       formStatus: "Unpaid",
     };
-    createUpdateForm(obj);
+    await createUpdateForm(obj);
     navigateToPage();
   };
 

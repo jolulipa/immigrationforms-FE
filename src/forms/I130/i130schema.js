@@ -753,15 +753,15 @@ const formSchema = {
       //   "benCountryResidence",
       // ],
       properties: {
-        PetANumber: {
+        benANumber: {
           type: "number",
           title: `1. Alien Registration Number (A-Number) (if any)`,
         },
-        petOnLineAccNum: {
+        benOnLineAccNum: {
           type: "number",
           title: `2. USCIS Online Account Number (if any)`,
         },
-        petSocialSecNum: {
+        benSocialSecNum: {
           type: "number",
           title: `3. U.S. Social Security Number (if any)`,
         },
@@ -1434,8 +1434,7 @@ const formSchema = {
         text60: {
           type: "object",
           title: "",
-          description: `The beneficiary is in the United States and will apply for adjustment of status to that of a lawful permanent resident 
-          at the U.S. Citizenship and Immigration Services (USCIS) office in:`,
+          description: `The beneficiary is in the United States and will apply for adjustment of status to that of a lawful permanent resident at the U.S. Citizenship and Immigration Services (USCIS) office in:`,
         },
         adjustmentCityTown: {
           type: "string",

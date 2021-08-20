@@ -1,10 +1,24 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
+import { USER_DATA } from "../../constants/storageKeys";
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);
+  const history = useHistory();
+
+  const navigateToUser = (id, email, role) => {
+    history.push({
+      pathname: "/screens/UsersPage",
+      state: {
+        id,
+        email,
+        role,
+      },
+    });
+  };
 
   const deleteUser = (id) => {
     console.log(id);
@@ -12,7 +26,7 @@ const AdminPage = () => {
 
   const renderResults = () =>
     results.map((el) => (
-      <tr>
+      <tr key={el.id}>
         <td>{el?.email}</td>
         <td>{el?.createdAt.split("T")[0]}</td>
         <td>{el?.updatedAt.split("T")[0]}</td>
@@ -29,7 +43,7 @@ const AdminPage = () => {
         <td>
           <Button
             onClick={() => {
-              console.log("ir a la pagina de este usuario");
+              navigateToUser(el.id, el.email, el.role);
             }}
           >
             User Forms
@@ -45,7 +59,7 @@ const AdminPage = () => {
           <th>User email</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th></th>
+          <th> Action:</th>
           <th className="d-flex justify-content-center">Go To:</th>
         </tr>
       </thead>
@@ -55,10 +69,18 @@ const AdminPage = () => {
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
+    const storedData = localStorage.getItem(USER_DATA);
+    const { localId, localRole } = JSON.parse(storedData);
+
+    if (localRole !== "adm") {
+      alert(`You're not an administrator`);
+      navigateToUser(localId, localRole);
+    }
     (async () => {
       const { results } = await readUsers();
       setResults(results);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
