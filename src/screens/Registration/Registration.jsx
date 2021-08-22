@@ -3,6 +3,8 @@ import { registerUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import "./styles.css";
 import { useHistory } from "react-router-dom";
+import { useAppContext } from "../../context/Provider";
+import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -24,22 +26,37 @@ const validationSchema = yup.object().shape({
 
 const Registration = () => {
   const history = useHistory();
-  const redirectLocation = { pathname: "/screens/UsersPage" };
+  const { updateEmail } = useAppContext();
+
+  const redirectLocation = () => {
+    history.push(`/screens/UsersPage`);
+  };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
+
     const result = await registerUser(values);
-    if (result.status === 200) {
+    if (result.isSuccessful) {
       // redirect to Client tray
+      const { email } = result;
+      updateEmail(email);
+      const localId = result.id;
+      const localRole = result.role;
+
+      localStorage.setItem(
+        USER_DATA,
+        JSON.stringify({ localId, localRole, email })
+      );
+      localStorage.setItem(AUTH_TOKEN, result.token);
       resetForm();
-      history.replace(redirectLocation);
+      redirectLocation();
     } else {
       // Code in case of error
-      const errorData = await result.json();
-      console.log("An error occurred", errorData);
+      console.log("An error occurred");
     }
     setSubmitting(false);
   };
+
   return (
     <Formik
       initialValues={{ email: "", password: "", role: "reg" }}

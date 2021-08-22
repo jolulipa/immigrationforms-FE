@@ -18,7 +18,6 @@ const handleError = () => {
 };
 
 export const readAllForms = async () => {
-  console.log("Reading all forms", token);
   const response = await fetch(`${baseUrl}/api/forms/readAllForms`, {
     method: "GET",
     headers: {
