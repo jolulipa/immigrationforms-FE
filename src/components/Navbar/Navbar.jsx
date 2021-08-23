@@ -17,7 +17,7 @@ const Navbar = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(USER_DATA);
     updateEmail("");
-    alert(`You're out`);
+    alert(`You have logged out of the system`);
     navigateToWelcome();
   };
   return (

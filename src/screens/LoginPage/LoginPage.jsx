@@ -34,7 +34,7 @@ const Login = () => {
       // Code in case of success
       const { email } = values;
       updateEmail(email);
-      const data = await result.json();
+      const data = await result;
       const localId = data.id;
       const localRole = data.role;
 

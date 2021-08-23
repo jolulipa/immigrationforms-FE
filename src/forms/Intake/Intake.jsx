@@ -35,7 +35,6 @@ const Intake = () => {
   };
 
   const handleSubmit = async ({ formData }) => {
-    console.log(formData);
     await extractData({ formData });
     const obj = {
       data: JSON.stringify(formData),
