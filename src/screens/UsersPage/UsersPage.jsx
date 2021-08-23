@@ -94,7 +94,7 @@ const UsersPage = () => {
     const storedUserData = localStorage.getItem(USER_DATA);
     const { localRole, fullName } = JSON.parse(storedUserData);
 
-    if (localRole === "adm" && !navData.id) return;
+    if (localRole === "adm" && !navData?.id) return;
 
     (async () => {
       if (!storedUserData) return;
@@ -126,7 +126,7 @@ const UsersPage = () => {
     <div className="container ">
       <h3 style={styles.title}>
         FORMULARIOS SOMETIDOS por{" "}
-        <span style={styles.name}>{fullName.toUpperCase()}</span>
+        <span style={styles.name}>{fullName?.toUpperCase()}</span>
       </h3>
       <div>
         <div>
