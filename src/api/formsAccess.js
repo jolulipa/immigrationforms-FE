@@ -42,29 +42,32 @@ export const readAllFormsAdm = async (userCli) => {
   return await datos.results;
 };
 
-export const readForm = async (id) =>
-  await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
+export const readForm = async (id) => {
+  const response = await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
     method: "GET",
     headers: {
       jwt: token,
     },
-  })
-    .then((result) => result.json())
-    .catch((error) => {
-      console.log(error);
-    });
+  }).catch((error) => console.log(error));
+  const datos = await response.json();
+  return await datos;
+};
 
 export const createUpdateForm = async (values) => {
-  await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
-    method: "POST",
-    body: JSON.stringify(values),
-    headers: {
-      "Content-Type": "application/json",
-      jwt: token,
-    },
-  })
-    .then((result) => result.json())
-    .catch((error) => console.log(error));
+  try {
+    const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+        jwt: token,
+      },
+    });
+    const datos = await response.json();
+    return await datos;
+  } catch (error) {
+    console.log("ERROR RETURNED", error);
+  }
 };
 
 export const deleteForm = async (id) => {

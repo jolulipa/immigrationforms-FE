@@ -115,11 +115,13 @@ const UsersPage = () => {
       const intakeData = JSON.parse(intakeForm?.data);
       const userEmail = intakeData?.p1?.email;
       globalVariables.cliName = intakeData?.p1?.petFullName;
+      globalVariables.userData = navData.id;
       const name = globalVariables.cliName;
+      const userCli = navData.id;
       const localData = JSON.parse(localStorage.getItem(USER_DATA));
       localStorage.setItem(
         USER_DATA,
-        JSON.stringify({ ...localData, userEmail, name })
+        JSON.stringify({ ...localData, userEmail, name, userCli })
       );
       setResults(forms);
     })();
