@@ -64,7 +64,7 @@ export const createUpdateForm = async (values) => {
       },
     });
     const datos = await response.json();
-    return await datos;
+    return datos;
   } catch (error) {
     console.log("ERROR RETURNED", error);
   }

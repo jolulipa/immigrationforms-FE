@@ -43,12 +43,13 @@ const Intake = () => {
   };
 
   const handleSubmit = async ({ formData }) => {
-    await extractData({ formData });
+    let cleanData = { ...formData };
+    await extractData({ cleanData });
     const { userCli, email, localRole } = JSON.parse(
       localStorage.getItem(USER_DATA)
     );
     const obj = {
-      data: JSON.stringify(formData),
+      data: JSON.stringify(cleanData),
       formId: "Intake",
       formStatus: "unpaid",
       userCli: userCli,

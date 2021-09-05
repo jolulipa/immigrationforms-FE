@@ -16,7 +16,6 @@ const UsersPage = () => {
   const history = useHistory();
   const location = useLocation();
   const navData = location.state;
-
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
   };
@@ -53,6 +52,7 @@ const UsersPage = () => {
         <td>{el.updatedAt.split("T")[0]}</td>
         <td>
           <Button
+            className="btn-Primary btn-sm"
             onClick={() => {
               navigateToForm(el.id, el.formId);
             }}
@@ -62,6 +62,7 @@ const UsersPage = () => {
         </td>
         <td>
           <Button
+            className="btn-success btn-sm"
             onClick={async () => {
               await printForm(el.id);
             }}
@@ -81,8 +82,8 @@ const UsersPage = () => {
           <th>Form Name</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th>EDIT or</th>
-          <th>PRINT form:</th>
+          <th>EDIT Form</th>
+          <th>PRINT Form</th>
         </tr>
       </thead>
       <tbody>{renderResults()}</tbody>
@@ -90,8 +91,16 @@ const UsersPage = () => {
   );
 
   useEffect(() => {
-    const { localRole } = JSON.parse(localStorage.getItem(USER_DATA));
-
+    const { from } = location.state;
+    const { localRole, email } = JSON.parse(localStorage.getItem(USER_DATA));
+    globalVariables.cliName = email;
+    console.log(
+      "Vengo de:",
+      from,
+      "navData:",
+      navData,
+      globalVariables.cliName
+    );
     if (localRole === "adm" && !navData?.id) return;
 
     (async () => {
@@ -115,9 +124,13 @@ const UsersPage = () => {
       const intakeData = JSON.parse(intakeForm?.data);
       const userEmail = intakeData?.p1?.email;
       globalVariables.cliName = intakeData?.p1?.petFullName;
-      globalVariables.userData = navData.id;
+      if (navData) {
+        globalVariables.userData = navData.id;
+      } else {
+        globalVariables.userData = intakeData?.userId;
+      }
       const name = globalVariables.cliName;
-      const userCli = navData.id;
+      const userCli = globalVariables.userData;
       const localData = JSON.parse(localStorage.getItem(USER_DATA));
       localStorage.setItem(
         USER_DATA,
@@ -125,6 +138,7 @@ const UsersPage = () => {
       );
       setResults(forms);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

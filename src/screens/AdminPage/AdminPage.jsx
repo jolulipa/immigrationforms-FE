@@ -28,20 +28,22 @@ const AdminPage = () => {
     results.map((el) => (
       <tr key={el.id}>
         <td>{el?.email}</td>
-        <td>{el?.createdAt.split("T")[0]}</td>
-        <td>{el?.updatedAt.split("T")[0]}</td>
         <td>
           <Button
-            className="btn btn-danger"
+            className="btn btn-danger btn-sm"
             onClick={() => {
               deleteUser(el.id);
             }}
           >
-            Delete User
+            Delete
           </Button>
         </td>
+        <td>{el?.role}</td>
+        <td>{el?.createdAt.split("T")[0]}</td>
+        <td>{el?.updatedAt.split("T")[0]}</td>
         <td>
           <Button
+            className="btn-primary btn-sm"
             onClick={() => {
               navigateToUser(el.id, el.email, el.role);
             }}
@@ -57,9 +59,11 @@ const AdminPage = () => {
       <thead>
         <tr>
           <th>User email</th>
+          <th> Delete Acc</th>
+          <th>Role</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th> Action:</th>
+
           <th className="d-flex justify-content-center">Go To:</th>
         </tr>
       </thead>
