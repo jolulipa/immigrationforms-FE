@@ -5,15 +5,17 @@ import { colors } from "../../ui-config/colors";
 import { USER_DATA } from "../../constants/storageKeys";
 import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
+import globalVariables from "../../constants/globalVariables";
+
+globalVariables.userData = {};
+globalVariables.cliName = "generic";
+// Object.freeze(globalVariables);
 
 const UsersPage = () => {
   const [results, setResults] = useState([]);
-  const [userData, setUserData] = useState({});
   const history = useHistory();
   const location = useLocation();
-
   const navData = location.state;
-
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
   };
@@ -31,15 +33,26 @@ const UsersPage = () => {
     link.remove();
   };
 
+  function decriptData(el) {
+    const elData = JSON.parse(el.data);
+    const elP1 = elData.p1;
+    const elMail = elP1.email;
+    const elPhone = elP1.phone;
+    const todo = [elMail, "-", elPhone];
+    return todo;
+  }
+
   const renderResults = () =>
     results.map((el) => (
       <tr key={el.id}>
-        <td>{el?.formStatus}</td>
-        <td>{el?.formId}</td>
-        <td>{el?.createdAt.split("T")[0]}</td>
-        <td>{el?.updatedAt.split("T")[0]}</td>
+        <td>{decriptData(el)}</td>
+        <td>{el.formStatus}</td>
+        <td>{el.formId}</td>
+        <td>{el.createdAt.split("T")[0]}</td>
+        <td>{el.updatedAt.split("T")[0]}</td>
         <td>
           <Button
+            className="btn-Primary btn-sm"
             onClick={() => {
               navigateToForm(el.id, el.formId);
             }}
@@ -49,6 +62,7 @@ const UsersPage = () => {
         </td>
         <td>
           <Button
+            className="btn-success btn-sm"
             onClick={async () => {
               await printForm(el.id);
             }}
@@ -63,48 +77,41 @@ const UsersPage = () => {
     <table className="table table-striped">
       <thead>
         <tr>
+          <th>User -------------- Phone</th>
           <th>Form Status</th>
-          <th>Form name</th>
+          <th>Form Name</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th>EDIT: or</th>
-          <th>PRINT form:</th>
+          <th>EDIT Form</th>
+          <th>PRINT Form</th>
         </tr>
       </thead>
       <tbody>{renderResults()}</tbody>
     </table>
   );
 
-  const updateStoredValues = async (registers) => {
-    const intakeForm = await registers.find((el) => el.formId === "Intake");
-    const intakeData = JSON.parse(intakeForm?.data);
-    const userEmail = intakeData?.p1?.email;
-    const fullName = intakeData?.p1?.petFullName;
-    const phone = intakeData?.p1?.phone;
-    setUserData({ userEmail, fullName, phone });
-    const localData = JSON.parse(localStorage.getItem(USER_DATA));
-    localStorage.setItem(
-      USER_DATA,
-      JSON.stringify({ ...localData, userEmail, fullName })
-    );
-    setResults(registers);
-  };
-
   useEffect(() => {
-    const storedUserData = localStorage.getItem(USER_DATA);
-    const { localRole, fullName } = JSON.parse(storedUserData);
-
+    const { from } = location.state;
+    const { localRole, email } = JSON.parse(localStorage.getItem(USER_DATA));
+    globalVariables.cliName = email;
+    console.log(
+      "Vengo de:",
+      from,
+      "navData:",
+      navData,
+      globalVariables.cliName
+    );
     if (localRole === "adm" && !navData?.id) return;
 
     (async () => {
-      if (!storedUserData) return;
+      if (!localRole) return;
       const forms =
         localRole === "adm"
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
       if (!forms || forms.length === 0) {
         if (localRole === "adm") {
-          alert(`Selected client ${fullName} has no forms`);
+          alert(`Selected client ${globalVariables.cliName} has no forms`);
           history.push("/screens/AdminPage");
           return;
         } else {
@@ -113,20 +120,32 @@ const UsersPage = () => {
           return;
         }
       }
+      const intakeForm = await forms.find((el) => el.formId === "Intake");
+      const intakeData = JSON.parse(intakeForm?.data);
+      const userEmail = intakeData?.p1?.email;
+      globalVariables.cliName = intakeData?.p1?.petFullName;
+      if (navData) {
+        globalVariables.userData = navData.id;
+      } else {
+        globalVariables.userData = intakeData?.userId;
+      }
+      const name = globalVariables.cliName;
+      const userCli = globalVariables.userData;
+      const localData = JSON.parse(localStorage.getItem(USER_DATA));
+      localStorage.setItem(
+        USER_DATA,
+        JSON.stringify({ ...localData, userEmail, name, userCli })
+      );
       setResults(forms);
-      await updateStoredValues(forms);
-      console.log(userData);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const storedUserData = localStorage.getItem(USER_DATA);
-  const { fullName } = JSON.parse(storedUserData);
 
   return (
     <div className="container ">
       <h3 style={styles.title}>
         FORMULARIOS SOMETIDOS por{" "}
-        <span style={styles.name}>{fullName?.toUpperCase()}</span>
+        <span style={styles.name}>{globalVariables.cliName}</span>
       </h3>
       <div>
         <div>

@@ -34,20 +34,16 @@ const Login = () => {
       // Code in case of success
       const { email } = values;
       updateEmail(email);
-      const data = await result.json();
-      const localId = data.id;
-      const localRole = data.role;
-
+      const localId = result.id;
+      const localRole = result.role;
       localStorage.setItem(
         USER_DATA,
         JSON.stringify({ localId, localRole, email })
       );
-      localStorage.setItem(AUTH_TOKEN, data.token);
-
+      localStorage.setItem(AUTH_TOKEN, result.token);
       resetForm();
-
       setTimeout(() => {
-        if (data.role === "adm") {
+        if (result.role === "adm") {
           const { from } = location.state || {
             from: { pathname: "/screens/AdminPage" },
           };
