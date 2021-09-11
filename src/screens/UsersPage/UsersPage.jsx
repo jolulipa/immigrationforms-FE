@@ -5,12 +5,15 @@ import { colors } from "../../ui-config/colors";
 import { USER_DATA } from "../../constants/storageKeys";
 import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
+import {useAppContext} from "../../context/Provider";
+
 
 const UsersPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
   const location = useLocation();
   const navData = location.state;
+  const {state} = useAppContext();
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -106,14 +109,6 @@ const UsersPage = () => {
           return;
         }
       }
-      const intakeForm = await forms.find((el) => el.formId === "Intake");
-      const intakeData = JSON.parse(intakeForm?.data);
-      const userEmail = intakeData?.p1?.email;
-      const localData = JSON.parse(localStorage.getItem(USER_DATA));
-      localStorage.setItem(
-        USER_DATA,
-        JSON.stringify({ ...localData, userEmail })
-      );
       setResults(forms);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -122,7 +117,7 @@ const UsersPage = () => {
   return (
     <div className="container ">
       <h3 style={styles.title}>
-        FORMULARIOS SOMETIDOS por{" "}
+        FORMULARIOS SOMETIDOS por {state?.intake?.fullName}
       </h3>
       <div>
         <div>

@@ -1,6 +1,7 @@
 import {Formik} from "formik";
 import {toast} from "react-toastify";
 import {loginUser} from "../../api/auth";
+import {readIntakeForm} from "../../api/formsAccess";
 import * as yup from "yup";
 import {Spinner, Button} from "react-bootstrap";
 import {AUTH_TOKEN, USER_DATA} from "../../constants/storageKeys";
@@ -19,7 +20,7 @@ const validationSchema = yup.object().shape({
 const Login = () => {
     const location = useLocation();
     const history = useHistory();
-    const {updateEmail} = useAppContext();
+    const {updateEmail, updateIntake} = useAppContext();
 
     const navigateToRegistration = () => {
         history.push("/screens/Registration");
@@ -28,7 +29,20 @@ const Login = () => {
     const toastConfig = {position: "bottom-center"};
 
     const loadUserData = async (token) => {
-
+        const response = await readIntakeForm(token);
+        if (response.status === 400) { // Intake not found
+            history.replace('/forms/Intake');
+            return;
+        }
+        // Get intake data
+        const {data} = await response.json();
+        const intakeData = JSON.parse(data);
+        updateIntake({
+            firstName: intakeData?.p1?.petFirstName || '',
+            middleName: intakeData?.p1?.petMidName || '',
+            lastName: intakeData?.p1?.petLastName || '',
+            fullName: intakeData?.p1?.petFullName || '',
+        });
     }
 
     const handleSubmit = async (values, {setSubmitting, resetForm}) => {
@@ -45,6 +59,7 @@ const Login = () => {
                 JSON.stringify({localId, localRole, email})
             );
             localStorage.setItem(AUTH_TOKEN, result.token);
+            await loadUserData(result.token);
             resetForm();
             if (result.role === "adm") {
                 const {from} = location.state || {
