@@ -3,7 +3,7 @@ import { AUTH_TOKEN } from "../constants/storageKeys";
 import JWT from "jwt-decode";
 
 let hasAccess = false;
-const token = localStorage.getItem(AUTH_TOKEN);
+const token = localStorage.getItem(AUTH_TOKEN) || '';
 
 if (!!token) {
   const decodedExp = JWT(token);

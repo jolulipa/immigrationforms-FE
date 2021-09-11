@@ -5,17 +5,13 @@ import { colors } from "../../ui-config/colors";
 import { USER_DATA } from "../../constants/storageKeys";
 import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
-import globalVariables from "../../constants/globalVariables";
-
-globalVariables.userData = {};
-globalVariables.cliName = "generic";
-// Object.freeze(globalVariables);
 
 const UsersPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
   const location = useLocation();
   const navData = location.state;
+
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
   };
@@ -91,16 +87,7 @@ const UsersPage = () => {
   );
 
   useEffect(() => {
-    const { from } = location.state;
-    const { localRole, email } = JSON.parse(localStorage.getItem(USER_DATA));
-    globalVariables.cliName = email;
-    console.log(
-      "Vengo de:",
-      from,
-      "navData:",
-      navData,
-      globalVariables.cliName
-    );
+    const { localRole } = JSON.parse(localStorage.getItem(USER_DATA));
     if (localRole === "adm" && !navData?.id) return;
 
     (async () => {
@@ -111,7 +98,6 @@ const UsersPage = () => {
           : await readAllForms();
       if (!forms || forms.length === 0) {
         if (localRole === "adm") {
-          alert(`Selected client ${globalVariables.cliName} has no forms`);
           history.push("/screens/AdminPage");
           return;
         } else {
@@ -123,18 +109,10 @@ const UsersPage = () => {
       const intakeForm = await forms.find((el) => el.formId === "Intake");
       const intakeData = JSON.parse(intakeForm?.data);
       const userEmail = intakeData?.p1?.email;
-      globalVariables.cliName = intakeData?.p1?.petFullName;
-      if (navData) {
-        globalVariables.userData = navData.id;
-      } else {
-        globalVariables.userData = intakeData?.userId;
-      }
-      const name = globalVariables.cliName;
-      const userCli = globalVariables.userData;
       const localData = JSON.parse(localStorage.getItem(USER_DATA));
       localStorage.setItem(
         USER_DATA,
-        JSON.stringify({ ...localData, userEmail, name, userCli })
+        JSON.stringify({ ...localData, userEmail })
       );
       setResults(forms);
     })();
@@ -145,7 +123,6 @@ const UsersPage = () => {
     <div className="container ">
       <h3 style={styles.title}>
         FORMULARIOS SOMETIDOS por{" "}
-        <span style={styles.name}>{globalVariables.cliName}</span>
       </h3>
       <div>
         <div>
