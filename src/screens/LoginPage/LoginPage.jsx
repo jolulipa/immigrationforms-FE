@@ -1,7 +1,8 @@
 import { Formik } from "formik";
 import { toast } from "react-toastify";
 import { loginUser } from "../../api/auth";
-import * as yup from "yup"; //modulo de validacion de campos
+import { readIntakeForm } from "../../api/formsAccess";
+import * as yup from "yup";
 import { Spinner, Button } from "react-bootstrap";
 import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
 import { useLocation, useHistory } from "react-router-dom";
@@ -19,13 +20,31 @@ const validationSchema = yup.object().shape({
 const Login = () => {
   const location = useLocation();
   const history = useHistory();
-  const { updateEmail } = useAppContext();
+  const { updateEmail, updateIntake } = useAppContext();
 
   const navigateToRegistration = () => {
     history.push("/screens/Registration");
   };
 
   const toastConfig = { position: "bottom-center" };
+
+  const loadUserData = async (token) => {
+    const response = await readIntakeForm(token);
+    if (response.status === 400) {
+      // Intake not found
+      history.replace("/forms/Intake");
+      return;
+    }
+    // Get intake data
+    const { data } = await response.json();
+    const intakeData = JSON.parse(data);
+    updateIntake({
+      firstName: intakeData?.p1?.petFirstName || "",
+      middleName: intakeData?.p1?.petMidName || "",
+      lastName: intakeData?.p1?.petLastName || "",
+      fullName: intakeData?.p1?.petFullName || "",
+    });
+  };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
@@ -34,31 +53,26 @@ const Login = () => {
       // Code in case of success
       const { email } = values;
       updateEmail(email);
-      const data = await result.json();
-      const localId = data.id;
-      const localRole = data.role;
-
+      const localId = result.id;
+      const localRole = result.role;
       localStorage.setItem(
         USER_DATA,
         JSON.stringify({ localId, localRole, email })
       );
-      localStorage.setItem(AUTH_TOKEN, data.token);
-
+      localStorage.setItem(AUTH_TOKEN, result.token);
+      await loadUserData(result.token);
       resetForm();
-
-      setTimeout(() => {
-        if (data.role === "adm") {
-          const { from } = location.state || {
-            from: { pathname: "/screens/AdminPage" },
-          };
-          history.replace(from);
-        } else {
-          const { from } = location.state || {
-            from: { pathname: "/screens/UsersPage" },
-          };
-          history.replace(from);
-        }
-      }, 1000);
+      if (result.role === "adm") {
+        const { from } = location.state || {
+          from: { pathname: "/screens/AdminPage" },
+        };
+        history.replace(from);
+      } else {
+        const { from } = location.state || {
+          from: { pathname: "/screens/UsersPage" },
+        };
+        history.replace(from);
+      }
     } else if (result.status === 401) {
       toast.error("Invalid username or password", toastConfig);
     } else {

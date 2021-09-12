@@ -18,7 +18,6 @@ const handleError = () => {
 };
 
 export const readAllForms = async () => {
-  console.log("Reading all forms", token);
   const response = await fetch(`${baseUrl}/api/forms/readAllForms`, {
     method: "GET",
     headers: {
@@ -38,34 +37,45 @@ export const readAllFormsAdm = async (userCli) => {
         jwt: token,
       },
     }
-  );
+  ).catch((error) => console.log(error));
   const datos = await response.json();
   return await datos.results;
 };
 
-export const readForm = async (id) =>
-  await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
+export const readForm = async (id) => {
+  const response = await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
     method: "GET",
     headers: {
       jwt: token,
     },
-  })
-    .then((result) => result.json())
-    .catch((error) => {
-      console.log(error);
-    });
+  }).catch((error) => console.log(error));
+  const datos = await response.json();
+  return await datos;
+};
 
-export const createUpdateForm = async (values) => {
-  await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
-    method: "POST",
-    body: JSON.stringify(values),
+export const readIntakeForm = async (userToken) =>
+  fetch(`${baseUrl}/api/forms/getIntake`, {
     headers: {
       "Content-Type": "application/json",
-      jwt: token,
+      jwt: token || userToken,
     },
-  })
-    .then((result) => result.json())
-    .catch((error) => console.log(error));
+  });
+
+export const createUpdateForm = async (values) => {
+  try {
+    const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+        jwt: token,
+      },
+    });
+    const datos = await response.json();
+    return datos;
+  } catch (error) {
+    console.log("ERROR RETURNED", error);
+  }
 };
 
 export const deleteForm = async (id) => {

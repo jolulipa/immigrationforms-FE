@@ -4,6 +4,7 @@ import Form from "@rjsf/bootstrap-4";
 import schema from "./Intakeschema";
 import uiSchema from "./IntakeUiSchema";
 import { readForm, createUpdateForm } from "../../api/formsAccess";
+import { USER_DATA } from "../../constants/storageKeys";
 
 const Intake = () => {
   const [formData, setFormData] = useState();
@@ -11,8 +12,15 @@ const Intake = () => {
   const isEditMode = !!id;
   const history = useHistory();
 
-  const navigateToTray = () => {
-    history.push("/screens/UsersPage");
+  const navigateToTray = (id, email, role) => {
+    history.push({
+      pathname: "/screens/UsersPage",
+      state: {
+        id,
+        email,
+        role,
+      },
+    });
   };
 
   useEffect(() => {
@@ -35,15 +43,19 @@ const Intake = () => {
   };
 
   const handleSubmit = async ({ formData }) => {
-    console.log(formData);
-    await extractData({ formData });
+    let cleanData = { ...formData };
+    await extractData({ cleanData });
+    const { userCli, email, localRole } = JSON.parse(
+      localStorage.getItem(USER_DATA)
+    );
     const obj = {
-      data: JSON.stringify(formData),
+      data: JSON.stringify(cleanData),
       formId: "Intake",
       formStatus: "unpaid",
+      userCli: userCli,
     };
     await createUpdateForm(obj);
-    navigateToTray();
+    navigateToTray(userCli, email, localRole);
   };
 
   return (
