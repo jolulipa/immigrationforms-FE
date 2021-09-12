@@ -15,15 +15,19 @@ To be able to service clients both assisted or unassisted form filling and submi
 To keep records of transaction for at least 5 years 
 
 Scope
-As described earlier, the development will consist of a service select ans form filling system for unlimited solicitations,capacity to provide this services online and record keeping of such for at least 5 years. 
+As described earlier, the development will consist of a service select and form filling system for unlimited solicitations,capacity to provide this services online and record keeping of such for at least 5 years. 
 
 The system will include an online subscription and or registration and a payment service.
-features
-automatic registration
+
+Features:
+registration
+login/logout
 form filling
 form printing
+Administration of the system (admin tray)
+Users tray
 procurement & payment
-test & delivery
+UX/UI
 
 
 
