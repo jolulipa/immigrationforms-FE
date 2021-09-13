@@ -1,6 +1,7 @@
 import { NavLink, useHistory } from "react-router-dom";
-import Burger from "./Burger";
+// import Burger from "./Burger";
 import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
+import { EMAIL_TYPE, INTAKE_TYPE } from "../../context/types";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
 
@@ -16,6 +17,8 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(USER_DATA);
+    localStorage.removeItem(INTAKE_TYPE);
+    localStorage.removeItem(EMAIL_TYPE);
     updateEmail("");
     alert(`You have logged out of the system`);
     navigateToWelcome();
@@ -68,13 +71,13 @@ const Navbar = () => {
         >
           LOGIN
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/screens/AdminPage"
           className="col-1 d-none d-md-block d-lg-block d-xl-block"
         >
           ADMIN
         </NavLink>
-        <Burger className="d-md-none d-lg-none d-xl-block" />
+        <Burger className="d-md-none d-lg-none d-xl-block" /> */}
       </div>
     </div>
   );

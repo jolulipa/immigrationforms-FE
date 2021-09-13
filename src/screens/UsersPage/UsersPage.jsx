@@ -11,8 +11,13 @@ const UsersPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
   const location = useLocation();
-  const navData = location.state;
-  const { state } = useAppContext();
+  const { state: context } = useAppContext();
+  const navData = location.state || {
+    role: "reg",
+    feName: context.intake.fullName,
+  };
+  console.log("navData:", navData);
+  console.log("CONTEXTO:", context);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -90,17 +95,20 @@ const UsersPage = () => {
 
   useEffect(() => {
     const { localRole } = JSON.parse(localStorage.getItem(USER_DATA));
-    if (localRole === "adm" && !navData?.id) return;
+    if (!navData?.id && (localRole === "adm" || localRole === "con")) return;
 
     (async () => {
       if (!localRole) return;
       const forms =
-        localRole === "adm"
+        localRole === "adm" || localRole === "con"
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
       if (!forms || forms.length === 0) {
         if (localRole === "adm") {
           history.push("/screens/AdminPage");
+          return;
+        } else if (localRole === "con") {
+          history.push("/screens/ConcessionaryPage");
           return;
         } else {
           alert(`You must fill the Intake form to continue`);
@@ -116,7 +124,10 @@ const UsersPage = () => {
   return (
     <div className="container ">
       <h3 style={styles.title}>
-        FORMULARIOS SOMETIDOS por {state?.intake?.fullName}
+        FORMULARIOS SOMETIDOS por{" "}
+        <span style={styles.name}>
+          {navData?.role === "con" ? context.intake.fullName : navData?.feName}
+        </span>
       </h3>
       <div>
         <div>
@@ -132,12 +143,16 @@ const UsersPage = () => {
           </p>
         </div>
         <div className="row d-flex justify-content-center">
-          <Link
-            to="/screens/LandingPage"
-            className="badge badge-pill badge-info"
-          >
-            ADD NEW FORM
-          </Link>
+          {context.intake.role !== "con" ? (
+            <div>Servicios Solicitados </div>
+          ) : (
+            <Link
+              to="/screens/ConcessionaryPage"
+              className="badge badge-pill badge-danger"
+            >
+              Back to admin page
+            </Link>
+          )}
         </div>
       </div>
       <div>{renderTable()}</div>

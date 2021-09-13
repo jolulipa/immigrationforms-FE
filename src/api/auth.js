@@ -22,7 +22,7 @@ export const loginUser = async (values) => {
       "Content-Type": "application/json",
     },
   });
-  return await response.json();
+  return await response;
 };
 
 export const readUsers = async () => {

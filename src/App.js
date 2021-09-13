@@ -12,6 +12,7 @@ import WelcomePage from "./screens/WelcomePage";
 import LandingPage from "./screens/LandingPage";
 import LoginPage from "./screens/LoginPage";
 import AdminPage from "./screens/AdminPage";
+import ConcessionaryPage from "./screens/ConcessionaryPage";
 import Contact from "./screens/Contact";
 import Registration from "./screens/Registration";
 import Unauthorized from "./components/Unauthorized";
@@ -36,6 +37,10 @@ function App() {
         <PrivateRoute path="/forms/n400" component={N400} />
         <Route path="/unauthorized" component={Unauthorized} />
         <PrivateRoute path="/screens/AdminPage" component={AdminPage} />
+        <PrivateRoute
+          path="/screens/ConcessionaryPage"
+          component={ConcessionaryPage}
+        />
         <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
         <Route path="/" component={WelcomePage} />
       </Switch>

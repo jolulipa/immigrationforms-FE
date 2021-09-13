@@ -9,6 +9,8 @@ import { USER_DATA } from "../../constants/storageKeys";
 const Intake = () => {
   const [formData, setFormData] = useState();
   const { id } = useParams();
+  const formId = "Intake";
+  console.log(`/forms/${formId}/${id}`);
   const isEditMode = !!id;
   const history = useHistory();
 
@@ -31,14 +33,14 @@ const Intake = () => {
     })();
   }, [isEditMode, id]);
 
-  const extractData = async ({ formData }) => {
+  const extractData = async ({ cleanData }) => {
     let i = 0;
     for (i = 1; i < 100; i++) {
-      delete formData?.p1[`text${i}`];
-      delete formData?.p2[`text${i}`];
-      delete formData?.p3[`text${i}`];
-      delete formData?.p4[`text${i}`];
-      delete formData?.p5[`text${i}`];
+      delete cleanData?.p1[`text${i}`];
+      delete cleanData?.p2[`text${i}`];
+      delete cleanData?.p3[`text${i}`];
+      delete cleanData?.p4[`text${i}`];
+      delete cleanData?.p5[`text${i}`];
     }
   };
 
@@ -54,6 +56,7 @@ const Intake = () => {
       formStatus: "unpaid",
       userCli: userCli,
     };
+    console.log(obj);
     await createUpdateForm(obj);
     navigateToTray(userCli, email, localRole);
   };
