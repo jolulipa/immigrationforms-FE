@@ -1,8 +1,9 @@
+import { Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-import { USER_DATA } from "../../constants/storageKeys";
+import { CLIENT_DATA } from "../../constants/storageKeys";
 import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
 import { useAppContext } from "../../context/Provider";
@@ -12,10 +13,12 @@ const UsersPage = () => {
   const history = useHistory();
   const location = useLocation();
   const { state: context } = useAppContext();
-  const navData = location.state || {
+  const navData = location?.state || {
     role: "reg",
     feName: context.intake.fullName,
   };
+  const clientData = localStorage.getItem(CLIENT_DATA);
+  console.log("Client Data:", JSON.parse(clientData));
   console.log("navData:", navData);
   console.log("CONTEXTO:", context);
 
@@ -38,10 +41,7 @@ const UsersPage = () => {
 
   function decriptData(el) {
     const elData = JSON.parse(el.data);
-    const elP1 = elData.p1;
-    const elMail = elP1.email;
-    const elPhone = elP1.phone;
-    const todo = [elMail, "-", elPhone];
+    const todo = [elData.p1.email, "-", elData.p1.phone];
     return todo;
   }
 
@@ -51,8 +51,8 @@ const UsersPage = () => {
         <td>{decriptData(el)}</td>
         <td>{el.formStatus}</td>
         <td>{el.formId}</td>
-        <td>{el.createdAt.split("T")[0]}</td>
-        <td>{el.updatedAt.split("T")[0]}</td>
+        <td className="	">{el.createdAt.split("T")[0]}</td>
+        <td className="	">{el.updatedAt.split("T")[0]}</td>
         <td>
           <Button
             className="btn-Primary btn-sm"
@@ -77,37 +77,40 @@ const UsersPage = () => {
     ));
 
   const renderTable = () => (
-    <table className="table table-striped">
+    <Table striped>
       <thead>
         <tr>
           <th>User -------------- Phone</th>
           <th>Form Status</th>
           <th>Form Name</th>
-          <th>Created on</th>
-          <th>Modified on</th>
+          <th className="	">Created on</th>
+          <th className="	">Modified on</th>
           <th>EDIT Form</th>
           <th>PRINT Form</th>
         </tr>
       </thead>
       <tbody>{renderResults()}</tbody>
-    </table>
+    </Table>
   );
 
   useEffect(() => {
-    const { localRole } = JSON.parse(localStorage.getItem(USER_DATA));
-    if (!navData?.id && (localRole === "adm" || localRole === "con")) return;
+    if (
+      !navData?.id &&
+      (context.intake.role === "adm" || context.intake.role === "con")
+    )
+      return;
 
     (async () => {
-      if (!localRole) return;
+      if (!context.intake.role) return;
       const forms =
-        localRole === "adm" || localRole === "con"
+        context.intake.role === "adm" || context.intake.role === "con"
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
       if (!forms || forms.length === 0) {
-        if (localRole === "adm") {
+        if (context.intake.role === "adm") {
           history.push("/screens/AdminPage");
           return;
-        } else if (localRole === "con") {
+        } else if (context.intake.role === "con") {
           history.push("/screens/ConcessionaryPage");
           return;
         } else {

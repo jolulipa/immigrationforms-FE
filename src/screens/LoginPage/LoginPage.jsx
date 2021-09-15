@@ -4,7 +4,8 @@ import { loginUser } from "../../api/auth";
 import { readIntakeForm } from "../../api/formsAccess";
 import * as yup from "yup";
 import { Spinner, Button } from "react-bootstrap";
-import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
+import { INTAKE_TYPE } from "../../context/types";
 import { useLocation, useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
@@ -28,19 +29,22 @@ const Login = () => {
 
   const toastConfig = { position: "bottom-center" };
 
-  const loadUserData = async (token, role) => {
+  const loadUserData = async (token, role, name) => {
     const response = await readIntakeForm(token);
-    if (response.status > 400 && response.status > 500) {
+    if (response.status > 399 && response.status < 500) {
       // Intake not found
+      localStorage.removeItem(INTAKE_TYPE);
       history.replace("/forms/Intake");
       return;
     }
-    // Get intake data
-    const { data } = await response.json();
+    // intake found
+    const { data, userId } = await response.json();
     const intakeData = JSON.parse(data);
     updateIntake({
+      userId,
+      email: intakeData?.p1?.email || "",
       phone: intakeData?.p1?.phone || "",
-      fullName: intakeData?.p1?.petFullName || "",
+      fullName: intakeData?.p1?.petFullName || name,
       role,
     });
   };
@@ -55,19 +59,13 @@ const Login = () => {
       const result = await res.json();
       const localId = result.id;
       const localRole = result.role;
-      localStorage.setItem(
-        USER_DATA,
-        JSON.stringify({
-          localId,
-          localRole,
-          email,
-          feName: "",
-          userCli: "",
-          userEmail: "",
-        })
-      );
+      const name = result.name;
+      localStorage.removeItem(AUTH_TOKEN);
+      localStorage.removeItem(CLIENT_DATA);
+      localStorage.removeItem(INTAKE_TYPE);
+
       localStorage.setItem(AUTH_TOKEN, result.token);
-      await loadUserData(result.token, result.role);
+      await loadUserData(result.token, result.role, name);
       resetForm();
 
       if (result.role === "adm") {

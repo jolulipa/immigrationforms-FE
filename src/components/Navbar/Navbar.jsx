@@ -1,6 +1,6 @@
 import { NavLink, useHistory } from "react-router-dom";
 // import Burger from "./Burger";
-import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 import { EMAIL_TYPE, INTAKE_TYPE } from "../../context/types";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(USER_DATA);
+    localStorage.removeItem(CLIENT_DATA);
     localStorage.removeItem(INTAKE_TYPE);
     localStorage.removeItem(EMAIL_TYPE);
     updateEmail("");

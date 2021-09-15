@@ -3,11 +3,13 @@ import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
-import { USER_DATA } from "../../constants/storageKeys";
+import { CLIENT_DATA } from "../../constants/storageKeys";
+import { useAppContext } from "../../context/Provider";
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
+  const { state: context } = useAppContext();
 
   const navigateToUser = (id, email, role) => {
     history.push({
@@ -41,12 +43,23 @@ const AdminPage = () => {
               </Button>
             </td>
             <td>{el?.role}</td>
-            <td>{el?.createdAt.split("T")[0]}</td>
-            <td>{el?.updatedAt.split("T")[0]}</td>
+            <td className="	d-sm-none d-md-inline">
+              {el?.createdAt.split("T")[0]}
+            </td>
+            <td className="	d-sm-none d-md-inline">
+              {el?.updatedAt.split("T")[0]}
+            </td>
             <td>
               <Button
-                className="btn-primary btn-sm"
+                className="btn-success btn-sm"
                 onClick={() => {
+                  const cliEmail = el.email;
+                  const cliName = el.email;
+                  const cliUser = el.id;
+                  localStorage.setItem(
+                    CLIENT_DATA,
+                    JSON.stringify({ cliEmail, cliName, cliUser })
+                  );
                   navigateToUser(el.id, el.email, el.role);
                 }}
               >
@@ -65,8 +78,8 @@ const AdminPage = () => {
           <th>User email</th>
           <th> Delete Acc</th>
           <th>Role</th>
-          <th>Created on</th>
-          <th>Modified on</th>
+          <th className="	d-sm-none d-md-inline">Created on</th>
+          <th className="	d-sm-none d-md-inline">Modified on</th>
           <th>...Go To..:</th>
         </tr>
       </thead>
@@ -76,12 +89,9 @@ const AdminPage = () => {
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
-    const storedData = localStorage.getItem(USER_DATA);
-    const { localId, localRole } = JSON.parse(storedData);
-
-    if (localRole !== "adm") {
+    if (context.intake.role !== "adm") {
       alert(`You're not an administrator`);
-      navigateToUser(localId, localRole);
+      navigateToUser(context.intake.userId, context.intake.role);
     }
     (async () => {
       const { results } = await readUsers();

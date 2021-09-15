@@ -1,22 +1,23 @@
+import { Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
-import { USER_DATA } from "../../constants/storageKeys";
+import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
 
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
-  const { state } = useAppContext();
+  const { state: context } = useAppContext();
 
   const navigateToUser = (id, email, role, feName) => {
     history.push({
       pathname: "/screens/UsersPage",
       state: {
         id,
-        feName: email,
+        feName,
         email,
         role,
       },
@@ -35,7 +36,7 @@ const ConcessionaryPage = () => {
             <td>{el?.email}</td>
             <td>
               <Button
-                className="btn btn-danger btn-sm"
+                className="btn btn-danger btn-sm "
                 onClick={() => {
                   deleteUser(el.id);
                 }}
@@ -43,22 +44,21 @@ const ConcessionaryPage = () => {
                 Delete
               </Button>
             </td>
-            <td>{el?.role}</td>
-            <td>{el?.createdAt.split("T")[0]}</td>
-            <td>{el?.updatedAt.split("T")[0]}</td>
+            <td className="	">{el?.role}</td>
+            <td className="	">{el?.createdAt.split("T")[0]}</td>
+            <td className="	">{el?.updatedAt.split("T")[0]}</td>
             <td>
               <Button
                 className="btn-primary btn-sm"
                 onClick={() => {
-                  const localData = JSON.parse(localStorage.getItem(USER_DATA));
-                  const userEmail = el.email;
-                  const feName = el.email;
-                  const userCli = el.id;
+                  const cliEmail = el.email;
+                  const cliName = el.name;
+                  const cliUser = el.id;
                   localStorage.setItem(
-                    USER_DATA,
-                    JSON.stringify({ ...localData, userEmail, feName, userCli })
+                    CLIENT_DATA,
+                    JSON.stringify({ cliEmail, cliName, cliUser })
                   );
-                  navigateToUser(el.id, el.email, el.role);
+                  navigateToUser(el.id, el.email, el.role, el.name);
                 }}
               >
                 User Forms
@@ -70,29 +70,26 @@ const ConcessionaryPage = () => {
     ));
 
   const renderTable = (results) => (
-    <table className="table table-striped">
+    <Table striped variant="dark">
       <thead>
-        <tr>
+        <tr key={results.id}>
           <th>User email</th>
-          <th> Delete Acc</th>
-          <th>Role</th>
-          <th>Created on</th>
-          <th>Modified on</th>
-
-          <th className="d-flex justify-content-center">Go To:</th>
+          <th className="	">Delete Acc</th>
+          <th className="	">Role</th>
+          <th className="	">Created on</th>
+          <th className="	">Modified on</th>
+          <th>Go To:</th>
         </tr>
       </thead>
       <tbody>{renderResults(results)}</tbody>
-    </table>
+    </Table>
   );
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
-    const storedData = localStorage.getItem(USER_DATA);
-    const { localId, localRole } = JSON.parse(storedData);
-    if (localRole !== "con") {
+    if (context.intake.role !== "con") {
       alert(`You're not an concessionary`);
-      navigateToUser(localId, localRole);
+      navigateToUser(context.intake.userId, context.intake.role);
     }
     (async () => {
       const { results } = await readUsers();
@@ -108,7 +105,7 @@ const ConcessionaryPage = () => {
       </h2>
       <h4 style={styles.title}>
         CLIENTES DEL CONCESIONARIO:{" "}
-        <span style={styles.name}>{state?.intake?.fullName}</span>
+        <span style={styles.name}>{context?.intake?.fullName}</span>
       </h4>
       <div className="row d-flex justify-content-center">
         <div>

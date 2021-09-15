@@ -4,15 +4,15 @@ import Form from "@rjsf/bootstrap-4";
 import schema from "./Intakeschema";
 import uiSchema from "./IntakeUiSchema";
 import { readForm, createUpdateForm } from "../../api/formsAccess";
-import { USER_DATA } from "../../constants/storageKeys";
+import { CLIENT_DATA } from "../../constants/storageKeys";
+import { useAppContext } from "../../context/Provider";
 
 const Intake = () => {
   const [formData, setFormData] = useState();
   const { id } = useParams();
-  const formId = "Intake";
-  console.log(`/forms/${formId}/${id}`);
   const isEditMode = !!id;
   const history = useHistory();
+  const { state: context } = useAppContext();
 
   const navigateToTray = (id, email, role) => {
     history.push({
@@ -47,18 +47,16 @@ const Intake = () => {
   const handleSubmit = async ({ formData }) => {
     let cleanData = { ...formData };
     await extractData({ cleanData });
-    const { userCli, email, localRole } = JSON.parse(
-      localStorage.getItem(USER_DATA)
-    );
+    const { cliUser, cliEmail } = JSON.parse(localStorage.getItem(CLIENT_DATA));
     const obj = {
       data: JSON.stringify(cleanData),
       formId: "Intake",
       formStatus: "unpaid",
-      userCli: userCli,
+      cliUser: cliUser,
     };
     console.log(obj);
     await createUpdateForm(obj);
-    navigateToTray(userCli, email, localRole);
+    navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 
   return (

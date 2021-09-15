@@ -2,9 +2,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { registerUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import "./styles.css";
+import { readIntakeForm } from "../../api/formsAccess";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
-import { AUTH_TOKEN, USER_DATA } from "../../constants/storageKeys";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { INTAKE_TYPE } from "../../context/types";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -26,7 +28,27 @@ const validationSchema = yup.object().shape({
 
 const Registration = () => {
   const history = useHistory();
-  const { updateEmail } = useAppContext();
+  const { updateEmail, updateIntake } = useAppContext();
+
+  const loadUserData = async (token, role) => {
+    const response = await readIntakeForm(token);
+    if (response.status > 399 && response.status < 500) {
+      // Intake not found
+      localStorage.removeItem(INTAKE_TYPE);
+      history.replace("/forms/Intake");
+      return;
+    }
+    // Get intake data
+    const { data, userId } = await response.json();
+    const intakeData = JSON.parse(data);
+    updateIntake({
+      userId,
+      email: intakeData?.p1?.email || "",
+      phone: intakeData?.p1?.phone || "",
+      fullName: intakeData?.p1?.petFullName || "",
+      role,
+    });
+  };
 
   const redirectLocation = () => {
     history.push(`/screens/UsersPage`);
@@ -40,14 +62,8 @@ const Registration = () => {
       // redirect to Client tray
       const { email } = result;
       updateEmail(email);
-      const localId = result.id;
-      const localRole = result.role;
-
-      localStorage.setItem(
-        USER_DATA,
-        JSON.stringify({ localId, localRole, email })
-      );
       localStorage.setItem(AUTH_TOKEN, result.token);
+      await loadUserData(result.token, result.role);
       resetForm();
       redirectLocation();
     } else {
@@ -66,7 +82,17 @@ const Registration = () => {
       {({ isSubmitting }) => (
         <Form className="form-container registrationForm">
           <h2 className="col-10">Registro de Usuarios</h2>
-          <div>
+          <div className="mt-3">
+            <label htmlFor="name">Full Name</label>
+            <Field
+              className="form-control"
+              placeholder="Enter Full Name"
+              name="name"
+              type="text"
+            />
+            <ErrorMessage className="text-danger" name="name" />
+          </div>
+          <div className="mt-3">
             <label htmlFor="email">Email Address</label>
             <Field
               className="form-control"

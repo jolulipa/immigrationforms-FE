@@ -1,16 +1,14 @@
 import { Link, useHistory } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import Footer from "../../components/Footer";
-import { USER_DATA } from "../../constants/storageKeys";
+import { useAppContext } from "../../context/Provider";
 
 const WelcomePage = () => {
   const history = useHistory();
-  const storedUserData = localStorage.getItem(USER_DATA);
-  if (storedUserData) {
-    const { localRole } = JSON.parse(storedUserData);
-    if (localRole === "adm") {
-      history.push("/screens/AdminPage");
-    }
+  const { state: context } = useAppContext();
+
+  if (context.intake.role === "adm") {
+    history.push("/screens/AdminPage");
   }
 
   return (
