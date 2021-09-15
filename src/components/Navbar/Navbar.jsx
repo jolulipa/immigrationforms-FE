@@ -1,13 +1,13 @@
 import { NavLink, useHistory } from "react-router-dom";
 // import Burger from "./Burger";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
-import { EMAIL_TYPE, INTAKE_TYPE } from "../../context/types";
+import { INTAKE_TYPE } from "../../context/types";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
 
 const Navbar = () => {
-  const { state, updateEmail } = useAppContext();
-  const { email } = state;
+  const { state } = useAppContext();
+  const { email } = state.intake;
   const history = useHistory();
 
   const navigateToWelcome = () => {
@@ -18,8 +18,9 @@ const Navbar = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(CLIENT_DATA);
     localStorage.removeItem(INTAKE_TYPE);
-    localStorage.removeItem(EMAIL_TYPE);
-    updateEmail("");
+    // localStorage.removeItem(EMAIL_TYPE);
+    // updateEmail("");
+    console.log("Local Storage Was Reset-logout");
     alert(`You have logged out of the system`);
     navigateToWelcome();
   };

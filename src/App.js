@@ -18,7 +18,6 @@ import Registration from "./screens/Registration";
 import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
 import UsersPage from "./screens/UsersPage";
-import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (

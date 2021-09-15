@@ -19,8 +19,8 @@ const UsersPage = () => {
   };
   const clientData = localStorage.getItem(CLIENT_DATA);
   console.log("Client Data:", JSON.parse(clientData));
-  console.log("navData:", navData);
-  console.log("CONTEXTO:", context);
+  console.log("Datos pasados por navegación:", navData);
+  console.log("Datos pasados por CONTEXTO:", context);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);

@@ -28,7 +28,7 @@ const validationSchema = yup.object().shape({
 
 const Registration = () => {
   const history = useHistory();
-  const { updateEmail, updateIntake } = useAppContext();
+  const { updateIntake } = useAppContext();
 
   const loadUserData = async (token, role) => {
     const response = await readIntakeForm(token);
@@ -60,8 +60,8 @@ const Registration = () => {
     const result = await registerUser(values);
     if (result.isSuccessful) {
       // redirect to Client tray
-      const { email } = result;
-      updateEmail(email);
+      // const { email } = result;
+      // updateEmail(email);
       localStorage.setItem(AUTH_TOKEN, result.token);
       await loadUserData(result.token, result.role);
       resetForm();

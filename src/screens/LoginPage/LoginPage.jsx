@@ -21,7 +21,7 @@ const validationSchema = yup.object().shape({
 const Login = () => {
   const location = useLocation();
   const history = useHistory();
-  const { updateEmail, updateIntake } = useAppContext();
+  const { updateIntake } = useAppContext();
 
   const navigateToRegistration = () => {
     history.push("/screens/Registration");
@@ -55,14 +55,12 @@ const Login = () => {
     if (res.status === 200) {
       // Code in case of success
       const { email } = values;
-      updateEmail(email);
+      // updateEmail(email);
       const result = await res.json();
       const localId = result.id;
       const localRole = result.role;
       const name = result.name;
-      localStorage.removeItem(AUTH_TOKEN);
       localStorage.removeItem(CLIENT_DATA);
-      localStorage.removeItem(INTAKE_TYPE);
 
       localStorage.setItem(AUTH_TOKEN, result.token);
       await loadUserData(result.token, result.role, name);
