@@ -14,7 +14,7 @@ const AdminPage = () => {
 
   const navigateToUser = (id, email, role) => {
     history.push({
-      pathname: "/screens/UsersPage",
+      pathname: "/forms/Concessionary",
       state: {
         id,
         email,
@@ -44,12 +44,8 @@ const AdminPage = () => {
               </Button>
             </td>
             <td>{el?.role}</td>
-            <td className="	d-sm-none d-md-inline">
-              {el?.createdAt.split("T")[0]}
-            </td>
-            <td className="	d-sm-none d-md-inline">
-              {el?.updatedAt.split("T")[0]}
-            </td>
+            <td>{el?.createdAt.split("T")[0]}</td>
+            <td>{el?.updatedAt.split("T")[0]}</td>
             <td>
               <Button
                 className="btn-success btn-sm"
@@ -79,8 +75,8 @@ const AdminPage = () => {
           <th>User email</th>
           <th> Delete Acc</th>
           <th>Role</th>
-          <th className="	d-sm-none d-md-inline">Created on</th>
-          <th className="	d-sm-none d-md-inline">Modified on</th>
+          <th>Created on</th>
+          <th>Modified on</th>
           <th>...Go To..:</th>
         </tr>
       </thead>

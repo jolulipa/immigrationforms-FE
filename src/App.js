@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 import Intake from "./forms/Intake";
-import I130 from "./forms/I130";
+import Concessionary from "./forms/Concessionary";
 import I130A from "./forms/I130A";
 import N400 from "./forms/N400";
 import WelcomePage from "./screens/WelcomePage";
@@ -30,8 +30,11 @@ function App() {
         <Route path="/screens/Registration" component={Registration} />
         <Route path="/screens/LandingPage" component={LandingPage} />
         <Route path="/screens/Contact" component={Contact} />
-        <PrivateRoute path="/forms/i130/:id" component={I130} />
-        <PrivateRoute path="/forms/i130" component={I130} />
+        <PrivateRoute
+          path="/forms/Concessionary/:id"
+          component={Concessionary}
+        />
+        <PrivateRoute path="/forms/Concessionary" component={Concessionary} />
         <PrivateRoute path="/forms/i130A" component={I130A} />
         <PrivateRoute path="/forms/n400" component={N400} />
         <Route path="/unauthorized" component={Unauthorized} />

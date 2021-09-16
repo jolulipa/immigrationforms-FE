@@ -16,36 +16,32 @@ const WelcomePage = () => {
       <h2 style={styles.title}>BIENVENIDO A THE IMMIGRATION TIME</h2>
       <div className="row">
         <p style={styles.paragraph}>
-          THE IMMIGRATION TIME es un servicio de trámites de migración en los
-          Estados Unidos. Es un servicio en linea que facilita a los hispanos
-          los trámites migratorios en los Estados Unidos de Norteamerica.
-          Nuestros servicios son siempre entregados con responsabilidad, a
-          tiempo y a precios asequibles para nuestra comunidad.
+          Esta es la aplicación para administración de sistema completo de
+          immigración. Esta parte del sistema permitirá al Administrador único
+          del sistema hacer las siguientes tareas:
         </p>
-        <p style={styles.paragraph}>
-          The Immigration Time ofrece cualquier servicio de immigración para
-          migrantes a los Estados Unidos de America. Para iniciar el proceso con
-          The Immigration Time, es necesario registrarse, llenando un
-          formulario. Este formulario es el primer paso para iniciar los
-          procedimientos necesarios para ayudarle a conseguir sus objetivos
-          migratorios.
-        </p>
+        <ol>
+          <li>crear oficinas concesionarias</li>
+          <li>crear usuarios concesionarios</li>
+          <li>administrar las cuentas y pagos de los concesionarios</li>
+          <li>Borrar Registros</li>
+        </ol>
       </div>
       <div className="row d-flex justify-content-center">
         <Link
-          to="/screens/Registration"
+          to="/screens/UsersPage"
           className="badge badge-pill badge-danger align-items-between"
           style={styles.navigate}
         >
-          REGISTRARSE
+          Oficinas Concesionarias
         </Link>
 
         <Link
-          to="/screens/UsersPage"
+          to="/screens/ConcessionaryPage"
           className="badge badge-pill badge-info"
           style={styles.navigate}
         >
-          Bandeja de Usuario
+          Bandeja de Concesionarios
         </Link>
       </div>
       <div className="card">
