@@ -63,6 +63,7 @@ export const readIntakeForm = async (userToken) =>
 
 export const createUpdateForm = async (values) => {
   try {
+    console.log("DATOS ENVIADOS A UPDATE-CREATE form", JSON.stringify(values));
     const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
       method: "POST",
       body: JSON.stringify(values),

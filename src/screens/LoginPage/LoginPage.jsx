@@ -5,7 +5,6 @@ import { readIntakeForm } from "../../api/formsAccess";
 import * as yup from "yup";
 import { Spinner, Button } from "react-bootstrap";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
-import { INTAKE_TYPE } from "../../context/types";
 import { useLocation, useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
@@ -29,17 +28,24 @@ const Login = () => {
 
   const toastConfig = { position: "bottom-center" };
 
-  const loadUserData = async (token, role, name) => {
+  const loadUserData = async (token, role, name, id, email) => {
     const response = await readIntakeForm(token);
-    if (response.status > 399 && response.status < 500) {
+    if (response?.status > 399 && response?.status < 500) {
       // Intake not found
-      localStorage.removeItem(INTAKE_TYPE);
+      updateIntake({
+        userId: id,
+        email,
+        phone: "",
+        fullName: name,
+        role,
+      });
       history.replace("/forms/Intake");
       return;
     }
     // intake found
-    const { data, userId } = await response.json();
+    const { data, userId } = await response?.json();
     const intakeData = JSON.parse(data);
+    console.log(intakeData);
     updateIntake({
       userId,
       email: intakeData?.p1?.email || "",
@@ -61,9 +67,8 @@ const Login = () => {
       const localRole = result.role;
       const name = result.name;
       localStorage.removeItem(CLIENT_DATA);
-
       localStorage.setItem(AUTH_TOKEN, result.token);
-      await loadUserData(result.token, result.role, name);
+      await loadUserData(result.token, result.role, name, result.id, email);
       resetForm();
 
       if (result.role === "adm") {

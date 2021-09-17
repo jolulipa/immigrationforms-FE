@@ -30,7 +30,7 @@ const AdminPage = () => {
   const renderResults = () =>
     results.map((el) => (
       <>
-        {el.role === "con" && (
+        {el.role === "adm" && (
           <tr key={el.id} className="text-white">
             <td>{el?.email}</td>
             <td>
@@ -106,8 +106,7 @@ const AdminPage = () => {
         <div>
           <p style={styles.paragraph}>
             Esta es la herramenta de <strong>administración general</strong> de
-            la app. Aqui el dueño de la app podrá borrar y/o modificar
-            consesionarios.
+            la app. Aqui el dueño de la app podrá consultar consesionarios.
           </p>
         </div>
         <div>{renderTable(results)}</div>

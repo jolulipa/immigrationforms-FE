@@ -18,9 +18,9 @@ const UsersPage = () => {
     feName: context.intake.fullName,
   };
   const clientData = localStorage.getItem(CLIENT_DATA);
-  console.log("Client Data:", JSON.parse(clientData));
+  console.log("Client Data (local storage):", JSON.parse(clientData));
   console.log("Datos pasados por navegación:", navData);
-  console.log("Datos pasados por CONTEXTO:", context);
+  console.log("Datos pasados por CONTEXTO:", context.intake);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -77,14 +77,14 @@ const UsersPage = () => {
     ));
 
   const renderTable = () => (
-    <Table striped>
+    <Table striped className="table-hover">
       <thead>
         <tr>
           <th>User -------------- Phone</th>
           <th>Form Status</th>
           <th>Form Name</th>
-          <th className="	">Created on</th>
-          <th className="	">Modified on</th>
+          <th className="	">Created on:</th>
+          <th className="	">Modified on:</th>
           <th>EDIT Form</th>
           <th>PRINT Form</th>
         </tr>
@@ -101,22 +101,25 @@ const UsersPage = () => {
       return;
 
     (async () => {
-      if (!context.intake.role) return;
       const forms =
         context.intake.role === "adm" || context.intake.role === "con"
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
       if (!forms || forms.length === 0) {
-        if (context.intake.role === "adm") {
-          history.push("/screens/AdminPage");
-          return;
-        } else if (context.intake.role === "con") {
-          history.push("/screens/ConcessionaryPage");
-          return;
-        } else {
-          alert(`You must fill the Intake form to continue`);
-          history.push(`/forms/Intake`);
-          return;
+        alert(`You must fill the Intake form to continue`);
+        history.push(`/forms/Intake`);
+        return;
+      } else {
+        switch (context.intake.role) {
+          case "adm":
+            alert(`Admin cannot access a concessionary client's data`);
+            history.push("/screens/AdminPage");
+            break;
+          // case "con":
+          //   history.push("/screens/ConcessionaryPage");
+          //   break;
+          default:
+            history.push("/screens/UsersPage");
         }
       }
       setResults(forms);
