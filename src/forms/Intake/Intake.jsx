@@ -44,19 +44,30 @@ const Intake = () => {
     }
   };
 
-  const handleSubmit = async ({ formData }) => {
-    let cleanData = { ...formData };
-    await extractData({ cleanData });
-    const { cliUser, cliEmail } = JSON.parse(localStorage.getItem(CLIENT_DATA));
+  const go = async (cleanData, cliUser, cliEmail) => {
     const obj = {
       data: JSON.stringify(cleanData),
       formId: "Intake",
       formStatus: "unpaid",
       cliUser: cliUser,
     };
-    console.log(obj);
     await createUpdateForm(obj);
     navigateToTray(cliUser, cliEmail, context.intake.role);
+  };
+
+  const handleSubmit = async ({ formData }) => {
+    let cleanData = { ...formData };
+    await extractData({ cleanData });
+    if (isEditMode) {
+      const { cliUser, cliEmail } = JSON.parse(
+        localStorage.getItem(CLIENT_DATA)
+      );
+      go(cleanData, cliUser, cliEmail);
+    } else {
+      const cliUser = context.intake.userId;
+      const cliEmail = context.intake.email;
+      go(cleanData, cliUser, cliEmail);
+    }
   };
 
   return (

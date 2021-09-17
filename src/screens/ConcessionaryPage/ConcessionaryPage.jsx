@@ -71,8 +71,8 @@ const ConcessionaryPage = () => {
     ));
 
   const renderTable = (results) => (
-    <Table striped variant="dark">
-      <thead>
+    <Table striped variant="dark" className="table-hover">
+      <thead className="thead-light">
         <tr key={results.id}>
           <th>User email</th>
           <th className="	">Delete Acc</th>

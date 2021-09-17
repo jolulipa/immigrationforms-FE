@@ -30,7 +30,7 @@ const AdminPage = () => {
   const renderResults = () =>
     results.map((el) => (
       <>
-        {el.role === "con" && (
+        {el.role === "adm" && (
           <tr key={el.id} className="text-white">
             <td>{el?.email}</td>
             <td>
@@ -44,12 +44,8 @@ const AdminPage = () => {
               </Button>
             </td>
             <td>{el?.role}</td>
-            <td className="	d-sm-none d-md-inline">
-              {el?.createdAt.split("T")[0]}
-            </td>
-            <td className="	d-sm-none d-md-inline">
-              {el?.updatedAt.split("T")[0]}
-            </td>
+            <td>{el?.createdAt.split("T")[0]}</td>
+            <td>{el?.updatedAt.split("T")[0]}</td>
             <td>
               <Button
                 className="btn-success btn-sm"
@@ -79,8 +75,8 @@ const AdminPage = () => {
           <th>User email</th>
           <th> Delete Acc</th>
           <th>Role</th>
-          <th className="	d-sm-none d-md-inline">Created on</th>
-          <th className="	d-sm-none d-md-inline">Modified on</th>
+          <th>Created on</th>
+          <th>Modified on</th>
           <th>...Go To..:</th>
         </tr>
       </thead>
@@ -110,8 +106,7 @@ const AdminPage = () => {
         <div>
           <p style={styles.paragraph}>
             Esta es la herramenta de <strong>administración general</strong> de
-            la app. Aqui el dueño de la app podrá borrar y/o modificar
-            consesionarios.
+            la app. Aqui el dueño de la app podrá consultar consesionarios.
           </p>
         </div>
         <div>{renderTable(results)}</div>
