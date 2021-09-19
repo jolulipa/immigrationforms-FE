@@ -6,7 +6,7 @@ import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
-localStorage.removeItem(CLIENT_DATA);
+// localStorage.removeItem(CLIENT_DATA);
 
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
@@ -32,53 +32,51 @@ const ConcessionaryPage = () => {
   const renderResults = () =>
     results.map((el) => (
       <>
-        {el.role !== "adm" && (
-          <tr key={el.id} className="text-white">
-            <td>{el?.email}</td>
-            <td>
-              <Button
-                className="btn btn-danger btn-sm "
-                onClick={() => {
-                  deleteUser(el.id);
-                }}
-              >
-                Delete
-              </Button>
-            </td>
-            <td className="	">{el?.role}</td>
-            <td className="	">{el?.createdAt.split("T")[0]}</td>
-            <td className="	">{el?.updatedAt.split("T")[0]}</td>
-            <td>
-              <Button
-                className="btn-primary btn-sm"
-                onClick={() => {
-                  const cliEmail = el.email;
-                  const cliName = el.name;
-                  const cliUser = el.id;
-                  localStorage.setItem(
-                    CLIENT_DATA,
-                    JSON.stringify({ cliEmail, cliName, cliUser })
-                  );
-                  navigateToUser(el.id, el.email, el.role, el.name);
-                }}
-              >
-                User Forms
-              </Button>
-            </td>
-          </tr>
-        )}
+        <tr key={el.id} className="text-white">
+          <td>{el?.email}</td>
+          <td>
+            <Button
+              className="btn btn-danger btn-sm "
+              onClick={() => {
+                deleteUser(el.id);
+              }}
+            >
+              Delete
+            </Button>
+          </td>
+          <td>{el?.role}</td>
+          <td>{el?.createdAt.split("T")[0]}</td>
+          <td>{el?.updatedAt.split("T")[0]}</td>
+          <td>
+            <Button
+              className="btn-primary btn-sm"
+              onClick={() => {
+                const cliEmail = el.email;
+                const cliName = el.name;
+                const cliUser = el.id;
+                localStorage.setItem(
+                  CLIENT_DATA,
+                  JSON.stringify({ cliEmail, cliName, cliUser })
+                );
+                navigateToUser(el.id, el.email, el.role, el.name);
+              }}
+            >
+              Client Forms
+            </Button>
+          </td>
+        </tr>
       </>
     ));
 
   const renderTable = (results) => (
     <Table striped variant="dark" className="table-hover">
       <thead className="thead-light">
-        <tr key={results.id}>
+        <tr key={"header"}>
           <th>User email</th>
-          <th className="	">Delete Acc</th>
-          <th className="	">Role</th>
-          <th className="	">Created on</th>
-          <th className="	">Modified on</th>
+          <th>Delete Acc</th>
+          <th>Role</th>
+          <th>Created on</th>
+          <th>Modified on</th>
           <th>Go To:</th>
         </tr>
       </thead>
@@ -94,7 +92,10 @@ const ConcessionaryPage = () => {
     }
     (async () => {
       const { results } = await readUsers();
-      setResults(results);
+      const newResults = results.filter(function (el) {
+        return el.role === "reg";
+      });
+      setResults(newResults);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -102,7 +103,7 @@ const ConcessionaryPage = () => {
   return (
     <div className="container p-3 my-3 bg-dark text-white">
       <h2 style={styles.title}>
-        CONCESIONARIO DE LA APP DE THE IMMIGRATION TIME
+        ADMINISTRACIÓN DE LA APP DE THE IMMIGRATION TIME
       </h2>
       <h4 style={styles.title}>
         CLIENTES DEL CONCESIONARIO:{" "}
@@ -121,6 +122,7 @@ const ConcessionaryPage = () => {
     </div>
   );
 };
+
 const styles = {
   title: {
     fontWeight: "700",
@@ -128,7 +130,6 @@ const styles = {
     color: colors.brown,
     padding: 15,
   },
-
   paragraph: {
     textAlign: "left",
     fontSize: 18,

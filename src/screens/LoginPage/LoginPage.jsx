@@ -45,7 +45,6 @@ const Login = () => {
     // intake found
     const { data, userId } = await response?.json();
     const intakeData = JSON.parse(data);
-    console.log(intakeData);
     updateIntake({
       userId,
       email: intakeData?.p1?.email || "",

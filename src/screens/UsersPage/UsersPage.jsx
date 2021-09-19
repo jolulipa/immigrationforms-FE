@@ -9,18 +9,24 @@ import { baseUrl } from "../../api/configuration";
 import { useAppContext } from "../../context/Provider";
 
 const UsersPage = () => {
-  const [results, setResults] = useState([]);
   const history = useHistory();
   const location = useLocation();
   const { state: context } = useAppContext();
+  const [results, setResults] = useState([]);
   const navData = location?.state || {
     role: "reg",
     feName: context.intake.fullName,
   };
+
+  if (context.intake.role === "adm") {
+    alert(`Admin cannot access a concessionary client's data`);
+    history.push("/screens/AdminPage");
+  }
+
   const clientData = localStorage.getItem(CLIENT_DATA);
   console.log("Client Data (local storage):", JSON.parse(clientData));
   console.log("Datos pasados por navegación:", navData);
-  console.log("Datos pasados por CONTEXTO:", context.intake);
+  console.log("CONTEXTO: Usuario Inicial", context.intake);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -51,8 +57,8 @@ const UsersPage = () => {
         <td>{decriptData(el)}</td>
         <td>{el.formStatus}</td>
         <td>{el.formId}</td>
-        <td className="	">{el.createdAt.split("T")[0]}</td>
-        <td className="	">{el.updatedAt.split("T")[0]}</td>
+        <td>{el.createdAt.split("T")[0]}</td>
+        <td>{el.updatedAt.split("T")[0]}</td>
         <td>
           <Button
             className="btn-Primary btn-sm"
@@ -79,12 +85,12 @@ const UsersPage = () => {
   const renderTable = () => (
     <Table striped className="table-hover">
       <thead>
-        <tr>
+        <tr key={"header"}>
           <th>User -------------- Phone</th>
           <th>Form Status</th>
           <th>Form Name</th>
-          <th className="	">Created on:</th>
-          <th className="	">Modified on:</th>
+          <th>Created on:</th>
+          <th>Modified on:</th>
           <th>EDIT Form</th>
           <th>PRINT Form</th>
         </tr>
@@ -101,25 +107,14 @@ const UsersPage = () => {
       return;
 
     (async () => {
-      const forms =
-        context.intake.role === "adm" || context.intake.role === "con"
-          ? await readAllFormsAdm(navData.id)
-          : await readAllForms();
-      if (!forms || forms.length === 0) {
-        alert(`You must fill the Intake form to continue`);
-        history.push(`/forms/Intake`);
-        return;
-      } else {
-        switch (context.intake.role) {
-          case "adm":
-            alert(`Admin cannot access a concessionary client's data`);
-            history.push("/screens/AdminPage");
-            break;
-          // case "con":
-          //   history.push("/screens/ConcessionaryPage");
-          //   break;
-          default:
-            history.push("/screens/UsersPage");
+      const forms = await (context.intake.role === "adm" ||
+      context.intake.role === "con"
+        ? await readAllFormsAdm(navData.id)
+        : await readAllForms());
+      if (!context.intake.userId) {
+        if (!forms || forms?.length === 0) {
+          alert(`You must fill the Intake form to continue`);
+          history.push(`/forms/Intake`);
         }
       }
       setResults(forms);
@@ -161,7 +156,7 @@ const UsersPage = () => {
           )}
         </div>
       </div>
-      <div>{renderTable()}</div>
+      <div>{results ? renderTable() : alert("No Data yet-refresh")}</div>
       <div className="row d-flex justify-content-center">
         <Link to="/screens/LandingPage" className="badge badge-pill badge-info">
           ADD NEW FORM

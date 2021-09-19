@@ -39,14 +39,6 @@ const WelcomePage = () => {
         >
           REGISTRARSE
         </Link>
-
-        <Link
-          to="/screens/UsersPage"
-          className="badge badge-pill badge-info"
-          style={styles.navigate}
-        >
-          Bandeja de Usuario
-        </Link>
       </div>
       <div className="card">
         <Footer />
