@@ -14,7 +14,7 @@ const AdminPage = () => {
 
   const navigateToUser = (id, email, role) => {
     history.push({
-      pathname: "/screens/UsersPage",
+      pathname: "/forms/Concessionary",
       state: {
         id,
         email,
