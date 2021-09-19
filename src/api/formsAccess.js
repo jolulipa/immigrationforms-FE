@@ -23,9 +23,9 @@ export const readAllForms = async () => {
     headers: {
       jwt: token,
     },
-  });
+  }).catch((error) => console.log(error));
   const datos = await response.json();
-  return await datos.results;
+  return datos.results;
 };
 
 export const readAllFormsAdm = async (userCli) => {
@@ -39,7 +39,7 @@ export const readAllFormsAdm = async (userCli) => {
     }
   ).catch((error) => console.log(error));
   const datos = await response.json();
-  return await datos.results;
+  return datos.results;
 };
 
 export const readForm = async (id) => {

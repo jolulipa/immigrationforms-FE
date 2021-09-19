@@ -5,7 +5,7 @@ import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
-localStorage.removeItem(CLIENT_DATA);
+// localStorage.removeItem(CLIENT_DATA);
 
 const AdminPage = () => {
   const [results, setResults] = useState([]);

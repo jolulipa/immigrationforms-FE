@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 // import Burger from "./Burger";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 import { INTAKE_TYPE } from "../../context/types";
@@ -29,8 +29,10 @@ const Navbar = () => {
       <div className="line-container">
         <div className="col-6">The Immigration Time ADMIN</div>
         <div className="col d-none d-md-block d-xl-block">
-          E-mail
-          <div>negocio@gmail.com</div>
+          <Link to="/screens/ConcessionaryPage">ADMIN</Link>
+          <div>
+            <Link to="/screens/UsersPage">Clients</Link>
+          </div>
         </div>
         <div className="col d-none d-md-block d-xl-block status">
           {!!email && `Bienvenido ${email}`}
