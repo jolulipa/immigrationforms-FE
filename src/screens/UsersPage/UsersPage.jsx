@@ -12,7 +12,7 @@ const UsersPage = () => {
   const history = useHistory();
   const location = useLocation();
   const { state: context } = useAppContext();
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(context.forms);
   const navData = location?.state || {
     role: "reg",
     feName: context.intake.fullName,
@@ -26,7 +26,8 @@ const UsersPage = () => {
   const clientData = localStorage.getItem(CLIENT_DATA);
   console.log("Client Data (local storage):", JSON.parse(clientData));
   console.log("Datos pasados por navegación:", navData);
-  console.log("CONTEXTO: Usuario Inicial", context.intake);
+  console.log("CONTEXTO: Intake:", context.intake);
+  console.log("CONTEXTO: Forms:", context.forms);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -119,8 +120,7 @@ const UsersPage = () => {
       }
       setResults(forms);
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [navData.id, context, history]);
 
   return (
     <div className="container ">
@@ -156,7 +156,7 @@ const UsersPage = () => {
           )}
         </div>
       </div>
-      <div>{results ? renderTable() : alert("No Data yet-refresh")}</div>
+      <div>{results ? renderTable() : setResults(context.forms)}</div>
       <div className="row d-flex justify-content-center">
         <Link to="/screens/LandingPage" className="badge badge-pill badge-info">
           ADD NEW FORM

@@ -17,11 +17,11 @@ const handleError = () => {
   console.log("User has no access.");
 };
 
-export const readAllForms = async () => {
+export const readAllForms = async (userToken) => {
   const response = await fetch(`${baseUrl}/api/forms/readAllForms`, {
     method: "GET",
     headers: {
-      jwt: token,
+      jwt: token || userToken,
     },
   }).catch((error) => console.log(error));
   const datos = await response.json();

@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { toast } from "react-toastify";
 import { loginUser } from "../../api/auth";
-import { readIntakeForm } from "../../api/formsAccess";
+import { readIntakeForm, readAllForms } from "../../api/formsAccess";
 import * as yup from "yup";
 import { Spinner, Button } from "react-bootstrap";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
 const Login = () => {
   const location = useLocation();
   const history = useHistory();
-  const { updateIntake } = useAppContext();
+  const { updateIntake, updateForms } = useAppContext();
 
   const navigateToRegistration = () => {
     history.push("/screens/Registration");
@@ -52,6 +52,8 @@ const Login = () => {
       fullName: intakeData?.p1?.petFullName || name,
       role,
     });
+    const formsData = await readAllForms(token);
+    updateForms(formsData || ["User has no forms"]);
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {

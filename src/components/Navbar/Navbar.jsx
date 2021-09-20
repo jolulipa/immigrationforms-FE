@@ -9,6 +9,7 @@ const Navbar = () => {
   const { state } = useAppContext();
   const { email } = state.intake;
   const history = useHistory();
+  const { updateIntake } = useAppContext();
 
   const navigateToWelcome = () => {
     history.push("/screens/Welcome");
@@ -18,8 +19,7 @@ const Navbar = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(CLIENT_DATA);
     localStorage.removeItem(INTAKE_TYPE);
-    // localStorage.removeItem(EMAIL_TYPE);
-    // updateEmail("");
+    updateIntake("");
     console.log("Local Storage Was Reset-logout");
     alert(`You have logged out of the system`);
     navigateToWelcome();

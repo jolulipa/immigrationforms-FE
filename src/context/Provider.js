@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
-import { INTAKE_TYPE } from "./types";
+import { INTAKE_TYPE, FORMS_TYPE } from "./types";
 
 const initialState = {
-  // email: localStorage.getItem(EMAIL_TYPE) || "",
+  forms: localStorage.getItem(FORMS_TYPE) || [],
   intake: localStorage.getItem(INTAKE_TYPE)
     ? JSON.parse(localStorage.getItem(INTAKE_TYPE))
     : {
@@ -15,8 +15,8 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    // case EMAIL_TYPE:
-    //   return { ...state, email: action.payload };
+    case FORMS_TYPE:
+      return { ...state, forms: action.payload };
     case INTAKE_TYPE: {
       return {
         ...state,
@@ -36,16 +36,16 @@ export const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const updateEmail = (email) => {
-  //   localStorage.setItem(EMAIL_TYPE, email);
-  //   dispatch({ type: EMAIL_TYPE, payload: email });
-  // };
+  const updateForms = (forms) => {
+    localStorage.setItem(FORMS_TYPE, forms);
+    dispatch({ type: FORMS_TYPE, payload: forms });
+  };
   const updateIntake = (intakeObj) => {
     localStorage.setItem(INTAKE_TYPE, JSON.stringify(intakeObj));
     dispatch({ type: INTAKE_TYPE, payload: intakeObj });
   };
   return (
-    <AppContext.Provider value={{ state, updateIntake }}>
+    <AppContext.Provider value={{ state, updateIntake, updateForms }}>
       {children}
     </AppContext.Provider>
   );
