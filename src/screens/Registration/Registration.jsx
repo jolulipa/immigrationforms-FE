@@ -32,7 +32,7 @@ const Registration = () => {
 
   const loadUserData = async (token, role) => {
     const response = await readIntakeForm(token);
-    if (response.status > 399 && response.status < 500) {
+    if (response.status > 399 && response.status < 501) {
       // Intake not found
       localStorage.removeItem(INTAKE_TYPE);
       history.replace("/forms/Intake");
