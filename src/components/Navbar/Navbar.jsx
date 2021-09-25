@@ -14,11 +14,11 @@ const Navbar = () => {
     localStorage.clear();
     updateIntake("");
     updateForms("");
-
     console.log("Local Storage Was Reset because of logout");
     alert(`You have logged out of the system`);
     navigateToWelcome();
   };
+
   return (
     <div className="super-root">
       <div className="line-container">

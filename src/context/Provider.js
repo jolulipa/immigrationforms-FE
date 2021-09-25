@@ -2,7 +2,9 @@ import { createContext, useContext, useReducer } from "react";
 import { INTAKE_TYPE, FORMS_TYPE } from "./types";
 
 const initialState = {
-  forms: localStorage.getItem(FORMS_TYPE) || [],
+  forms: localStorage.getItem(FORMS_TYPE)
+    ? JSON.parse(localStorage.getItem(FORMS_TYPE))
+    : [],
   intake: localStorage.getItem(INTAKE_TYPE)
     ? JSON.parse(localStorage.getItem(INTAKE_TYPE))
     : {
@@ -37,7 +39,7 @@ export const useAppContext = () => useContext(AppContext);
 const AppContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const updateForms = (forms) => {
-    localStorage.setItem(FORMS_TYPE, forms);
+    localStorage.setItem(FORMS_TYPE, JSON.stringify(forms));
     dispatch({ type: FORMS_TYPE, payload: forms });
   };
   const updateIntake = (intakeObj) => {

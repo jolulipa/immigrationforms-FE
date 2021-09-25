@@ -1,5 +1,5 @@
 import { Table } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
@@ -103,7 +103,7 @@ const UsersPage = () => {
     </Table>
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       !navData?.id &&
       (context.intake.role === "adm" || context.intake.role === "con")
