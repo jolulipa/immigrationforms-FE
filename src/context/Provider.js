@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { INTAKE_TYPE, FORMS_TYPE } from "./types";
+import { INTAKE_TYPE, FORMS_TYPE, CONCE_TYPE } from "./types";
 
 const initialState = {
   forms: localStorage.getItem(FORMS_TYPE)
@@ -13,12 +13,17 @@ const initialState = {
         lastName: "",
         fullName: "",
       },
+  concessionary: localStorage.getItem(CONCE_TYPE)
+    ? localStorage.getItem(CONCE_TYPE)
+    : "",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case FORMS_TYPE:
       return { ...state, forms: action.payload };
+    case CONCE_TYPE:
+      return { ...state, concessionary: action.payload };
     case INTAKE_TYPE: {
       return {
         ...state,
@@ -46,8 +51,14 @@ const AppContextProvider = ({ children }) => {
     localStorage.setItem(INTAKE_TYPE, JSON.stringify(intakeObj));
     dispatch({ type: INTAKE_TYPE, payload: intakeObj });
   };
+  const updateConcessionary = (conce) => {
+    localStorage.setItem(CONCE_TYPE, JSON.stringify(conce));
+    dispatch({ type: CONCE_TYPE, payload: conce });
+  };
   return (
-    <AppContext.Provider value={{ state, updateIntake, updateForms }}>
+    <AppContext.Provider
+      value={{ state, updateIntake, updateForms, updateConcessionary }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -31,6 +31,7 @@ function App() {
         <Route path="/screens/Registration" component={Registration} />
         <Route path="/screens/LandingPage" component={LandingPage} />
         <Route path="/screens/Contact" component={Contact} />
+        <Route path="/concessionaries" component={Concessionary} />
         <PrivateRoute
           path="/forms/Concessionary/:id"
           component={Concessionary}
