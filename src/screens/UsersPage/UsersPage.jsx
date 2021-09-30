@@ -104,7 +104,6 @@ const UsersPage = () => {
   );
 
   useEffect(() => {
-    alert(`Admin cannot access data`);
     const intakeExist = checkIntake(context.intake.userId);
     if (
       !intakeExist ||
