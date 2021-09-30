@@ -1,35 +1,35 @@
 import { Table } from "react-bootstrap";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
+import {
+  checkIntake,
+  readAllForms,
+  readAllFormsAdm,
+  print,
+} from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
 import { useAppContext } from "../../context/Provider";
 import globalVariables from "../../constants/globalVariables";
 // Object.freeze(myInitObject)
 
 const UsersPage = () => {
-  let { globalObj, globalArray } = globalVariables;
   const history = useHistory();
-  const location = useLocation();
   const { state: context } = useAppContext();
   const [results, setResults] = useState(context.forms);
+  const location = useLocation();
   const navData = location?.state || {
     role: "reg",
-    feName: context.intake.fullName,
+    feName: context?.intake?.fullName,
   };
-  globalArray = context.forms;
+  let { globalObj, globalArray } = globalVariables;
+  globalArray = context?.forms || [];
 
-  if (context.intake.role === "adm") {
-    alert(`Admin cannot access a concessionary client's data`);
-    history.push("/screens/AdminPage");
-  }
   console.log("-------------------NEW RENDER--------------------");
   console.log("navDATA:", navData);
-  console.log("CONTEXTO: Intake:", context.intake);
-  console.log("CONTEXTO: Forms:", context.forms);
-  console.log("globalArray", globalArray, "globalObj", globalObj);
+  console.log("CONTEXTO Intake:", context.intake);
+  console.log("CONTEXTO Forms:", context.forms);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -103,27 +103,39 @@ const UsersPage = () => {
     </Table>
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    alert(`Admin cannot access data`);
+    const intakeExist = checkIntake(context.intake.userId);
+    if (
+      !intakeExist ||
+      (intakeExist?.status > 399 && intakeExist?.status < 500)
+    ) {
+      // Intake not found
+      history.push("/forms/Intake");
+    }
+
+    if (context.intake.role === "adm") {
+      alert(`Admin cannot access a concessionary client's data`);
+      history.push("/screens/AdminPage");
+    }
+
     if (
       !navData?.id &&
       (context.intake.role === "adm" || context.intake.role === "con")
-    )
-      return;
+    ) {
+      alert(`Cannot access an Administrator or concessionary's data`);
+      history.push("/screens/AdminPage");
+    }
 
     (async () => {
-      const forms = await (context.intake.role === "adm" ||
-      context.intake.role === "con"
-        ? await readAllFormsAdm(navData.id)
-        : await readAllForms());
-      if (!context.intake.userId) {
-        if (!forms || forms?.length === 0) {
-          alert(`You must fill the Intake form to continue`);
-          history.push(`/forms/Intake`);
-        }
-      }
-      setResults(forms);
+      const forms =
+        context.intake.role === "adm" || context.intake.role === "con"
+          ? await readAllFormsAdm(navData.id)
+          : await readAllForms();
+      if (!!forms) setResults(forms);
     })();
   }, []);
+
   globalArray = results;
 
   return (

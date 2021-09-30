@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
+import { checkIntake } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
 
@@ -11,17 +12,24 @@ const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
   const { state: context } = useAppContext();
+  console.log("Context Intake:", context.intake);
 
-  const navigateToUser = (id, email, role, feName) => {
-    history.push({
-      pathname: "/screens/UsersPage",
-      state: {
-        id,
-        feName,
-        email,
-        role,
-      },
-    });
+  const navigateToUser = async (id, email, role, feName) => {
+    const response = await checkIntake(id);
+    if (!response || (response?.status > 399 && response?.status < 500)) {
+      // Intake not found
+      history.push("/forms/Intake");
+    } else {
+      history.push({
+        pathname: "/screens/UsersPage",
+        state: {
+          id,
+          feName,
+          email,
+          role,
+        },
+      });
+    }
   };
 
   const deleteUser = (id) => {
@@ -91,8 +99,9 @@ const ConcessionaryPage = () => {
     }
     (async () => {
       const { results } = await readUsers();
+      console.log("Clients array:", results);
       const newResults = results.filter(function (el) {
-        return el.role === "reg";
+        return el.role === "reg" && context.intake.userId === el.concessionary;
       });
       setResults(newResults);
     })();

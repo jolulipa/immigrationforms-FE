@@ -39,16 +39,28 @@ const Login = () => {
         fullName: name,
         role,
       });
+      const cliEmail = email;
+      const cliName = name;
+      const cliUser = id;
+      localStorage.setItem(
+        CLIENT_DATA,
+        JSON.stringify({ cliEmail, cliName, cliUser })
+      );
       history.replace("/forms/Intake");
       return;
     }
     // intake found
     const { data, userId } = await response?.json();
     const intakeData = JSON.parse(data);
+
+    var USNumber = intakeData?.p1?.phone.match(/(\d{3})(\d{3})(\d{4})/);
+    USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
+    console.log(USNumber);
+
     updateIntake({
       userId,
       email: intakeData?.p1?.email || "",
-      phone: intakeData?.p1?.phone || "",
+      phone: USNumber || "Missing Phone Number",
       fullName: intakeData?.p1?.petFullName || name,
       role,
     });
@@ -66,7 +78,7 @@ const Login = () => {
       const result = await res.json();
       const localId = result.id;
       const localRole = result.role;
-      const name = result.name;
+      const name = result.name || "Name Missing";
       localStorage.removeItem(CLIENT_DATA);
       localStorage.setItem(AUTH_TOKEN, result.token);
       await loadUserData(result.token, result.role, name, result.id, email);

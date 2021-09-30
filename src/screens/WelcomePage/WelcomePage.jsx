@@ -18,7 +18,7 @@ const WelcomePage = () => {
 
   useEffect(() => {
     updateConcessionary(conId);
-  }, []);
+  }, [conId]);
 
   return (
     <div className="container">

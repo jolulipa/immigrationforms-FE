@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <div className="super-root">
       <div className="line-container">
-        <div className="col-6">The Immigration Time ADMIN</div>
+        <div className="col-6">The Immigration Time</div>
         <div className="col d-none d-md-block d-xl-block">
           <Link to="/screens/ConcessionaryPage">ADMIN</Link>
           <div>

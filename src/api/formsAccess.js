@@ -61,9 +61,18 @@ export const readIntakeForm = async (userToken) =>
     },
   });
 
+//CHECK INTAKE - USERID
+export const checkIntake = async (userCli) =>
+  await fetch(`${baseUrl}/api/forms/checkIntake/${userCli}`, {
+    headers: {
+      "Content-Type": "application/json",
+      jwt: token,
+    },
+  });
+
 export const createUpdateForm = async (values) => {
   try {
-    console.log("DATOS ENVIADOS A UPDATE-CREATE form", JSON.stringify(values));
+    console.log("DATOS ENVIADOS A UPDATE-CREATE form", values);
     const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
       method: "POST",
       body: JSON.stringify(values),

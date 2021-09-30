@@ -51,7 +51,7 @@ const Registration = () => {
   };
 
   const redirectLocation = () => {
-    history.push(`/screens/LandingPage`);
+    history.push(`/forms/Intake`);
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
