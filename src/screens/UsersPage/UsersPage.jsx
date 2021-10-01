@@ -3,31 +3,33 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-import { CLIENT_DATA } from "../../constants/storageKeys";
-import { readAllForms, readAllFormsAdm, print } from "../../api/formsAccess";
+import {
+  checkIntake,
+  readAllForms,
+  readAllFormsAdm,
+  print,
+} from "../../api/formsAccess";
 import { baseUrl } from "../../api/configuration";
 import { useAppContext } from "../../context/Provider";
+import globalVariables from "../../constants/globalVariables";
+// Object.freeze(myInitObject)
 
 const UsersPage = () => {
   const history = useHistory();
-  const location = useLocation();
   const { state: context } = useAppContext();
   const [results, setResults] = useState(context.forms);
+  const location = useLocation();
   const navData = location?.state || {
     role: "reg",
-    feName: context.intake.fullName,
+    feName: context?.intake?.fullName,
   };
+  let { globalObj, globalArray } = globalVariables;
+  globalArray = context?.forms || [];
 
-  if (context.intake.role === "adm") {
-    alert(`Admin cannot access a concessionary client's data`);
-    history.push("/screens/AdminPage");
-  }
-
-  const clientData = localStorage.getItem(CLIENT_DATA);
-  console.log("Client Data (local storage):", JSON.parse(clientData));
-  console.log("Datos pasados por navegación:", navData);
-  console.log("CONTEXTO: Intake:", context.intake);
-  console.log("CONTEXTO: Forms:", context.forms);
+  console.log("-------------------NEW RENDER--------------------");
+  console.log("navDATA:", navData);
+  console.log("CONTEXTO Intake:", context.intake);
+  console.log("CONTEXTO Forms:", context.forms);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -46,81 +48,94 @@ const UsersPage = () => {
     link.remove();
   };
 
-  function decriptData(el) {
-    const elData = JSON.parse(el.data);
-    const todo = [elData.p1.email, "-", elData.p1.phone];
-    return todo;
-  }
-
-  const renderResults = () =>
-    results.map((el) => (
-      <tr key={el.id}>
-        <td>{decriptData(el)}</td>
-        <td>{el.formStatus}</td>
-        <td>{el.formId}</td>
-        <td>{el.createdAt.split("T")[0]}</td>
-        <td>{el.updatedAt.split("T")[0]}</td>
-        <td>
-          <Button
-            className="btn-Primary btn-sm"
-            onClick={() => {
-              navigateToForm(el.id, el.formId);
-            }}
-          >
-            Select
-          </Button>
-        </td>
-        <td>
-          <Button
-            className="btn-success btn-sm"
-            onClick={async () => {
-              await printForm(el.id);
-            }}
-          >
-            Print
-          </Button>
-        </td>
-      </tr>
-    ));
-
   const renderTable = () => (
-    <Table striped className="table-hover">
+    <Table
+      striped
+      className="table-hover"
+      data-mobile-responsive="true"
+      data-check-on-init="true"
+      responsive="md"
+    >
       <thead>
         <tr key={"header"}>
-          <th>User -------------- Phone</th>
-          <th>Form Status</th>
-          <th>Form Name</th>
-          <th>Created on:</th>
-          <th>Modified on:</th>
-          <th>EDIT Form</th>
-          <th>PRINT Form</th>
+          <th scope="col">Form Name</th>
+          <th scope="col">Form Status</th>
+          <th scope="col">Created on:</th>
+          <th scope="col">Modified on:</th>
+          <th scope="col">EDIT Form</th>
+          <th scope="col">PRINT Form</th>
         </tr>
       </thead>
-      <tbody>{renderResults()}</tbody>
+      <tbody>
+        {globalArray.map((el) => {
+          globalObj = JSON.parse(el.data);
+          console.log("Registros del Cliente (data.p1)", globalObj.p1);
+          return (
+            <tr key={el.id}>
+              <td>{el.formId}</td>
+              <td>{el.formStatus}</td>
+              <td>{el.createdAt?.split("T")[0]}</td>
+              <td>{el.updatedAt?.split("T")[0]}</td>
+              <td>
+                <Button
+                  className="btn-Primary btn-sm"
+                  onClick={() => {
+                    navigateToForm(el.id, el.formId);
+                  }}
+                >
+                  Select
+                </Button>
+              </td>
+              <td>
+                <Button
+                  className="btn-success btn-sm"
+                  onClick={async () => {
+                    await printForm(el.id);
+                  }}
+                >
+                  Print
+                </Button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
     </Table>
   );
 
   useEffect(() => {
+    const intakeExist = checkIntake(context.intake.userId);
+    if (
+      !intakeExist ||
+      (intakeExist?.status > 399 && intakeExist?.status < 500)
+    ) {
+      // Intake not found
+      history.push("/forms/Intake");
+    }
+
+    if (context.intake.role === "adm") {
+      alert(`Admin cannot access a concessionary client's data`);
+      history.push("/screens/AdminPage");
+    }
+
     if (
       !navData?.id &&
       (context.intake.role === "adm" || context.intake.role === "con")
-    )
-      return;
+    ) {
+      alert(`Cannot access an Administrator or concessionary's data`);
+      history.push("/screens/AdminPage");
+    }
 
     (async () => {
-      const forms = await (context.intake.role === "adm" ||
-      context.intake.role === "con"
-        ? await readAllFormsAdm(navData.id)
-        : await readAllForms());
-      if (!context.intake.userId) {
-        if (!forms || forms?.length === 0) {
-          alert(`You must fill the Intake form to continue`);
-          history.push(`/forms/Intake`);
-        }
-      }
-      setResults(forms);
+      const forms =
+        context.intake.role === "adm" || context.intake.role === "con"
+          ? await readAllFormsAdm(navData.id)
+          : await readAllForms();
+      if (!!forms) setResults(forms);
     })();
-  }, [navData.id, context, history]);
+  }, []);
+
+  globalArray = results;
 
   return (
     <div className="container ">
@@ -130,6 +145,9 @@ const UsersPage = () => {
           {navData?.role === "con" ? context.intake.fullName : navData?.feName}
         </span>
       </h3>
+      <h4 style={styles.title}>
+        <span>{context.intake.phone}</span>
+      </h4>
       <div>
         <div>
           <p style={styles.paragraph}>
@@ -156,7 +174,8 @@ const UsersPage = () => {
           )}
         </div>
       </div>
-      <div>{results ? renderTable() : setResults(context.forms)}</div>
+      <div>{globalArray ? renderTable() : setResults(context.forms)}</div>
+
       <div className="row d-flex justify-content-center">
         <Link to="/screens/LandingPage" className="badge badge-pill badge-info">
           ADD NEW FORM

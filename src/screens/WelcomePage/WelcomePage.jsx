@@ -1,4 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
+import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import Footer from "../../components/Footer";
 import { useAppContext } from "../../context/Provider";
@@ -6,10 +7,18 @@ import { useAppContext } from "../../context/Provider";
 const WelcomePage = () => {
   const history = useHistory();
   const { state: context } = useAppContext();
+  const { updateConcessionary } = useAppContext();
+  const conId = window.location.search.split("?")[1];
+
+  console.log("Concessionary ID:", conId);
 
   if (context.intake.role === "adm") {
     history.push("/screens/AdminPage");
   }
+
+  useEffect(() => {
+    updateConcessionary(conId);
+  }, [conId]);
 
   return (
     <div className="container">

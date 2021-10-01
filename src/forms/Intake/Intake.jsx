@@ -17,6 +17,7 @@ const Intake = () => {
   const navigateToTray = (id, email, role) => {
     history.push({
       pathname: "/screens/UsersPage",
+      // pathname: "/forms/Intake",
       state: {
         id,
         email,
@@ -31,7 +32,7 @@ const Intake = () => {
       const values = await readForm(id);
       setFormData(JSON.parse(values.data));
     })();
-  }, [isEditMode, id]);
+  }, [id, isEditMode]);
 
   const extractData = async ({ cleanData }) => {
     let i = 0;
@@ -52,6 +53,7 @@ const Intake = () => {
       cliUser: cliUser,
     };
     await createUpdateForm(obj);
+    alert(`Admin cannot access a concessionary client's data`);
     navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 

@@ -6,7 +6,7 @@ import { readIntakeForm } from "../../api/formsAccess";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import { AUTH_TOKEN } from "../../constants/storageKeys";
-import { INTAKE_TYPE } from "../../context/types";
+import { INTAKE_TYPE, CONCE_TYPE } from "../../context/types";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -32,7 +32,7 @@ const Registration = () => {
 
   const loadUserData = async (token, role) => {
     const response = await readIntakeForm(token);
-    if (response.status > 399 && response.status < 500) {
+    if (response.status > 399 && response.status < 501) {
       // Intake not found
       localStorage.removeItem(INTAKE_TYPE);
       history.replace("/forms/Intake");
@@ -51,17 +51,19 @@ const Registration = () => {
   };
 
   const redirectLocation = () => {
-    history.push(`/screens/UsersPage`);
+    history.push(`/forms/Intake`);
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-
+    const concessionary = JSON.parse(localStorage.getItem(CONCE_TYPE));
+    values.concessionary = concessionary;
+    values.role = "reg";
+    console.log(values);
     const result = await registerUser(values);
     if (result.isSuccessful) {
-      // redirect to Client tray
-      // const { email } = result;
-      // updateEmail(email);
+      //HAY QUE CREAR EL INTAKE_TYPE AQUI
+
       localStorage.setItem(AUTH_TOKEN, result.token);
       await loadUserData(result.token, result.role);
       resetForm();

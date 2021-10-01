@@ -1,33 +1,28 @@
 import { Link, NavLink, useHistory } from "react-router-dom";
-// import Burger from "./Burger";
-import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
-import { INTAKE_TYPE } from "../../context/types";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
 
 const Navbar = () => {
-  const { state } = useAppContext();
-  const { email } = state.intake;
+  const { state, updateIntake, updateForms } = useAppContext();
   const history = useHistory();
-  const { updateIntake } = useAppContext();
 
   const navigateToWelcome = () => {
     history.push("/screens/Welcome");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(CLIENT_DATA);
-    localStorage.removeItem(INTAKE_TYPE);
+    localStorage.clear();
     updateIntake("");
-    console.log("Local Storage Was Reset-logout");
+    updateForms("");
+    console.log("Local Storage Was Reset because of logout");
     alert(`You have logged out of the system`);
     navigateToWelcome();
   };
+
   return (
     <div className="super-root">
       <div className="line-container">
-        <div className="col-6">The Immigration Time ADMIN</div>
+        <div className="col-6">The Immigration Time</div>
         <div className="col d-none d-md-block d-xl-block">
           <Link to="/screens/ConcessionaryPage">ADMIN</Link>
           <div>
@@ -35,13 +30,13 @@ const Navbar = () => {
           </div>
         </div>
         <div className="col d-none d-md-block d-xl-block status">
-          {!!email && `Bienvenido ${email}`}
+          {!!state.intake.email && `Bienvenido ${state.intake.email}`}
           <button
             className="badge badge-pill badge-danger font-weight-light"
             type="button"
             onClick={handleLogout}
           >
-            {email ? `Logout` : "No User"}
+            {state.intake.email ? `Logout` : "No User"}
           </button>
         </div>
       </div>

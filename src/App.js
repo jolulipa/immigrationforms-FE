@@ -18,6 +18,7 @@ import Registration from "./screens/Registration";
 import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
 import UsersPage from "./screens/UsersPage";
+// import globaVariables from "./constants"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/screens/Registration" component={Registration} />
         <Route path="/screens/LandingPage" component={LandingPage} />
         <Route path="/screens/Contact" component={Contact} />
+        <Route path="/concessionaries" component={Concessionary} />
         <PrivateRoute
           path="/forms/Concessionary/:id"
           component={Concessionary}

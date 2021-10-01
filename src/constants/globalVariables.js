@@ -1,2 +1,6 @@
-const globalVariables = { userData: {}, cliName: "generic" };
+const globalVariables = {
+  globalObj: {},
+  globalField: "generic",
+  globalArray: [],
+};
 export default globalVariables;
