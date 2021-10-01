@@ -55,8 +55,6 @@ const Login = () => {
 
     var USNumber = intakeData?.p1?.phone.match(/(\d{3})(\d{3})(\d{4})/);
     USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
-    console.log(USNumber);
-
     updateIntake({
       userId,
       email: intakeData?.p1?.email || "",

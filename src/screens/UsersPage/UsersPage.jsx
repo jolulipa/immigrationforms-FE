@@ -17,6 +17,7 @@ import globalVariables from "../../constants/globalVariables";
 const UsersPage = () => {
   const history = useHistory();
   const { state: context } = useAppContext();
+  const { updateForms } = useAppContext();
   const [results, setResults] = useState(context.forms);
   const location = useLocation();
   const navData = location?.state || {
@@ -110,7 +111,7 @@ const UsersPage = () => {
       (intakeExist?.status > 399 && intakeExist?.status < 500)
     ) {
       // Intake not found
-      history.push("/forms/Intake");
+      navigateToForm(context.intake.userId, "Intake");
     }
 
     if (context.intake.role === "adm") {
@@ -127,14 +128,14 @@ const UsersPage = () => {
     }
 
     (async () => {
-      const forms =
+      const { allForms } =
         context.intake.role === "adm" || context.intake.role === "con"
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
-      if (!!forms) setResults(forms);
+      updateForms(allForms || ["User has no forms"]);
     })();
   }, []);
-
+  setResults(context.forms);
   globalArray = results;
 
   return (
