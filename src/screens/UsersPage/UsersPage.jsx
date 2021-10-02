@@ -22,8 +22,8 @@ const UsersPage = () => {
     role: "reg",
     feName: context?.intake?.fullName,
   };
-  let globalObj, globalArray;
-  globalArray = context?.forms || [];
+  let individualForm, clientForms;
+  clientForms = context?.forms || [];
 
   console.log("-------------------NEW RENDER--------------------");
   // console.log("navDATA:", navData);
@@ -66,9 +66,9 @@ const UsersPage = () => {
         </tr>
       </thead>
       <tbody>
-        {globalArray.map((el) => {
-          globalObj = JSON.parse(el.data);
-          console.log("Registros del Cliente (data.p1)", globalObj.p1);
+        {clientForms.map((el) => {
+          individualForm = JSON.parse(el.data);
+          console.log("Registros del Cliente (data.p1)", individualForm.p1);
           return (
             <tr key={el.id}>
               <td>{el.formId}</td>
@@ -109,7 +109,7 @@ const UsersPage = () => {
       (intakeExist?.status > 399 && intakeExist?.status < 500)
     ) {
       // Intake not found
-      navigateToForm(context.intake.userId, "Intake");
+      history.push("/screens/Intake");
     }
 
     if (context.intake.role === "adm") {
@@ -134,7 +134,7 @@ const UsersPage = () => {
     })();
   }, []);
   setResults(context.forms);
-  globalArray = results;
+  clientForms = results;
 
   return (
     <div className="container ">
@@ -173,7 +173,9 @@ const UsersPage = () => {
           )}
         </div>
       </div>
-      <div>{globalArray ? renderTable() : setResults(context.forms)}</div>
+      <div>
+        {clientForms !== [] ? renderTable() : history.push("/screens/Intake")}
+      </div>
 
       <div className="row d-flex justify-content-center">
         <Link to="/screens/LandingPage" className="badge badge-pill badge-info">
