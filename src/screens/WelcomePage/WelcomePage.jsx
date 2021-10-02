@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import Footer from "../../components/Footer";
@@ -8,17 +8,26 @@ const WelcomePage = () => {
   const history = useHistory();
   const { state: context } = useAppContext();
   const { updateConcessionary } = useAppContext();
-  const conId = window.location.search.split("?")[1];
+  const {concessionaryId} = useParams();
+  // const conId = window.location.search.split("?")[1];
+  /*
+  * Me pregunta 20 veces cómo se hace. Le digo adonde buscar
+  * y al final ¿me sale con este hack? ¿Para qué me preguntó en primera instancia?
+  * De la documentación de React Router, búsqueda de 30 segundos:
+  * Opción 1: https://reactrouter.com/web/example/url-params
+  * Opción 2: https://reactrouter.com/web/example/query-parameters
+  * */
 
-  console.log("Concessionary ID:", conId);
+  console.log("Concessionary ID:", concessionaryId);
 
   if (context.intake.role === "adm") {
     history.push("/screens/AdminPage");
   }
 
   useEffect(() => {
-    updateConcessionary(conId);
-  }, [conId]);
+    updateConcessionary(concessionaryId);
+    // eslint-disable-next-line
+  }, [concessionaryId]);
 
   return (
     <div className="container">

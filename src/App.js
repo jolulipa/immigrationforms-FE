@@ -3,7 +3,6 @@ import AppContextProvider from "./context/Provider";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
 import Intake from "./forms/Intake";
 import Concessionary from "./forms/Concessionary";
 import I130A from "./forms/I130A";
@@ -46,9 +45,8 @@ function App() {
           component={ConcessionaryPage}
         />
         <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
-        <Route path="/" component={WelcomePage} />
+        <Route path="/:concessionaryId" component={WelcomePage} />
       </Switch>
-      {/*<Footer />*/}
     </Router>
   );
 }
