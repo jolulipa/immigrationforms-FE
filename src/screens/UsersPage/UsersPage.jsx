@@ -54,7 +54,7 @@ const UsersPage = () => {
   }
 
   const renderResults = () =>
-    results.map((el) => (
+    clientForms.map((el) => (
       <tr key={el.id}>
         <td>{decriptData(el)}</td>
         <td>{el.formStatus}</td>
