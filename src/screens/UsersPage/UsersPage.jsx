@@ -26,9 +26,9 @@ const UsersPage = () => {
   globalArray = context?.forms || [];
 
   console.log("-------------------NEW RENDER--------------------");
-  console.log("navDATA:", navData);
-  console.log("CONTEXTO Intake:", context.intake);
-  console.log("CONTEXTO Forms:", context.forms);
+  // console.log("navDATA:", navData);
+  // console.log("CONTEXTO Intake:", context.intake);
+  // console.log("CONTEXTO Forms:", context.forms);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -130,7 +130,7 @@ const UsersPage = () => {
         context.intake.role === "adm" || context.intake.role === "con"
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
-      updateForms(allForms || ["User has no forms"]);
+      updateForms(allForms);
     })();
   }, []);
   setResults(context.forms);
