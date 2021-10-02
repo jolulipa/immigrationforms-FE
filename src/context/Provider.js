@@ -2,9 +2,10 @@ import { createContext, useContext, useReducer } from "react";
 import { INTAKE_TYPE, FORMS_TYPE, CONCE_TYPE } from "./types";
 
 const initialState = {
-  forms: localStorage.getItem(FORMS_TYPE)
-    ? JSON.parse(localStorage.getItem(FORMS_TYPE))
-    : [],
+  forms:
+    localStorage.getItem(FORMS_TYPE) !== "undefined"
+      ? JSON.parse(localStorage.getItem(FORMS_TYPE))
+      : [],
   intake: localStorage.getItem(INTAKE_TYPE)
     ? JSON.parse(localStorage.getItem(INTAKE_TYPE))
     : {
@@ -14,7 +15,7 @@ const initialState = {
         fullName: "",
       },
   concessionary: localStorage.getItem(CONCE_TYPE)
-    ? localStorage.getItem(CONCE_TYPE)
+    ? JSON.parse(localStorage.getItem(CONCE_TYPE))
     : "",
 };
 

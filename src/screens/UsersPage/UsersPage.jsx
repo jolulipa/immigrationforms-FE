@@ -125,12 +125,19 @@ const UsersPage = () => {
     }
 
     (async () => {
-      const { allForms } =
-        context.intake.role === "adm" || context.intake.role === "con"
-          ? await readAllFormsAdm(navData.id)
-          : await readAllForms();
-      updateForms(allForms);
-      setResults(context.forms);
+      const forms = await (context.intake.role === "adm" ||
+      context.intake.role === "con"
+        ? await readAllFormsAdm(navData.id)
+        : await readAllForms());
+      if (!context.intake.userId) {
+        if (!forms || forms?.length === 0) {
+          alert(`You must fill the Intake form to continue`);
+          history.push(`/forms/Intake`);
+        }
+      }
+
+      updateForms(forms);
+      setResults(forms);
       clientForms = results;
     })();
   }, []);
