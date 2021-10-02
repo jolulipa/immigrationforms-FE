@@ -12,7 +12,11 @@ import {
 import { baseUrl } from "../../api/configuration";
 import { useAppContext } from "../../context/Provider";
 import globalVariables from "../../constants/globalVariables";
-// Object.freeze(myInitObject)
+/* ¿Esto todavía existe? ¿No tuvimos nosotros una discusión fuerte
+* en la que le dije que eso no se podía hacer en React? Recuerdo que
+* usted me dijo que era de solo lectura y yo le dije que si era así estaba bien.
+* */
+
 
 const UsersPage = () => {
   const history = useHistory();
@@ -26,6 +30,12 @@ const UsersPage = () => {
   };
   let { globalObj, globalArray } = globalVariables;
   globalArray = context?.forms || [];
+  /*
+  * Pero si es de solo lectura, ¿cómo es que yo encuentro esto aquí haciendo una asignación?
+  * No pretendo ni me interesa tener otra discusión como la que tuvimos.
+  * Pero, si quiere hacer las cosas a su manera o como entiende que deberían funcionar adelante.
+  * Solo no me involucre. No voy a gastar más tiempo revisando esto. You're on your own.
+  * */
 
   console.log("-------------------NEW RENDER--------------------");
   console.log("navDATA:", navData);
