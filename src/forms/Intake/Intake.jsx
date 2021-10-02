@@ -27,11 +27,11 @@ const Intake = () => {
   };
 
   useEffect(() => {
-    if (!isEditMode) return;
-    (async () => {
-      const values = await readForm(id);
-      setFormData(JSON.parse(values.data));
-    })();
+    if (isEditMode)
+      (async () => {
+        const values = await readForm(id);
+        setFormData(JSON.parse(values.data));
+      })();
   }, [id, isEditMode]);
 
   const extractData = async ({ cleanData }) => {

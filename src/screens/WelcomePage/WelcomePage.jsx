@@ -8,15 +8,7 @@ const WelcomePage = () => {
   const history = useHistory();
   const { state: context } = useAppContext();
   const { updateConcessionary } = useAppContext();
-  const {concessionaryId} = useParams();
-  // const conId = window.location.search.split("?")[1];
-  /*
-  * Me pregunta 20 veces cómo se hace. Le digo adonde buscar
-  * y al final ¿me sale con este hack? ¿Para qué me preguntó en primera instancia?
-  * De la documentación de React Router, búsqueda de 30 segundos:
-  * Opción 1: https://reactrouter.com/web/example/url-params
-  * Opción 2: https://reactrouter.com/web/example/query-parameters
-  * */
+  const { concessionaryId } = useParams();
 
   console.log("Concessionary ID:", concessionaryId);
 

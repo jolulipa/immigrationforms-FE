@@ -22,13 +22,13 @@ const UsersPage = () => {
     role: "reg",
     feName: context?.intake?.fullName,
   };
-  let individualForm, clientForms;
+  let clientForms;
   clientForms = context?.forms || [];
 
   console.log("-------------------NEW RENDER--------------------");
-  // console.log("navDATA:", navData);
-  // console.log("CONTEXTO Intake:", context.intake);
-  // console.log("CONTEXTO Forms:", context.forms);
+  console.log("navDATA:", navData);
+  console.log("CONTEXTO Intake:", context.intake);
+  console.log("CONTEXTO Forms:", context.forms);
 
   const navigateToForm = (id, formId) => {
     history.push(`/forms/${formId}/${id}`);
@@ -47,58 +47,57 @@ const UsersPage = () => {
     link.remove();
   };
 
+  function decriptData(el) {
+    const elData = JSON.parse(el.data);
+    const todo = [elData.p1.email, "-", elData.p1.phone];
+    return todo;
+  }
+
+  const renderResults = () =>
+    results.map((el) => (
+      <tr key={el.id}>
+        <td>{decriptData(el)}</td>
+        <td>{el.formStatus}</td>
+        <td>{el.formId}</td>
+        <td>{el.createdAt.split("T")[0]}</td>
+        <td>{el.updatedAt.split("T")[0]}</td>
+        <td>
+          <Button
+            className="btn-Primary btn-sm"
+            onClick={() => {
+              navigateToForm(el.id, el.formId);
+            }}
+          >
+            Select
+          </Button>
+        </td>
+        <td>
+          <Button
+            className="btn-success btn-sm"
+            onClick={async () => {
+              await printForm(el.id);
+            }}
+          >
+            Print
+          </Button>
+        </td>
+      </tr>
+    ));
+
   const renderTable = () => (
-    <Table
-      striped
-      className="table-hover"
-      data-mobile-responsive="true"
-      data-check-on-init="true"
-      responsive="md"
-    >
+    <Table striped className="table-hover">
       <thead>
         <tr key={"header"}>
-          <th scope="col">Form Name</th>
-          <th scope="col">Form Status</th>
-          <th scope="col">Created on:</th>
-          <th scope="col">Modified on:</th>
-          <th scope="col">EDIT Form</th>
-          <th scope="col">PRINT Form</th>
+          <th>User -------------- Phone</th>
+          <th>Form Status</th>
+          <th>Form Name</th>
+          <th>Created on:</th>
+          <th>Modified on:</th>
+          <th>EDIT Form</th>
+          <th>PRINT Form</th>
         </tr>
       </thead>
-      <tbody>
-        {clientForms.map((el) => {
-          individualForm = JSON.parse(el.data);
-          console.log("Registros del Cliente (data.p1)", individualForm.p1);
-          return (
-            <tr key={el.id}>
-              <td>{el.formId}</td>
-              <td>{el.formStatus}</td>
-              <td>{el.createdAt?.split("T")[0]}</td>
-              <td>{el.updatedAt?.split("T")[0]}</td>
-              <td>
-                <Button
-                  className="btn-Primary btn-sm"
-                  onClick={() => {
-                    navigateToForm(el.id, el.formId);
-                  }}
-                >
-                  Select
-                </Button>
-              </td>
-              <td>
-                <Button
-                  className="btn-success btn-sm"
-                  onClick={async () => {
-                    await printForm(el.id);
-                  }}
-                >
-                  Print
-                </Button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
+      <tbody>{renderResults()}</tbody>
     </Table>
   );
 
@@ -131,10 +130,10 @@ const UsersPage = () => {
           ? await readAllFormsAdm(navData.id)
           : await readAllForms();
       updateForms(allForms);
+      setResults(context.forms);
+      clientForms = results;
     })();
   }, []);
-  setResults(context.forms);
-  clientForms = results;
 
   return (
     <div className="container ">
