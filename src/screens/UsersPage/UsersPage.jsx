@@ -1,22 +1,19 @@
-import { Table } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { useEffect } from "react";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import {
   checkIntake,
   readAllForms,
   readAllFormsAdm,
-  print,
 } from "../../api/formsAccess";
-import { baseUrl } from "../../api/configuration";
 import { useAppContext } from "../../context/Provider";
+import RenderForms from "../../components/RenderForms";
 
 const UsersPage = () => {
   const history = useHistory();
   const { state: context } = useAppContext();
   const { updateForms } = useAppContext();
-  const [results, setResults] = useState(context.forms);
+  // const [results, setResults] = useState(context.forms);
   const location = useLocation();
   const navData = location?.state || {
     role: "reg",
@@ -30,77 +27,6 @@ const UsersPage = () => {
   console.log("CONTEXTO Intake:", context.intake);
   console.log("CONTEXTO Forms:", context.forms);
 
-  const navigateToForm = (id, formId) => {
-    history.push(`/forms/${formId}/${id}`);
-  };
-
-  const printForm = async (id) => {
-    const response = await print(id);
-    const { downloadKey } = await response?.json();
-    const url = `${baseUrl}/documents/${id}.pdf?downloadKey=${downloadKey}`;
-    const link = document.createElement("a");
-    link.href = url;
-    link.target = "_blank";
-    link.setAttribute("download", `${id}.pdf`);
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  };
-
-  function decriptData(el) {
-    const elData = JSON.parse(el.data);
-    const todo = [elData.p1.email, "-", elData.p1.phone];
-    return todo;
-  }
-
-  const renderResults = () =>
-    clientForms.map((el) => (
-      <tr key={el.id}>
-        <td>{decriptData(el)}</td>
-        <td>{el.formStatus}</td>
-        <td>{el.formId}</td>
-        <td>{el.createdAt.split("T")[0]}</td>
-        <td>{el.updatedAt.split("T")[0]}</td>
-        <td>
-          <Button
-            className="btn-Primary btn-sm"
-            onClick={() => {
-              navigateToForm(el.id, el.formId);
-            }}
-          >
-            Select
-          </Button>
-        </td>
-        <td>
-          <Button
-            className="btn-success btn-sm"
-            onClick={async () => {
-              await printForm(el.id);
-            }}
-          >
-            Print
-          </Button>
-        </td>
-      </tr>
-    ));
-
-  const renderTable = () => (
-    <Table striped className="table-hover">
-      <thead>
-        <tr key={"header"}>
-          <th>User -------------- Phone</th>
-          <th>Form Status</th>
-          <th>Form Name</th>
-          <th>Created on:</th>
-          <th>Modified on:</th>
-          <th>EDIT Form</th>
-          <th>PRINT Form</th>
-        </tr>
-      </thead>
-      <tbody>{renderResults()}</tbody>
-    </Table>
-  );
-
   useEffect(() => {
     const intakeExist = checkIntake(context.intake.userId);
     if (
@@ -108,7 +34,7 @@ const UsersPage = () => {
       (intakeExist?.status > 399 && intakeExist?.status < 500)
     ) {
       // Intake not found
-      history.push("/screens/Intake");
+      history.push("/forms/Intake");
     }
 
     if (context.intake.role === "adm") {
@@ -125,20 +51,23 @@ const UsersPage = () => {
     }
 
     (async () => {
-      const forms = await (context.intake.role === "adm" ||
+      const datos = await (context.intake.role === "adm" ||
       context.intake.role === "con"
         ? await readAllFormsAdm(navData.id)
         : await readAllForms());
+
+      const forms = await datos.json();
+      console.log("forms con/sin json:", datos, forms, datos.status);
+
       if (!context.intake.userId) {
-        if (!forms || forms?.length === 0) {
+        if (datos.status > 399 && datos.status < 500) {
           alert(`You must fill the Intake form to continue`);
           history.push(`/forms/Intake`);
         }
       }
 
-      updateForms(forms);
-      setResults(forms);
-      clientForms = results;
+      // updateForms(forms.results);
+      // clientForms = forms.results;
     })();
   }, []);
 
@@ -180,7 +109,12 @@ const UsersPage = () => {
         </div>
       </div>
       <div>
-        {clientForms !== [] ? renderTable() : history.push("/screens/Intake")}
+        <RenderForms forms={context.forms} />
+        {/* {clientForms !== [] ? (
+          <RenderForms forms={context.forms} />
+        ) : (
+          history.push("/forms/Intake")
+        )} */}
       </div>
 
       <div className="row d-flex justify-content-center">

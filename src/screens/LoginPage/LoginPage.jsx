@@ -46,7 +46,7 @@ const Login = () => {
         CLIENT_DATA,
         JSON.stringify({ cliEmail, cliName, cliUser })
       );
-      history.replace("/forms/Intake");
+      history.push("/forms/Intake");
       return;
     }
     // intake found
@@ -63,7 +63,8 @@ const Login = () => {
       role,
     });
     const formsData = await readAllForms(token);
-    updateForms(formsData || ["User has no forms"]);
+    const datos = await formsData.json();
+    updateForms(datos.results || ["User has no forms"]);
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {

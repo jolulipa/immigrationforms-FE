@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const navigateToWelcome = () => {
     history.push("/screens/Welcome");
+    // window.location.href  url de la pagina actual
   };
 
   const handleLogout = () => {
