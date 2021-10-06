@@ -1,25 +1,28 @@
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import Footer from "../../components/Footer";
 import { useAppContext } from "../../context/Provider";
+import { CONCE_TYPE } from "../../context/types";
 
 const WelcomePage = () => {
-  const history = useHistory();
   const { state: context } = useAppContext();
   const { updateConcessionary } = useAppContext();
   const { concessionaryId } = useParams();
 
-  console.log("Concessionary ID:", concessionaryId);
-
   if (context.intake.role === "adm") {
-    history.push("/screens/AdminPage");
+    window.location.replace("/screens/AdminPage");
   }
 
   useEffect(() => {
-    updateConcessionary(concessionaryId);
+    if (
+      concessionaryId !== "undefined" &&
+      localStorage.getItem(CONCE_TYPE) !== concessionaryId
+    )
+      updateConcessionary(concessionaryId);
+    console.log("Concessionary ID:", concessionaryId);
     // eslint-disable-next-line
-  }, [concessionaryId]);
+  }, []);
 
   return (
     <div className="container">

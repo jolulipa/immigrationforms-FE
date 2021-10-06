@@ -17,7 +17,6 @@ const Intake = () => {
   const navigateToTray = (id, email, role) => {
     history.push({
       pathname: "/screens/UsersPage",
-      // pathname: "/forms/Intake",
       state: {
         id,
         email,
@@ -53,7 +52,8 @@ const Intake = () => {
       cliUser: cliUser,
     };
     await createUpdateForm(obj);
-    alert(`Admin cannot access a concessionary client's data`);
+    alert(`New Intake form was created for:`, cliEmail);
+    // window.location.replace("/screens/UsersPage");
     navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 

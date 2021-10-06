@@ -14,9 +14,10 @@ const initialState = {
         lastName: "",
         fullName: "",
       },
-  concessionary: localStorage.getItem(CONCE_TYPE)
-    ? JSON.parse(localStorage.getItem(CONCE_TYPE))
-    : "",
+  concessionary:
+    localStorage.getItem(CONCE_TYPE) !== "undefined"
+      ? JSON.parse(localStorage.getItem(CONCE_TYPE))
+      : "",
 };
 
 const reducer = (state, action) => {

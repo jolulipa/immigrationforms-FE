@@ -1,18 +1,21 @@
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
+import { CONCE_TYPE } from "../../context/types";
 
 const Navbar = () => {
   const { state, updateIntake, updateForms } = useAppContext();
   const history = useHistory();
 
   const navigateToWelcome = () => {
-    history.push("/screens/Welcome");
+    history.push(`/${localStorage.getItem(CONCE_TYPE)}`);
     // window.location.href  url de la pagina actual
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(CLIENT_DATA);
     updateIntake("");
     updateForms("");
     console.log("Local Storage Was Reset because of logout");
@@ -43,7 +46,7 @@ const Navbar = () => {
       </div>
       <div className="row navbar">
         <NavLink
-          to="/"
+          to={`/${localStorage.getItem(CONCE_TYPE)}`}
           className="col-1  d-none d-md-block d-lg-block d-xl-block"
         >
           HOME

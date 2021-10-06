@@ -1,26 +1,19 @@
-import { useEffect } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
-import {
-  checkIntake,
-  readAllForms,
-  readAllFormsAdm,
-} from "../../api/formsAccess";
+import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import RenderForms from "../../components/RenderForms";
 
 const UsersPage = () => {
-  const history = useHistory();
   const { state: context } = useAppContext();
   const { updateForms } = useAppContext();
-  // const [results, setResults] = useState(context.forms);
+  const [results, setResults] = useState(context.forms);
   const location = useLocation();
   const navData = location?.state || {
     role: "reg",
     feName: context?.intake?.fullName,
   };
-  let clientForms;
-  clientForms = context?.forms || [];
 
   console.log("-------------------NEW RENDER--------------------");
   console.log("navDATA:", navData);
@@ -28,18 +21,9 @@ const UsersPage = () => {
   console.log("CONTEXTO Forms:", context.forms);
 
   useEffect(() => {
-    const intakeExist = checkIntake(context.intake.userId);
-    if (
-      !intakeExist ||
-      (intakeExist?.status > 399 && intakeExist?.status < 500)
-    ) {
-      // Intake not found
-      history.push("/forms/Intake");
-    }
-
     if (context.intake.role === "adm") {
       alert(`Admin cannot access a concessionary client's data`);
-      history.push("/screens/AdminPage");
+      window.location.replace("/screens/AdminPage");
     }
 
     if (
@@ -47,28 +31,27 @@ const UsersPage = () => {
       (context.intake.role === "adm" || context.intake.role === "con")
     ) {
       alert(`Cannot access an Administrator or concessionary's data`);
-      history.push("/screens/AdminPage");
+      window.location.replace("/screens/AdminPage");
     }
 
     (async () => {
-      const datos = await (context.intake.role === "adm" ||
+      const response = await (context.intake.role === "adm" ||
       context.intake.role === "con"
         ? await readAllFormsAdm(navData.id)
         : await readAllForms());
 
-      const forms = await datos.json();
-      console.log("forms con/sin json:", datos, forms, datos.status);
+      const forms = await response.json();
+      console.log("forms con/sin json:", response, forms, response.status);
 
       if (!context.intake.userId) {
-        if (datos.status > 399 && datos.status < 500) {
+        if (response.status > 399 && response.status < 500) {
           alert(`You must fill the Intake form to continue`);
-          history.push(`/forms/Intake`);
+          window.location.replace("/forms/Intake");
         }
       }
-
-      // updateForms(forms.results);
-      // clientForms = forms.results;
+      await updateForms(forms.results);
     })();
+    setResults(context.forms);
   }, []);
 
   return (
@@ -109,12 +92,7 @@ const UsersPage = () => {
         </div>
       </div>
       <div>
-        <RenderForms forms={context.forms} />
-        {/* {clientForms !== [] ? (
-          <RenderForms forms={context.forms} />
-        ) : (
-          history.push("/forms/Intake")
-        )} */}
+        <RenderForms forms={results} />
       </div>
 
       <div className="row d-flex justify-content-center">

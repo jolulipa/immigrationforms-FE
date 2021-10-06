@@ -5,8 +5,8 @@ import "./styles.css";
 import { readIntakeForm } from "../../api/formsAccess";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
-import { AUTH_TOKEN } from "../../constants/storageKeys";
-import { INTAKE_TYPE, CONCE_TYPE } from "../../context/types";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
+import { CONCE_TYPE } from "../../context/types";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -30,11 +30,24 @@ const Registration = () => {
   const history = useHistory();
   const { updateIntake } = useAppContext();
 
-  const loadUserData = async (token, role) => {
+  const loadUserData = async (token, role, id, email, name) => {
     const response = await readIntakeForm(token);
     if (response.status > 399 && response.status < 501) {
       // Intake not found
-      localStorage.removeItem(INTAKE_TYPE);
+      updateIntake({
+        userId: id,
+        email,
+        phone: "",
+        fullName: name,
+        role,
+      });
+      const cliEmail = email;
+      const cliName = name;
+      const cliUser = id;
+      localStorage.setItem(
+        CLIENT_DATA,
+        JSON.stringify({ cliEmail, cliName, cliUser })
+      );
       history.replace("/forms/Intake");
       return;
     }
@@ -59,19 +72,24 @@ const Registration = () => {
     const concessionary = JSON.parse(localStorage.getItem(CONCE_TYPE));
     values.concessionary = concessionary;
     values.role = "reg";
-    console.log(values);
     const result = await registerUser(values);
     if (result.isSuccessful) {
       //HAY QUE CREAR EL INTAKE_TYPE AQUI
-
       localStorage.setItem(AUTH_TOKEN, result.token);
-      await loadUserData(result.token, result.role);
+      await loadUserData(
+        result.token,
+        result.role,
+        result.id,
+        result.email,
+        result.name
+      );
       resetForm();
       redirectLocation();
     } else {
       // Code in case of error
       console.log("An error occurred");
     }
+    console.log("RESULT FROM CREATE USER", result);
     setSubmitting(false);
   };
 
