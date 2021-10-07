@@ -1,5 +1,5 @@
-import { useState, useEffect, useHistory } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
@@ -27,22 +27,15 @@ const UsersPage = () => {
     }
 
     (async () => {
-      const response = await (context.intake.role === "con"
+      const forms = await (context.intake.role === "con"
         ? await readAllFormsAdm(navData.id)
         : await readAllForms());
 
-      const forms = await response.json();
-      console.log("forms con/sin json:", response, forms, response.status);
-
-      if (
-        !context.intake.userId &&
-        response.status > 399 &&
-        response.status < 501
-      ) {
+      if (!context.intake.userId && forms.status > 399 && forms.status < 501) {
         alert(`You must fill the Intake form to continue`);
         history.push("/forms/Intake");
       }
-      await updateForms(forms.results);
+      await updateForms(forms);
     })();
     setResults(context.forms);
   }, []);

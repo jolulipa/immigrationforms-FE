@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
+import { readAllForms } from "../../api/formsAccess";
 import { checkIntake } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
@@ -11,8 +12,7 @@ import { useAppContext } from "../../context/Provider";
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
-  const { state: context } = useAppContext();
-  console.log("Context Intake:", context.intake);
+  const { state: context, updateForms } = useAppContext();
 
   const navigateToUser = async (id, email, role, feName) => {
     const response = await checkIntake(id);
@@ -20,6 +20,8 @@ const ConcessionaryPage = () => {
       // Intake not found
       history.push("/forms/Intake");
     } else {
+      const forms = await readAllForms();
+      await updateForms(forms);
       history.push({
         pathname: "/screens/UsersPage",
         state: {
@@ -33,7 +35,7 @@ const ConcessionaryPage = () => {
   };
 
   const deleteUser = (id) => {
-    console.log(id);
+    console.log("ID a Borrar", id);
   };
 
   const renderResults = () =>
@@ -78,7 +80,7 @@ const ConcessionaryPage = () => {
   const renderTable = (results) => (
     <Table striped variant="dark" className="table-hover">
       <thead className="thead-light">
-        <tr key={"header"}>
+        <tr key={results[0]}>
           <th>User email</th>
           <th>Delete Acc</th>
           <th>Role</th>

@@ -61,8 +61,7 @@ const Login = () => {
       role,
     });
     const formsData = await readAllForms(token);
-    const datos = await formsData.json();
-    updateForms(datos.results || ["User has no forms"]);
+    updateForms(formsData || ["User has no forms"]);
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
