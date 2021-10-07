@@ -9,7 +9,6 @@ function RenderForms({ forms }) {
     <Table striped className="table-hover">
       <thead>
         <tr key={"header"}>
-          {/* <th>User -------------- Phone</th> */}
           <th>Form</th>
           <th>Status</th>
           <th>Created on:</th>
@@ -21,7 +20,7 @@ function RenderForms({ forms }) {
       <tbody>
         {!forms || forms === ""
           ? window.location.replace(`/${localStorage.getItem(CONCE_TYPE)}`)
-          : console.log("forms:", forms)}
+          : console.log("Displayed Forms:", forms)}
         {forms.map((el) => (
           <tr key={el.id}>
             {/* <td>{JSON.parse(el.data).p1.email}</td> */}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useHistory } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
@@ -14,7 +14,7 @@ const UsersPage = () => {
     role: "reg",
     feName: context?.intake?.fullName,
   };
-
+  const history = useHistory();
   console.log("-------------------NEW RENDER--------------------");
   console.log("navDATA:", navData);
   console.log("CONTEXTO Intake:", context.intake);
@@ -23,31 +23,24 @@ const UsersPage = () => {
   useEffect(() => {
     if (context.intake.role === "adm") {
       alert(`Admin cannot access a concessionary client's data`);
-      window.location.replace("/screens/AdminPage");
-    }
-
-    if (
-      !navData?.id &&
-      (context.intake.role === "adm" || context.intake.role === "con")
-    ) {
-      alert(`Cannot access an Administrator or concessionary's data`);
-      window.location.replace("/screens/AdminPage");
+      history.push("/screens/AdminPage");
     }
 
     (async () => {
-      const response = await (context.intake.role === "adm" ||
-      context.intake.role === "con"
+      const response = await (context.intake.role === "con"
         ? await readAllFormsAdm(navData.id)
         : await readAllForms());
 
       const forms = await response.json();
       console.log("forms con/sin json:", response, forms, response.status);
 
-      if (!context.intake.userId) {
-        if (response.status > 399 && response.status < 500) {
-          alert(`You must fill the Intake form to continue`);
-          window.location.replace("/forms/Intake");
-        }
+      if (
+        !context.intake.userId &&
+        response.status > 399 &&
+        response.status < 501
+      ) {
+        alert(`You must fill the Intake form to continue`);
+        history.push("/forms/Intake");
       }
       await updateForms(forms.results);
     })();
