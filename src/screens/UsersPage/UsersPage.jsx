@@ -17,8 +17,7 @@ const UsersPage = () => {
   const history = useHistory();
   console.log("-------------------NEW RENDER--------------------");
   console.log("navDATA:", navData);
-  console.log("CONTEXTO Intake:", context.intake);
-  console.log("CONTEXTO Forms:", context.forms);
+  console.log("CONTEXT Intake/Forms:", context);
 
   useEffect(() => {
     if (context.intake.role === "adm") {
