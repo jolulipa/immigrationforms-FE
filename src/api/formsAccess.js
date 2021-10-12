@@ -55,8 +55,8 @@ export const readForm = async (id) => {
 
 export const readIntakeForm = async (userToken) =>
   fetch(`${baseUrl}/api/forms/getIntake`, {
+    method: "GET",
     headers: {
-      "Content-Type": "application/json",
       jwt: token || userToken,
     },
   });
@@ -65,7 +65,6 @@ export const readIntakeForm = async (userToken) =>
 export const checkIntake = async (userCli) =>
   await fetch(`${baseUrl}/api/forms/checkIntake/${userCli}`, {
     headers: {
-      "Content-Type": "application/json",
       jwt: token,
     },
   });

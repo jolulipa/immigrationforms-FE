@@ -21,17 +21,16 @@ const Login = () => {
   const location = useLocation();
   const history = useHistory();
   const { updateIntake, updateForms } = useAppContext();
+  const toastConfig = { position: "bottom-center" };
 
   const navigateToRegistration = () => {
     history.push("/screens/Registration");
   };
 
-  const toastConfig = { position: "bottom-center" };
-
   const loadUserData = async (token, role, name, id, email) => {
     const response = await readIntakeForm(token);
-    if (response?.status > 399 && response?.status < 500) {
-      // Intake not found
+    if (response.status > 399) {
+      // Intake not found -- response.statusText="not found"
       updateIntake({
         userId: id,
         email,
@@ -46,8 +45,7 @@ const Login = () => {
         CLIENT_DATA,
         JSON.stringify({ cliEmail, cliName, cliUser })
       );
-      history.replace("/forms/Intake");
-      return;
+      window.location.replace("/forms/Intake");
     }
     // intake found
     const { data, userId } = await response?.json();
@@ -55,8 +53,6 @@ const Login = () => {
 
     var USNumber = intakeData?.p1?.phone.match(/(\d{3})(\d{3})(\d{4})/);
     USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
-    console.log(USNumber);
-
     updateIntake({
       userId,
       email: intakeData?.p1?.email || "",
@@ -74,7 +70,6 @@ const Login = () => {
     if (res.status === 200) {
       // Code in case of success
       const { email } = values;
-      // updateEmail(email);
       const result = await res.json();
       const localId = result.id;
       const localRole = result.role;

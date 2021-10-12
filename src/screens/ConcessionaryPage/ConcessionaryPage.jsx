@@ -1,25 +1,25 @@
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
-import { checkIntake } from "../../api/formsAccess";
+import { checkIntake, readAllFormsAdm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
 
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
   const history = useHistory();
-  const { state: context } = useAppContext();
-  console.log("Context Intake:", context.intake);
+  const { state } = useAppContext();
+  const { updateForms } = useAppContext();
 
   const navigateToUser = async (id, email, role, feName) => {
     const response = await checkIntake(id);
     if (!response || (response?.status > 399 && response?.status < 500)) {
-      // Intake not found
       history.push("/forms/Intake");
     } else {
+      const forms = await readAllFormsAdm(id);
+      await updateForms(forms);
       history.push({
         pathname: "/screens/UsersPage",
         state: {
@@ -33,7 +33,7 @@ const ConcessionaryPage = () => {
   };
 
   const deleteUser = (id) => {
-    console.log(id);
+    console.log("ID a Borrar", id);
   };
 
   const renderResults = () =>
@@ -77,14 +77,14 @@ const ConcessionaryPage = () => {
 
   const renderTable = (results) => (
     <Table striped variant="dark" className="table-hover">
-      <thead className="thead-light">
-        <tr key={"header"}>
-          <th>User email</th>
-          <th>Delete Acc</th>
-          <th>Role</th>
-          <th>Created on</th>
-          <th>Modified on</th>
-          <th>Go To:</th>
+      <thead key={"key0"} className="thead-light">
+        <tr>
+          <th key={"key1"}>User email</th>
+          <th key={"key2"}>Delete Acc</th>
+          <th key={"key3"}>Role</th>
+          <th key={"key4"}>Created on</th>
+          <th key={"key5"}>Modified on</th>
+          <th key={"key6"}>Go To:</th>
         </tr>
       </thead>
       <tbody>{renderResults(results)}</tbody>
@@ -93,15 +93,14 @@ const ConcessionaryPage = () => {
 
   // La responsabilidad de esto es cargar la data
   useEffect(() => {
-    if (context.intake.role !== "con") {
+    if (state.intake.role !== "con") {
       alert(`You're not an concessionary`);
-      navigateToUser(context.intake.userId, context.intake.role);
+      navigateToUser(state.intake.userId, state.intake.role);
     }
     (async () => {
       const { results } = await readUsers();
-      console.log("Clients array:", results);
       const newResults = results.filter(function (el) {
-        return el.role === "reg" && context.intake.userId === el.concessionary;
+        return el.role === "reg" && state.intake.userId === el.concessionary;
       });
       setResults(newResults);
     })();
@@ -115,7 +114,7 @@ const ConcessionaryPage = () => {
       </h2>
       <h4 style={styles.title}>
         CLIENTES DEL CONCESIONARIO:{" "}
-        <span style={styles.name}>{context?.intake?.fullName}</span>
+        <span style={styles.name}>{state?.intake?.fullName}</span>
       </h4>
       <div className="row d-flex justify-content-center">
         <div>
