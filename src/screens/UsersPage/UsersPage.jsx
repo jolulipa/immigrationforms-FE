@@ -30,8 +30,6 @@ const UsersPage = () => {
         ? await readAllFormsAdm(navData.id)
         : await readAllForms());
 
-      // TODO:poner aqui que regrese si forms es undifined
-
       if (!context.intake.userId && forms.status > 399 && forms.status < 501) {
         alert(`You must fill the Intake form to continue`);
         history.push("/forms/Intake");
