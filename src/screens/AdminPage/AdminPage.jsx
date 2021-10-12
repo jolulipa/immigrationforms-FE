@@ -98,7 +98,7 @@ const AdminPage = () => {
   }, []);
 
   return (
-    <div className="container p-3 my-3 bg-primary text-white">
+    <div className="container p-3 my-3 bg-warning bg-gradient text-dark">
       <h2 style={styles.title}>
         ADMINISTRACIÓN GENERAL DE LA APP DE THE IMMIGRATION TIME
       </h2>

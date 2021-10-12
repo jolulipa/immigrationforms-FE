@@ -77,14 +77,14 @@ const ConcessionaryPage = () => {
 
   const renderTable = (results) => (
     <Table striped variant="dark" className="table-hover">
-      <thead className="thead-light">
-        <tr key={results[0]}>
-          <th>User email</th>
-          <th>Delete Acc</th>
-          <th>Role</th>
-          <th>Created on</th>
-          <th>Modified on</th>
-          <th>Go To:</th>
+      <thead key={"key0"} className="thead-light">
+        <tr>
+          <th key={"key1"}>User email</th>
+          <th key={"key2"}>Delete Acc</th>
+          <th key={"key3"}>Role</th>
+          <th key={"key4"}>Created on</th>
+          <th key={"key5"}>Modified on</th>
+          <th key={"key6"}>Go To:</th>
         </tr>
       </thead>
       <tbody>{renderResults(results)}</tbody>
