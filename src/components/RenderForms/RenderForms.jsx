@@ -19,7 +19,9 @@ function RenderForms({ forms }) {
       </thead>
       <tbody>
         {!forms || forms === ""
-          ? window.location.replace(`/${localStorage.getItem(CONCE_TYPE)}`)
+          ? window.location.replace(
+              `/?concessionaryId=${localStorage.getItem(CONCE_TYPE)}`
+            )
           : console.log("Displayed Forms:", forms)}
         {forms.map((el) => (
           <tr key={el.id}>

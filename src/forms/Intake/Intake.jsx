@@ -53,7 +53,6 @@ const Intake = () => {
     };
     await createUpdateForm(obj);
     alert(`New Intake form was created for:`, cliEmail);
-    // window.location.replace("/screens/UsersPage");
     navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 
