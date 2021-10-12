@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import Footer from "../../components/Footer";
@@ -8,7 +8,8 @@ import { CONCE_TYPE } from "../../context/types";
 const WelcomePage = () => {
   const { state: context } = useAppContext();
   const { updateConcessionary } = useAppContext();
-  const { concessionaryId } = useParams();
+  const url = new URL(window.location.href);
+  var concessionaryId = url.searchParams.get("concessionaryId");
 
   if (context.intake.role === "adm") {
     window.location.replace("/screens/AdminPage");
