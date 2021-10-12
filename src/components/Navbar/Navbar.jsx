@@ -46,7 +46,7 @@ const Navbar = () => {
       </div>
       <div className="row navbar">
         <NavLink
-          to={`/${localStorage.getItem(CONCE_TYPE)}`}
+          to={`/?concessionaryId=${localStorage.getItem(CONCE_TYPE)}`}
           className="col-1  d-none d-md-block d-lg-block d-xl-block"
         >
           HOME
