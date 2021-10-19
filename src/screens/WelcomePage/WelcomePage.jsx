@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import Footer from "../../components/Footer";
 import { useAppContext } from "../../context/Provider";
-import { CONCE_TYPE } from "../../context/types";
 
 const WelcomePage = () => {
   const { state: context } = useAppContext();
@@ -18,7 +17,7 @@ const WelcomePage = () => {
   useEffect(() => {
     if (
       concessionaryId !== "undefined" &&
-      localStorage.getItem(CONCE_TYPE) !== concessionaryId
+      context.concessionary !== concessionaryId
     )
       updateConcessionary(concessionaryId);
     console.log("Concessionary ID:", concessionaryId);

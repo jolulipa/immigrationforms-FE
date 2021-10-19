@@ -107,6 +107,10 @@ const ConcessionaryPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(
+    "-------------------NEW RENDER ConcessionaryPage--------------------"
+  );
+  console.log("Displayed Clients:", results);
   return (
     <div className="container p-3 my-3 bg-dark text-white">
       <h2 style={styles.title}>

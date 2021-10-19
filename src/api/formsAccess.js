@@ -3,7 +3,7 @@ import { AUTH_TOKEN } from "../constants/storageKeys";
 import JWT from "jwt-decode";
 
 let hasAccess = false;
-const token = localStorage.getItem(AUTH_TOKEN) || "";
+const token = localStorage.getItem(AUTH_TOKEN);
 
 if (!!token) {
   const decodedExp = JWT(token);
@@ -13,8 +13,8 @@ if (!!token) {
   hasAccess = false;
 }
 
-const handleError = () => {
-  console.log("User has no access.");
+const handleError = (error) => {
+  console.log("User has no access:", error);
 };
 
 export const readAllForms = async (userToken) => {
@@ -23,7 +23,7 @@ export const readAllForms = async (userToken) => {
     headers: {
       jwt: token || userToken,
     },
-  }).catch((error) => console.log(error));
+  });
   const datos = await response.json();
   return datos.results;
 };
@@ -37,20 +37,24 @@ export const readAllFormsAdm = async (userCli) => {
         jwt: token,
       },
     }
-  ).catch((error) => console.log(error));
+  );
   const datos = await response.json();
   return datos.results;
 };
 
 export const readForm = async (id) => {
-  const response = await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
-    method: "GET",
-    headers: {
-      jwt: token,
-    },
-  }).catch((error) => console.log(error));
-  const datos = await response.json();
-  return await datos;
+  if (hasAccess) {
+    const response = await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
+      method: "GET",
+      headers: {
+        jwt: token,
+      },
+    });
+    const datos = await response.json();
+    return await datos;
+  } else {
+    handleError();
+  }
 };
 
 export const readIntakeForm = async (userToken) =>
@@ -72,7 +76,7 @@ export const checkIntake = async (userCli) =>
 export const createUpdateForm = async (values) => {
   try {
     console.log("DATOS ENVIADOS A UPDATE-CREATE form", values);
-    const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
+    await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -80,10 +84,10 @@ export const createUpdateForm = async (values) => {
         jwt: token,
       },
     });
-    const datos = await response.json();
-    return datos;
+    // const datos = await response.json();
+    // return datos;
   } catch (error) {
-    console.log("ERROR RETURNED", error);
+    handleError(error);
   }
 };
 

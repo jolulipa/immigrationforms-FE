@@ -29,9 +29,13 @@ const Intake = () => {
     if (isEditMode)
       (async () => {
         const values = await readForm(id);
-        setFormData(JSON.parse(values.data));
+        if (values) {
+          setFormData(JSON.parse(values.data));
+        } else {
+          setFormData(JSON.parse(context.forms[0].data));
+        }
       })();
-  }, [id, isEditMode]);
+  }, [id, isEditMode, context.forms]);
 
   const extractData = async ({ cleanData }) => {
     let i = 0;
@@ -52,7 +56,7 @@ const Intake = () => {
       cliUser: cliUser,
     };
     await createUpdateForm(obj);
-    alert(`New Intake form was created for:`, cliEmail);
+    console.log(`Intake form was created or modified for: ${cliEmail}`);
     navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 

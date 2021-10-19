@@ -2,14 +2,14 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import "./styles.css";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
-import { CONCE_TYPE } from "../../context/types";
 
 const Navbar = () => {
   const { state, updateIntake, updateForms } = useAppContext();
   const history = useHistory();
 
   const navigateToWelcome = () => {
-    history.push(`/${localStorage.getItem(CONCE_TYPE)}`);
+    console.log("state at Navbar", state);
+    history.push(`/${state.concessionary}`);
     // window.location.href  url de la pagina actual
   };
 
@@ -46,7 +46,7 @@ const Navbar = () => {
       </div>
       <div className="row navbar">
         <NavLink
-          to={`/?concessionaryId=${localStorage.getItem(CONCE_TYPE)}`}
+          to={`/?concessionaryId=${state.concessionary}`}
           className="col-1  d-none d-md-block d-lg-block d-xl-block"
         >
           HOME
