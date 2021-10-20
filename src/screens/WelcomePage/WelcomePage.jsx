@@ -17,31 +17,36 @@ const WelcomePage = () => {
   useEffect(() => {
     if (
       concessionaryId !== "undefined" &&
-      context.concessionary !== concessionaryId
+      context?.concessionary?.concessionary !== concessionaryId
     )
-      updateConcessionary(concessionaryId);
+      updateConcessionary({
+        ...context.concessionary,
+        concessionary: concessionaryId,
+      });
     console.log("Concessionary ID:", concessionaryId);
     // eslint-disable-next-line
   }, []);
 
   return (
     <div className="container">
-      <h2 style={styles.title}>BIENVENIDO A THE IMMIGRATION TIME</h2>
+      <h2 style={styles.title}>
+        BIENVENIDO A SU HERRAMIENTA DE IMMIGRACION USA
+      </h2>
       <div className="row">
         <p style={styles.paragraph}>
-          THE IMMIGRATION TIME es un servicio de trámites de migración en los
-          Estados Unidos. Es un servicio en linea que facilita a los hispanos
-          los trámites migratorios en los Estados Unidos de Norteamerica.
-          Nuestros servicios son siempre entregados con responsabilidad, a
-          tiempo y a precios asequibles para nuestra comunidad.
+          Esta herramienta es un servicio de trámites de migración en los
+          Estados Unidos. Disponible 24 horas al dia, en linea y que facilita a
+          los hispanos los trámites migratorios en los Estados Unidos de
+          Norteamerica. Nuestros servicios son siempre entregados con
+          responsabilidad, a tiempo y a precios asequibles para nuestra
+          comunidad.
         </p>
         <p style={styles.paragraph}>
-          The Immigration Time ofrece cualquier servicio de immigración para
+          Esta herramienta ofrece cualquier servicio de immigración para
           migrantes a los Estados Unidos de America. Para iniciar el proceso con
-          The Immigration Time, es necesario registrarse, llenando un
-          formulario. Este formulario es el primer paso para iniciar los
-          procedimientos necesarios para ayudarle a conseguir sus objetivos
-          migratorios.
+          la herramienta, es necesario registrarse, llenando un formulario. Este
+          formulario es el primer paso para iniciar los procedimientos
+          necesarios para ayudarle a conseguir sus objetivos migratorios.
         </p>
       </div>
       <div className="row d-flex justify-content-center">

@@ -53,9 +53,9 @@ const AppContextProvider = ({ children }) => {
     localStorage.setItem(INTAKE_TYPE, JSON.stringify(intakeObj));
     dispatch({ type: INTAKE_TYPE, payload: intakeObj });
   };
-  const updateConcessionary = (conce) => {
-    localStorage.setItem(CONCE_TYPE, JSON.stringify(conce));
-    dispatch({ type: CONCE_TYPE, payload: conce });
+  const updateConcessionary = (conceObj) => {
+    localStorage.setItem(CONCE_TYPE, JSON.stringify(conceObj));
+    dispatch({ type: CONCE_TYPE, payload: conceObj });
   };
   return (
     <AppContext.Provider
