@@ -1,29 +1,32 @@
 import { Link } from "react-router-dom";
-import { colors } from "../../ui-config/colors";
+import "./styles.css";
 
 const Footer = () => {
   return (
-    <footer className="container bg-light">
-      <p style={styles.paragraph}>
-        {" "}
+    <div className="footer fixed-bottom">
+      <div
+        style={{
+          paddingTop: "10px",
+          paddingBottom: "15px",
+          borderBottom: ".5px solid rgb(107, 153, 245)",
+        }}
+      >
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "rgb(5, 252, 66)",
+          }}
+          to="/screens/contact"
+        >
+          Contactenos
+        </Link>
+      </div>
+      <div className="" style={{ paddingTop: "10px" }}>
         Copyright &copy; The Immigration Times, 2021. Síguenos en las Redes
         Sociales
-      </p>
-      <Link to="/screens/contact" className="row d-flex justify-content-center">
-        contactenos
-      </Link>
-    </footer>
+      </div>
+    </div>
   );
-};
-
-const styles = {
-  paragraph: {
-    textAlign: "center",
-    fontSize: 14,
-    paddingTop: 40,
-    margin: 0,
-    color: colors.brown,
-  },
 };
 
 export default Footer;

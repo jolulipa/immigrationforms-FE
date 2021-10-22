@@ -3,6 +3,7 @@ import AppContextProvider from "./context/Provider";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Registration from "./screens/Registration";
 import LoginPage from "./screens/LoginPage";
 import Intake from "./forms/Intake";
@@ -49,6 +50,7 @@ function App() {
         <Route path="/:concessionaryId" component={WelcomePage} />
         <Route path="/" component={WelcomePage} />
       </Switch>
+      <Footer />
     </Router>
   );
 }
