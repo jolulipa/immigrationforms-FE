@@ -29,13 +29,13 @@ const WelcomePage = () => {
   }, []);
 
   return (
-    <div className="container mr-1">
+    <div className="container-fluid">
       <div className="row">
         <img src={Jpeg1} alt="Somos Latinos" className="col-6" />
         <div className="col-6">
           <h2 style={styles.title}>
-            Bienvenido a <br />{" "}
-            <strong>SU HERRAMIENTA DE IMMIGRACION USA</strong>
+            Bienvenido a su <br />{" "}
+            <strong>HERRAMIENTA DE IMMIGRACIÓN USA</strong>
           </h2>
           <div className="">
             <p style={styles.paragraph}>

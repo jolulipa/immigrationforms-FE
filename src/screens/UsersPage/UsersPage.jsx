@@ -43,7 +43,7 @@ const UsersPage = () => {
 
   console.log("-------------------NEW RENDER UsersPage--------------------");
   return (
-    <div className="container ">
+    <div className="container" style={{ marginBottom: "10px" }}>
       <h3 style={styles.title}>
         FORMULARIOS SOMETIDOS por{" "}
         <span style={styles.name}>
