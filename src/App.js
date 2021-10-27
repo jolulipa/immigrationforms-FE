@@ -3,10 +3,12 @@ import AppContextProvider from "./context/Provider";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Registration from "./screens/Registration";
 import LoginPage from "./screens/LoginPage";
 import Intake from "./forms/Intake";
 import Concessionary from "./forms/Concessionary";
+import I130 from "./forms/I130";
 import I130A from "./forms/I130A";
 import N400 from "./forms/N400";
 import WelcomePage from "./screens/WelcomePage";
@@ -31,6 +33,7 @@ function App() {
         <Route path="/unauthorized" component={Unauthorized} />
         <PrivateRoute path="/forms/Intake/:id" component={Intake} />
         <PrivateRoute path="/forms/Intake" component={Intake} />
+        <PrivateRoute path="/forms/i130" component={I130} />
         <PrivateRoute path="/forms/i130A" component={I130A} />
         <PrivateRoute path="/forms/n400" component={N400} />
         <PrivateRoute
@@ -47,6 +50,7 @@ function App() {
         <Route path="/:concessionaryId" component={WelcomePage} />
         <Route path="/" component={WelcomePage} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

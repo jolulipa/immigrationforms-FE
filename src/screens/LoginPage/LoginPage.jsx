@@ -53,13 +53,20 @@ const Login = () => {
 
     var USNumber = intakeData?.p1?.phone.match(/(\d{3})(\d{3})(\d{4})/);
     USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
+    const cliEmail = intakeData?.p1?.email;
+    const cliName = intakeData?.p1?.petFullName;
+    const cliUser = userId;
     updateIntake({
       userId,
-      email: intakeData?.p1?.email || "",
+      email: cliEmail || "",
       phone: USNumber || "Missing Phone Number",
-      fullName: intakeData?.p1?.petFullName || name,
+      fullName: cliName || name,
       role,
     });
+    localStorage.setItem(
+      CLIENT_DATA,
+      JSON.stringify({ cliEmail, cliName, cliUser })
+    );
     const formsData = await readAllForms(token);
     updateForms(formsData || ["User has no forms"]);
   };

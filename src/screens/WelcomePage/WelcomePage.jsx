@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
-import Footer from "../../components/Footer";
 import { useAppContext } from "../../context/Provider";
-import { CONCE_TYPE } from "../../context/types";
+import Jpeg1 from "../../images/Welcome.png";
+// import Jpeg2 from "../../images/liberty.png";
 
 const WelcomePage = () => {
   const { state: context } = useAppContext();
@@ -18,59 +18,70 @@ const WelcomePage = () => {
   useEffect(() => {
     if (
       concessionaryId !== "undefined" &&
-      localStorage.getItem(CONCE_TYPE) !== concessionaryId
+      context?.concessionary?.concessionary !== concessionaryId
     )
-      updateConcessionary(concessionaryId);
+      updateConcessionary({
+        ...context.concessionary,
+        concessionary: concessionaryId,
+      });
     console.log("Concessionary ID:", concessionaryId);
     // eslint-disable-next-line
   }, []);
 
   return (
-    <div className="container">
-      <h2 style={styles.title}>BIENVENIDO A THE IMMIGRATION TIME</h2>
+    <div className="container mr-1">
       <div className="row">
-        <p style={styles.paragraph}>
-          THE IMMIGRATION TIME es un servicio de trámites de migración en los
-          Estados Unidos. Es un servicio en linea que facilita a los hispanos
-          los trámites migratorios en los Estados Unidos de Norteamerica.
-          Nuestros servicios son siempre entregados con responsabilidad, a
-          tiempo y a precios asequibles para nuestra comunidad.
-        </p>
-        <p style={styles.paragraph}>
-          The Immigration Time ofrece cualquier servicio de immigración para
-          migrantes a los Estados Unidos de America. Para iniciar el proceso con
-          The Immigration Time, es necesario registrarse, llenando un
-          formulario. Este formulario es el primer paso para iniciar los
-          procedimientos necesarios para ayudarle a conseguir sus objetivos
-          migratorios.
-        </p>
-      </div>
-      <div className="row d-flex justify-content-center">
-        <Link
-          to="/screens/Registration"
-          className="badge badge-pill badge-danger align-items-between"
-          style={styles.navigate}
-        >
-          REGISTRARSE
-        </Link>
-      </div>
-      <div className="card">
-        <Footer />
+        <img src={Jpeg1} alt="Somos Latinos" className="col-6" />
+        <div className="col-6">
+          <h2 style={styles.title}>
+            Bienvenido a <br />{" "}
+            <strong>SU HERRAMIENTA DE IMMIGRACION USA</strong>
+          </h2>
+          <div className="">
+            <p style={styles.paragraph}>
+              Esta herramienta es un servicio de trámites de migración en los
+              Estados Unidos. Disponible 24 horas al dia, en linea y que
+              facilita a los hispanos los trámites migratorios en los Estados
+              Unidos de Norteamerica. Nuestros servicios son siempre entregados
+              con responsabilidad, a tiempo y a precios asequibles para nuestra
+              comunidad.
+            </p>
+            <p style={styles.paragraph}>
+              Esta herramienta ofrece cualquier servicio de immigración para
+              migrantes a los Estados Unidos de America. Para iniciar el proceso
+              con la herramienta, es necesario registrarse, llenando un
+              formulario. Este formulario es el primer paso para iniciar los
+              procedimientos necesarios para ayudarle a conseguir sus objetivos
+              migratorios.
+            </p>
+          </div>
+          <div className="row d-flex">
+            <Link
+              to="/screens/Registration"
+              className="btn btn-primary"
+              style={styles.navigate}
+            >
+              REGISTRARSE
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 const styles = {
   title: {
-    paddingTop: 20,
-    fontWeight: "500",
-    textAlign: "center",
+    marginTop: 25,
+    borderLeft: "5px solid red",
+    paddingTop: 5,
+    paddingLeft: 10,
+    textAlign: "left",
     color: colors.brown,
   },
 
   paragraph: {
     textAlign: "justify",
-    fontSize: 18,
+    fontSize: 15,
     padding: 15,
     margin: 0,
     color: colors.brown,
@@ -78,10 +89,10 @@ const styles = {
 
   navigate: {
     fontSize: 14,
-    padding: 7,
+    paddingBottom: 30,
     marginLeft: 25,
     margin: 30,
-    width: 180,
+    width: 140,
     height: 30,
   },
   navigate2: {

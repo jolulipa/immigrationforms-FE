@@ -6,7 +6,6 @@ import { readIntakeForm } from "../../api/formsAccess";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
-import { CONCE_TYPE } from "../../context/types";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -28,7 +27,7 @@ const validationSchema = yup.object().shape({
 
 const Registration = () => {
   const history = useHistory();
-  const { updateIntake } = useAppContext();
+  const { state, updateIntake } = useAppContext();
 
   const loadUserData = async (token, role, id, email, name) => {
     const response = await readIntakeForm(token);
@@ -69,8 +68,7 @@ const Registration = () => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    const concessionary = JSON.parse(localStorage.getItem(CONCE_TYPE));
-    values.concessionary = concessionary;
+    values.concessionary = state.concessionary;
     values.role = "reg";
     const result = await registerUser(values);
     if (result.isSuccessful) {

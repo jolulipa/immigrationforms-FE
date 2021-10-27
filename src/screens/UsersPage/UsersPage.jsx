@@ -4,6 +4,7 @@ import { colors } from "../../ui-config/colors";
 import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import RenderForms from "../../components/RenderForms";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
 
 const UsersPage = () => {
   const { state: context } = useAppContext();
@@ -15,9 +16,6 @@ const UsersPage = () => {
     feName: context?.intake?.fullName,
   };
   const history = useHistory();
-  console.log("-------------------NEW RENDER--------------------");
-  console.log("navDATA:", navData);
-  console.log("CONTEXT Intake/Forms:", context);
 
   useEffect(() => {
     if (context.intake.role === "adm") {
@@ -26,19 +24,24 @@ const UsersPage = () => {
     }
 
     (async () => {
+      const userToken = localStorage.getItem(AUTH_TOKEN);
       const forms = await (context.intake.role === "con"
         ? await readAllFormsAdm(navData.id)
-        : await readAllForms());
+        : await readAllForms(userToken));
 
-      if (!context.intake.userId && forms.status > 399 && forms.status < 501) {
+      if (!forms || (forms.status > 399 && forms.status < 501)) {
         alert(`You must fill the Intake form to continue`);
         history.push("/forms/Intake");
       }
       await updateForms(forms);
     })();
     setResults(context.forms);
+
+    console.log("navDATA:", navData);
+    console.log("CONTEXT Intake/Forms/Concessionary:", context);
   }, []);
 
+  console.log("-------------------NEW RENDER UsersPage--------------------");
   return (
     <div className="container ">
       <h3 style={styles.title}>

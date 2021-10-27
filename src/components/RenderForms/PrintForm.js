@@ -12,6 +12,8 @@ const PrintForm = async (id) => {
   document.body.appendChild(link);
   link.click();
   link.remove();
+
+  console.log("Print Form", id);
 };
 
 export default PrintForm;

@@ -44,6 +44,7 @@ function RenderForms({ forms }) {
               <Button
                 className="btn-success btn-sm"
                 onClick={async () => {
+                  console.log(el.id);
                   await PrintForm(el.id);
                 }}
               >
