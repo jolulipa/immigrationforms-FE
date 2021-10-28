@@ -3,10 +3,10 @@ import "./styles.css";
 
 const Footer = () => {
   return (
-    <div className="footer fixed-bottom">
+    <div className="footer ">
       <div
         style={{
-          paddingTop: "10px",
+          paddingTop: "0px",
           paddingBottom: "15px",
           borderBottom: ".5px solid rgb(107, 153, 245)",
         }}

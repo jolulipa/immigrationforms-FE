@@ -5,6 +5,7 @@ import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 import { readConOffice } from "../../api/conAccess";
 import "./styles.css";
 import { AiOutlineUser } from "react-icons/ai";
+import Burger from "./Burger";
 
 const Navbar = () => {
   const {
@@ -17,7 +18,6 @@ const Navbar = () => {
 
   const navigateToWelcome = () => {
     history.push(`/${context.concessionary.concessionary}`);
-    // window.location.href  url de la pagina actual
   };
 
   const handleLogout = () => {
@@ -93,6 +93,7 @@ const Navbar = () => {
             />
           }
         </div>
+        <Burger className="d-md-none d-lg-none d-xl-block" />
       </div>
       <div className="row navbar">
         <div className="col-6">nombre/logo de oficina</div>
@@ -114,21 +115,47 @@ const Navbar = () => {
         >
           CONTACT
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/screens/LoginPage"
           className="col-1 d-none d-md-block d-lg-block d-xl-block text-dark"
         >
           LOGIN
-        </NavLink>
+        </NavLink> */}
         <button
           style={{
             marginRight: "50px",
           }}
           className="btn btn-danger font-weight-light"
           type="button"
-          onClick={handleLogout}
+          onClick={
+            context.intake.email ? (
+              handleLogout
+            ) : (
+              <NavLink
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                }}
+                to="/screens/LoginPage"
+              >
+                LOG IN
+              </NavLink>
+            )
+          }
         >
-          {context.intake.email ? `LOG OUT` : "No User"}
+          {context.intake.email ? (
+            `LOG OUT`
+          ) : (
+            <NavLink
+              style={{
+                textDecoration: "none",
+                color: "#fff",
+              }}
+              to="/screens/LoginPage"
+            >
+              LOG IN
+            </NavLink>
+          )}
         </button>
       </div>
     </div>
