@@ -76,7 +76,7 @@ export const checkIntake = async (userCli) =>
 export const createUpdateForm = async (values) => {
   try {
     console.log("DATOS ENVIADOS A UPDATE-CREATE form", values);
-    await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
+    const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -84,6 +84,11 @@ export const createUpdateForm = async (values) => {
         jwt: token,
       },
     });
+    console.log(
+      `a form was created or modified for: ${values.formId}, ${
+        values.cliUser
+      }, ${response}`
+    );
     // const datos = await response.json();
     // return datos;
   } catch (error) {

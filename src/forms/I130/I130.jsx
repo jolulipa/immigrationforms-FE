@@ -4,49 +4,79 @@ import Form from "@rjsf/bootstrap-4";
 import schema from "./i130schema";
 import uiSchema from "./i130UiSchema";
 import { readForm, createUpdateForm } from "../../api/formsAccess";
+import { CLIENT_DATA } from "../../constants/storageKeys";
+import { useAppContext } from "../../context/Provider";
 
 const I130 = () => {
-  const [formData, setFormData] = useState();
+  const { state: context } = useAppContext();
   const { id } = useParams();
   const isEditMode = !!id;
   const history = useHistory();
+  const [formData, setFormData] = useState();
 
-  const navigateToPage = () => {
-    history.push("/screens/UsersPage");
+  const navigateToTray = (id, email, role) => {
+    history.push({
+      pathname: "/screens/UsersPage",
+      state: {
+        id,
+        email,
+        role,
+      },
+    });
   };
 
   useEffect(() => {
-    if (!isEditMode) return;
-    (async () => {
-      const values = await readForm(id);
-      setFormData(JSON.parse(values.data));
-    })();
-  }, [isEditMode, id]);
+    if (isEditMode)
+      (async () => {
+        const values = await readForm(id);
+        console.log("lei datos del form:", values);
+        if (values) {
+          setFormData(JSON.parse(values.data));
+        } else {
+          setFormData(JSON.parse(context.forms[0].data));
+        }
+      })();
+  }, [isEditMode, id, context.forms]);
 
-  const extractData = async ({ formData }) => {
+  const extractData = async ({ cleanData }) => {
     let i;
     for (i = 1; i < 100; i++) {
-      delete formData?.p1[`text${i}`];
-      delete formData?.p2[`text${i}`];
-      delete formData?.p3[`text${i}`];
-      delete formData?.p4[`text${i}`];
-      delete formData?.p5[`text${i}`];
-      delete formData?.p6[`text${i}`];
-      delete formData?.p7[`text${i}`];
-      delete formData?.p8[`text${i}`];
+      delete cleanData?.p1[`text${i}`];
+      delete cleanData?.p2[`text${i}`];
+      delete cleanData?.p3[`text${i}`];
+      delete cleanData?.p4[`text${i}`];
+      delete cleanData?.p5[`text${i}`];
+      delete cleanData?.p6[`text${i}`];
+      delete cleanData?.p7[`text${i}`];
+      delete cleanData?.p8[`text${i}`];
     }
   };
 
-  const handleSubmit = async ({ formData }) => {
-    extractData({ formData });
+  const go = async (cleanData, cliUser, cliEmail) => {
     const obj = {
-      data: JSON.stringify(formData),
+      data: JSON.stringify(cleanData),
       formId: "I130",
       formStatus: "Unpaid",
+      cliUser: cliUser,
     };
-    console.log(obj);
-    await createUpdateForm(obj);
-    navigateToPage();
+    const response = await createUpdateForm(obj);
+    console.log("RESPUESTA:", response, obj);
+    if (response) navigateToTray(cliUser, cliEmail, context.intake.role);
+  };
+
+  const handleSubmit = async ({ formData }) => {
+    let cleanData = { ...formData };
+    await extractData({ cleanData });
+    if (isEditMode) {
+      const { cliUser, cliEmail } = JSON.parse(
+        localStorage.getItem(CLIENT_DATA)
+      );
+      go(cleanData, cliUser, cliEmail);
+    } else {
+      const cliUser = context.intake.userId;
+      const cliEmail = context.intake.email;
+      go(cleanData, cliUser, cliEmail);
+    }
   };
 
   return (

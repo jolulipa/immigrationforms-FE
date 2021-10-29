@@ -33,8 +33,11 @@ function App() {
         <Route path="/unauthorized" component={Unauthorized} />
         <PrivateRoute path="/forms/Intake/:id" component={Intake} />
         <PrivateRoute path="/forms/Intake" component={Intake} />
+        <PrivateRoute path="/forms/i130/:id" component={I130} />
         <PrivateRoute path="/forms/i130" component={I130} />
+        <PrivateRoute path="/forms/i130A/:id" component={I130A} />
         <PrivateRoute path="/forms/i130A" component={I130A} />
+        <PrivateRoute path="/forms/n400/:id" component={N400} />
         <PrivateRoute path="/forms/n400" component={N400} />
         <PrivateRoute
           path="/forms/Concessionary/:id"
