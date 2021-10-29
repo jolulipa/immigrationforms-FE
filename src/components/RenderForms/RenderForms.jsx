@@ -33,7 +33,7 @@ function RenderForms({ forms }) {
             <td>
               {
                 <Link
-                  to={`/forms/${el.formId}/${el.id}`}
+                  to={`/forms/${el.formId}/:${el.id}`}
                   className="badge badge-pill badge-primary"
                 >
                   select

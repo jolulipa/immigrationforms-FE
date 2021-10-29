@@ -8,11 +8,11 @@ import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
 
 const Intake = () => {
-  const [formData, setFormData] = useState();
+  const { state: context } = useAppContext();
   const { id } = useParams();
   const isEditMode = !!id;
   const history = useHistory();
-  const { state: context } = useAppContext();
+  const [formData, setFormData] = useState();
 
   const navigateToTray = (id, email, role) => {
     history.push({
@@ -29,6 +29,7 @@ const Intake = () => {
     if (isEditMode)
       (async () => {
         const values = await readForm(id);
+        console.log("lei datos del form:", values);
         if (values) {
           setFormData(JSON.parse(values.data));
         } else {
@@ -55,8 +56,8 @@ const Intake = () => {
       formStatus: "unpaid",
       cliUser: cliUser,
     };
-    await createUpdateForm(obj);
-    console.log(`Intake form was created or modified for: ${cliEmail}`);
+    const response = await createUpdateForm(obj);
+    console.log("RESPUESTA:", response, obj);
     navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 

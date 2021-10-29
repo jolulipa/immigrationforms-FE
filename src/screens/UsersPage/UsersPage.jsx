@@ -98,7 +98,7 @@ const styles = {
     textAlign: "center",
     color: colors.brown,
     paddingTop: 20,
-    paddingbottom: 0,
+    paddingBottom: 0,
   },
   paragraph: {
     textAlign: "left",
