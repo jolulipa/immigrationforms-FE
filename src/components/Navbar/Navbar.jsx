@@ -95,7 +95,12 @@ const Navbar = () => {
         </div>
         <Burger className="d-md-none d-lg-none d-xl-block" />
       </div>
-      <div className="row navbar sndLine ">
+      <div
+        className="row navbar sndLine"
+        style={{
+          background: "#fff",
+        }}
+      >
         <div className="col-6">logo de oficina</div>
         <NavLink
           to={`/?concessionaryId=${context?.concessionary?.concessionary}`}

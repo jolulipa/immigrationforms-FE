@@ -1,6 +1,6 @@
 .line-container {
   display: flex;
-  background-color: #03074a;
+  background-color: #0d224b;
 }
 .col-6 {
   padding-left: 10px;
@@ -17,7 +17,7 @@
   color: rgb(0, 3, 58);
 }
 .col {
-  border-right: 1px solid blue;
+  border-right: 1px solid rgb(255, 17, 0);
   width: 20%;
   font-size: 12px;
   color: white;

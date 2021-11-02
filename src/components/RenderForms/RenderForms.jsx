@@ -3,11 +3,43 @@ import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import PrintForm from "./PrintForm";
 import { CONCE_TYPE } from "../../context/types";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 function RenderForms({ forms }) {
   return (
-    <Table striped className="table-hover">
+    <Table
+      striped
+      className="table-hover"
+      style={{
+        border: "1px solid lightgrey",
+        marginLeft: 15,
+        width: "95%",
+      }}
+    >
       <thead>
+        <tr>
+          <th
+            colspan="6"
+            style={{
+              background: "#ff0066",
+              color: "white",
+              border: "1px solid lightgrey",
+            }}
+          >
+            Foumularios del Usuario
+            <Link
+              to="/screens/LandingPage"
+              className="btn-success btn-sm"
+              style={{
+                textDecoration: "none",
+                marginLeft: "65%",
+                alignContent: "right",
+              }}
+            >
+              <AiFillPlusCircle /> ADD NEW FORM
+            </Link>
+          </th>
+        </tr>
         <tr key={"header"}>
           <th>Form</th>
           <th>Status</th>
@@ -34,7 +66,10 @@ function RenderForms({ forms }) {
               {
                 <Link
                   to={`/forms/${el.formId}/:${el.id}`}
-                  className="badge badge-pill badge-primary"
+                  className="btn-primary btn-sm"
+                  style={{
+                    textDecoration: "none",
+                  }}
                 >
                   select
                 </Link>

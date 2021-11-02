@@ -5,6 +5,7 @@ import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import RenderForms from "../../components/RenderForms";
 import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 const UsersPage = () => {
   const { state: context } = useAppContext();
@@ -43,15 +44,13 @@ const UsersPage = () => {
 
   console.log("-------------------NEW RENDER UsersPage--------------------");
   return (
-    <div className="container" style={{ marginBottom: "10px" }}>
-      <h3 style={styles.title}>
-        FORMULARIOS SOMETIDOS por{" "}
-        <span style={styles.name}>
-          {navData?.role === "con" ? context.intake.fullName : navData?.feName}
-        </span>
-      </h3>
-      <h4 style={styles.title}>
-        <span>{context.intake.phone}</span>
+    <div
+      className="container-fluid"
+      style={{ marginBottom: "10px", background: "	#f1f1f1" }}
+    >
+      <h3 style={styles.title}>Formularios sometidos por usuario </h3>
+      <h4>
+        <span style={{ paddingLeft: 20 }}>{context.intake.phone}</span>
       </h4>
       <div>
         <div>
@@ -68,11 +67,18 @@ const UsersPage = () => {
         </div>
         <div className="row d-flex justify-content-center">
           {context.intake.role !== "con" ? (
-            <div>Servicios Solicitados </div>
+            <span style={styles.name}>
+              {navData?.role === "con"
+                ? context.intake.fullName
+                : navData?.feName}
+            </span>
           ) : (
             <Link
               to="/screens/ConcessionaryPage"
-              className="badge badge-pill badge-danger"
+              className="btn-danger btn-sm"
+              style={{
+                textDecoration: "none",
+              }}
             >
               Back to admin page
             </Link>
@@ -83,9 +89,15 @@ const UsersPage = () => {
         <RenderForms forms={results} />
       </div>
 
-      <div className="row d-flex justify-content-center">
-        <Link to="/screens/LandingPage" className="badge badge-pill badge-info">
-          ADD NEW FORM
+      <div className="d-flex justify-content-center">
+        <Link
+          to="/screens/LandingPage"
+          className="btn-success btn-sm"
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <AiFillPlusCircle /> ADD NEW FORM
         </Link>
       </div>
     </div>
@@ -95,10 +107,11 @@ const UsersPage = () => {
 const styles = {
   title: {
     fontWeight: "700",
-    textAlign: "center",
-    color: colors.brown,
+    textAlign: "left",
+    color: colors.blue,
     paddingTop: 20,
     paddingBottom: 0,
+    paddingLeft: 20,
   },
   paragraph: {
     textAlign: "left",
@@ -106,10 +119,12 @@ const styles = {
     padding: 15,
     margin: 0,
     color: colors.brown,
+    paddingLeft: 20,
   },
   name: {
-    fontWeight: "600",
-    color: colors.red,
+    fontSize: 18,
+    fontWeight: "100",
+    color: colors.blue,
   },
   variable: {
     fontWeight: "100",
