@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import PrintForm from "./PrintForm";
 import { CONCE_TYPE } from "../../context/types";
+import { BiEdit } from "react-icons/bi";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { TiPrinter } from "react-icons/ti";
 
 function RenderForms({ forms }) {
   return (
@@ -26,7 +28,7 @@ function RenderForms({ forms }) {
               border: "1px solid lightgrey",
             }}
           >
-            Foumularios del Usuario
+            Formularios del Usuario
             <Link
               to="/screens/LandingPage"
               className="btn-success btn-sm"
@@ -59,31 +61,40 @@ function RenderForms({ forms }) {
           <tr key={el.id}>
             {/* <td>{JSON.parse(el.data).p1.email}</td> */}
             <td>{el.formId}</td>
-            <td>{el.formStatus}</td>
+            <td>
+              {el.formStatus === "paid" ? (
+                <span style={{ color: "green" }}> {el.formStatus}</span>
+              ) : (
+                <span style={{ color: "red" }}> {el.formStatus}</span>
+              )}
+            </td>
             <td>{el.createdAt.split("T")[0]}</td>
             <td>{el.updatedAt.split("T")[0]}</td>
             <td>
-              {
-                <Link
-                  to={`/forms/${el.formId}/:${el.id}`}
-                  className="btn-primary btn-sm"
-                  style={{
-                    textDecoration: "none",
-                  }}
-                >
-                  select
-                </Link>
-              }
+              <BiEdit style={{ fontSize: 18 }} />
+              <Link
+                to={`/forms/${el.formId}/:${el.id}`}
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                Edit Form
+              </Link>
             </td>
             <td>
+              <TiPrinter style={{ fontSize: 18 }} />
               <Button
-                className="btn-success btn-sm"
+                style={{
+                  textDecoration: "none",
+                  background: "none",
+                  border: "none",
+                  color: "black",
+                }}
                 onClick={async () => {
-                  console.log(el.id);
                   await PrintForm(el.id);
                 }}
               >
-                Print
+                Print Form
               </Button>
             </td>
           </tr>

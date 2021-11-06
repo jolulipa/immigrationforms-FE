@@ -4,8 +4,12 @@ import { colors } from "../../ui-config/colors";
 import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import RenderForms from "../../components/RenderForms";
-import { AUTH_TOKEN } from "../../constants/storageKeys";
-import { AiFillPlusCircle } from "react-icons/ai";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
+import {
+  AiOutlineArrowLeft,
+  AiOutlinePhone,
+  AiOutlineUser,
+} from "react-icons/ai";
 
 const UsersPage = () => {
   const { state: context } = useAppContext();
@@ -42,16 +46,18 @@ const UsersPage = () => {
     console.log("CONTEXT Intake/Forms/Concessionary:", context);
   }, []);
 
-  console.log("-------------------NEW RENDER UsersPage--------------------");
+  const { cliName } = JSON.parse(localStorage?.getItem(CLIENT_DATA)) || "";
+  console.log("-------------------UsersPage-------------------", cliName);
+
   return (
     <div
       className="container-fluid"
       style={{ marginBottom: "10px", background: "	#f1f1f1" }}
     >
-      <h3 style={styles.title}>Formularios sometidos por usuario </h3>
-      <h4>
-        <span style={{ paddingLeft: 20 }}>{context.intake.phone}</span>
-      </h4>
+      <h3 style={styles.title}>
+        {<span style={{ color: "red" }}>|</span>}Formularios sometidos por
+        usuario{" "}
+      </h3>
       <div>
         <div>
           <p style={styles.paragraph}>
@@ -65,21 +71,28 @@ const UsersPage = () => {
             "ADD NEW FORM")
           </p>
         </div>
-        <div className="row d-flex justify-content-center">
+
+        <div className="d-flex" style={styles.name}>
+          <span style={{ marginTop: 20, fontSize: 18 }}>
+            <AiOutlineUser style={{ color: "red" }} />
+            {navData?.role === "con" ? context.intake.fullName : cliName}{" "}
+            <AiOutlinePhone style={{ color: "red" }} />
+            {context.intake.phone}
+          </span>
           {context.intake.role !== "con" ? (
-            <span style={styles.name}>
-              {navData?.role === "con"
-                ? context.intake.fullName
-                : navData?.feName}
-            </span>
+            <span style={{ fontSize: 18 }}> __*(User Mode)</span>
           ) : (
             <Link
               to="/screens/ConcessionaryPage"
               className="btn-danger btn-sm"
               style={{
+                marginTop: 20,
                 textDecoration: "none",
+                marginLeft: 25,
+                fontSize: 16,
               }}
             >
+              <AiOutlineArrowLeft />
               Back to admin page
             </Link>
           )}
@@ -88,25 +101,13 @@ const UsersPage = () => {
       <div>
         <RenderForms forms={results} />
       </div>
-
-      <div className="d-flex justify-content-center">
-        <Link
-          to="/screens/LandingPage"
-          className="btn-success btn-sm"
-          style={{
-            textDecoration: "none",
-          }}
-        >
-          <AiFillPlusCircle /> ADD NEW FORM
-        </Link>
-      </div>
     </div>
   );
 };
 
 const styles = {
   title: {
-    fontWeight: "700",
+    fontFamily: "Roboto",
     textAlign: "left",
     color: colors.blue,
     paddingTop: 20,
@@ -122,6 +123,7 @@ const styles = {
     paddingLeft: 20,
   },
   name: {
+    paddingLeft: 20,
     fontSize: 18,
     fontWeight: "100",
     color: colors.blue,

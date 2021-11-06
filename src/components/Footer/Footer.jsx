@@ -12,7 +12,13 @@ import {
 
 const Footer = () => {
   return (
-    <div className="footer ">
+    <div
+      className="footer"
+      style={{
+        marginTop: 50,
+        marginBottom: 0,
+      }}
+    >
       <div
         style={{
           display: "flex",
