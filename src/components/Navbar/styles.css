@@ -1,3 +1,48 @@
+.line-container {
+  display: flex;
+  background-color: #0d224b;
+}
+.col-6 {
+  padding-left: 10px;
+  width: 40%;
+  font-size: 18px;
+  color: white;
+}
+.col-sm-4 {
+  color: black;
+}
+.col-1 {
+  text-decoration: none;
+  font-size: 12px;
+  color: rgb(0, 3, 58);
+}
+.col {
+  border-right: 1px solid rgb(255, 17, 0);
+  width: 20%;
+  font-size: 12px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  justify-content: space-between;
+}
+.col-2 {
+  padding-left: 10px;
+  text-decoration: none;
+  color: white;
+}
+.row {
+  padding: 15px;
+  font-size: 12px;
+}
+.sndLine {
+  height: 75px;
+  border-bottom: 5px solid rgb(243, 243, 243);
+  font-size: 18px;
+}
+.red-input:hover {
+  color: red;
+}
+
 .footer {
   max-width: 100%;
   background-color: rgb(0, 5, 33);

@@ -44,12 +44,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="super-root">
+    <>
       <div className="line-container navbar">
         <div
           className="col-6 text-uppercase"
           style={{
-            marginLeft: "50px",
+            marginLeft: "30px",
             borderLeft: "5px solid rgb(107, 153, 245)",
           }}
         >
@@ -164,7 +164,7 @@ const Navbar = () => {
           )}
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

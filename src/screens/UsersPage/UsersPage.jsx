@@ -55,8 +55,8 @@ const UsersPage = () => {
       style={{ marginBottom: "10px", background: "	#f1f1f1" }}
     >
       <h3 style={styles.title}>
-        {<span style={{ color: "red" }}>|</span>}Formularios sometidos por
-        usuario{" "}
+        {<span style={{ color: "red", fontWeight: "600" }}>|</span>}Formularios
+        sometidos por usuario{" "}
       </h3>
       <div>
         <div>
@@ -80,7 +80,10 @@ const UsersPage = () => {
             {context.intake.phone}
           </span>
           {context.intake.role !== "con" ? (
-            <span style={{ fontSize: 18 }}> __*(User Mode)</span>
+            <span style={{ marginTop: 20, fontSize: 14, color: "green" }}>
+              {" "}
+              &nbsp;&nbsp;*User Mode
+            </span>
           ) : (
             <Link
               to="/screens/ConcessionaryPage"
@@ -93,7 +96,7 @@ const UsersPage = () => {
               }}
             >
               <AiOutlineArrowLeft />
-              Back to admin page
+              &nbsp;Back to admin page
             </Link>
           )}
         </div>
@@ -129,7 +132,6 @@ const styles = {
     color: colors.blue,
   },
   variable: {
-    fontWeight: "100",
     fontStyle: "italic",
     padding: 15,
     color: colors.red,
