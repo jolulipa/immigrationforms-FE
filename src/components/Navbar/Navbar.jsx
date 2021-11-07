@@ -44,12 +44,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="super-root">
+    <>
       <div className="line-container navbar">
         <div
           className="col-6 text-uppercase"
           style={{
-            marginLeft: "50px",
+            marginLeft: "30px",
             borderLeft: "5px solid rgb(107, 153, 245)",
           }}
         >
@@ -63,7 +63,7 @@ const Navbar = () => {
             }}
             to="/screens/ConcessionaryPage"
           >
-            ADMIN
+            Admin
           </Link>
         </div>
         <div className="col d-none d-md-block d-xl-block">
@@ -95,23 +95,28 @@ const Navbar = () => {
         </div>
         <Burger className="d-md-none d-lg-none d-xl-block" />
       </div>
-      <div className="row navbar">
-        <div className="col-6">nombre/logo de oficina</div>
+      <div
+        className="row navbar sndLine"
+        style={{
+          background: "#fff",
+        }}
+      >
+        <div className="col-6">logo de oficina</div>
         <NavLink
           to={`/?concessionaryId=${context?.concessionary?.concessionary}`}
-          className="col-1  d-none d-md-block d-lg-block d-xl-block text-dark"
+          className="col-1  d-none d-md-block d-lg-block d-xl-block red-input"
         >
           HOME
         </NavLink>
         <NavLink
           to="/screens/LandingPage"
-          className="col-1 d-none d-md-block d-lg-block d-xl-block text-dark"
+          className="col-1 d-none d-md-block d-lg-block d-xl-block red-input"
         >
           SERVICES
         </NavLink>
         <NavLink
           to="/screens/Contact"
-          className="col-1 d-none d-md-block d-lg-block d-xl-block text-dark"
+          className="col-1 d-none d-md-block d-lg-block d-xl-block red-input"
         >
           CONTACT
         </NavLink>
@@ -124,8 +129,9 @@ const Navbar = () => {
         <button
           style={{
             marginRight: "50px",
+            maxWidth: "75px",
           }}
-          className="btn btn-danger font-weight-light"
+          className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
           onClick={
             context.intake.email ? (
@@ -158,7 +164,7 @@ const Navbar = () => {
           )}
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

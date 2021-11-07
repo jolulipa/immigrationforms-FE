@@ -4,7 +4,12 @@ import { colors } from "../../ui-config/colors";
 import { readAllForms, readAllFormsAdm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import RenderForms from "../../components/RenderForms";
-import { AUTH_TOKEN } from "../../constants/storageKeys";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
+import {
+  AiOutlineArrowLeft,
+  AiOutlinePhone,
+  AiOutlineUser,
+} from "react-icons/ai";
 
 const UsersPage = () => {
   const { state: context } = useAppContext();
@@ -41,18 +46,18 @@ const UsersPage = () => {
     console.log("CONTEXT Intake/Forms/Concessionary:", context);
   }, []);
 
-  console.log("-------------------NEW RENDER UsersPage--------------------");
+  const { cliName } = JSON.parse(localStorage?.getItem(CLIENT_DATA)) || "";
+  console.log("-------------------UsersPage-------------------", cliName);
+
   return (
-    <div className="container" style={{ marginBottom: "10px" }}>
+    <div
+      className="container-fluid"
+      style={{ marginBottom: "10px", background: "	#f1f1f1" }}
+    >
       <h3 style={styles.title}>
-        FORMULARIOS SOMETIDOS por{" "}
-        <span style={styles.name}>
-          {navData?.role === "con" ? context.intake.fullName : navData?.feName}
-        </span>
+        {<span style={{ color: "red", fontWeight: "600" }}>|</span>}Formularios
+        sometidos por usuario{" "}
       </h3>
-      <h4 style={styles.title}>
-        <span>{context.intake.phone}</span>
-      </h4>
       <div>
         <div>
           <p style={styles.paragraph}>
@@ -66,15 +71,32 @@ const UsersPage = () => {
             "ADD NEW FORM")
           </p>
         </div>
-        <div className="row d-flex justify-content-center">
+
+        <div className="d-flex" style={styles.name}>
+          <span style={{ marginTop: 20, fontSize: 18 }}>
+            <AiOutlineUser style={{ color: "red" }} />
+            {navData?.role === "con" ? context.intake.fullName : cliName}{" "}
+            <AiOutlinePhone style={{ color: "red" }} />
+            {context.intake.phone}
+          </span>
           {context.intake.role !== "con" ? (
-            <div>Servicios Solicitados </div>
+            <span style={{ marginTop: 20, fontSize: 14, color: "green" }}>
+              {" "}
+              &nbsp;&nbsp;*User Mode
+            </span>
           ) : (
             <Link
               to="/screens/ConcessionaryPage"
-              className="badge badge-pill badge-danger"
+              className="btn-danger btn-sm"
+              style={{
+                marginTop: 20,
+                textDecoration: "none",
+                marginLeft: 25,
+                fontSize: 16,
+              }}
             >
-              Back to admin page
+              <AiOutlineArrowLeft />
+              &nbsp;Back to admin page
             </Link>
           )}
         </div>
@@ -82,23 +104,18 @@ const UsersPage = () => {
       <div>
         <RenderForms forms={results} />
       </div>
-
-      <div className="row d-flex justify-content-center">
-        <Link to="/screens/LandingPage" className="badge badge-pill badge-info">
-          ADD NEW FORM
-        </Link>
-      </div>
     </div>
   );
 };
 
 const styles = {
   title: {
-    fontWeight: "700",
-    textAlign: "center",
-    color: colors.brown,
+    fontFamily: "Roboto",
+    textAlign: "left",
+    color: colors.blue,
     paddingTop: 20,
     paddingBottom: 0,
+    paddingLeft: 20,
   },
   paragraph: {
     textAlign: "left",
@@ -106,13 +123,15 @@ const styles = {
     padding: 15,
     margin: 0,
     color: colors.brown,
+    paddingLeft: 20,
   },
   name: {
-    fontWeight: "600",
-    color: colors.red,
+    paddingLeft: 20,
+    fontSize: 18,
+    fontWeight: "100",
+    color: colors.blue,
   },
   variable: {
-    fontWeight: "100",
     fontStyle: "italic",
     padding: 15,
     color: colors.red,

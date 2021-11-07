@@ -29,7 +29,7 @@ const WelcomePage = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid mw-100">
       <div className="row">
         <img src={Jpeg1} alt="Somos Latinos" className="col-6" />
         <div className="col-6">
@@ -47,12 +47,11 @@ const WelcomePage = () => {
               comunidad.
             </p>
             <p style={styles.paragraph}>
-              Esta herramienta ofrece cualquier servicio de immigración para
-              migrantes a los Estados Unidos de America. Para iniciar el proceso
-              con la herramienta, es necesario registrarse, llenando un
-              formulario. Este formulario es el primer paso para iniciar los
-              procedimientos necesarios para ayudarle a conseguir sus objetivos
-              migratorios.
+              Ofrece cualquier servicio de immigración para migrantes a los
+              Estados Unidos de America. Para iniciar el proceso, es necesario
+              registrarse, llenando un formulario. El formulario es el primer
+              paso que debe tomar para que podamos ayudarle a conseguir sus
+              objetivos migratorios.
             </p>
           </div>
           <div className="row d-flex">
@@ -80,7 +79,6 @@ const styles = {
   },
 
   paragraph: {
-    textAlign: "justify",
     fontSize: 15,
     padding: 15,
     margin: 0,

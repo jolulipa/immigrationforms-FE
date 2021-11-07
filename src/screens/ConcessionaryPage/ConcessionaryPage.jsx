@@ -1,11 +1,12 @@
 import { Table, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
 import { checkIntake, readAllFormsAdm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
@@ -39,7 +40,7 @@ const ConcessionaryPage = () => {
   const renderResults = () =>
     results.map((el) => (
       <>
-        <tr key={el.id} className="text-white">
+        <tr key={el.id}>
           <td>{el?.email}</td>
           <td>
             <Button
@@ -51,7 +52,7 @@ const ConcessionaryPage = () => {
               Delete
             </Button>
           </td>
-          <td>{el?.role}</td>
+          {/* <td>{el?.role}</td> */}
           <td>{el?.createdAt.split("T")[0]}</td>
           <td>{el?.updatedAt.split("T")[0]}</td>
           <td>
@@ -76,12 +77,43 @@ const ConcessionaryPage = () => {
     ));
 
   const renderTable = (results) => (
-    <Table striped variant="dark" className="table-hover">
+    <Table
+      striped
+      className="table-hover"
+      style={{
+        border: "1px solid lightgrey",
+        marginLeft: 15,
+        width: "95%",
+      }}
+    >
       <thead key={"key0"} className="thead-light">
+        <tr>
+          <th
+            colspan="6"
+            style={{
+              background: "#f56c42",
+              color: "white",
+              border: "1px solid lightgrey",
+            }}
+          >
+            Usuarios del Concesionario
+            <Link
+              to="/screens/LandingPage"
+              className="btn-success btn-sm"
+              style={{
+                textDecoration: "none",
+                marginLeft: "65%",
+                alignContent: "right",
+              }}
+            >
+              <AiFillPlusCircle /> ADD NEW FORM
+            </Link>
+          </th>
+        </tr>
         <tr>
           <th>User email</th>
           <th>Delete Acc</th>
-          <th>Role</th>
+          {/* <th>Role</th> */}
           <th>Created on</th>
           <th>Modified on</th>
           <th>Go To:</th>
@@ -106,13 +138,13 @@ const ConcessionaryPage = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(
-    "-------------------NEW RENDER ConcessionaryPage--------------------"
-  );
   console.log("Displayed Clients:", results);
+
   return (
-    <div className="container p-3 my-3 bg-dark text-white">
+    <div
+      className="container-fluid"
+      style={{ marginBottom: "10px", background: "	#f1f1f1" }}
+    >
       <h2 style={styles.title}>
         ADMINISTRACIÓN DE LA APP DE THE IMMIGRATION TIME
       </h2>
@@ -136,17 +168,16 @@ const ConcessionaryPage = () => {
 
 const styles = {
   title: {
-    fontWeight: "700",
+    fontWeight: "600",
     textAlign: "center",
     color: colors.brown,
-    padding: 15,
+    paddingTop: 15,
   },
   paragraph: {
     textAlign: "left",
     fontSize: 18,
-    padding: 15,
+    paddingLeft: 15,
     margin: 0,
-    color: colors.gray,
   },
   variable: {
     fontWeight: "800",
