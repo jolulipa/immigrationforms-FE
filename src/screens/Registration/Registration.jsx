@@ -68,8 +68,11 @@ const Registration = () => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    values.concessionary = state.concessionary;
+
+    values.concessionary = state.concessionary.id;
     values.role = "reg";
+    console.log("Valores a Registrar:", values);
+
     const result = await registerUser(values);
     if (result.isSuccessful) {
       //HAY QUE CREAR EL INTAKE_TYPE AQUI

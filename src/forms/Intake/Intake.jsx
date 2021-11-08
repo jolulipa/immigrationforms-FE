@@ -29,9 +29,11 @@ const Intake = () => {
     if (isEditMode)
       (async () => {
         const values = await readForm(id);
-        console.log("lei datos del form:", values);
+
         if (values) {
-          setFormData(JSON.parse(values.data));
+          const paquete = JSON.parse(values.data);
+          paquete.formStatus = values.formStatus;
+          setFormData(paquete);
         } else {
           setFormData(JSON.parse(context.forms[0].data));
         }
@@ -49,15 +51,21 @@ const Intake = () => {
     }
   };
 
-  const go = async (cleanData, cliUser, cliEmail) => {
+  const go = async (cleanData, cliUser, cliEmail, formStatus, edit) => {
+    if (edit) {
+      formStatus = cleanData.formStatus;
+    } else {
+      formStatus = "Unpaid";
+    }
     const obj = {
       data: JSON.stringify(cleanData),
       formId: "Intake",
-      formStatus: "unpaid",
+      formStatus: formStatus,
       cliUser: cliUser,
     };
-    const response = await createUpdateForm(obj);
-    console.log("RESPUESTA:", response, obj);
+    console.log("OBJETO PARA BASE DE DATOS:", obj);
+    await createUpdateForm(obj);
+
     navigateToTray(cliUser, cliEmail, context.intake.role);
   };
 
@@ -68,11 +76,12 @@ const Intake = () => {
       const { cliUser, cliEmail } = JSON.parse(
         localStorage.getItem(CLIENT_DATA)
       );
-      go(cleanData, cliUser, cliEmail);
+
+      go(cleanData, cliUser, cliEmail, formData.formStatus, isEditMode);
     } else {
       const cliUser = context.intake.userId;
       const cliEmail = context.intake.email;
-      go(cleanData, cliUser, cliEmail);
+      go(cleanData, cliUser, cliEmail, formData.formStatus, isEditMode);
     }
   };
 

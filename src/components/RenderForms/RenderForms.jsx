@@ -73,7 +73,7 @@ function RenderForms({ forms }) {
             <td>
               <BiEdit style={{ fontSize: 18 }} />
               <Link
-                to={`/forms/${el.formId}/:${el.id}`}
+                to={`/forms/${el.formId}/${el.id}`}
                 style={{
                   textDecoration: "none",
                 }}

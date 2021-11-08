@@ -83,6 +83,7 @@ const ConcessionaryPage = () => {
       style={{
         border: "1px solid lightgrey",
         marginLeft: 15,
+        marginTop: 10,
         width: "95%",
       }}
     >
@@ -97,7 +98,7 @@ const ConcessionaryPage = () => {
             }}
           >
             Usuarios del Concesionario
-            <Link
+            {/* <Link
               to="/screens/LandingPage"
               className="btn-success btn-sm"
               style={{
@@ -107,7 +108,7 @@ const ConcessionaryPage = () => {
               }}
             >
               <AiFillPlusCircle /> ADD NEW FORM
-            </Link>
+            </Link> */}
           </th>
         </tr>
         <tr>
@@ -148,7 +149,7 @@ const ConcessionaryPage = () => {
       <h2 style={styles.title}>
         ADMINISTRACIÓN DE LA APP DE THE IMMIGRATION TIME
       </h2>
-      <h4 style={styles.title}>
+      <h4 style={{ marginTop: 0, textAlign: "center" }}>
         CLIENTES DEL CONCESIONARIO:{" "}
         <span style={styles.name}>{state?.intake?.fullName}</span>
       </h4>
@@ -171,7 +172,7 @@ const styles = {
     fontWeight: "600",
     textAlign: "center",
     color: colors.brown,
-    paddingTop: 15,
+    paddingTop: 10,
   },
   paragraph: {
     textAlign: "left",

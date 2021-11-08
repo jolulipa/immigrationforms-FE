@@ -16,20 +16,25 @@ const WelcomePage = () => {
   }
 
   useEffect(() => {
+    console.log(
+      "Concessionary ID:",
+      concessionaryId,
+      context?.concessionary?.concessionary
+    );
     if (
-      concessionaryId !== "undefined" &&
+      concessionaryId !== "undefined" ||
       context?.concessionary?.concessionary !== concessionaryId
     )
       updateConcessionary({
         ...context.concessionary,
         concessionary: concessionaryId,
       });
-    console.log("Concessionary ID:", concessionaryId);
+
     // eslint-disable-next-line
   }, []);
 
   return (
-    <div className="container-fluid mw-100">
+    <div className="container-fluid">
       <div className="row">
         <img src={Jpeg1} alt="Somos Latinos" className="col-6" />
         <div className="col-6">
