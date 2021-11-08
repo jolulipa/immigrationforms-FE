@@ -17,7 +17,7 @@ const Navbar = () => {
   const history = useHistory();
 
   const navigateToWelcome = () => {
-    history.push(`/${context.concessionary.concessionary}`);
+    history.push(`/${context?.concessionary?.concessionary}`);
   };
 
   const handleLogout = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
   useEffect(() => {
     (async () => {
       const officeData = await readConOffice(
-        context.concessionary.concessionary
+        context?.concessionary?.concessionary
       );
       if (officeData.error) {
         officeData.officeName = "No Name Immigration";
@@ -47,13 +47,13 @@ const Navbar = () => {
     <>
       <div className="line-container navbar">
         <div
-          className="col-6 text-uppercase"
+          className="col-6"
           style={{
             marginLeft: "30px",
             borderLeft: "5px solid rgb(107, 153, 245)",
           }}
         >
-          {context?.concessionary?.officeName}
+          The Immigration Time
         </div>
         <div className="col d-none d-md-block d-xl-block">
           <Link
@@ -79,16 +79,18 @@ const Navbar = () => {
         </div>
         <div
           style={{
-            marginLeft: "10px",
+            marginLeft: 10,
+            marginRight: 10,
             fontSize: 16,
           }}
           className="d-none d-md-block d-xl-block text-light"
         >
-          {!!context.intake.email && `${context?.intake?.email}  -  `}
+          {!!context.intake.fullName && `${context?.intake?.fullName}`}
           {
             <AiOutlineUser
               style={{
-                fontSize: 20,
+                marginLeft: 10,
+                fontSize: 18,
               }}
             />
           }
@@ -101,7 +103,20 @@ const Navbar = () => {
           background: "#fff",
         }}
       >
-        <div className="col-6">logo de oficina</div>
+        <div
+          className="col-6"
+          style={{
+            marginLeft: 10,
+            fontSize: 25,
+            color: "red",
+            fontFamily: "cursive",
+          }}
+        >
+          Oficina:&ensp;
+          <span style={{ fontSize: 25, fontWeight: 700, color: "#011e4d" }}>
+            {context?.concessionary?.officeName}
+          </span>
+        </div>
         <NavLink
           to={`/?concessionaryId=${context?.concessionary?.concessionary}`}
           className="col-1  d-none d-md-block d-lg-block d-xl-block red-input"

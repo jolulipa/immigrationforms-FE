@@ -1,6 +1,6 @@
-import ServiceBox from "../../components/ServiceBox";
 import { useHistory } from "react-router-dom";
 import data from "../../forms/FormsDB.json";
+import ServiceBox from "../../components/ServiceBox";
 
 const LandingPage = () => {
   const history = useHistory();
