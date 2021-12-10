@@ -128,7 +128,12 @@ const ConcessionaryPage = () => {
   useEffect(() => {
     if (state.intake.role !== "con") {
       alert(`You're not an concessionary`);
-      navigateToUser(state.intake.userId, state.intake.role);
+      navigateToUser(
+        state.intake.userId,
+        state.intake.email,
+        state.intake.role,
+        state.intake.fullName
+      );
     }
     (async () => {
       const { results } = await readUsers();
