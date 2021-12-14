@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Payment from "./components/Payment";
 import Registration from "./screens/Registration";
 import LoginPage from "./screens/LoginPage";
 import Intake from "./forms/Intake";
@@ -29,8 +30,9 @@ function App() {
         <Route path="/screens/Registration" component={Registration} />
         <Route path="/screens/LandingPage" component={LandingPage} />
         <Route path="/screens/Contact" component={Contact} />
+        <Route path="/screens/Contact/:id" component={Contact} />
         <Route path="/concessionaries" component={Concessionary} />
-        <Route path="/unauthorized" component={Unauthorized} />
+        <Route path="/unauthorized" component={Unauthorized} />{" "}
         <PrivateRoute path="/forms/Intake/:id" component={Intake} />
         <PrivateRoute path="/forms/Intake" component={Intake} />
         <PrivateRoute path="/forms/i130/:id" component={I130} />
@@ -50,8 +52,11 @@ function App() {
           component={ConcessionaryPage}
         />
         <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
+        <PrivateRoute path="./components/Payment/:id" component={Payment} />
+        <PrivateRoute path="./components/Payment" component={Payment} />
         <Route path="/:concessionaryId" component={WelcomePage} />
         <Route path="/" component={WelcomePage} />
+        <Route path="*" component={Unauthorized} />
       </Switch>
       <Footer />
     </Router>
