@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Payment from "./components/Payment";
 import Registration from "./screens/Registration";
 import LoginPage from "./screens/LoginPage";
 import Intake from "./forms/Intake";
@@ -18,6 +17,7 @@ import AdminPage from "./screens/AdminPage";
 import ConcessionaryPage from "./screens/ConcessionaryPage";
 import UsersPage from "./screens/UsersPage";
 import Contact from "./screens/Contact";
+import ContactPage from "./screens/ContactPage";
 import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -29,6 +29,7 @@ function App() {
         <Route path="/screens/LoginPage" component={LoginPage} />
         <Route path="/screens/Registration" component={Registration} />
         <Route path="/screens/LandingPage" component={LandingPage} />
+        <Route path="/screens/ContactPage" component={ContactPage} />
         <Route path="/screens/Contact" component={Contact} />
         <Route path="/screens/Contact/:id" component={Contact} />
         <Route path="/concessionaries" component={Concessionary} />
@@ -52,8 +53,6 @@ function App() {
           component={ConcessionaryPage}
         />
         <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
-        <PrivateRoute path="./components/Payment/:id" component={Payment} />
-        <PrivateRoute path="./components/Payment" component={Payment} />
         <Route path="/:concessionaryId" component={WelcomePage} />
         <Route path="/" component={WelcomePage} />
         <Route path="*" component={Unauthorized} />

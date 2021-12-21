@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import PrintForm from "./PrintForm";
-import Payment from "../Payment";
 import { CONCE_TYPE } from "../../context/types";
 import { BiEdit } from "react-icons/bi";
 import { AiFillPlusCircle, AiOutlineDollarCircle } from "react-icons/ai";

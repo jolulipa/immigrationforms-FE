@@ -41,9 +41,10 @@ const Login = () => {
       const cliEmail = email;
       const cliName = name;
       const cliUser = id;
+      const cliRole = role;
       localStorage.setItem(
         CLIENT_DATA,
-        JSON.stringify({ cliEmail, cliName, cliUser })
+        JSON.stringify({ cliEmail, cliName, cliUser, cliRole })
       );
       window.location.replace("/forms/Intake");
     }
@@ -65,7 +66,7 @@ const Login = () => {
     });
     localStorage.setItem(
       CLIENT_DATA,
-      JSON.stringify({ cliEmail, cliName, cliUser })
+      JSON.stringify({ cliEmail, cliName, cliUser, cliRole: role })
     );
     const formsData = await readAllForms(token);
     updateForms(formsData || ["User has no forms"]);

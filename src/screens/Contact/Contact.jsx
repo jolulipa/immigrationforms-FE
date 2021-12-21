@@ -8,12 +8,14 @@ const Contact = () => {
   const history = useHistory();
   const url = new URL(window.location.href);
   const [form, setForm] = useState({});
-  var idToPay = url.searchParams.get("idToPay");
-  const { cliUser, cliEmail } = JSON.parse(localStorage.getItem(CLIENT_DATA));
+  let idToPay = url.searchParams.get("idToPay");
+  const { cliUser, cliName, cliEmail, cliRole } = JSON.parse(
+    localStorage.getItem(CLIENT_DATA)
+  );
 
   const navigateToTray = (idToPay, email, role) => {
     history.push({
-      pathname: "/screens/UsersPage",
+      pathname: "/screens/ConcessionaryPage",
       state: {
         idToPay,
         email,
@@ -24,32 +26,43 @@ const Contact = () => {
 
   const handlePayment = async (formR) => {
     if (formR) {
-      const paquete = JSON.parse(formR.data);
-      paquete.formStatus = "Paid";
-      formR.formStatus = "Paid";
+      const paquete = JSON.parse(formR?.data);
+      paquete.formStatus = "paid";
+      formR.formStatus = "paid";
+
       const obj = {
-        data: JSON.stringify(paquete),
+        userId: formR.userId,
         formId: formR.formId,
         formStatus: formR.formStatus,
-        cliUser: cliUser,
+        data: JSON.stringify(paquete),
       };
+      console.log("Pagué el formulario", idToPay, obj);
       await createUpdateForm(obj);
-      console.log("Pagué el formulario", idToPay);
+
       navigateToTray(cliUser, cliEmail, formR.role);
     }
   };
 
   useEffect(() => {
     (async () => {
+      if (cliRole === "reg") {
+        alert("Favor llamar al provedor del servico para hacer el pago.");
+        history.push({
+          pathname: "/screens/UsersPage",
+          state: {
+            cliUser,
+            cliName,
+            cliEmail,
+            cliRole,
+          },
+        });
+      }
       let f2 = await readForm(idToPay);
       if (f2) {
         f2.email = cliEmail;
         setForm(f2);
-      } else {
-        setForm({ formId: "NoData" });
       }
-
-      console.log("Módulo de PAGO", cliEmail, "-", idToPay, "-", form);
+      console.log("Módulo de PAGO", cliEmail, "-", idToPay, f2);
     })();
   }, []);
 
@@ -70,21 +83,26 @@ const Contact = () => {
         </p>
         <p>
           El estado de pago para el formulario&nbsp;
-          {`${form.formId}`} de&nbsp; {`${form.email}`} es&nbsp;
-          <span style={{ color: "red" }}>{`${form.formStatus} `}</span>
+          {`${form.formId}`} de&nbsp; {`${form.email}`} es&nbsp;{" "}
+          <span style={{ color: "red" }}>
+            {`${form.formStatus} `}
+            {form.formStatus === "paid" ? (
+              `Pagado: Nada que pagar`
+            ) : (
+              <Button
+                style={{
+                  textDecoration: "none",
+                  color: "blue",
+                }}
+                onClick={() => {
+                  handlePayment(form);
+                }}
+              >
+                Pay
+              </Button>
+            )}
+          </span>
         </p>
-        Favor entre autorización de pago:&nbsp;
-        <Button
-          style={{
-            textDecoration: "none",
-            color: "blue",
-          }}
-          onClick={() => {
-            handlePayment(form);
-          }}
-        >
-          Pay
-        </Button>
       </div>
     </div>
   );

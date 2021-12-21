@@ -7,6 +7,7 @@ import { readForm, createUpdateForm } from "../../api/formsAccess";
 
 const Concessionary = () => {
   const [formData, setFormData] = useState();
+  const [obj, setObj] = useState({});
   const { id } = useParams();
   const isEditMode = !!id;
   const history = useHistory();
@@ -19,6 +20,7 @@ const Concessionary = () => {
     if (!isEditMode) return;
     (async () => {
       const values = await readForm(id);
+      setObj(values);
       setFormData(JSON.parse(values.data));
     })();
   }, [isEditMode, id]);
@@ -32,11 +34,17 @@ const Concessionary = () => {
 
   const handleSubmit = async ({ formData }) => {
     extractData({ formData });
-    const obj = {
-      data: JSON.stringify(formData),
-      formId: "I130",
-      formStatus: "Unpaid",
-    };
+
+    if (!isEditMode) {
+      setObj({
+        data: JSON.stringify(formData),
+        formId: "Intake",
+        formStatus: "Unpaid",
+      });
+    } else {
+      setObj({ ...obj, data: JSON.stringify(formData) });
+    }
+
     console.log(obj);
     await createUpdateForm(obj);
     navigateToPage();

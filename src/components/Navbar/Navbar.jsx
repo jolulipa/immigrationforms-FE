@@ -130,17 +130,11 @@ const Navbar = () => {
           SERVICES
         </NavLink>
         <NavLink
-          to="/screens/Contact"
+          to="/screens/ContactPage"
           className="col-1 d-none d-md-block d-lg-block d-xl-block red-input"
         >
           CONTACT
         </NavLink>
-        {/* <NavLink
-          to="/screens/LoginPage"
-          className="col-1 d-none d-md-block d-lg-block d-xl-block text-dark"
-        >
-          LOGIN
-        </NavLink> */}
         <button
           style={{
             marginRight: "50px",

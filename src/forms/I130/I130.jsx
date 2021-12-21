@@ -32,7 +32,7 @@ const I130 = () => {
 
         if (values) {
           const paquete = JSON.parse(values.data);
-          paquete.formStatus = values.formStatus;
+          paquete.p1.formStatus = values.formStatus;
           setFormData(paquete);
         } else {
           setFormData(JSON.parse(context.forms[0].data));

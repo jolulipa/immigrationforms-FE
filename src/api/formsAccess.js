@@ -83,11 +83,6 @@ export const createUpdateForm = async (values) => {
         jwt: token,
       },
     });
-    console.log(
-      `A form was created/modified for: ${values.formId}, ${values.id},${values.formStatus},${response}`
-    );
-    // const datos = await response.json();
-    // return datos;
   } catch (error) {
     handleError(error);
   }
