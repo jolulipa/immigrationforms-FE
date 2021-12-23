@@ -18,7 +18,7 @@ import ConcessionaryPage from "./screens/ConcessionaryPage";
 import UsersPage from "./screens/UsersPage";
 import Contact from "./screens/Contact";
 import ContactPage from "./screens/ContactPage";
-import Unauthorized from "./components/Unauthorized";
+// import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         <Route path="/screens/Contact" component={Contact} />
         <Route path="/screens/Contact/:id" component={Contact} />
         <Route path="/concessionaries" component={Concessionary} />
-        <Route path="/unauthorized" component={Unauthorized} />{" "}
+        {/* <Route path="/unauthorized" component={Unauthorized} />{" "} */}
         <PrivateRoute path="/forms/Intake/:id" component={Intake} />
         <PrivateRoute path="/forms/Intake" component={Intake} />
         <PrivateRoute path="/forms/i130/:id" component={I130} />
@@ -55,7 +55,7 @@ function App() {
         <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
         <Route path="/:concessionaryId" component={WelcomePage} />
         <Route path="/" component={WelcomePage} />
-        <Route path="*" component={Unauthorized} />
+        <Route path="*" component={WelcomePage} />
       </Switch>
       <Footer />
     </Router>
