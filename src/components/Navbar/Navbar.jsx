@@ -20,6 +20,10 @@ const Navbar = () => {
     history.push(`/${context?.concessionary?.concessionary}`);
   };
 
+  const navigateToLogin = () => {
+    history.push("/screens/LoginPage");
+  };
+
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN);
     localStorage.removeItem(CLIENT_DATA);
@@ -142,35 +146,9 @@ const Navbar = () => {
           }}
           className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
-          onClick={
-            context.intake.email ? (
-              handleLogout
-            ) : (
-              <NavLink
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                }}
-                to="/screens/LoginPage"
-              >
-                LOG IN
-              </NavLink>
-            )
-          }
+          onClick={context.intake.email ? handleLogout : navigateToLogin}
         >
-          {context.intake.email ? (
-            `LOG OUT`
-          ) : (
-            <NavLink
-              style={{
-                textDecoration: "none",
-                color: "#fff",
-              }}
-              to="/screens/LoginPage"
-            >
-              LOG IN
-            </NavLink>
-          )}
+          {context.intake.email ? `LOG OUT` : "LOG IN"}
         </button>
       </div>
     </>
