@@ -109,7 +109,6 @@ const Navbar = () => {
           className="col-6 text-responsive"
           style={{
             marginLeft: 10,
-            fontSize: 25,
             color: "red",
             fontFamily: "cursive",
           }}
@@ -117,7 +116,7 @@ const Navbar = () => {
           Oficina:&ensp;
           <span
             className="text-responsive"
-            style={{ fontSize: 25, fontWeight: 700, color: "#011e4d" }}
+            style={{ fontWeight: 700, color: "#011e4d" }}
           >
             {context?.concessionary?.officeName}
           </span>
