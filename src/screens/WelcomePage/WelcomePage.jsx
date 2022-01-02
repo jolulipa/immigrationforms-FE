@@ -36,8 +36,12 @@ const WelcomePage = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <img src={Jpeg1} alt="Somos Latinos" className="col-6 " />
-        <div className="col-6 d-none d-md-block d-lg-block d-xl-block red-input">
+        <img
+          src={Jpeg1}
+          alt="Somos Latinos"
+          className="col-6 d-none d-md-block d-lg-block d-xl-block red-input"
+        />
+        <div className="col-6">
           <h2 style={styles.title}>
             Bienvenido a su <br />{" "}
             <strong>HERRAMIENTA DE IMMIGRACIÓN USA</strong>
