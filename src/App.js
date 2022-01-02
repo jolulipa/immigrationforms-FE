@@ -20,45 +20,57 @@ import Contact from "./screens/Contact";
 import ContactPage from "./screens/ContactPage";
 // import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
+import Jpeg1 from "./images/passports.jpeg";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/screens/LoginPage" component={LoginPage} />
-        <Route path="/screens/Registration" component={Registration} />
-        <Route path="/screens/LandingPage" component={LandingPage} />
-        <Route path="/screens/ContactPage" component={ContactPage} />
-        <Route path="/screens/Contact" component={Contact} />
-        <Route path="/screens/Contact/:id" component={Contact} />
-        <Route path="/concessionaries" component={Concessionary} />
-        {/* <Route path="/unauthorized" component={Unauthorized} />{" "} */}
-        <PrivateRoute path="/forms/Intake/:id" component={Intake} />
-        <PrivateRoute path="/forms/Intake" component={Intake} />
-        <PrivateRoute path="/forms/i130/:id" component={I130} />
-        <PrivateRoute path="/forms/i130" component={I130} />
-        <PrivateRoute path="/forms/i130A/:id" component={I130A} />
-        <PrivateRoute path="/forms/i130A" component={I130A} />
-        <PrivateRoute path="/forms/n400/:id" component={N400} />
-        <PrivateRoute path="/forms/n400" component={N400} />
-        <PrivateRoute
-          path="/forms/Concessionary/:id"
-          component={Concessionary}
-        />
-        <PrivateRoute path="/forms/Concessionary" component={Concessionary} />
-        <PrivateRoute path="/screens/AdminPage" component={AdminPage} />
-        <PrivateRoute
-          path="/screens/ConcessionaryPage"
-          component={ConcessionaryPage}
-        />
-        <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
-        <Route path="/:concessionaryId" component={WelcomePage} />
-        <Route path="/" component={WelcomePage} />
-        <Route path="*" component={WelcomePage} />
-      </Switch>
-      <Footer />
-    </Router>
+    <div
+      className="bg"
+      style={{
+        backgroundImage: `url(${Jpeg1})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        minHeight: "100vh",
+      }}
+    >
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/screens/LoginPage" component={LoginPage} />
+          <Route path="/screens/Registration" component={Registration} />
+          <Route path="/screens/LandingPage" component={LandingPage} />
+          <Route path="/screens/ContactPage" component={ContactPage} />
+          <Route path="/screens/Contact" component={Contact} />
+          <Route path="/screens/Contact/:id" component={Contact} />
+          <Route path="/concessionaries" component={Concessionary} />
+          {/* <Route path="/unauthorized" component={Unauthorized} />{" "} */}
+          <PrivateRoute path="/forms/Intake/:id" component={Intake} />
+          <PrivateRoute path="/forms/Intake" component={Intake} />
+          <PrivateRoute path="/forms/i130/:id" component={I130} />
+          <PrivateRoute path="/forms/i130" component={I130} />
+          <PrivateRoute path="/forms/i130A/:id" component={I130A} />
+          <PrivateRoute path="/forms/i130A" component={I130A} />
+          <PrivateRoute path="/forms/n400/:id" component={N400} />
+          <PrivateRoute path="/forms/n400" component={N400} />
+          <PrivateRoute
+            path="/forms/Concessionary/:id"
+            component={Concessionary}
+          />
+          <PrivateRoute path="/forms/Concessionary" component={Concessionary} />
+          <PrivateRoute path="/screens/AdminPage" component={AdminPage} />
+          <PrivateRoute
+            path="/screens/ConcessionaryPage"
+            component={ConcessionaryPage}
+          />
+          <PrivateRoute path="/screens/UsersPage" component={UsersPage} />
+          <Route path="/:concessionaryId" component={WelcomePage} />
+          <Route path="/" component={WelcomePage} />
+          <Route path="*" component={WelcomePage} />
+        </Switch>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 

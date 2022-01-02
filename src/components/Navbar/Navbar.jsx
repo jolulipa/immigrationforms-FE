@@ -81,6 +81,7 @@ const Navbar = () => {
             Clients
           </Link>
         </div>
+
         <div
           style={{
             marginLeft: 10,
@@ -99,10 +100,7 @@ const Navbar = () => {
             />
           }
         </div>
-        <Burger
-          className="d-md-none d-lg-none d-xl-block"
-          style={{ zIndex: 2, position: "relative" }}
-        />
+        <Burger className="d-md-none d-lg-none d-xl-block" />
       </div>
       <div className="row navbar sndLine">
         <div

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import { useAppContext } from "../../context/Provider";
-import Jpeg1 from "../../images/Welcome.png";
-// import Jpeg2 from "../../images/liberty.png";
+import Jpeg1 from "../../images/latinos.png";
+import Jpeg2 from "../../images/liberty.png";
 
 const WelcomePage = () => {
   const { state: context } = useAppContext();
@@ -39,7 +39,12 @@ const WelcomePage = () => {
         <img
           src={Jpeg1}
           alt="Somos Latinos"
-          className="col-6 d-none d-md-block d-lg-block d-xl-block red-input"
+          className="col-3 d-none d-md-block d-lg-block d-xl-block red-input"
+        />
+        <img
+          src={Jpeg2}
+          alt="Liberty Statue"
+          className="col-3 d-lg-block d-xl-block red-input"
         />
         <div className="col-6">
           <h2 style={styles.title}>
@@ -84,14 +89,14 @@ const styles = {
     paddingTop: 5,
     paddingLeft: 10,
     textAlign: "left",
-    color: colors.brown,
+    color: colors.blue,
   },
 
   paragraph: {
     fontSize: 15,
     padding: 15,
     margin: 0,
-    color: colors.brown,
+    color: colors.white,
   },
 
   navigate: {
