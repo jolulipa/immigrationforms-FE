@@ -106,12 +106,10 @@ const Navbar = () => {
       </div>
       <div
         className="row navbar sndLine"
-        style={{
-          background: "#fff",
-        }}
+        style={{ zIndex: 1, position: "absolute", background: "#fff" }}
       >
         <div
-          className="col-6"
+          className="col-6 text-responsive"
           style={{
             marginLeft: 10,
             fontSize: 25,
@@ -120,7 +118,10 @@ const Navbar = () => {
           }}
         >
           Oficina:&ensp;
-          <span style={{ fontSize: 25, fontWeight: 700, color: "#011e4d" }}>
+          <span
+            className="text-responsive"
+            style={{ fontSize: 25, fontWeight: 700, color: "#011e4d" }}
+          >
             {context?.concessionary?.officeName}
           </span>
         </div>
