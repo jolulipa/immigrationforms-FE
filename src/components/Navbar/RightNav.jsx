@@ -8,14 +8,14 @@ const Menu = styled.ul`
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: #c3dffa;
+    background-color: #686e63;
     position: fixed;
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
-    height: 50vh;
-    width: 250px;
-    padding-top: 60px;
+    height: 35vh;
+    width: 230px;
+    padding-top: 48px;
 
     transition: transform 0.3s ease-in-out;
   }
@@ -30,6 +30,8 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "20px",
+          decorations: "none",
+          color: "white",
         }}
       >
         HOME
@@ -41,6 +43,8 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "20px",
+          decorations: "none",
+          color: "white",
         }}
       >
         SERVICES
@@ -51,6 +55,8 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "20px",
+          decorations: "none",
+          color: "white",
         }}
       >
         CONTACT
@@ -61,6 +67,8 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "20px",
+          decorations: "none",
+          color: "white",
         }}
       >
         LOGIN
@@ -71,6 +79,8 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "20px",
+          decorations: "none",
+          color: "white",
         }}
       >
         ADMIN

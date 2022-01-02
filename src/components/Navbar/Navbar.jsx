@@ -100,8 +100,8 @@ const Navbar = () => {
             />
           }
         </div>
-        <Burger className="d-md-none d-lg-none d-xl-block" />
       </div>
+      <Burger className="d-md-none d-lg-none d-xl-block" />
       <div className="row navbar sndLine">
         <div
           className="col-6 text-responsive"
