@@ -106,7 +106,7 @@ const Navbar = () => {
       </div>
       <div className="row navbar sndLine">
         <div
-          className="text-responsive"
+          className="col-6 text-responsive"
           style={{
             marginLeft: 10,
             fontSize: 25,
