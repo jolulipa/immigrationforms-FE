@@ -99,7 +99,10 @@ const Navbar = () => {
             />
           }
         </div>
-        <Burger className="d-md-none d-lg-none d-xl-block" />
+        <Burger
+          className="d-md-none d-lg-none d-xl-block"
+          style={{ zIndex: 2, position: "relative" }}
+        />
       </div>
       <div
         className="row navbar sndLine"
