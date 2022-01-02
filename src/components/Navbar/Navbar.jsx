@@ -104,12 +104,9 @@ const Navbar = () => {
           style={{ zIndex: 2, position: "relative" }}
         />
       </div>
-      <div
-        className="row navbar sndLine"
-        style={{ zIndex: 1, position: "absolute", background: "#fff" }}
-      >
+      <div className="row navbar sndLine">
         <div
-          className="col-6 text-responsive"
+          className="text-responsive"
           style={{
             marginLeft: 10,
             fontSize: 25,
