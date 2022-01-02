@@ -11,7 +11,13 @@ const LandingPage = () => {
 
   const renderData = () =>
     data.map((el) => (
-      <div key={el.formId} className="col-sm-4">
+      <div
+        key={el.formId}
+        className="col-sm-4"
+        style={{
+          color: "white",
+        }}
+      >
         <ServiceBox
           key={el.formId}
           formName={el.formName}
