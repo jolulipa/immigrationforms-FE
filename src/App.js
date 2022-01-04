@@ -20,7 +20,7 @@ import Contact from "./screens/Contact";
 import ContactPage from "./screens/ContactPage";
 // import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
-import Jpeg1 from "./images/passports.jpeg";
+import Jpeg1 from "./images/ticket-passportt.jpeg";
 
 function App() {
   return (
@@ -31,6 +31,8 @@ function App() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center center",
+        resize: "both",
+        overflow: "auto",
         minHeight: "100vh",
       }}
     >

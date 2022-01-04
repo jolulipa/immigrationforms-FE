@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Menu = styled.ul`
   list-style: none;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
@@ -13,9 +13,9 @@ const Menu = styled.ul`
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
-    height: 35vh;
-    width: 230px;
-    padding-top: 48px;
+    height: 40vh;
+    width: 30vh;
+    padding-top: 10vh;
 
     transition: transform 0.3s ease-in-out;
   }
@@ -29,7 +29,7 @@ const RightNav = ({ open, onClose }) => {
         className="h5"
         onClick={onClose}
         style={{
-          paddingBottom: "20px",
+          paddingBottom: "2.5vh",
           decorations: "none",
           color: "white",
         }}
@@ -42,7 +42,7 @@ const RightNav = ({ open, onClose }) => {
         className="h5"
         onClick={onClose}
         style={{
-          paddingBottom: "20px",
+          paddingBottom: "2.5vh",
           decorations: "none",
           color: "white",
         }}
@@ -50,11 +50,11 @@ const RightNav = ({ open, onClose }) => {
         SERVICES
       </Link>
       <Link
-        to="/screens/contact"
+        to="/screens/ContactPage"
         className="h5"
         onClick={onClose}
         style={{
-          paddingBottom: "20px",
+          paddingBottom: "2.5vh",
           decorations: "none",
           color: "white",
         }}
@@ -66,7 +66,7 @@ const RightNav = ({ open, onClose }) => {
         className="h5"
         onClick={onClose}
         style={{
-          paddingBottom: "20px",
+          paddingBottom: "2.5vh",
           decorations: "none",
           color: "white",
         }}
@@ -78,7 +78,7 @@ const RightNav = ({ open, onClose }) => {
         className="h5"
         onClick={onClose}
         style={{
-          paddingBottom: "20px",
+          paddingBottom: "2.5vh",
           decorations: "none",
           color: "white",
         }}

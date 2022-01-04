@@ -16,6 +16,7 @@ const LandingPage = () => {
         className="col-sm-4"
         style={{
           color: "white",
+          textShadow: "0 0 1px black",
         }}
       >
         <ServiceBox
@@ -33,6 +34,10 @@ const LandingPage = () => {
         style={{
           paddingTop: "1rem",
           paddingBottom: "1rem",
+
+          fontWeight: 500,
+          textShadow: "0 0 .5px white",
+          color: "black",
         }}
       >
         SERVICIOS OFRECIDOS POR THE IMMIGRATION TIME:

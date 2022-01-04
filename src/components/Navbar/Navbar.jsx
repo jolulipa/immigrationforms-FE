@@ -59,24 +59,34 @@ const Navbar = () => {
         >
           The Immigration Time
         </div>
-        <div className="col d-none d-md-block d-xl-block">
+        <div
+          className="col d-none d-md-block d-xl-block"
+          style={{
+            borderRight: "1px solid rgb(255, 17, 0)",
+          }}
+        >
           <Link
+            to="/screens/ConcessionaryPage"
             style={{
               textDecoration: "none",
               color: "#fff",
             }}
-            to="/screens/ConcessionaryPage"
           >
             Admin
           </Link>
         </div>
-        <div className="col d-none d-md-block d-xl-block">
+        <div
+          className="col d-none d-md-block d-xl-block"
+          style={{
+            borderRight: "1px solid rgb(255, 17, 0)",
+          }}
+        >
           <Link
+            to="/screens/UsersPage"
             style={{
               textDecoration: "none",
               color: "#fff",
             }}
-            to="/screens/UsersPage"
           >
             Clients
           </Link>
@@ -101,8 +111,15 @@ const Navbar = () => {
           }
         </div>
       </div>
-      <Burger className="d-md-none d-lg-none d-xl-block" />
-      <div className="row navbar sndLine">
+
+      <div
+        className="row navbar "
+        style={{
+          height: "9vh",
+          borderBottom: "5px solid rgb(243, 243, 243)",
+          fontSize: "18px",
+        }}
+      >
         <div
           className="col-6 text-responsive"
           style={{
@@ -114,7 +131,11 @@ const Navbar = () => {
           Oficina:&ensp;
           <span
             className="text-responsive"
-            style={{ fontWeight: 700, color: "#011e4d" }}
+            style={{
+              fontWeight: 700,
+              color: "rgb(36, 95, 128)",
+              textShadow: "0 0 1px gray",
+            }}
           >
             {context?.concessionary?.officeName}
           </span>
@@ -149,6 +170,7 @@ const Navbar = () => {
           {context.intake.email ? `LOG OUT` : "LOG IN"}
         </button>
       </div>
+      <Burger className="d-md-none d-lg-none d-xl-block" />
     </>
   );
 };

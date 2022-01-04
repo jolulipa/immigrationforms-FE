@@ -39,14 +39,14 @@ const WelcomePage = () => {
         <img
           src={Jpeg1}
           alt="Somos Latinos"
-          className="col-3 d-none d-md-block d-lg-block d-xl-block red-input"
+          className="col d-none d-md-block d-lg-block d-xl-block red-input"
         />
         <img
           src={Jpeg2}
           alt="Liberty Statue"
-          className="col-3 d-lg-block d-xl-block red-input"
+          className="col d-lg-block d-xl-block red-input"
         />
-        <div className="col-6">
+        <div className="col">
           <h2 style={styles.title}>
             Bienvenido a su <br />{" "}
             <strong>HERRAMIENTA DE IMMIGRACIÓN USA</strong>
@@ -90,13 +90,16 @@ const styles = {
     paddingLeft: 10,
     textAlign: "left",
     color: colors.blue,
+    textShadow: "0 0 2px white",
   },
 
   paragraph: {
     fontSize: 15,
     padding: 15,
     margin: 0,
-    color: colors.white,
+    color: colors.gray,
+    textShadow: "0 0 1px black",
+    textAlign: "left",
   },
 
   navigate: {
