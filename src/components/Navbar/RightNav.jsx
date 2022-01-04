@@ -8,14 +8,18 @@ const Menu = styled.ul`
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: #686e63;
+    background-color: #154c79;
     position: fixed;
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
     height: 40vh;
-    width: 30vh;
-    padding-top: 10vh;
+    width: 20vh;
+    padding-top: 8vh;
+    border: 0.5vh;
+    border-style: solid;
+    border-color: #2c5e86;
+    border-radius: 25px;
 
     transition: transform 0.3s ease-in-out;
   }

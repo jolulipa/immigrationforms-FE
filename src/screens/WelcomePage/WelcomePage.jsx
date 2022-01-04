@@ -84,7 +84,7 @@ const WelcomePage = () => {
 };
 const styles = {
   title: {
-    marginTop: 25,
+    marginTop: 15,
     borderLeft: "5px solid red",
     paddingTop: 5,
     paddingLeft: 10,

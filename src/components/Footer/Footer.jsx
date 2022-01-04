@@ -25,6 +25,7 @@ const Footer = () => {
           paddingBottom: "20px",
           borderBottom: ".5px solid rgb(107, 153, 245)",
           justifyContent: "space-between",
+          flexWrap: "wrap",
         }}
       >
         <span

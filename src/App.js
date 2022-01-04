@@ -20,7 +20,7 @@ import Contact from "./screens/Contact";
 import ContactPage from "./screens/ContactPage";
 // import Unauthorized from "./components/Unauthorized";
 import PrivateRoute from "./components/PrivateRoute";
-import Jpeg1 from "./images/ticket-passportt.jpeg";
+import Jpeg1 from "./images/american-passports-and-flag-.png";
 
 function App() {
   return (

@@ -125,14 +125,13 @@ const Navbar = () => {
           style={{
             marginLeft: 10,
             color: "red",
-            fontFamily: "cursive",
           }}
         >
           Oficina:&ensp;
           <span
             className="text-responsive"
             style={{
-              fontWeight: 700,
+              fontWeight: 600,
               color: "rgb(36, 95, 128)",
               textShadow: "0 0 1px gray",
             }}
