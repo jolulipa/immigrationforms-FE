@@ -44,7 +44,7 @@ const WelcomePage = () => {
         <img
           src={Jpeg2}
           alt="Liberty Statue"
-          className="col d-lg-block d-xl-block red-input"
+          className="col d-none d-md-block d-lg-block d-xl-block red-input"
         />
         <div className="col">
           <h2 style={styles.title}>
