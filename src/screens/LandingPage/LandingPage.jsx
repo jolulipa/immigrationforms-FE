@@ -15,7 +15,7 @@ const LandingPage = () => {
         key={el.formId}
         className="col-sm-4"
         style={{
-          color: "white",
+          color: "gray",
           textShadow: "0 0 1px black",
         }}
       >
@@ -29,7 +29,14 @@ const LandingPage = () => {
     ));
 
   return (
-    <div className="container">
+    <div
+      className="container-fluid"
+      style={{
+        padding: 10,
+        overflow: "auto",
+        height: 500,
+      }}
+    >
       <h5
         style={{
           paddingTop: "1rem",

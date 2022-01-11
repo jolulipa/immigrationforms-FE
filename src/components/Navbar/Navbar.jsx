@@ -100,7 +100,7 @@ const Navbar = () => {
           }}
           className="d-none d-md-block d-xl-block text-light"
         >
-          {!!context.intake.fullName && `${context?.intake?.fullName}`}
+          {!!context.intake.fullName && `${context.intake.fullName}`}
           {
             <AiOutlineUser
               style={{
