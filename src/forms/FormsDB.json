@@ -20,8 +20,18 @@
     "description": "Utilice este servicio si usted es residente permanente legal (LPR) y desea naturalizarse como ciudadano de los Estados Unidos."
   },
   {
-    "formId": "Otro",
-    "formName": "Otro Form - Immigration Services",
+    "formId": "I90",
+    "formName": "I-90 Application to Replace Permanent Resident Card ",
+    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+  },
+  {
+    "formId": "I485",
+    "formName": "I-485 Application to Register Permanent Residence or Adjust Status",
+    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+  },
+  {
+    "formId": "I765",
+    "formName": "I-765 Application For Employment Authorization ",
     "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
   }
 ]
