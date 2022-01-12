@@ -88,13 +88,24 @@ const N400 = () => {
   };
 
   return (
-    <div className="container">
-      <Form
-        schema={schema}
-        uiSchema={uiSchema}
-        formData={formData}
-        onSubmit={handleSubmit}
-      />
+    <div className="container justify-content-sm-center">
+      <div
+        className="col-sm-4 "
+        style={{
+          backgroundColor: "#7ed6fc",
+          margin: 20,
+          padding: 15,
+          borderRadius: "10px",
+          border: "5px solid #3f3434",
+        }}
+      >
+        <Form
+          schema={schema}
+          uiSchema={uiSchema}
+          formData={formData}
+          onSubmit={handleSubmit}
+        />
+      </div>
     </div>
   );
 };
