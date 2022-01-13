@@ -13,7 +13,7 @@ const Menu = styled.ul`
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
-    height: 40vh;
+    height: 42vh;
     width: 20vh;
     padding-top: 8vh;
     border: 0.5vh;
@@ -34,7 +34,7 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "2.5vh",
-          decorations: "none",
+          textDecoration: "none",
           color: "white",
         }}
       >
@@ -47,7 +47,7 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "2.5vh",
-          decorations: "none",
+          textDecoration: "none",
           color: "white",
         }}
       >
@@ -59,11 +59,23 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "2.5vh",
-          decorations: "none",
+          textDecoration: "none",
           color: "white",
         }}
       >
         CONTACT
+      </Link>
+      <Link
+        to="/screens/UsersPage"
+        className="h5"
+        onClick={onClose}
+        style={{
+          paddingBottom: "2.5vh",
+          textDecoration: "none",
+          color: "white",
+        }}
+      >
+        TRAY/FORMS
       </Link>
       <Link
         to="/screens/LoginPage"
@@ -71,23 +83,22 @@ const RightNav = ({ open, onClose }) => {
         onClick={onClose}
         style={{
           paddingBottom: "2.5vh",
-          decorations: "none",
+          textDecoration: "none",
           color: "white",
         }}
       >
         LOGIN
       </Link>
       <Link
-        to="/screens/AdminPage"
+        to="/screens/ConcessionaryPage"
         className="h5"
         onClick={onClose}
         style={{
-          paddingBottom: "2.5vh",
-          decorations: "none",
+          padding: "2.5vh",
           color: "white",
         }}
       >
-        ADMIN
+        Admin
       </Link>
     </Menu>
   );

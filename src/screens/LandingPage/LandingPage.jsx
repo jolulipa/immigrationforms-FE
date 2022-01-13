@@ -39,9 +39,7 @@ const LandingPage = () => {
     >
       <h5
         style={{
-          paddingTop: "1rem",
-          paddingBottom: "1rem",
-
+          padding: "1rem",
           fontWeight: 500,
           textShadow: "0 0 .5px white",
           color: "black",

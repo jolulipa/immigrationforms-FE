@@ -97,6 +97,7 @@ const I130 = () => {
           padding: 15,
           borderRadius: "10px",
           border: "5px solid #3f3434",
+          overflow: "auto",
         }}
       >
         <Form

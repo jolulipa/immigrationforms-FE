@@ -6,7 +6,7 @@ import { readUsers } from "../../api/auth";
 import { checkIntake, readAllFormsAdm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
-import { AiFillPlusCircle } from "react-icons/ai";
+// import { AiFillPlusCircle } from "react-icons/ai";
 
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
@@ -44,19 +44,6 @@ const ConcessionaryPage = () => {
           <td>{el?.email}</td>
           <td>
             <Button
-              className="btn btn-danger btn-sm "
-              onClick={() => {
-                deleteUser(el.id);
-              }}
-            >
-              Delete
-            </Button>
-          </td>
-          {/* <td>{el?.role}</td> */}
-          <td>{el?.createdAt.split("T")[0]}</td>
-          <td>{el?.updatedAt.split("T")[0]}</td>
-          <td>
-            <Button
               className="btn-primary btn-sm"
               onClick={() => {
                 const cliEmail = el.email;
@@ -69,7 +56,20 @@ const ConcessionaryPage = () => {
                 navigateToUser(el.id, el.email, el.role, el.name);
               }}
             >
-              Client Forms
+              Forms
+            </Button>
+          </td>
+          {/* <td>{el?.role}</td> */}
+          <td>{el?.createdAt.split("T")[0]}</td>
+          <td>{el?.updatedAt.split("T")[0]}</td>
+          <td>
+            <Button
+              className="btn btn-danger btn-sm "
+              onClick={() => {
+                deleteUser(el.id);
+              }}
+            >
+              Delete
             </Button>
           </td>
         </tr>
@@ -82,7 +82,7 @@ const ConcessionaryPage = () => {
       className="table-hover"
       style={{
         border: "1px solid lightgrey",
-        marginLeft: 15,
+        marginLeft: 0,
         marginTop: 10,
         width: "95%",
       }}
@@ -98,26 +98,14 @@ const ConcessionaryPage = () => {
             }}
           >
             Usuarios del Concesionario
-            {/* <Link
-              to="/screens/LandingPage"
-              className="btn-success btn-sm"
-              style={{
-                textDecoration: "none",
-                marginLeft: "65%",
-                alignContent: "right",
-              }}
-            >
-              <AiFillPlusCircle /> ADD NEW FORM
-            </Link> */}
           </th>
         </tr>
         <tr>
           <th>User email</th>
-          <th>Delete Acc</th>
-          {/* <th>Role</th> */}
+          <th>View Forms</th>
           <th>Created on</th>
           <th>Modified on</th>
-          <th>Go To:</th>
+          <th>Delete Acc:</th>
         </tr>
       </thead>
       <tbody>{renderResults(results)}</tbody>
@@ -158,7 +146,7 @@ const ConcessionaryPage = () => {
         CLIENTES DEL CONCESIONARIO:{" "}
         <span style={styles.name}>{state?.intake?.fullName}</span>
       </h4>
-      <div className="row d-flex justify-content-center">
+      <div className="row">
         <div>
           <p style={styles.paragraph}>
             Esta es la herramenta de <strong>administración</strong> para
@@ -181,8 +169,8 @@ const styles = {
   },
   paragraph: {
     textAlign: "left",
-    fontSize: 18,
-    paddingLeft: 15,
+    fontSize: 15,
+    paddingLeft: 0,
     margin: 0,
   },
   variable: {
@@ -192,6 +180,7 @@ const styles = {
   },
   name: {
     fontWeight: "600",
+    fontSize: 18,
     color: colors.red,
   },
 };

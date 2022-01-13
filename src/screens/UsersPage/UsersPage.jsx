@@ -119,8 +119,8 @@ const styles = {
   },
   paragraph: {
     textAlign: "left",
-    fontSize: 18,
-    padding: 15,
+    fontSize: 15,
+    padding: 10,
     margin: 0,
     color: colors.brown,
     paddingLeft: 20,

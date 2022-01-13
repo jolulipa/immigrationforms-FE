@@ -1,4 +1,10 @@
 const uiSchema = {
+  p1: {
+    email: {
+      "ui:widget": "email",
+      "ui:help": "Must be a real working email address!",
+    },
+  },
   p2: {
     dateOfBirth: {
       "ui:widget": "date",

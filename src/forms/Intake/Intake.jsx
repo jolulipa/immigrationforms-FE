@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import Form from "@rjsf/bootstrap-4";
 import schema from "./Intakeschema";
 import uiSchema from "./IntakeUiSchema";
@@ -14,6 +15,9 @@ const Intake = () => {
   const history = useHistory();
   const [formData, setFormData] = useState();
 
+  const navigateToWelcome = () => {
+    history.push(`/${context?.concessionary?.concessionary}`);
+  };
   const navigateToTray = (id, email, role) => {
     history.push({
       pathname: "/screens/UsersPage",
@@ -86,13 +90,13 @@ const Intake = () => {
   };
 
   return (
-    <div className="container justify-content-sm-center">
+    <div className="container d-flex justify-content-center">
       <div
-        className="col-sm-4 "
+        className="col-md-4"
         style={{
           backgroundColor: "#7ed6fc",
-          margin: 20,
-          padding: 15,
+          margin: 5,
+          padding: 10,
           borderRadius: "10px",
           border: "5px solid #3f3434",
         }}
@@ -102,7 +106,20 @@ const Intake = () => {
           uiSchema={uiSchema}
           formData={formData}
           onSubmit={handleSubmit}
-        />
+        >
+          <div className="d-flex  justify-content-around">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+            <Button
+              type="button"
+              className="btn btn-danger"
+              onClick={navigateToWelcome}
+            >
+              Cancel
+            </Button>
+          </div>
+        </Form>
       </div>
     </div>
   );
