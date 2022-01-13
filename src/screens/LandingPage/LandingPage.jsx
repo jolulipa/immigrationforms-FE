@@ -34,7 +34,6 @@ const LandingPage = () => {
       style={{
         padding: 10,
         overflow: "auto",
-        height: 500,
       }}
     >
       <h5

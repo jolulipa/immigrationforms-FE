@@ -23,25 +23,25 @@ function RenderForms({ forms }) {
         <thead>
           <tr>
             <th
-              colspan="6"
+              colspan="5"
               style={{
                 background: "#ff0066",
                 color: "white",
                 border: "1px solid lightgrey",
               }}
             >
-              Formularios del Usuario
-              <Link
-                to="/screens/LandingPage"
-                className="btn-success btn-sm"
-                style={{
-                  textDecoration: "none",
-                  marginLeft: "65%",
-                  alignContent: "right",
-                }}
-              >
-                <AiFillPlusCircle /> ADD NEW FORM
-              </Link>
+              <span className="d-flex  justify-content-between">
+                Formularios del Usuario
+                <Link
+                  to="/screens/LandingPage"
+                  className="btn-success btn-sm"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <AiFillPlusCircle /> ADD NEW FORM
+                </Link>
+              </span>
             </th>
           </tr>
           <tr key={"header"}>

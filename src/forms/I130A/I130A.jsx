@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import Form from "@rjsf/bootstrap-4";
 import schema from "./i130Aschema";
 import uiSchema from "./i130AUiSchema";
 import { readForm, createUpdateForm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
+import { BiLeftArrowCircle } from "react-icons/bi";
 
 const I130A = () => {
   const { state: context } = useAppContext();
@@ -14,6 +16,9 @@ const I130A = () => {
   const history = useHistory();
   const [formData, setFormData] = useState();
 
+  const navigateToWelcome = () => {
+    history.push(`/${context?.concessionary?.concessionary}`);
+  };
   const navigateToTray = (id, email, role) => {
     history.push({
       pathname: "/screens/UsersPage",
@@ -88,23 +93,49 @@ const I130A = () => {
   };
 
   return (
-    <div className="container justify-content-sm-center">
+    <div className="container d-flex justify-content-center">
       <div
-        className="col-sm-4 "
+        className="col-lg-4"
         style={{
           backgroundColor: "#7ed6fc",
-          margin: 20,
-          padding: 15,
+          margin: 5,
+          padding: 10,
           borderRadius: "10px",
           border: "5px solid #3f3434",
         }}
       >
+        <p
+          className="d-flex justify-content-end"
+          style={{
+            color: "red",
+          }}
+        >
+          Please click&nbsp;{" "}
+          <span className="d-flex justify-content-end">
+            {" "}
+            <BiLeftArrowCircle style={{ fontSize: 24, color: "black" }} />
+          </span>
+          &nbsp;above, To go back to your forms.
+        </p>
         <Form
           schema={schema}
           uiSchema={uiSchema}
           formData={formData}
           onSubmit={handleSubmit}
-        />
+        >
+          <div className="d-flex  justify-content-around">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+            <Button
+              type="button"
+              className="btn btn-danger"
+              onClick={navigateToWelcome}
+            >
+              Cancel
+            </Button>
+          </div>
+        </Form>
       </div>
     </div>
   );

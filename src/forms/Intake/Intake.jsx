@@ -7,6 +7,7 @@ import uiSchema from "./IntakeUiSchema";
 import { readForm, createUpdateForm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
+import { BiLeftArrowCircle } from "react-icons/bi";
 
 const Intake = () => {
   const { state: context } = useAppContext();
@@ -92,7 +93,7 @@ const Intake = () => {
   return (
     <div className="container d-flex justify-content-center">
       <div
-        className="col-md-4"
+        className="col-lg-4"
         style={{
           backgroundColor: "#7ed6fc",
           margin: 5,
@@ -101,6 +102,19 @@ const Intake = () => {
           border: "5px solid #3f3434",
         }}
       >
+        <p
+          className="d-flex justify-content-end"
+          style={{
+            color: "red",
+          }}
+        >
+          Please click&nbsp;{" "}
+          <span className="d-flex justify-content-end">
+            {" "}
+            <BiLeftArrowCircle style={{ fontSize: 24, color: "black" }} />
+          </span>
+          &nbsp;above, To go back to your forms.
+        </p>
         <Form
           schema={schema}
           uiSchema={uiSchema}

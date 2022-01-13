@@ -1,12 +1,12 @@
 import { Table, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
 import { checkIntake, readAllFormsAdm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
-// import { AiFillPlusCircle } from "react-icons/ai";
+import { BiEdit, BiTrash } from "react-icons/bi";
 
 const ConcessionaryPage = () => {
   const [results, setResults] = useState([]);
@@ -43,8 +43,9 @@ const ConcessionaryPage = () => {
         <tr key={el.id}>
           <td>{el?.email}</td>
           <td>
+            <BiEdit style={{ fontSize: 18 }} />
             <Button
-              className="btn-primary btn-sm"
+              className="btn btn-light"
               onClick={() => {
                 const cliEmail = el.email;
                 const cliName = el.name;
@@ -61,10 +62,11 @@ const ConcessionaryPage = () => {
           </td>
           {/* <td>{el?.role}</td> */}
           <td>{el?.createdAt.split("T")[0]}</td>
-          <td>{el?.updatedAt.split("T")[0]}</td>
+          {/* <td>{el?.updatedAt.split("T")[0]}</td> */}
           <td>
+            <BiTrash style={{ fontSize: 18 }} />
             <Button
-              className="btn btn-danger btn-sm "
+              className="btn btn-light btn-sm "
               onClick={() => {
                 deleteUser(el.id);
               }}
@@ -97,14 +99,15 @@ const ConcessionaryPage = () => {
               border: "1px solid lightgrey",
             }}
           >
-            Usuarios del Concesionario
+            Transacciones del Concesionario{" "}
+            <span>{state?.intake?.fullName}</span>
           </th>
         </tr>
         <tr>
           <th>User email</th>
           <th>View Forms</th>
           <th>Created on</th>
-          <th>Modified on</th>
+          {/* <th>Modified on</th> */}
           <th>Delete Acc:</th>
         </tr>
       </thead>
