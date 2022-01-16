@@ -70,7 +70,7 @@ const N400 = () => {
       data: JSON.stringify(cleanData),
       formId: "N400",
       formStatus: formStatus,
-      cliUser: cliUser,
+      userId: cliUser,
     };
     console.log("OBJETO PARA BASE DE DATOS:", obj);
     await createUpdateForm(obj);

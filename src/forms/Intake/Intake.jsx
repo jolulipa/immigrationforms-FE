@@ -66,9 +66,8 @@ const Intake = () => {
       data: JSON.stringify(cleanData),
       formId: "Intake",
       formStatus: formStatus,
-      cliUser: cliUser,
+      userId: cliUser,
     };
-    console.log("OBJETO PARA BASE DE DATOS:", obj);
     await createUpdateForm(obj);
 
     navigateToTray(cliUser, cliEmail, context.intake.role);

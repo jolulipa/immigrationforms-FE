@@ -21,7 +21,7 @@ const formSchema = {
       title:
         "Part 1.  Information About Your Eligibility (Select only one box or your Form N-400 may be delayed)",
       description: "(Spouse Beneficiary)",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         aNumber: {
           type: "number",
@@ -54,7 +54,7 @@ const formSchema = {
       title:
         "Part 2.  Information About You (Person applying for naturalization)",
       description: "1. Your Current Legal Name (do not provide a nickname)",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         lastName: {
           type: "string",
@@ -211,7 +211,7 @@ const formSchema = {
         "Part 3.  Accommodations for Individuals With Disabilities and/or Impairments",
       description:
         "NOTE:  Read the information in the Form N-400 Instructions before completing this part.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         ageMayor: {
           type: "boolean",
@@ -231,7 +231,7 @@ const formSchema = {
       type: "object",
       title: "Part 4.  Information to Contact You ",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         dayTel: {
           type: "number",
@@ -260,7 +260,7 @@ const formSchema = {
       title: "Part 5.  Information About Your Residence",
       description:
         "1. Where have you lived during the last five years?  Provide your most recent residence and then list every location where you have lived during the last five years.  If you need extra space, use additional sheets of paper.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         text8: {
           type: "object",
@@ -491,7 +491,7 @@ const formSchema = {
       title: "Part 6.  Information About Your Parents",
       description:
         "If neither one of your parents is a United States citizen, then skip this part and go to Part 7.",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         parentsMarried: {
           type: "boolean",
@@ -600,15 +600,15 @@ const formSchema = {
       type: "object",
       title: "Part 7.  Biographic Information",
       description: "",
-      required: [
-        "ethnicity",
-        "race",
-        "heightFeet",
-        "heightInches",
-        "weight",
-        "eyeColor",
-        "hairColor",
-      ],
+      // required: [
+      //   "ethnicity",
+      //   "race",
+      //   "heightFeet",
+      //   "heightInches",
+      //   "weight",
+      //   "eyeColor",
+      //   "hairColor",
+      // ],
       properties: {
         text19: {
           type: "object",
@@ -682,7 +682,7 @@ const formSchema = {
       title:
         "Part 8.  Information About Your Employment and Schools You Attended",
       description: `List where you have worked or attended school full time or part time during the last five years.  Provide information for the complete time period.  Include all military, police, and/or intelligence service.  Begin by providing information about your most recent or current employment, studies, or unemployment (if applicable).  Provide the locations and dates where you worked, were self-employed, were unemployed, or have studied for the last five years.  If you worked for yourself, type or print "self-employed."  If you were unemployed, type or print "unemployed."  If you need extra space, use additional sheets of paper.`,
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         employer1Name: {
           type: "string",
@@ -786,7 +786,7 @@ const formSchema = {
       type: "object",
       title: "Part 9.  Time Outside the United States",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         dayOutUs: {
           type: "number",
@@ -814,7 +814,7 @@ const formSchema = {
       type: "object",
       title: "Part 10.  Information About Your Marital History ",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         MaritalStatus: {
           type: "string",
@@ -1170,7 +1170,7 @@ const formSchema = {
       type: "object",
       title: "Part 11.  Information About Your Children",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         dayOutUs: {
           type: "number",
@@ -1485,7 +1485,7 @@ const formSchema = {
       title:
         "Part 12.  Additional Information About You (Person Applying for Naturalization)",
       description: "",
-      required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
+      // required: ["petitionFor", "relationship", "siblingQ", "Lawful"],
       properties: {
         text44: {
           type: "object",
