@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Form from "@rjsf/bootstrap-4";
-import schema from "./i130Aschema";
-import uiSchema from "./i130AUiSchema";
+import schema from "./I485schema";
+import uiSchema from "./I485UiSchema";
 import { readForm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import { BiLeftArrowCircle } from "react-icons/bi";
 import HandleSubmitForms from "../HandleSubmitForms";
 
-const I130A = () => {
+const I485 = () => {
   const { state: context } = useAppContext();
   const { id } = useParams();
   const isEditMode = !!id;
@@ -33,11 +33,11 @@ const I130A = () => {
           setFormData(JSON.parse(context.forms[0].data));
         }
       })();
-  }, [isEditMode, id, context.forms]);
+  }, [id, isEditMode, context.forms]);
 
   const handleSubmit = async ({ formData }) => {
     HandleSubmitForms(
-      "I130A",
+      "I485",
       isEditMode,
       formData,
       context.intake.role,
@@ -94,5 +94,4 @@ const I130A = () => {
     </div>
   );
 };
-
-export default I130A;
+export default I485;

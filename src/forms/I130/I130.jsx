@@ -37,7 +37,7 @@ const I130 = () => {
 
   const handleSubmit = async ({ formData }) => {
     HandleSubmitForms(
-      "N400",
+      "I130",
       isEditMode,
       formData,
       context.intake.role,

@@ -5,12 +5,12 @@
     "description": "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
   },
   {
-    "formId": "i130",
+    "formId": "I130",
     "formName": "I-130 Petición de familiar extranjero",
     "description": "Utilice este servicio si usted es ciudadano estadounidense o residente permanente legal (LPR) y necesita establecer su relación con un familiar elegible que desea venir o permanecer en los Estados Unidos permanentemente y obtener una tarjeta de residente permanente (también llamada Green Card)."
   },
   {
-    "formId": "i130A",
+    "formId": "I130A",
     "formName": "I-130A Peticion de cónyuge extranjero",
     "description": "El propósito de este servicio es recopilar información adicional para un cónyuge beneficiario del Formulario I-130, Petición para Pariente Extranjero. Solo para peticiones de cónyuge no ciudadano estadounidense."
   },
