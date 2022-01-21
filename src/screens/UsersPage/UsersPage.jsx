@@ -41,13 +41,9 @@ const UsersPage = () => {
       await updateForms(forms);
     })();
     setResults(context.forms);
-
-    console.log("navDATA:", navData);
-    console.log("CONTEXT Intake/Forms/Concessionary:", context);
   }, []);
 
   const { cliName } = JSON.parse(localStorage?.getItem(CLIENT_DATA)) || "";
-  console.log("-------------------UsersPage-------------------", cliName);
 
   return (
     <div

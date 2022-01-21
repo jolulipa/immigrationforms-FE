@@ -75,7 +75,7 @@ export const checkIntake = async (userCli) =>
 
 export const createUpdateForm = async (values) => {
   try {
-    const response = await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
+    await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {

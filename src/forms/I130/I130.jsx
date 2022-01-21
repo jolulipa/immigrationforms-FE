@@ -4,10 +4,10 @@ import { Button } from "react-bootstrap";
 import Form from "@rjsf/bootstrap-4";
 import schema from "./i130schema";
 import uiSchema from "./i130UiSchema";
-import { readForm, createUpdateForm } from "../../api/formsAccess";
-import { CLIENT_DATA } from "../../constants/storageKeys";
+import { readForm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import { BiLeftArrowCircle } from "react-icons/bi";
+import HandleSubmitForms from "../HandleSubmitForms";
 
 const I130 = () => {
   const { state: context } = useAppContext();
@@ -18,17 +18,6 @@ const I130 = () => {
 
   const navigateToWelcome = () => {
     history.push(`/${context?.concessionary?.concessionary}`);
-  };
-
-  const navigateToTray = (id, email, role) => {
-    history.push({
-      pathname: "/screens/UsersPage",
-      state: {
-        id,
-        email,
-        role,
-      },
-    });
   };
 
   useEffect(() => {
@@ -46,51 +35,15 @@ const I130 = () => {
       })();
   }, [isEditMode, id, context.forms]);
 
-  const extractData = async ({ cleanData }) => {
-    let i;
-    for (i = 1; i < 100; i++) {
-      delete cleanData?.p1[`text${i}`];
-      delete cleanData?.p2[`text${i}`];
-      delete cleanData?.p3[`text${i}`];
-      delete cleanData?.p4[`text${i}`];
-      delete cleanData?.p5[`text${i}`];
-      delete cleanData?.p6[`text${i}`];
-      delete cleanData?.p7[`text${i}`];
-      delete cleanData?.p8[`text${i}`];
-    }
-  };
-
-  const go = async (cleanData, cliUser, cliEmail, formStatus, edit) => {
-    if (edit) {
-      formStatus = cleanData.formStatus;
-    } else {
-      formStatus = "unpaid";
-    }
-    const obj = {
-      data: JSON.stringify(cleanData),
-      formId: "I130",
-      formStatus: formStatus,
-      userId: cliUser,
-    };
-    console.log("OBJETO PARA BASE DE DATOS:", obj);
-    await createUpdateForm(obj);
-
-    navigateToTray(cliUser, cliEmail, context.intake.role);
-  };
-
   const handleSubmit = async ({ formData }) => {
-    let cleanData = { ...formData };
-    await extractData({ cleanData });
-    if (isEditMode) {
-      const { cliUser, cliEmail } = JSON.parse(
-        localStorage.getItem(CLIENT_DATA)
-      );
-      go(cleanData, cliUser, cliEmail, formData.formStatus, isEditMode);
-    } else {
-      const cliUser = context.intake.userId;
-      const cliEmail = context.intake.email;
-      go(cleanData, cliUser, cliEmail, formData.formStatus, isEditMode);
-    }
+    HandleSubmitForms(
+      "N400",
+      isEditMode,
+      formData,
+      context.intake.role,
+      context.intake.userId,
+      context.intake.email
+    );
   };
 
   return (
