@@ -18,16 +18,7 @@ const Footer = () => {
         marginBottom: 0,
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          paddingTop: "5px",
-          paddingBottom: "20px",
-          borderBottom: ".5px solid rgb(107, 153, 245)",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
-      >
+      <div style={styles.line}>
         <span
           className=""
           style={{
@@ -37,54 +28,10 @@ const Footer = () => {
           {" "}
           SÍGUENOS:
         </span>
-        <Link className="">
-          {
-            <AiOutlineInstagram
-              style={{
-                textDecoration: "none",
-                fontSize: 18,
-                color: "white",
-                marginLeft: "20px",
-              }}
-            />
-          }
-        </Link>
-        <Link className="">
-          {
-            <AiOutlineTwitter
-              style={{
-                textDecoration: "none",
-                fontSize: 18,
-                color: "white",
-                marginLeft: "20px",
-              }}
-            />
-          }
-        </Link>
-        <Link className="">
-          {
-            <AiOutlineFacebook
-              style={{
-                textDecoration: "none",
-                fontSize: 18,
-                color: "white",
-                marginLeft: "20px",
-              }}
-            />
-          }
-        </Link>
-        <Link className="">
-          {
-            <AiOutlineGlobal
-              style={{
-                textDecoration: "none",
-                fontSize: 18,
-                color: "white",
-                marginLeft: "20px",
-              }}
-            />
-          }
-        </Link>
+        <Link className="">{<AiOutlineInstagram style={styles.icon} />}</Link>
+        <Link className="">{<AiOutlineTwitter style={styles.icon} />}</Link>
+        <Link className="">{<AiOutlineFacebook style={styles.icon} />}</Link>
+        <Link className="">{<AiOutlineGlobal style={styles.icon} />}</Link>
         <span
           className="col-1"
           style={{
@@ -93,121 +40,46 @@ const Footer = () => {
         >
           {" "}
         </span>
-        <Link className="">
-          {
-            <AiTwotoneEnvironment
-              style={{
-                fontSize: 18,
-                marginLeft: "15px",
-                color: "white",
-              }}
-            />
-          }
-        </Link>
-        <span
-          className=""
-          style={{
-            textDecoration: "none",
-            color: "white",
-            marginLeft: "5px",
-          }}
-        >
+        <Link className="">{<AiTwotoneEnvironment style={styles.icon} />}</Link>
+        <span className="" style={styles.text}>
           {" "}
           28 St. Arroyo Hondo, Santo Domingo, DR
         </span>
-        <Link className="">
-          {
-            <AiTwotonePhone
-              style={{
-                fontSize: 18,
-                textDecoration: "none",
-                color: "white",
-                marginLeft: "15px",
-              }}
-            />
-          }
-        </Link>
-        <span
-          className=""
-          style={{
-            textDecoration: "none",
-            color: "white",
-            marginLeft: "5px",
-          }}
-        >
+        <Link className="">{<AiTwotonePhone style={styles.icon} />}</Link>
+        <span className="" style={styles.text}>
           {" "}
           (212)222-3333
         </span>
-        <Link className="">
-          {
-            <AiTwotoneMail
-              style={{
-                fontSize: 18,
-                textDecoration: "none",
-                color: "white",
-                marginLeft: "15px",
-              }}
-            />
-          }
-        </Link>
-        <span
-          className=""
-          style={{
-            textDecoration: "none",
-            color: "white",
-            marginLeft: "5px",
-          }}
-        >
+        <Link className="">{<AiTwotoneMail style={styles.icon} />}</Link>
+        <span className="" style={styles.text}>
           {" "}
           info@immigrationtime.com
         </span>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          paddingTop: "20px",
-        }}
-      >
+      <div style={styles.line2}>
         Copyright &copy; The Immigration Times, 2021. Todos los derechos
         reservados
         {
           <Link
             className=""
-            style={{
-              textDecoration: "none",
-              marginLeft: "25px",
-              color: "white",
-              textAlign: "right",
-            }}
+            style={
+              (styles.link,
+              {
+                marginLeft: "25px",
+              })
+            }
             to="/screens/WelcomePage"
           >
             HOME
           </Link>
         }
         {
-          <Link
-            className=""
-            style={{
-              textDecoration: "none",
-              color: "white",
-              textAlign: "right",
-            }}
-            to="/screens/contact"
-          >
+          <Link className="" style={styles.link} to="/screens/contact">
             CONTACT
           </Link>
         }
         {
-          <Link
-            className=""
-            style={{
-              textDecoration: "none",
-              color: "white",
-              textAlign: "right",
-            }}
-            to="/screens/LandingPage"
-          >
+          <Link className="" style={styles.link} to="/screens/LandingPage">
             SERVICES
           </Link>
         }
@@ -215,5 +87,35 @@ const Footer = () => {
     </div>
   );
 };
-
+const styles = {
+  line: {
+    display: "flex",
+    paddingTop: "5px",
+    paddingBottom: "20px",
+    borderBottom: ".5px solid rgb(107, 153, 245)",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+  },
+  line2: {
+    display: "flex",
+    justifyContent: "space-between",
+    paddingTop: "20px",
+  },
+  link: {
+    textDecoration: "none",
+    color: "white",
+    textAlign: "right",
+  },
+  icon: {
+    fontSize: 18,
+    textDecoration: "none",
+    color: "white",
+    marginLeft: "15px",
+  },
+  text: {
+    textDecoration: "none",
+    color: "white",
+    marginLeft: "5px",
+  },
+};
 export default Footer;

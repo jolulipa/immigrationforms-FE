@@ -55,9 +55,7 @@ const Navbar = () => {
         </div>
         <div
           className="col d-none d-md-block d-xl-block"
-          style={{
-            borderRight: "1px solid rgb(255, 17, 0)",
-          }}
+          style={styles.rayaRoja}
         >
           <Link to="/screens/ConcessionaryPage" style={styles.link}>
             Admin
@@ -77,25 +75,12 @@ const Navbar = () => {
           className="d-none d-md-block d-xl-block text-light"
         >
           {!!context.intake.fullName && `${context.intake.fullName}`}
-          {
-            <AiOutlineUser
-              style={{
-                marginLeft: 10,
-                fontSize: 18,
-              }}
-            />
-          }
+          {<AiOutlineUser style={styles} />}
         </div>
       </div>
 
       <div className="row navbar " style={styles.firstRow}>
-        <div
-          className="col-6 text-responsive"
-          style={{
-            marginLeft: 10,
-            color: "red",
-          }}
-        >
+        <div className="col-6 text-responsive" style={styles.rayita}>
           Oficina:&ensp;
           <span className="text-responsive" style={styles.secondRow}>
             {context?.concessionary?.officeName}
@@ -120,7 +105,7 @@ const Navbar = () => {
           CONTACT
         </NavLink>
         <button
-          style={styles.buton}
+          style={styles.button}
           className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
           onClick={context.intake.email ? handleLogout : navigateToLogin}
@@ -162,6 +147,14 @@ const styles = {
   },
   rayaRoja: {
     borderRight: "1px solid rgb(255, 17, 0)",
+  },
+  icon: {
+    marginLeft: 10,
+    fontSize: 18,
+  },
+  rayita: {
+    marginLeft: 10,
+    color: "red",
   },
 };
 export default Navbar;
