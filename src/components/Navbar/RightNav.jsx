@@ -28,16 +28,7 @@ const Menu = styled.ul`
 const RightNav = ({ open, onClose }) => {
   return (
     <Menu open={open} className="d-md-none d-lg-none d-xl-none">
-      <Link
-        to="/"
-        className="h5"
-        onClick={onClose}
-        style={{
-          paddingBottom: "2.5vh",
-          textDecoration: "none",
-          color: "white",
-        }}
-      >
+      <Link to="/" className="h5" onClick={onClose} style={styles.link}>
         HOME
       </Link>
 
@@ -45,11 +36,7 @@ const RightNav = ({ open, onClose }) => {
         to="/screens/LandingPage"
         className="h5"
         onClick={onClose}
-        style={{
-          paddingBottom: "2.5vh",
-          textDecoration: "none",
-          color: "white",
-        }}
+        style={styles.link}
       >
         SERVICES
       </Link>
@@ -57,11 +44,7 @@ const RightNav = ({ open, onClose }) => {
         to="/screens/ContactPage"
         className="h5"
         onClick={onClose}
-        style={{
-          paddingBottom: "2.5vh",
-          textDecoration: "none",
-          color: "white",
-        }}
+        style={styles.link}
       >
         CONTACT
       </Link>
@@ -69,11 +52,7 @@ const RightNav = ({ open, onClose }) => {
         to="/screens/UsersPage"
         className="h5"
         onClick={onClose}
-        style={{
-          paddingBottom: "2.5vh",
-          textDecoration: "none",
-          color: "white",
-        }}
+        style={styles.link}
       >
         TRAY/FORMS
       </Link>
@@ -81,11 +60,7 @@ const RightNav = ({ open, onClose }) => {
         to="/screens/LoginPage"
         className="h5"
         onClick={onClose}
-        style={{
-          paddingBottom: "2.5vh",
-          textDecoration: "none",
-          color: "white",
-        }}
+        style={styles.link}
       >
         LOGIN
       </Link>
@@ -93,14 +68,18 @@ const RightNav = ({ open, onClose }) => {
         to="/screens/ConcessionaryPage"
         className="h5"
         onClick={onClose}
-        style={{
-          padding: "2.5vh",
-          color: "white",
-        }}
+        style={styles.link}
       >
         Admin
       </Link>
     </Menu>
   );
+};
+const styles = {
+  link: {
+    paddingBottom: "2.5vh",
+    textDecoration: "none",
+    color: "white",
+  },
 };
 export default RightNav;

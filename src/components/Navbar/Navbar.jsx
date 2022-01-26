@@ -50,13 +50,7 @@ const Navbar = () => {
   return (
     <>
       <div className="line-container navbar">
-        <div
-          className="col-6"
-          style={{
-            marginLeft: "30px",
-            borderLeft: "5px solid rgb(107, 153, 245)",
-          }}
-        >
+        <div className="col-6" style={styles.cia}>
           The Immigration Time
         </div>
         <div
@@ -65,39 +59,21 @@ const Navbar = () => {
             borderRight: "1px solid rgb(255, 17, 0)",
           }}
         >
-          <Link
-            to="/screens/ConcessionaryPage"
-            style={{
-              textDecoration: "none",
-              color: "#fff",
-            }}
-          >
+          <Link to="/screens/ConcessionaryPage" style={styles.link}>
             Admin
           </Link>
         </div>
         <div
           className="col d-none d-md-block d-xl-block"
-          style={{
-            borderRight: "1px solid rgb(255, 17, 0)",
-          }}
+          style={styles.rayaRoja}
         >
-          <Link
-            to="/screens/UsersPage"
-            style={{
-              textDecoration: "none",
-              color: "#fff",
-            }}
-          >
+          <Link to="/screens/UsersPage" style={styles.link}>
             Clients
           </Link>
         </div>
 
         <div
-          style={{
-            marginLeft: 10,
-            marginRight: 10,
-            fontSize: 16,
-          }}
+          style={styles.user}
           className="d-none d-md-block d-xl-block text-light"
         >
           {!!context.intake.fullName && `${context.intake.fullName}`}
@@ -112,14 +88,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div
-        className="row navbar "
-        style={{
-          height: "9vh",
-          borderBottom: "5px solid rgb(243, 243, 243)",
-          fontSize: "18px",
-        }}
-      >
+      <div className="row navbar " style={styles.firstRow}>
         <div
           className="col-6 text-responsive"
           style={{
@@ -128,14 +97,7 @@ const Navbar = () => {
           }}
         >
           Oficina:&ensp;
-          <span
-            className="text-responsive"
-            style={{
-              fontWeight: 600,
-              color: "rgb(36, 95, 128)",
-              textShadow: "0 0 1px gray",
-            }}
-          >
+          <span className="text-responsive" style={styles.secondRow}>
             {context?.concessionary?.officeName}
           </span>
         </div>
@@ -158,10 +120,7 @@ const Navbar = () => {
           CONTACT
         </NavLink>
         <button
-          style={{
-            marginRight: "50px",
-            maxWidth: "75px",
-          }}
+          style={styles.buton}
           className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
           onClick={context.intake.email ? handleLogout : navigateToLogin}
@@ -173,5 +132,36 @@ const Navbar = () => {
     </>
   );
 };
-
+const styles = {
+  cia: {
+    marginLeft: "30px",
+    borderLeft: "5px solid rgb(107, 153, 245)",
+  },
+  firstRow: {
+    height: "9vh",
+    borderBottom: "5px solid rgb(243, 243, 243)",
+    fontSize: "18px",
+  },
+  secondRow: {
+    fontWeight: 600,
+    color: "rgb(36, 95, 128)",
+    textShadow: "0 0 1px gray",
+  },
+  user: {
+    marginLeft: 10,
+    marginRight: 10,
+    fontSize: 16,
+  },
+  button: {
+    marginRight: "50px",
+    maxWidth: "75px",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#fff",
+  },
+  rayaRoja: {
+    borderRight: "1px solid rgb(255, 17, 0)",
+  },
+};
 export default Navbar;

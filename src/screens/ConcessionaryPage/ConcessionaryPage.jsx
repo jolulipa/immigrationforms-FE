@@ -79,26 +79,10 @@ const ConcessionaryPage = () => {
     ));
 
   const renderTable = (results) => (
-    <Table
-      striped
-      className="table-hover"
-      style={{
-        border: "1px solid lightgrey",
-        marginLeft: 0,
-        marginTop: 10,
-        width: "95%",
-      }}
-    >
+    <Table striped className="table-hover" style={styles.table}>
       <thead key={"key0"} className="thead-light">
         <tr>
-          <th
-            colspan="6"
-            style={{
-              background: "#f56c42",
-              color: "white",
-              border: "1px solid lightgrey",
-            }}
-          >
+          <th colspan="6" style={styles.trans}>
             Transacciones del Concesionario{" "}
             <span>{state?.intake?.fullName}</span>
           </th>
@@ -185,6 +169,17 @@ const styles = {
     fontWeight: "600",
     fontSize: 18,
     color: colors.red,
+  },
+  table: {
+    border: "1px solid lightgrey",
+    marginLeft: 0,
+    marginTop: 10,
+    width: "95%",
+  },
+  trans: {
+    background: "#f56c42",
+    color: "white",
+    border: "1px solid lightgrey",
   },
 };
 export default ConcessionaryPage;

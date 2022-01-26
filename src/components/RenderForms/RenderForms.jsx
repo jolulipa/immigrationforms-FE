@@ -11,25 +11,10 @@ function RenderForms({ forms }) {
   const history = useHistory();
   return (
     <div>
-      <Table
-        striped
-        className="table-hover"
-        style={{
-          border: "1px solid lightgrey",
-          marginLeft: 15,
-          width: "95%",
-        }}
-      >
+      <Table striped className="table-hover" style={styles.table}>
         <thead>
           <tr>
-            <th
-              colspan="5"
-              style={{
-                background: "#ff0066",
-                color: "white",
-                border: "1px solid lightgrey",
-              }}
-            >
+            <th colspan="5" style={styles.trans}>
               <span className="d-flex  justify-content-between">
                 Formularios del Usuario
                 <Link
@@ -73,13 +58,7 @@ function RenderForms({ forms }) {
                     />
 
                     <Button
-                      style={{
-                        textDecoration: "none",
-                        background: "none",
-                        border: "none",
-                        padding: 0,
-                        color: "blue",
-                      }}
+                      style={styles.button1}
                       onClick={() => {
                         history.push(`/screens/Contact/?idToPay=${el.id}`);
                       }}
@@ -106,13 +85,7 @@ function RenderForms({ forms }) {
               <td>
                 <TiPrinter style={{ fontSize: 18 }} />
                 <Button
-                  style={{
-                    textDecoration: "none",
-                    background: "none",
-                    border: "none",
-                    padding: 0,
-                    color: "black",
-                  }}
+                  style={styles.button2}
                   onClick={async () => {
                     await PrintForm(el.id);
                   }}
@@ -127,5 +100,31 @@ function RenderForms({ forms }) {
     </div>
   );
 }
-
+const styles = {
+  button2: {
+    textDecoration: "none",
+    background: "none",
+    border: "none",
+    padding: 0,
+    color: "black",
+  },
+  button1: {
+    textDecoration: "none",
+    background: "none",
+    border: "none",
+    padding: 0,
+    color: "black",
+  },
+  table: {
+    border: "1px solid lightgrey",
+    marginLeft: 0,
+    marginTop: 10,
+    width: "95%",
+  },
+  trans: {
+    background: "#f56c42",
+    color: "white",
+    border: "1px solid lightgrey",
+  },
+};
 export default RenderForms;

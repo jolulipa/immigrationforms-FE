@@ -84,12 +84,7 @@ const UsersPage = () => {
             <Link
               to="/screens/ConcessionaryPage"
               className="btn-danger btn-sm"
-              style={{
-                marginTop: 20,
-                textDecoration: "none",
-                marginLeft: 25,
-                fontSize: 16,
-              }}
+              style={styles.link}
             >
               <AiOutlineArrowLeft />
               &nbsp;Back to admin page
@@ -131,6 +126,12 @@ const styles = {
     fontStyle: "italic",
     padding: 15,
     color: colors.red,
+  },
+  link: {
+    marginTop: 20,
+    textDecoration: "none",
+    marginLeft: 25,
+    fontSize: 16,
   },
 };
 export default UsersPage;
