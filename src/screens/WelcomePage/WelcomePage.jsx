@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import { useAppContext } from "../../context/Provider";
+import Logout from "../../components";
 import Jpeg1 from "../../images/latinos.png";
 import Jpeg2 from "../../images/liberty.png";
 
@@ -10,6 +11,12 @@ const WelcomePage = () => {
   const { updateConcessionary } = useAppContext();
   const url = new URL(window.location.href);
   var concessionaryId = url.searchParams.get("concessionaryId");
+
+  if (!concessionaryId) {
+    alert("You must login or come from the service provider page");
+    Logout();
+    window.location.replace("/concessionaries/Concessionary");
+  }
 
   if (context.intake.role === "adm") {
     window.location.replace("/screens/AdminPage");
