@@ -8,7 +8,7 @@ const Logout = () => {
     state: context,
     updateIntake,
     updateForms,
-    updateConcessionary,
+    // updateConcessionary,
   } = useAppContext();
   const history = useHistory();
 
@@ -23,5 +23,6 @@ const Logout = () => {
   console.log("Local Storage Was Reset because of logout");
   alert(`You have logged out of the system`);
   navigateToWelcome();
+  return <>TEST</>;
 };
 export default Logout;

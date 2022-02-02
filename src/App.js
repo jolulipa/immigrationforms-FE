@@ -8,6 +8,7 @@ import Registration from "./screens/Registration";
 import LoginPage from "./screens/LoginPage";
 import Intake from "./forms/Intake";
 import Concessionary from "./forms/Concessionary";
+import Concessionaries from "./concessionaries/Concessionaries";
 import I130 from "./forms/I130";
 import I130A from "./forms/I130A";
 import N400 from "./forms/N400";
@@ -45,7 +46,7 @@ function App() {
           <Route path="/screens/ContactPage" component={ContactPage} />
           <Route path="/screens/Contact" component={Contact} />
           <Route path="/screens/Contact/:id" component={Contact} />
-          <Route path="/concessionaries" component={Concessionary} />
+          <Route path="/concessionaries" component={Concessionaries} />
           {/* <Route path="/unauthorized" component={Unauthorized} />{" "} */}
           <PrivateRoute path="/forms/Intake/:id" component={Intake} />
           <PrivateRoute path="/forms/Intake" component={Intake} />
