@@ -33,9 +33,10 @@ const WelcomePage = () => {
       context?.concessionary?.concessionary !== concessionaryId
     )
       updateConcessionary({
-        ...context.concessionary,
+        ...context,
         concessionary: concessionaryId,
       });
+    console.log(context);
 
     // eslint-disable-next-line
   }, []);

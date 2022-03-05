@@ -8,6 +8,8 @@ import { AiOutlineUser } from "react-icons/ai";
 import Burger from "./Burger";
 
 const Navbar = () => {
+  const url = new URL(window.location.href);
+  var concessionaryId = url.searchParams.get("concessionaryId");
   const {
     state: context,
     updateIntake,
@@ -15,6 +17,7 @@ const Navbar = () => {
     updateConcessionary,
   } = useAppContext();
   const history = useHistory();
+  console.log("Navbar", concessionaryId, context.concessionary.concessionary);
 
   const navigateToWelcome = () => {
     history.push(`/${context?.concessionary?.concessionary}`);
@@ -37,10 +40,12 @@ const Navbar = () => {
   useEffect(() => {
     (async () => {
       const officeData = await readConOffice(
-        context?.concessionary?.concessionary
+        !context.concessionary.concessionary
+          ? concessionaryId
+          : context.concessionary.concessionary
       );
       if (officeData.error) {
-        officeData.officeName = "No Name Immigration";
+        officeData.officeName = "No Concessionary Data";
         officeData.concessionary = context.concessionary.concessionary;
       }
       updateConcessionary(officeData);

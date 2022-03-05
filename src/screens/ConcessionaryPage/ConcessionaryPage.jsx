@@ -119,7 +119,7 @@ const ConcessionaryPage = () => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("ConcessionatPage 122");
+  console.log("ConcessionaryPage 122");
 
   return (
     <div
