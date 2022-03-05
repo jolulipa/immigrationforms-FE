@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { colors } from "../../ui-config/colors";
 import { readUsers } from "../../api/auth";
 import { checkIntake, readAllFormsAdm } from "../../api/formsAccess";
-import { CLIENT_DATA } from "../../constants/storageKeys";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 import { useAppContext } from "../../context/Provider";
 import { BiEdit, BiTrash } from "react-icons/bi";
 
@@ -13,13 +13,15 @@ const ConcessionaryPage = () => {
   const history = useHistory();
   const { state } = useAppContext();
   const { updateForms } = useAppContext();
+  const token = localStorage.getItem(AUTH_TOKEN) || "";
 
   const navigateToUser = async (id, email, role, feName) => {
-    const response = await checkIntake(id);
+    console.log("Check Intake:", token ? "token ok-" : "no token-", id);
+    const response = await checkIntake(id, token);
     if (!response || (response?.status > 399 && response?.status < 500)) {
       history.push("/forms/Intake");
     } else {
-      const forms = await readAllFormsAdm(id);
+      const forms = await readAllFormsAdm(id, token);
       await updateForms(forms);
       history.push({
         pathname: "/screens/UsersPage",
@@ -82,7 +84,7 @@ const ConcessionaryPage = () => {
     <Table striped className="table-hover" style={styles.table}>
       <thead key={"key0"} className="thead-light">
         <tr>
-          <th colspan="6" style={styles.trans}>
+          <th colSpan="6" style={styles.trans}>
             Transacciones del Concesionario{" "}
             <span>{state?.intake?.fullName}</span>
           </th>

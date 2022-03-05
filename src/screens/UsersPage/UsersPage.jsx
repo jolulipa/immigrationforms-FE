@@ -31,7 +31,7 @@ const UsersPage = () => {
     (async () => {
       const userToken = localStorage.getItem(AUTH_TOKEN);
       const forms = await (context.intake.role === "con"
-        ? await readAllFormsAdm(navData.id)
+        ? await readAllFormsAdm(navData.id, userToken)
         : await readAllForms(userToken));
 
       if (!forms || (forms.status > 399 && forms.status < 501)) {

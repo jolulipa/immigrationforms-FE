@@ -19,13 +19,13 @@ export const readAllForms = async (userToken) => {
   return datos.results;
 };
 
-export const readAllFormsAdm = async (userCli) => {
+export const readAllFormsAdm = async (userCli, userToken) => {
   const response = await fetch(
     `${baseUrl}/api/forms/readAllFormsAdm/${userCli}`,
     {
       method: "GET",
       headers: {
-        jwt: token,
+        jwt: token || userToken,
       },
     }
   );
@@ -57,10 +57,10 @@ export const readIntakeForm = async (userToken) =>
   });
 
 //CHECK INTAKE - USERID
-export const checkIntake = async (userCli) =>
+export const checkIntake = async (userCli, userToken) =>
   await fetch(`${baseUrl}/api/forms/checkIntake/${userCli}`, {
     headers: {
-      jwt: token,
+      jwt: token || userToken,
     },
   });
 
