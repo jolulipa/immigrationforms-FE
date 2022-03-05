@@ -1,17 +1,8 @@
 import { baseUrl } from "./configuration";
 import { AUTH_TOKEN } from "../constants/storageKeys";
-import JWT from "jwt-decode";
 
-let hasAccess = false;
+let hasAccess = true;
 const token = localStorage.getItem(AUTH_TOKEN);
-
-if (!!token) {
-  const decodedExp = JWT(token);
-  const currentTimestamp = Date.now() / 1000;
-  hasAccess = decodedExp.exp > currentTimestamp;
-} else {
-  hasAccess = false;
-}
 
 const handleError = (error) => {
   console.log("User has no access:", error);

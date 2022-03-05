@@ -14,7 +14,7 @@ function RenderForms({ forms }) {
       <Table striped className="table-hover" style={styles.table}>
         <thead>
           <tr>
-            <th colspan="5" style={styles.trans}>
+            <th colSpan="5" style={styles.trans}>
               <span className="d-flex  justify-content-between">
                 Formularios del Usuario
                 <Link
@@ -42,7 +42,7 @@ function RenderForms({ forms }) {
             ? window.location.replace(
                 `/?concessionaryId=${localStorage.getItem(CONCE_TYPE)}`
               )
-            : console.log("Displayed Forms:", forms)}
+            : ""}
           {forms.map((el) => (
             <tr key={el.id}>
               {/* <td>{JSON.parse(el.data).p1.email}</td> */}
