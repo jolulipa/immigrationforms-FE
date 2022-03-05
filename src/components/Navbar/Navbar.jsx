@@ -1,21 +1,16 @@
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppContext } from "../../context/Provider";
-import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 import { readConOffice } from "../../api/conAccess";
 import "./styles.css";
 import { AiOutlineUser } from "react-icons/ai";
 import Burger from "./Burger";
+import Logout from "../../components/Logout/Logout";
 
 const Navbar = () => {
   const url = new URL(window.location.href);
   var concessionaryId = url.searchParams.get("concessionaryId");
-  const {
-    state: context,
-    updateIntake,
-    updateForms,
-    updateConcessionary,
-  } = useAppContext();
+  const { state: context, updateConcessionary } = useAppContext();
   const history = useHistory();
   console.log(
     "Navbar ConcessionaryID:",
@@ -24,22 +19,8 @@ const Navbar = () => {
     context?.concessionary?.concessionary
   );
 
-  const navigateToWelcome = () => {
-    history.push(`/${context?.concessionary?.concessionary}`);
-  };
-
   const navigateToLogin = () => {
     history.push("/screens/LoginPage");
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(CLIENT_DATA);
-    updateIntake("");
-    updateForms("");
-    console.log("Local Storage Was Reset because of logout");
-    alert(`You have logged out of the system`);
-    navigateToWelcome();
   };
 
   useEffect(() => {
@@ -118,7 +99,7 @@ const Navbar = () => {
           style={styles.button}
           className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
-          onClick={context.intake.email ? handleLogout : navigateToLogin}
+          onClick={context.intake.email ? Logout() : navigateToLogin}
         >
           {context.intake.email ? `LOG OUT` : "LOG IN"}
         </button>

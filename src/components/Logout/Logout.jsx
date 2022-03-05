@@ -13,7 +13,11 @@ const Logout = () => {
   const history = useHistory();
 
   const navigateToWelcome = () => {
-    history.push(`/${context?.concessionary?.concessionary}`);
+    history.push(
+      context.concessionary.concessionary
+        ? `/${context.concessionary.concessionary}`
+        : "/concessionaries/Concessionaries"
+    );
   };
 
   localStorage.removeItem(AUTH_TOKEN);

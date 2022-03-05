@@ -15,7 +15,6 @@ const WelcomePage = () => {
   if (!concessionaryId) {
     alert("You must login or come from the service provider page");
     Logout();
-    window.location.replace("/concessionaries/Concessionaries");
   }
 
   if (context.intake.role === "adm") {
@@ -37,8 +36,6 @@ const WelcomePage = () => {
         ...context,
         concessionary: concessionaryId,
       });
-    console.log(context);
-
     // eslint-disable-next-line
   }, []);
 
