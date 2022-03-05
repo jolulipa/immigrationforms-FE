@@ -23,6 +23,7 @@ const UsersPage = () => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("UsersPage 26");
     if (context.intake.role === "adm") {
       alert(`Admin cannot access a concessionary client's data`);
       history.push("/screens/AdminPage");

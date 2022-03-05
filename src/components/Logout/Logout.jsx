@@ -4,12 +4,9 @@ import { useAppContext } from "../../context/Provider";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 
 const Logout = () => {
-  const {
-    state: context,
-    updateIntake,
-    updateForms,
-    // updateConcessionary,
-  } = useAppContext();
+  const { state: context } = useAppContext();
+  const { updateForms } = useAppContext();
+  const { updateIntake } = useAppContext();
   const history = useHistory();
 
   const navigateToWelcome = () => {

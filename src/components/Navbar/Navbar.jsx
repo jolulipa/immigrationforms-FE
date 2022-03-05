@@ -13,7 +13,7 @@ const Navbar = () => {
   const { state: context, updateConcessionary } = useAppContext();
   const history = useHistory();
   console.log(
-    "Navbar ConcessionaryID:",
+    "Navbar - ConcessionaryID:",
     concessionaryId,
     "|",
     context?.concessionary?.concessionary

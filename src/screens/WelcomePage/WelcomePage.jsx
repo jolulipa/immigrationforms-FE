@@ -23,7 +23,7 @@ const WelcomePage = () => {
 
   useEffect(() => {
     console.log(
-      "WelcomePage ConcessionaryID:",
+      "WelcomePage - ConcessionaryID:",
       concessionaryId,
       "|",
       context?.concessionary?.concessionary
