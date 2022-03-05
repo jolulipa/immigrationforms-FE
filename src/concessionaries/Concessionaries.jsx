@@ -1,4 +1,4 @@
-const Concessionary = () => {
+const Concessionaries = () => {
   const navigateToLogin = () => {
     window.location.replace("/screens/LoginPage");
   };
@@ -42,4 +42,4 @@ const Concessionary = () => {
   );
 };
 
-export default Concessionary;
+export default Concessionaries;

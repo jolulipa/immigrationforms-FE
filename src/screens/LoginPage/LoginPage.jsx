@@ -86,6 +86,7 @@ const Login = () => {
       localStorage.setItem(AUTH_TOKEN, result.token);
       await loadUserData(result.token, result.role, name, result.id, email);
       resetForm();
+      console.log("Login 89");
 
       if (result.role === "adm") {
         const { from } = location.state || {
