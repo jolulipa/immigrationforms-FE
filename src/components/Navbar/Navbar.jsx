@@ -99,7 +99,7 @@ const Navbar = () => {
           style={styles.button}
           className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
-          onClick={context.intake.email ? Logout() : navigateToLogin}
+          onClick={context.intake.email ? Logout : navigateToLogin}
         >
           {context.intake.email ? `LOG OUT` : "LOG IN"}
         </button>
