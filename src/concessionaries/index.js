@@ -1,1 +1,1 @@
-export { default } from "./Concessionary";
+export { default } from "./Concessionaries";
