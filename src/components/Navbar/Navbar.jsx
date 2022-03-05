@@ -16,11 +16,15 @@ const Navbar = () => {
     "Navbar - ConcessionaryID:",
     concessionaryId,
     "|",
-    context?.concessionary?.concessionary
+    context.concessionary.concessionary
   );
 
   const navigateToLogin = () => {
     history.push("/screens/LoginPage");
+  };
+
+  const handleLogout = () => {
+    Logout(context.concessionary.concessionary);
   };
 
   useEffect(() => {
@@ -99,7 +103,7 @@ const Navbar = () => {
           style={styles.button}
           className="btn btn-danger font-weight-light d-none d-md-block d-lg-block d-xl-block"
           type="button"
-          onClick={context.intake.email ? Logout : navigateToLogin}
+          onClick={context.intake.email ? handleLogout : navigateToLogin}
         >
           {context.intake.email ? `LOG OUT` : "LOG IN"}
         </button>

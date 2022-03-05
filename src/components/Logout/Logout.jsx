@@ -1,19 +1,15 @@
 import { useHistory } from "react-router-dom";
-// import { useEffect } from "react";
 import { useAppContext } from "../../context/Provider";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 
-const Logout = () => {
-  const { state: context } = useAppContext();
+const Logout = (concessionary) => {
   const { updateForms } = useAppContext();
   const { updateIntake } = useAppContext();
   const history = useHistory();
 
   const navigateToWelcome = () => {
     history.push(
-      context.concessionary.concessionary
-        ? `/${context.concessionary.concessionary}`
-        : "/concessionaries/Concessionaries"
+      concessionary ? `/${concessionary}` : "/concessionaries/Concessionaries"
     );
   };
 
