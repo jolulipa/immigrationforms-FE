@@ -17,7 +17,12 @@ const Navbar = () => {
     updateConcessionary,
   } = useAppContext();
   const history = useHistory();
-  console.log("Navbar", concessionaryId, context.concessionary.concessionary);
+  console.log(
+    "Navbar ConcessionaryID:",
+    concessionaryId,
+    "|",
+    context?.concessionary?.concessionary
+  );
 
   const navigateToWelcome = () => {
     history.push(`/${context?.concessionary?.concessionary}`);

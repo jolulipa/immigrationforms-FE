@@ -24,8 +24,9 @@ const WelcomePage = () => {
 
   useEffect(() => {
     console.log(
-      "WelcomePage ConcessionaryID from URL:",
+      "WelcomePage ConcessionaryID:",
       concessionaryId,
+      "|",
       context?.concessionary?.concessionary
     );
     if (
