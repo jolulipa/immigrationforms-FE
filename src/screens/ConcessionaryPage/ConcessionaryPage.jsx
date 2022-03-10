@@ -62,9 +62,7 @@ const ConcessionaryPage = () => {
               Forms
             </Button>
           </td>
-          {/* <td>{el?.role}</td> */}
           <td>{el?.createdAt.split("T")[0]}</td>
-          {/* <td>{el?.updatedAt.split("T")[0]}</td> */}
           <td>
             <BiTrash style={{ fontSize: 18 }} />
             <Button
@@ -82,7 +80,7 @@ const ConcessionaryPage = () => {
 
   const renderTable = (results) => (
     <Table striped className="table-hover" style={styles.table}>
-      <thead key={"key0"} className="thead-light">
+      <thead key={results[0]} className="thead-light">
         <tr>
           <th colSpan="6" style={styles.trans}>
             Transacciones del Concesionario{" "}

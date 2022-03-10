@@ -28,10 +28,18 @@ const Footer = () => {
           {" "}
           SÍGUENOS:
         </span>
-        <Link className="">{<AiOutlineInstagram style={styles.icon} />}</Link>
-        <Link className="">{<AiOutlineTwitter style={styles.icon} />}</Link>
-        <Link className="">{<AiOutlineFacebook style={styles.icon} />}</Link>
-        <Link className="">{<AiOutlineGlobal style={styles.icon} />}</Link>
+        <Link className="" to="/">
+          {<AiOutlineInstagram style={styles.icon} />}
+        </Link>
+        <Link className="" to="/">
+          {<AiOutlineTwitter style={styles.icon} />}
+        </Link>
+        <Link className="" to="/">
+          {<AiOutlineFacebook style={styles.icon} />}
+        </Link>
+        <Link className="" to="/">
+          {<AiOutlineGlobal style={styles.icon} />}
+        </Link>
         <span
           className="col-1"
           style={{
@@ -40,17 +48,23 @@ const Footer = () => {
         >
           {" "}
         </span>
-        <Link className="">{<AiTwotoneEnvironment style={styles.icon} />}</Link>
+        <Link className="" to="/">
+          {<AiTwotoneEnvironment style={styles.icon} />}
+        </Link>
         <span className="" style={styles.text}>
           {" "}
           28 St. Arroyo Hondo, Santo Domingo, DR
         </span>
-        <Link className="">{<AiTwotonePhone style={styles.icon} />}</Link>
-        <span className="" style={styles.text}>
+        <Link className="" to="/">
+          {<AiTwotonePhone style={styles.icon} />}
+        </Link>
+        <span className="" to="/" style={styles.text}>
           {" "}
           (212)222-3333
         </span>
-        <Link className="">{<AiTwotoneMail style={styles.icon} />}</Link>
+        <Link className="" to="/">
+          {<AiTwotoneMail style={styles.icon} />}
+        </Link>
         <span className="" style={styles.text}>
           {" "}
           info@immigrationtime.com

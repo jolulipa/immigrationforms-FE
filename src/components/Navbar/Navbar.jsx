@@ -5,12 +5,18 @@ import { readConOffice } from "../../api/conAccess";
 import "./styles.css";
 import { AiOutlineUser } from "react-icons/ai";
 import Burger from "./Burger";
-import Logout from "../../components/Logout/Logout";
+// import Logout from "../../components/Logout/Logout";
+import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 
 const Navbar = () => {
   const url = new URL(window.location.href);
-  var concessionaryId = url.searchParams.get("concessionaryId");
-  const { state: context, updateConcessionary } = useAppContext();
+  const concessionaryId = url.searchParams.get("concessionaryId");
+  const {
+    state: context,
+    updateConcessionary,
+    updateIntake,
+    updateForms,
+  } = useAppContext();
   const history = useHistory();
   console.log(
     "Navbar - ConcessionaryID:",
@@ -19,12 +25,26 @@ const Navbar = () => {
     context.concessionary.concessionary
   );
 
+  const navigateToWelcome = () => {
+    if (concessionaryId) {
+      history.push(`/${concessionaryId}`);
+    } else {
+      history.push(`/${context.concessionary.concessionary}`);
+    }
+  };
+
   const navigateToLogin = () => {
     history.push("/screens/LoginPage");
   };
 
   const handleLogout = () => {
-    Logout(context.concessionary.concessionary);
+    localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(CLIENT_DATA);
+    updateIntake("");
+    updateForms("");
+    console.log("Local Storage Was Reset because of logout");
+    alert(`You have logged out from the Immigration App`);
+    navigateToWelcome();
   };
 
   useEffect(() => {

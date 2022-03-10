@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { loginUser } from "../../api/auth";
 import { readIntakeForm, readAllForms } from "../../api/formsAccess";
 import * as yup from "yup";
@@ -21,7 +22,11 @@ const Login = () => {
   const location = useLocation();
   const history = useHistory();
   const { updateIntake, updateForms } = useAppContext();
-  const toastConfig = { position: "bottom-center" };
+  const toastConfig = {
+    position: "bottom-center",
+    // autoClose: 5000,
+    hideProgressBar: false,
+  };
 
   const navigateToRegistration = () => {
     history.push("/screens/Registration");
@@ -131,7 +136,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={handleSubmit}
@@ -200,7 +205,7 @@ const Login = () => {
           Create one
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const Intake = () => {
   const [formData, setFormData] = useState();
 
   const navigateToWelcome = () => {
-    history.push(`/${context?.concessionary?.concessionary}`);
+    history.push(`/${context.concessionary.concessionary}`);
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Intake = () => {
         const values = await readForm(id);
 
         if (values) {
-          const paquete = JSON.parse(values.data);
+          const paquete = JSON.parse(values?.data);
           paquete.p1.formStatus = values.formStatus;
           setFormData(paquete);
         } else {
