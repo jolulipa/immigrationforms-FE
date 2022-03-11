@@ -8,8 +8,10 @@ import { readForm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import { BiLeftArrowCircle } from "react-icons/bi";
 import HandleSubmitForms from "../HandleSubmitForms";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
 
 const N400 = () => {
+  const token = localStorage.getItem(AUTH_TOKEN) || "";
   const { state: context } = useAppContext();
   const { id } = useParams();
   const isEditMode = !!id;
@@ -23,7 +25,7 @@ const N400 = () => {
   useEffect(() => {
     if (isEditMode)
       (async () => {
-        const values = await readForm(id);
+        const values = await readForm(id, token);
 
         if (values) {
           const paquete = JSON.parse(values.data);

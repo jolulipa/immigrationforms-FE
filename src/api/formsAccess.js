@@ -33,12 +33,12 @@ export const readAllFormsAdm = async (userCli, userToken) => {
   return datos.results;
 };
 
-export const readForm = async (id) => {
+export const readForm = async (id, userToken) => {
   if (hasAccess) {
     const response = await fetch(`${baseUrl}/api/forms/readForm/${id}`, {
       method: "GET",
       headers: {
-        jwt: token,
+        jwt: token || userToken,
       },
     });
     const datos = await response.json();

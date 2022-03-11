@@ -80,8 +80,8 @@ const ConcessionaryPage = () => {
 
   const renderTable = (results) => (
     <Table striped className="table-hover" style={styles.table}>
-      <thead key={results[0]} className="thead-light">
-        <tr>
+      <thead key={results[0]?.id} className="thead-light">
+        <tr key={results[0]?.id}>
           <th colSpan="6" style={styles.trans}>
             Transacciones del Concesionario{" "}
             <span>{state?.intake?.fullName}</span>
@@ -91,7 +91,6 @@ const ConcessionaryPage = () => {
           <th>User email</th>
           <th>View Forms</th>
           <th>Created on</th>
-          {/* <th>Modified on</th> */}
           <th>Delete Acc:</th>
         </tr>
       </thead>
@@ -116,6 +115,7 @@ const ConcessionaryPage = () => {
         return el.role === "reg" && state.intake.userId === el.concessionary;
       });
       setResults(newResults);
+      console.log(results[0].id);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

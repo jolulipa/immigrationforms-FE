@@ -8,8 +8,10 @@ import { readForm } from "../../api/formsAccess";
 import { useAppContext } from "../../context/Provider";
 import { BiLeftArrowCircle } from "react-icons/bi";
 import HandleSubmitForms from "../HandleSubmitForms";
+import { AUTH_TOKEN } from "../../constants/storageKeys";
 
 const I485 = () => {
+  const token = localStorage.getItem(AUTH_TOKEN) || "";
   const { state: context } = useAppContext();
   const { id } = useParams();
   const isEditMode = !!id;

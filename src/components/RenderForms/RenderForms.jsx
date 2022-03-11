@@ -45,7 +45,6 @@ function RenderForms({ forms }) {
             : ""}
           {forms.map((el) => (
             <tr key={el.id}>
-              {/* <td>{JSON.parse(el.data).p1.email}</td> */}
               <td>{el.formId}</td>
               <td>
                 {el.formStatus === "paid" ? (
@@ -56,7 +55,6 @@ function RenderForms({ forms }) {
                     <AiOutlineDollarCircle
                       style={{ color: "blue", fontSize: 18 }}
                     />
-
                     <Button
                       style={styles.button1}
                       onClick={() => {
@@ -68,11 +66,9 @@ function RenderForms({ forms }) {
                   </span>
                 )}
               </td>
-
               <td>{el.createdAt.split("T")[0]}</td>
               <td>
                 <BiEdit style={{ fontSize: 18 }} />
-
                 <Link
                   to={`/forms/${el.formId}/${el.id}`}
                   style={{
