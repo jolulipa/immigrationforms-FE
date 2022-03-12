@@ -1,5 +1,8 @@
+import { useHistory } from "react-router-dom";
 import { createUpdateForm } from "../api/formsAccess";
-import { CLIENT_DATA } from "../constants/storageKeys";
+import { AUTH_TOKEN, CLIENT_DATA } from "../constants/storageKeys";
+import { useAppContext } from "../context/Provider";
+import { readAllFormsAdm } from "../api/formsAccess";
 
 function HandleSubmitForms(
   formType,
@@ -10,20 +13,46 @@ function HandleSubmitForms(
   email
 ) {
   console.log("HandleSubmit data:", formType, isEditMode, formData);
+  const { state, updateForms } = useAppContext();
+  const history = useHistory();
+  const token = localStorage.getItem(AUTH_TOKEN) || "";
 
-  const extractData = async ({ cleanData }) => {
-    let i;
-    for (i = 1; i < 100; i++) {
-      delete cleanData?.p1[`text${i}`];
-      delete cleanData?.p2[`text${i}`];
-      delete cleanData?.p3[`text${i}`];
-      delete cleanData?.p4[`text${i}`];
-      delete cleanData?.p5[`text${i}`];
-      delete cleanData?.p6[`text${i}`];
-      delete cleanData?.p7[`text${i}`];
-      delete cleanData?.p8[`text${i}`];
-      delete cleanData?.p9[`text${i}`];
-      delete cleanData?.p10[`text${i}`];
+  const navigateToUser = async (id, email, role, feName) => {
+    const forms = await readAllFormsAdm(id, token);
+    await updateForms(forms);
+    history.push({
+      pathname: "/screens/UsersPage",
+      state: {
+        id,
+        feName,
+        email,
+        role,
+      },
+    });
+  };
+
+  const extractData = ({ cleanData }) => {
+    let i, p, pname, tname;
+    for (p = 1; p < 11; p++) {
+      pname = `p${p}`;
+      for (i = 1; i < 100; i++) {
+        tname = `text${i}`;
+        if (
+          (cleanData[pname] &&
+            typeof cleanData[pname][tname] !== "undefined") ||
+          typeof cleanData[pname] !== "undefined"
+        ) {
+          console.log(pname, tname, cleanData[pname][tname]);
+          delete cleanData[`p${p}`][`text${i}`];
+        }
+      }
+      if (
+        cleanData[pname] &&
+        Object.keys(cleanData[pname]).length === 0 &&
+        Object.getPrototypeOf(cleanData[pname]) === Object.prototype
+      ) {
+        delete cleanData[pname];
+      }
     }
   };
 
@@ -41,14 +70,18 @@ function HandleSubmitForms(
     };
     console.log("DATOS a modificar:", obj);
     await createUpdateForm(obj);
-    alert("Se ha creado o modificado un registro N400");
-    window.location = "/screens/UsersPage";
+    alert("Se ha creado o modificado un formulario");
+    navigateToUser(
+      state.intake.userId,
+      state.intake.email,
+      state.intake.role,
+      state.intake.fullName
+    );
   };
 
   (async () => {
-    console.log("Data:", formData);
     let cleanData = { ...formData };
-    await extractData({ cleanData });
+    extractData({ cleanData });
     if (isEditMode) {
       const { cliUser, cliEmail } = JSON.parse(
         localStorage.getItem(CLIENT_DATA)

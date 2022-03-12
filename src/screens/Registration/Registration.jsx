@@ -51,7 +51,7 @@ const Registration = () => {
       return;
     }
     // Get intake data
-    const { data, userId } = await response.json();
+    const { data, userId } = await response;
     const intakeData = JSON.parse(data);
     updateIntake({
       userId,

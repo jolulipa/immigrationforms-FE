@@ -34,6 +34,7 @@ const Login = () => {
 
   const loadUserData = async (token, role, name, id, email) => {
     const response = await readIntakeForm(token);
+
     if (response.status > 399) {
       // Intake not found -- response.statusText="not found"
       updateIntake({
@@ -54,10 +55,9 @@ const Login = () => {
       window.location.replace("/forms/Intake");
     }
     // intake found
-    const { data, userId } = await response?.json();
+    const { data, userId } = response;
     const intakeData = JSON.parse(data);
-
-    var USNumber = intakeData?.p1?.phone.match(/(\d{3})(\d{3})(\d{4})/);
+    let USNumber = intakeData.p1.phone.match(/(\d{3})(\d{3})(\d{4})/);
     USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
     const cliEmail = intakeData?.p1?.email;
     const cliName = intakeData?.p1?.petFullName;

@@ -16,7 +16,7 @@ const Intake = () => {
   const { id } = useParams();
   const isEditMode = !!id;
   const history = useHistory();
-  const [formData, setFormData] = useState(JSON.parse(context.forms[0].data));
+  const [formData, setFormData] = useState();
 
   const navigateToWelcome = () => {
     history.push(`/${context.concessionary.concessionary}`);
@@ -32,7 +32,9 @@ const Intake = () => {
           paquete.p1.formStatus = values.formStatus;
           setFormData(paquete);
         } else {
-          setFormData(JSON.parse(context.forms[0].data));
+          context.forms[0]
+            ? setFormData(JSON.parse(context.forms[0].data))
+            : setFormData({});
         }
       })();
   }, [id, isEditMode, context.forms]);
@@ -46,6 +48,7 @@ const Intake = () => {
       context.intake.userId,
       context.intake.email
     );
+    
   };
 
   return (

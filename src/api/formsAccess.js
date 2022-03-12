@@ -48,13 +48,17 @@ export const readForm = async (id, userToken) => {
   }
 };
 
-export const readIntakeForm = async (userToken) =>
-  fetch(`${baseUrl}/api/forms/getIntake`, {
+export const readIntakeForm = async (userToken) => {
+  const response = await fetch(`${baseUrl}/api/forms/getIntake`, {
     method: "GET",
     headers: {
       jwt: token || userToken,
     },
   });
+  const datos = await response.json();
+  console.log(datos);
+  return await datos;
+};
 
 //CHECK INTAKE - USERID
 export const checkIntake = async (userCli, userToken) =>
