@@ -10,6 +10,7 @@ import { TiPrinter } from "react-icons/ti";
 function RenderForms({ forms }) {
   const history = useHistory();
   const con = localStorage.getItem(CONCE_TYPE);
+  console.log("RenderForms 13");
 
   return (
     <div>
