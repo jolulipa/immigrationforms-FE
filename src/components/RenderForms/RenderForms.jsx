@@ -9,6 +9,8 @@ import { TiPrinter } from "react-icons/ti";
 
 function RenderForms({ forms }) {
   const history = useHistory();
+  const con = localStorage.getItem(CONCE_TYPE);
+
   return (
     <div>
       <Table striped className="table-hover" style={styles.table}>
@@ -39,9 +41,7 @@ function RenderForms({ forms }) {
         </thead>
         <tbody>
           {!forms || forms === ""
-            ? window.location.replace(
-                `/?concessionaryId=${localStorage.getItem(CONCE_TYPE)}`
-              )
+            ? window.location.replace(`/?concessionaryId=${con.id}`)
             : ""}
           {forms.map((el) => (
             <tr key={el.id}>
