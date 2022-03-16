@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import { useAppContext } from "../../context/Provider";
@@ -9,16 +9,17 @@ import Jpeg2 from "../../images/liberty.png";
 const WelcomePage = () => {
   const { state: context } = useAppContext();
   const { updateConcessionary } = useAppContext();
+  const history = useHistory();
   const url = new URL(window.location.href);
   var concessionaryId = url.searchParams.get("concessionaryId");
 
   if (!concessionaryId) {
     alert("You must login or come from the service provider page");
-    window.location.replace("/concessionaries/Concessionaries");
+    history.push("/concessionaries/Concessionaries");
   }
 
   if (context.intake.role === "adm") {
-    window.location.replace("/screens/AdminPage");
+    history.push("/screens/AdminPage");
   }
 
   useEffect(() => {

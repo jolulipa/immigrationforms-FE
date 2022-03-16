@@ -2,6 +2,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { registerUser } from "../../api/auth";
 import * as yup from "yup"; //modulo de validacion de campos
 import "./styles.css";
+import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../context/Provider";
 import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 
@@ -25,9 +26,10 @@ const validationSchema = yup.object().shape({
 
 const Registration = () => {
   const { state, updateIntake } = useAppContext();
+  const history = useHistory();
 
   const redirectLocation = () => {
-    window.location.replace("/forms/Intake");
+    history.push("/forms/Intake");
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -35,7 +37,7 @@ const Registration = () => {
 
     values.concessionary = state.concessionary.id;
     values.role = "reg";
-    console.log("Registration 74.");
+    console.log("Registration 38");
     console.log("Valores a Registrar:", values);
 
     const result = await registerUser(values);
