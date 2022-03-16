@@ -1,10 +1,13 @@
+import { useHistory } from "react-router-dom";
+
 const Concessionaries = () => {
+  const history = useHistory();
   const navigateToLogin = () => {
-    window.location.replace("/screens/LoginPage");
+    history.push("/screens/LoginPage");
   };
 
   const navigateToHome = () => {
-    window.location.replace("/screens/welcome");
+    history.push("/screens/welcome");
   };
 
   return (

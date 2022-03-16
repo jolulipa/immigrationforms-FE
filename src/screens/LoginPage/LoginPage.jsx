@@ -52,7 +52,7 @@ const Login = () => {
         CLIENT_DATA,
         JSON.stringify({ cliEmail, cliName, cliUser, cliRole })
       );
-      window.location.replace("/forms/Intake");
+      history.push("/forms/Intake");
     }
     // intake found
     const { data, userId } = response;

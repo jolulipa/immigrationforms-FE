@@ -42,7 +42,7 @@ function RenderForms({ forms }) {
         </thead>
         <tbody>
           {!forms || forms === ""
-            ? window.location.replace(`/?concessionaryId=${con.id}`)
+            ? history.push(`/?concessionaryId=${con.id}`)
             : ""}
           {forms.map((el) => (
             <tr key={el.id}>
