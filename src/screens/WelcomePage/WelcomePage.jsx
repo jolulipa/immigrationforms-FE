@@ -11,7 +11,11 @@ const WelcomePage = () => {
   const { updateConcessionary } = useAppContext();
   const history = useHistory();
   const url = new URL(window.location.href);
-  var concessionaryId = url.searchParams.get("concessionaryId");
+  var conId = url.searchParams.get("concessionaryId");
+  let concessionaryId;
+  conId
+    ? (concessionaryId = conId)
+    : (concessionaryId = context.concessionary.concessionary);
 
   if (!concessionaryId) {
     alert("You must login or come from the service provider page");

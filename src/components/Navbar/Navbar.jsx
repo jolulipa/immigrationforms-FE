@@ -10,7 +10,7 @@ import { AUTH_TOKEN, CLIENT_DATA } from "../../constants/storageKeys";
 
 const Navbar = () => {
   const url = new URL(window.location.href);
-  const concessionaryId = url.searchParams.get("concessionaryId");
+  const conId = url.searchParams.get("concessionaryId");
   const {
     state: context,
     updateConcessionary,
@@ -18,6 +18,10 @@ const Navbar = () => {
     updateForms,
   } = useAppContext();
   const history = useHistory();
+  let concessionaryId;
+  conId
+    ? (concessionaryId = conId)
+    : (concessionaryId = context.concessionary.concessionary);
   console.log(
     "Navbar - ConcessionaryID:",
     concessionaryId,
