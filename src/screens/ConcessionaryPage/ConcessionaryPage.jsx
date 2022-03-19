@@ -41,41 +41,39 @@ const ConcessionaryPage = () => {
 
   const renderResults = () =>
     results.map((el) => (
-      <>
-        <tr key={el.id}>
-          <td>{el?.email}</td>
-          <td>
-            <BiEdit style={{ fontSize: 18 }} />
-            <Button
-              className="btn btn-light"
-              onClick={() => {
-                const cliEmail = el.email;
-                const cliName = el.name;
-                const cliUser = el.id;
-                localStorage.setItem(
-                  CLIENT_DATA,
-                  JSON.stringify({ cliEmail, cliName, cliUser })
-                );
-                navigateToUser(el.id, el.email, el.role, el.name);
-              }}
-            >
-              Forms
-            </Button>
-          </td>
-          <td>{el?.createdAt.split("T")[0]}</td>
-          <td>
-            <BiTrash style={{ fontSize: 18 }} />
-            <Button
-              className="btn btn-light btn-sm "
-              onClick={() => {
-                deleteUser(el.id);
-              }}
-            >
-              Delete
-            </Button>
-          </td>
-        </tr>
-      </>
+      <tr key={el.id}>
+        <td>{el?.email}</td>
+        <td>
+          <BiEdit style={{ fontSize: 18 }} />
+          <Button
+            className="btn btn-light"
+            onClick={() => {
+              const cliEmail = el.email;
+              const cliName = el.name;
+              const cliUser = el.id;
+              localStorage.setItem(
+                CLIENT_DATA,
+                JSON.stringify({ cliEmail, cliName, cliUser })
+              );
+              navigateToUser(el.id, el.email, el.role, el.name);
+            }}
+          >
+            Forms
+          </Button>
+        </td>
+        <td>{el?.createdAt.split("T")[0]}</td>
+        <td>
+          <BiTrash style={{ fontSize: 18 }} />
+          <Button
+            className="btn btn-light btn-sm "
+            onClick={() => {
+              deleteUser(el.id);
+            }}
+          >
+            Delete
+          </Button>
+        </td>
+      </tr>
     ));
 
   const renderTable = (results) => (

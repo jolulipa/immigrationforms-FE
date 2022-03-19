@@ -12,6 +12,9 @@ import Concessionaries from "./concessionaries/Concessionaries";
 import I130 from "./forms/I130";
 import I130A from "./forms/I130A";
 import N400 from "./forms/N400";
+import I485 from "./forms/I485";
+import I90 from "./forms/I90";
+import I765 from "./forms/I765";
 import WelcomePage from "./screens/WelcomePage";
 import LandingPage from "./screens/LandingPage";
 import AdminPage from "./screens/AdminPage";
@@ -55,6 +58,12 @@ function App() {
           <PrivateRoute path="/forms/i130" component={I130} />
           <PrivateRoute path="/forms/i130A/:id" component={I130A} />
           <PrivateRoute path="/forms/i130A" component={I130A} />
+          <PrivateRoute path="/forms/i90/:id" component={I90} />
+          <PrivateRoute path="/forms/i90" component={I90} />
+          <PrivateRoute path="/forms/i485/:id" component={I485} />
+          <PrivateRoute path="/forms/i485" component={I485} />
+          <PrivateRoute path="/forms/i765/:id" component={I765} />
+          <PrivateRoute path="/forms/i765" component={I765} />
           <PrivateRoute path="/forms/n400/:id" component={N400} />
           <PrivateRoute path="/forms/n400" component={N400} />
           <PrivateRoute

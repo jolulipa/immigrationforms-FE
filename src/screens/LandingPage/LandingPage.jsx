@@ -4,6 +4,7 @@ import ServiceBox from "../../components/ServiceBox";
 
 const LandingPage = () => {
   const history = useHistory();
+  console.log("LandingPage 7");
 
   const navigate = (formId) => {
     history.push(`/forms/${formId}`);

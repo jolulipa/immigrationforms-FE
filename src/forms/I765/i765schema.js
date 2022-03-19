@@ -1,5 +1,5 @@
 const formSchema = {
-  title: "Intake Form - Immigration Services",
+  title: "I765 Form - Immigration Services",
   description:
     "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios.",
   type: "object",

@@ -2,14 +2,12 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import PrintForm from "./PrintForm";
-import { CONCE_TYPE } from "../../context/types";
 import { BiEdit } from "react-icons/bi";
 import { AiFillPlusCircle, AiOutlineDollarCircle } from "react-icons/ai";
 import { TiPrinter } from "react-icons/ti";
 
 function RenderForms({ forms }) {
   const history = useHistory();
-  const con = localStorage.getItem(CONCE_TYPE);
   console.log("RenderForms 13");
 
   return (
@@ -41,9 +39,6 @@ function RenderForms({ forms }) {
           </tr>
         </thead>
         <tbody>
-          {!forms || forms === ""
-            ? history.push(`/?concessionaryId=${con.id}`)
-            : ""}
           {forms.map((el) => (
             <tr key={el.id}>
               <td>{el.formId}</td>
