@@ -18,14 +18,9 @@ const formSchema = {
         relationship: {
           type: "string",
           title:
-            "2. If you are filling this petition for your child or parent, select the box that describes your relationship",
+            "2. If you are filling this petition for your child or parent, select the box that describes your relationship:  a) Child was born to parents who were married to each other at the time of the child's birth  b) Stepchild/Stepparent  c) Child was born to parents who were not married to each other at the time of the child's birth  d) Child was adopted (nor an Orphan or Hague Convention adoptee)",
           // enum: [1, 2, 3, 4],
-          enum: [
-            "a. Child was born to parents who were married to each other at the time of the child's birth",
-            "b. Stepchild/Stepparent",
-            "c. Child was born to parents who were not married to each other at the time of the child's birth",
-            "d. Child was adopted (nor an Orphan or Hague Convention adoptee)",
-          ],
+          enum: ["a. ", "b. ", "c. ", "d. "],
         },
         siblingQ: {
           type: "string",

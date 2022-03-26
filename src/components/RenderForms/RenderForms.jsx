@@ -5,11 +5,9 @@ import PrintForm from "./PrintForm";
 import { BiEdit } from "react-icons/bi";
 import { AiFillPlusCircle, AiOutlineDollarCircle } from "react-icons/ai";
 import { TiPrinter } from "react-icons/ti";
-import { useAppContext } from "../../context/Provider";
 
 function RenderForms({ forms }) {
   const history = useHistory();
-  const { state: context } = useAppContext();
   console.log("RenderForms 13");
 
   return (
@@ -41,11 +39,11 @@ function RenderForms({ forms }) {
           </tr>
         </thead>
         <tbody>
-          {!forms || forms === ""
+          {/* {!forms || forms === ""
             ? window.location.replace(
                 `/?concessionaryId=${context.concessionary.concessionary}`
               )
-            : console.log("Displayed Forms:", forms)}
+            : console.log("Displayed Forms:", forms)} */}
           {forms.map((el) => (
             <tr key={el.id}>
               <td>{el.formId}</td>

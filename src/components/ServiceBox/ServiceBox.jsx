@@ -1,6 +1,6 @@
 import "./style.css";
 
-const ServiceBox = ({ formName, description, onClick }) => (
+const ServiceBox = ({ formName, description, servicePrice, onClick }) => (
   <div className="container-box">
     <div className="title" onClick={onClick}>
       <span
@@ -19,6 +19,17 @@ const ServiceBox = ({ formName, description, onClick }) => (
       </span>
     </div>
     <div className="description-text">{description}</div>
+    <div
+      style={{
+        fontWeight: 600,
+        height: "auto",
+        color: "red",
+        margin: 0,
+        padding: 10,
+      }}
+    >
+      Service Price : ${servicePrice}
+    </div>
   </div>
 );
 

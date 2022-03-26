@@ -17,6 +17,7 @@ const LandingPage = () => {
           key={el.formId}
           formName={el.formName}
           description={el.description}
+          servicePrice={el.servicePrice}
           onClick={() => navigate(el.formId)}
         />
       </div>

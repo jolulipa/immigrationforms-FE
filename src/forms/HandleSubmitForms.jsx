@@ -69,6 +69,11 @@ function HandleSubmitForms(
       userId: cliUser,
     };
     console.log("DATOS a modificar:", obj);
+
+    alert(
+      "Debe PAGAR por el servicio antes de someter los datos, de lo contrario, los datos entrados se perderían."
+    );
+
     await createUpdateForm(obj);
     alert("Se ha creado o modificado un formulario");
     navigateToUser(

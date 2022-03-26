@@ -90,7 +90,7 @@ const Handler = ({ formName, clientId }) => {
             : setFormData({});
         }
       })();
-  }, [clientId, isEditMode, context.forms]);
+  }, [clientId, isEditMode, context.forms, token]);
 
   const handleSubmit = async ({ formData }) => {
     HandleSubmitForms(

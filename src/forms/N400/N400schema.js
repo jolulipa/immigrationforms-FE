@@ -38,14 +38,9 @@ const formSchema = {
         },
         ageMayorAnd: {
           type: "string",
-          title: "1. You are at least 18 years of age and:",
-          enum: [
-            "A. Have been a lawful permanent resident of the United States for at least 5 years.",
-            "B. Have been a lawful permanent resident of the United States for at least 3 years.  In addition, you have been married to and living with the same U.S. citizen spouse for the last 3 years, and your spouse has been a U.S. citizen for the last 3 years at the time you filed your Form N-400.",
-            "C. Are a lawful permanent resident of the United States and you are the spouse of a U.S. citizen and your U.S. citizen spouse is regularly engaged in specified employment abroad.  (See the Immigration and Nationality Act (INA) section 319(b).)  If your residential address is outside the United States and you are filing under Section 319(b), select the USCIS Field Office from the list below where you would like to have your naturalization interview:",
-            "D. Are applying on the basis of qualifying military service.",
-            "E. Other (explain):",
-          ],
+          title:
+            "1. You are at least 18 years of age and:            A) Have been a lawful permanent resident of the United States for at least 5 years. B) Have been a lawful permanent resident of the United States for at least 3 years.  In addition, you have been married to and living with the same U.S. citizen spouse for the last 3 years, and your spouse has been a U.S. citizen for the last 3 years at the time you filed your Form N-400. C) Are a lawful permanent resident of the United States and you are the spouse of a U.S. citizen and your U.S. citizen spouse is regularly engaged in specified employment abroad.  (See the Immigration and Nationality Act (INA) section 319(b).)  If your residential address is outside the United States and you are filing under Section 319(b), select the USCIS Field Office from the list below where you would like to have your naturalization interview: D) Are applying on the basis of qualifying military service. E) Other (explain):",
+          enum: ["A. ", "B. ", "C. ", "D. ", "E. "],
         },
       },
     },

@@ -1,37 +1,38 @@
 [
   {
-    "formId": "Intake",
-    "formName": "Intake Form - Immigration Services",
-    "description": "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
-  },
-  {
     "formId": "I130",
     "formName": "I-130 Petición de familiar extranjero",
-    "description": "Utilice este servicio si usted es ciudadano estadounidense o residente permanente legal (LPR) y necesita establecer su relación con un familiar elegible que desea venir o permanecer en los Estados Unidos permanentemente y obtener una tarjeta de residente permanente (también llamada Green Card)."
+    "description": "Utilice este servicio si usted es ciudadano estadounidense o residente permanente legal (LPR) y necesita establecer su relación con un familiar elegible que desea venir o permanecer en los Estados Unidos permanentemente y obtener una tarjeta de residente permanente (también llamada Green Card).",
+    "servicePrice": "250.00"
   },
   {
     "formId": "I130A",
     "formName": "I-130A Peticion de cónyuge extranjero",
-    "description": "El propósito de este servicio es recopilar información adicional para un cónyuge beneficiario del Formulario I-130, Petición para Pariente Extranjero. Solo para peticiones de cónyuge no ciudadano estadounidense."
+    "description": "El propósito de este servicio es recopilar información adicional para un cónyuge beneficiario del Formulario I-130, Petición para Pariente Extranjero. Solo para peticiones de cónyuge no ciudadano estadounidense.",
+    "servicePrice": "150.00"
   },
   {
     "formId": "N400",
     "formName": "N-400 Solicitar Ciudadanía USA.",
-    "description": "Utilice este servicio si usted es residente permanente legal (LPR) y desea naturalizarse como ciudadano de los Estados Unidos."
+    "description": "Utilice este servicio si usted es residente permanente legal (LPR) y desea naturalizarse como ciudadano de los Estados Unidos.",
+    "servicePrice": "500.00"
   },
   {
     "formId": "I90",
     "formName": "I-90 Application to Replace Permanent Resident Card ",
-    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios.",
+    "servicePrice": "100.00"
   },
   {
     "formId": "I485",
     "formName": "I-485 Application to Register Permanent Residence or Adjust Status",
-    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios.",
+    "servicePrice": "300.00"
   },
   {
     "formId": "I765",
     "formName": "I-765 Application For Employment Authorization ",
-    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+    "description": "Este es otro formulario de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios.",
+    "servicePrice": "275.00"
   }
 ]

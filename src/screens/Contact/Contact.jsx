@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { readForm, createUpdateForm } from "../../api/formsAccess";
 import { CLIENT_DATA } from "../../constants/storageKeys";
@@ -64,7 +64,7 @@ const Contact = () => {
       }
       console.log("Módulo de PAGO", cliEmail, "-", idToPay, f2);
     })();
-  }, []);
+  }, [cliEmail, cliName, cliRole, cliUser, history, idToPay]);
 
   return (
     <div className="container">

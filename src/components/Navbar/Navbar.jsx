@@ -18,15 +18,30 @@ const Navbar = () => {
     updateForms,
   } = useAppContext();
   const history = useHistory();
+
   let concessionaryId;
-  conId
-    ? (concessionaryId = conId)
-    : (concessionaryId = context.concessionary.concessionary);
+  if (context.concessionary === null && !conId) {
+    history.push("/concessionaries/Concessionaries");
+  } else {
+    if (
+      context.concessionary === null ||
+      !context.concessionary.concessionary
+    ) {
+      updateConcessionary({
+        ...context,
+        concessionary: conId,
+      });
+      concessionaryId = conId;
+    } else {
+      concessionaryId = context.concessionary.concessionary;
+    }
+  }
+
   console.log(
     "Navbar - ConcessionaryID:",
     concessionaryId,
     "|",
-    context.concessionary.concessionary
+    context?.concessionary?.concessionary
   );
 
   const navigateToWelcome = () => {
@@ -54,7 +69,7 @@ const Navbar = () => {
   useEffect(() => {
     (async () => {
       const officeData = await readConOffice(
-        !context.concessionary.concessionary
+        !context.concessionary
           ? concessionaryId
           : context.concessionary.concessionary
       );

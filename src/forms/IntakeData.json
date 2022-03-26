@@ -2,6 +2,7 @@
   {
     "formId": "Intake",
     "formName": "Intake Form - Immigration Services",
-    "description": "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios."
+    "description": "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios.",
+    "servicePrice": "100.00"
   }
 ]
