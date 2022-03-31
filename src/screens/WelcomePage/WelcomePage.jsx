@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { colors } from "../../ui-config/colors";
 import { useAppContext } from "../../context/Provider";
 // import Logout from "../../components/Logout/Logout";
-import Jpeg1 from "../../images/latinos.png";
+import Jpeg1 from "../../images/latina.png";
 import Jpeg2 from "../../images/liberty.png";
+import Jpeg3 from "../../images/visaaplication1.jpg";
 
 const WelcomePage = () => {
   const { state: context } = useAppContext();
@@ -47,16 +48,34 @@ const WelcomePage = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <img
-          src={Jpeg1}
-          alt="Somos Latinos"
-          className="col d-none d-md-block d-lg-block d-xl-block red-input"
-        />
-        <img
-          src={Jpeg2}
-          alt="Liberty Statue"
-          className="col d-none d-md-block d-lg-block d-xl-block red-input"
-        />
+        <div
+          className="col-2 d-none d-md-block d-lg-block d-xl-block red-input"
+          style={{ padding: 0 }}
+        >
+          <img
+            src={Jpeg1}
+            alt="Somos Latinos"
+            className="img-fluid d-none d-md-block d-lg-block d-xl-block red-input"
+            style={{ padding: 0, width: 225, height: 275 }}
+          />
+          <img
+            src={Jpeg3}
+            alt="Visa Application"
+            className="img-fluid d-none d-md-block d-lg-block d-xl-block red-input"
+            style={{ width: 225, height: 150 }}
+          />
+        </div>
+        <div
+          className="col-2 d-none d-md-block d-lg-block d-xl-block red-input"
+          style={{ padding: 0 }}
+        >
+          <img
+            src={Jpeg2}
+            alt="Liberty Statue"
+            className="img-fluid d-none d-md-block d-lg-block d-xl-block red-input"
+            style={{ padding: 0, width: 175, height: 425 }}
+          />
+        </div>
         <div className="col">
           <h2 style={styles.title}>
             Bienvenido a su <br />{" "}

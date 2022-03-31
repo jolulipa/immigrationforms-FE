@@ -1695,11 +1695,6 @@ const formSchema = {
         },
         ever35: {
           type: "string",
-          title: `16A. Prison or jail?`,
-          enum: ["Yes", "No"],
-        },
-        ever36: {
-          type: "string",
           title: `16B. Prison camp?`,
           enum: ["Yes", "No"],
         },
