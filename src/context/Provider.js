@@ -40,6 +40,7 @@ const reducer = (state, action) => {
   }
 };
 
+//Eliaquin EL ERROR ESTA AQUI:
 const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({ children }) => {
