@@ -15,7 +15,10 @@ import Intake4 from "./Intake/Intakeschema4";
 import Intakeu from "./Intake/IntakeUiSchema";
 import I901 from "./I90/i90schema";
 import I90u from "./I90/i90UiSchema";
-import I1301 from "./I130/i130schema";
+import I1301 from "./I130/i130schema1";
+import I1302 from "./I130/i130schema2";
+import I1303 from "./I130/i130schema3";
+import I1304 from "./I130/i130schema4";
 import I130u from "./I130/i130UiSchema";
 import I130A1 from "./I130A/i130Aschema";
 import I130Au from "./I130A/i130AUiSchema";
@@ -36,6 +39,9 @@ const Handler = ({ formName, clientId }) => {
     I901,
     I90u,
     I1301,
+    I1302,
+    I1303,
+    I1304,
     I130u,
     I130A1,
     I130Au,
