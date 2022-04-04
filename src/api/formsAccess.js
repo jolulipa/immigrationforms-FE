@@ -68,14 +68,14 @@ export const checkIntake = async (userCli, userToken) =>
     },
   });
 
-export const createUpdateForm = async (values) => {
+export const createUpdateForm = async (values, userToken) => {
   try {
     await fetch(`${baseUrl}/api/forms/createUpdateForm`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
-        jwt: token,
+        jwt: token || userToken,
       },
     });
   } catch (error) {

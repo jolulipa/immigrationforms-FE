@@ -8,7 +8,7 @@ import { TiPrinter } from "react-icons/ti";
 
 function RenderForms({ forms }) {
   const history = useHistory();
-  console.log("RenderForms 13");
+  console.log("RenderForms 11");
 
   return (
     <div>
@@ -39,11 +39,6 @@ function RenderForms({ forms }) {
           </tr>
         </thead>
         <tbody>
-          {/* {!forms || forms === ""
-            ? window.location.replace(
-                `/?concessionaryId=${context.concessionary.concessionary}`
-              )
-            : console.log("Displayed Forms:", forms)} */}
           {forms.map((el) => (
             <tr key={el.id}>
               <td>{el.formId}</td>
@@ -67,7 +62,7 @@ function RenderForms({ forms }) {
                   </span>
                 )}
               </td>
-              <td>{el.createdAt.split("T")[0]}</td>
+              <td>{el?.createdAt?.split("T")[0]}</td>
               <td>
                 <BiEdit style={{ fontSize: 18 }} />
                 <Link

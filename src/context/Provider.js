@@ -19,6 +19,7 @@ const initialState = {
       ? JSON.parse(localStorage.getItem(CONCE_TYPE))
       : "",
 };
+
 const AppContext = createContext(initialState);
 
 const reducer = (state, action) => {
@@ -40,7 +41,7 @@ const reducer = (state, action) => {
   }
 };
 
-const useAppContext = () => useContext(AppContext);
+export const useAppContext = () => useContext(AppContext);
 
 const AppContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -64,4 +65,5 @@ const AppContextProvider = ({ children }) => {
     </AppContext.Provider>
   );
 };
-export { AppContextProvider as default, useAppContext };
+
+export default AppContextProvider;

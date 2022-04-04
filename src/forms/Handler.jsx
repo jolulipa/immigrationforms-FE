@@ -5,7 +5,7 @@ import Form from "@rjsf/bootstrap-4";
 import { readForm } from "../api/formsAccess";
 import { useAppContext } from "../context/Provider";
 import { BiLeftArrowCircle } from "react-icons/bi";
-import HandleSubmitForms from "./HandleSubmitForms";
+import { useHandleSubmitForms } from "./handleSubmitForms";
 import { AUTH_TOKEN } from "../constants/storageKeys";
 // import intakes from "./Intake/Intakeschema";
 import Intake1 from "./Intake/Intakeschema1";
@@ -46,6 +46,8 @@ const Handler = ({ formName, clientId }) => {
     N4001,
     N400u,
   };
+
+  const { handleSubmitForms } = useHandleSubmitForms();
 
   const token = localStorage.getItem(AUTH_TOKEN) || "";
   const { state: context } = useAppContext();
@@ -97,7 +99,7 @@ const Handler = ({ formName, clientId }) => {
   };
 
   const handleSubmit = async ({ formData }) => {
-    await HandleSubmitForms(
+    await handleSubmitForms(
       formName,
       isEditMode,
       formData,
