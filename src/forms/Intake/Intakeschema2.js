@@ -1,7 +1,7 @@
 const formSchema = {
   title: "Intake Form - Immigration Services.  -  Segunda Pagina",
   description:
-    "Formulario para solicitar cualquier servicio de The Inmmigration Time.",
+    "Formulario obligatorio para solicitar cualquier servicio de The Inmmigration Time.",
   type: "object",
   properties: {
     p2: {

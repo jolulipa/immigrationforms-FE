@@ -65,47 +65,43 @@ const Handler = ({ formName, clientId }) => {
   let formImported = schemas[`${formName}` + 1],
     uiSchema = schemas[`${formName}u`];
 
-  console.log(
-    "HANDLER para Formulario:",
-    formName,
-    "-  UiSchema:",
-    `${formName}u`
-  );
+  // console.log(
+  //   "HANDLER para Formulario:",
+  //   formName,
+  //   "-  UiSchema:",
+  //   `${formName}u`
+  // );
 
   const navigateToWelcome = () => {
     history.push(`/${context.concessionary.concessionary}`);
   };
 
   const navigateToP1 = () => {
-    // alert("goto first page");
     formImported = schemas[`${formName}` + 1];
-    console.log("P1:", formImported);
+    // console.log("P1:", formImported);
     setSchema(formImported);
   };
 
   const navigateToP2 = () => {
-    // alert("goto second page");
     formImported = schemas[`${formName}` + 2];
-    console.log("P2:", formImported);
+    // console.log("P2:", formImported);
     setSchema(formImported);
   };
 
   const navigateToP3 = () => {
-    // alert("goto third page");
     formImported = schemas[`${formName}` + 3];
-    console.log("P3:", formImported);
+    // console.log("P3:", formImported);
     setSchema(formImported);
   };
 
   const navigateToP4 = () => {
-    // alert("goto forth page");
     formImported = schemas[`${formName}` + 4];
-    console.log("P4:", formImported);
+    // console.log("P4:", formImported);
     setSchema(formImported);
   };
 
-  const handleSubmit = async ({ formData }) => {
-    await handleSubmitForms(
+  const handleSubmit = ({ formData }) => {
+    handleSubmitForms(
       formName,
       isEditMode,
       formData,

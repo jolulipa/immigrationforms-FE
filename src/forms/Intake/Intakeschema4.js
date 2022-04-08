@@ -1,7 +1,7 @@
 const formSchema = {
   title: "Intake Form - Immigration Services  -  Cuarta Pagina",
   description:
-    "Utilice este formulario si usted va a solicitar cualquier servicio de The Inmmigration Time. El llenado de este formulario es el primer paso para iniciar los procedimientos necesarios para ayudarle a conseguir sus objetivos migratorios.",
+    "Formulario obligatorio para solicitar cualquier servicio de The Inmmigration Time.",
   type: "object",
   properties: {
     p4: {

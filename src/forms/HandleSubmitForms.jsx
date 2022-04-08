@@ -44,7 +44,7 @@ export const useHandleSubmitForms = () => {
               typeof cleanData[pname][tname] !== "undefined") ||
             typeof cleanData[pname] !== "undefined"
           ) {
-            console.log(pname, tname, cleanData[pname][tname]);
+            // console.log(pname, tname, cleanData[pname][tname]);
             delete cleanData[`p${p}`][`text${i}`];
           }
         }

@@ -1,7 +1,6 @@
 const formSchema = {
   title: "I-130 Peticion de familiar extranjero - Pagina 4",
-  description:
-    "Utilice este servicio si usted es ciudadano estadounidense o residente permanente legal (LPR) y necesita establecer su relación con un familiar elegible que desea venir o permanecer en los Estados Unidos permanentemente y obtener una tarjeta de residente permanente (también llamada Green Card).",
+  description: "Formulario para pedir familiares.",
   type: "object",
   properties: {
     p8: {
